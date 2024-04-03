@@ -18,7 +18,8 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-application-aws.properties
+application-local.yml
+application-prod.yml
 .idea
 *.iws
 *.iml
