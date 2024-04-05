@@ -20,7 +20,7 @@ configurations {
 repositories {
     mavenCentral()
 }
-//행운의 주석 이 주석은 최초로 영궁에서 시작되었으며..    초이상준 코드에서 최초로 시작하였다.
+
 dependencies {
     // JDBC
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
