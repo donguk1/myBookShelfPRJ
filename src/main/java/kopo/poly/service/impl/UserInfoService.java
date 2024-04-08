@@ -1,11 +1,9 @@
 package kopo.poly.service.impl;
 
 
-import kopo.poly.dto.UserInfoDTO;
 import kopo.poly.repository.UserInfoRepository;
 import kopo.poly.repository.entity.UserInfoEntity;
 import kopo.poly.service.IUserInfoService;
-import kopo.poly.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -79,18 +77,15 @@ public class UserInfoService implements IUserInfoService {
      * 회원 가입
      */
     @Override
-    public int insertUserInfo(UserInfoDTO pDTO) throws Exception {
+    public int insertUserInfo(final String userId,
+                              final String password,
+                              final String email,
+                              final String nickname,
+                              final String userName) throws Exception {
 
         log.info("service 회원가입 실행");
 
         int res = 0;
-
-        String userId = CmmUtil.nvl(pDTO.userId());
-        String userName = CmmUtil.nvl(pDTO.userName());
-        String password =  CmmUtil.nvl(pDTO.password());
-        String email = CmmUtil.nvl(pDTO.email());
-
-        log.info("pDTO : " + pDTO);
 
         // 아이디 중복확인
         Optional<UserInfoEntity> rEntity = userInfoRepository.findByUserId(userId);
@@ -105,6 +100,7 @@ public class UserInfoService implements IUserInfoService {
                     .userId(userId)
                     .password(password)
                     .email(email)
+                    .nickName(nickname)
                     .build();
 
             userInfoRepository.save(pEntity);

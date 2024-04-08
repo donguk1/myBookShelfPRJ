@@ -136,7 +136,7 @@
 
             // Ajax 호출해서 회원가입하기
             $.ajax({
-                url: "/login/getUserIdExists",
+                url: "/user/getUserIdExists",
                 type: "post", // 전송방식은 Post
                 dataType: "JSON", // 전송 결과는 JSON으로 받기
                 data: $("#f").serialize(), // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
@@ -166,7 +166,7 @@
 
             // Ajax 호출해서 회원가입하기
             $.ajax({
-                url: "/login/getEmailExists",
+                url: "/user/getEmailExists",
                 type: "post", // 전송방식은 Post
                 dataType: "JSON", // 전송 결과는 JSON으로 받기
                 data: $("#f").serialize(), // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
@@ -264,7 +264,7 @@
             if (confirm("회원가입을 하시겠습니까?")) {
 
                 $.ajax({
-                    url: "/login/get",
+                    url: "/user/insertUserInfo",
                     type: "post", // 전송방식은 Post
                     dataType: "JSON", // 전송 결과는 JSON으로 받기
                     data: $("#f").serialize(), // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
@@ -272,18 +272,11 @@
 
                         console.log(json);
 
-                        if (json.exists === "Y") {
-                            emailCheck = "N";
-                            authNumber = json.authNumber
-                            alert("사용 가능한 이메일 입니다.\n" +
-                                "인증번호를 발송하였습니다.")
-                            console.log(authNumber);
+                        alert(json.msg)
 
-                        } else {
+                        if (json.result === 1) {
+                            location.href="login.html"
 
-                            $("#email").focus();
-                            emailCheck = "Y";
-                            alert("사용할 수 없는 이메일 입니다.")
                         }
 
                     },
@@ -347,12 +340,10 @@
                     </div>
                 </div>
 
-
                 <!-- 닉네임 입력 영역 -->
                 <label for="nickname" class="form-label mt-4">닉네임</label>
                 <div class="input-group mb-3">
                     <input type="text" name="nickname" id="nickname" class="form-control" placeholder="Nickname" aria-label="Recipient's nickname" aria-describedby="btnNick">
-
                 </div>
 
                 <!-- 이름 입력 영역 -->
@@ -361,9 +352,8 @@
                     <input type="text" name="email" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="email">
                 </div>
 
-                </fieldset>
-                <br>
             </fieldset>
+                <br>
         </form>
         <!-- 가입 버튼 영역 -->
         <button type="submit" id="btnSend" class="btn btn-primary" style="float: right;">가입</button>
