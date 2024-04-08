@@ -52,13 +52,13 @@
             }
 
             $.ajax({
-                    url: "/login/getLogin",
+                    url: "/user/getLogin",
                     type: "post", // 전송방식은 Post
                     dataType: "JSON", // 전송 결과는 JSON으로 받기
                     data: $("#f").serialize(),
                     success: function (json) {
 
-                        if (json.res === 1) {
+                        if (json === 1) {
                             location.href = "../main.html";
 
                         } else { // 회원가입 실패

@@ -37,7 +37,7 @@ public class UserInfoController {
         int res = 0;
 
         String userId = CmmUtil.nvl(request.getParameter("userId"));
-        String password = CmmUtil.nvl(request.getParameter("password"));
+        String password = CmmUtil.nvl(EncryptUtil.encHashSHA256(request.getParameter("password")));
 
         log.info("userId : " + userId);
         log.info("password : " + password);
@@ -63,7 +63,6 @@ public class UserInfoController {
     /**
      * 아이디 중복 체크
      */
-
     @PostMapping(value = "getUserIdExists")
     public String getUserIdExists(HttpServletRequest request) throws Exception {
 
