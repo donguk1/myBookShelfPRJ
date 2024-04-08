@@ -36,10 +36,10 @@ public class UserInfoService implements IUserInfoService {
         Optional<UserInfoEntity> rEntity = userInfoRepository.findByUserId(userId);
 
         if (rEntity.isPresent()) {
-            existsYn = "Y";
+            existsYn = "N";
 
         } else {
-            existsYn = "N";
+            existsYn = "Y";
 
         }
 
@@ -63,10 +63,10 @@ public class UserInfoService implements IUserInfoService {
         Optional<UserInfoEntity> rEntity = userInfoRepository.findByEmail(email);
 
         if (rEntity.isPresent()) {
-            existsYn = "Y";
+            existsYn = "N";
 
         } else {
-            existsYn = "N";
+            existsYn = "Y";
 
         }
 

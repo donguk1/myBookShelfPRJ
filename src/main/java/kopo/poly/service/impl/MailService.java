@@ -16,7 +16,8 @@ public class MailService implements IMailService {
 
     @Value("${spring.mail.username}")
     private String fromMail;
-    private JavaMailSender mailSender;
+
+    private final JavaMailSender mailSender;
 
     /**
      * 메일 발송

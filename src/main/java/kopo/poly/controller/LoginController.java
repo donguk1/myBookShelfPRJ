@@ -8,15 +8,15 @@ import kopo.poly.service.IUserInfoService;
 import kopo.poly.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
 @RequiredArgsConstructor
-@Controller
+@RestController
 @RequestMapping(value = "login")
 public class LoginController {
 
@@ -118,7 +118,7 @@ public class LoginController {
         log.info("existsYn : " + existsYn);
         log.info("controller 아이디 중복체크 완료");
 
-        return existsYn;
+        return "{\"exists\": \"" + existsYn + "\"}";
 
     }
 
@@ -136,6 +136,8 @@ public class LoginController {
 
         String existsYn = userInfoService.getEmailExists(email);
 
+        log.info("existsYn : " + existsYn);
+        log.info("controller 이메일 중복체크 완료");
 
         if (existsYn.equals("Y")) {
 
@@ -155,16 +157,27 @@ public class LoginController {
 
                 log.info("메일 발송");
 
+                return "{\"exists\": \"" + existsYn + "\"," +
+                        "\"authNumber\": \"" + authNumber + "\"}";
+
             } else {
                 log.info("메일 발송 실패");
 
+                return "{\"exists\": \"N\"}";
+
+
             }
+
+
+
+        } else {
+            return "{\"exists\": \"" + existsYn + "\"}";
+
         }
 
-        log.info("existsYn : " + existsYn);
-        log.info("controller 이메일 중복체크 완료");
 
-        return existsYn;
+
+
 
     }
 }

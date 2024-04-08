@@ -25,15 +25,19 @@
     </style>
 
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
     <script th:inline="javascript">
+
 
         // 아이디 중복체크여부 (중복 Y / 중복아님 : N)
         let userIdCheck = "Y";
 
         // 이메일 중복체크여부 (중복 Y / 중복아님 : N)
         let emailCheck = "Y";
+
+        let authNumber;
+
+        let authCheck = "Y"
 
         $(document).ready(function() {
 
@@ -47,26 +51,63 @@
                 }
             });
 
+            // email 엔터키
+            $("#email").on("keypress", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // 폼 제출 방지
+                    $("#btnEmail").click();
+                }
+            });
+
+            // email 엔터키
+            $("#authNumber").on("keypress", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // 폼 제출 방지
+                    $("#btnAuthNumber").click();
+                }
+            });
+
             // userId 중복체크
             $("#btnId").on("click", function () {
 
-                const element = document.getElementById('userId');
-                element.classList.remove('is-invalid');
-                element.classList.remove('is-valid');
+                if (f.userId.value === "") {
+                    alert("아이디를 입력하세요.");
+                    f.userId.focus();
+                    return;
+                }
 
                 userIdExists(f);
 
-                setTimeout(function () {
-                    if (userIdCheck === "Y") {
-                        element.classList.add('is-invalid');
-                    } else if (userIdCheck === "N") {
-                        element.classList.add('is-valid');
-                    }
-                }, 100);
 
             });
 
+            // email 중복체크
+            $("#btnEmail").on("click", function () {
 
+                console.log($("#email").val());
+
+                if ($("#email").val() === "") {
+                    alert("이메일을 입력하세요");
+                    $("#email").focus();
+                    return;
+                }
+
+                emailExists(f);
+
+            });
+
+            // 인증번호 확인
+            $("#btnAuthNumber").on("click", function () {
+
+                if ($("#authNumber").val() === "") {
+                    alert("인증번호를 입력하세요");
+                    $("#btnAuthNumber").focus();
+                    return;
+                }
+
+                authNumberCheck(f);
+
+            });
 
             // 회원가입
             $("#btnSend").on("click", function () { // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
@@ -92,32 +133,82 @@
         // 아이디 중복 체크
         function userIdExists(f) {
 
-            if (f.userId.value === "") {
-                alert("아이디를 입력하세요.");
-                f.userId.focus();
-                return;
-            }
-
 
             // Ajax 호출해서 회원가입하기
             $.ajax({
-                    url: "/login/getUserIdExists",
-                    type: "post", // 전송방식은 Post
-                    dataType: "JSON", // 전송 결과는 JSON으로 받기
-                    data: $("#f").serialize(), // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
-                    success: function (json) { // 호출이 성공했다면..
+                url: "/login/getUserIdExists",
+                type: "post", // 전송방식은 Post
+                dataType: "JSON", // 전송 결과는 JSON으로 받기
+                data: $("#f").serialize(), // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
+                success: function (json) { // 호출이 성공했다면..
 
-                        if (json.existsYn === "Y") {
-                            f.userId.focus();
-                            userIdCheck = "Y";
+                    console.log(json);
 
-                        } else {
-                            userIdCheck = "N";
-                        }
+                    if (json.exists === "N") {
+                        f.userId.focus();
+                        userIdCheck = "Y";
+                        alert("사용할 수 없는 아이디 입니다.")
 
+                    } else {
+                        userIdCheck = "N";
+                        alert("사용 가능한 아이디 입니다.")
                     }
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
                 }
-            )
+            })
+        }
+
+        // 이메일 중복 체크
+        function emailExists(f) {
+
+            // Ajax 호출해서 회원가입하기
+            $.ajax({
+                url: "/login/getEmailExists",
+                type: "post", // 전송방식은 Post
+                dataType: "JSON", // 전송 결과는 JSON으로 받기
+                data: $("#f").serialize(), // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
+                success: function (json) { // 호출이 성공했다면..
+
+                    console.log(json);
+
+                    if (json.exists === "Y") {
+                        emailCheck = "N";
+                        authNumber = json.authNumber
+                        alert("사용 가능한 이메일 입니다.\n" +
+                            "인증번호를 발송하였습니다.")
+                        console.log(authNumber);
+
+                    } else {
+
+                        $("#email").focus();
+                        emailCheck = "Y";
+                        alert("사용할 수 없는 이메일 입니다.")
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
+            })
+        }
+
+        // 이메일 인증 확인
+        function authNumberCheck(f) {
+
+            if (authNumber === $("#authNumber").val()) {
+
+                authCheck = "N"
+
+                alert("확인되었습니다.")
+
+            } else {
+                alert("일치하지 않습니다.\n" +
+                    "다시 확인해주세요")
+            }
+
         }
 
         // 회원가입
@@ -158,14 +249,48 @@
                 return;
             }
 
-            if (f.email.value === "") {
+            if ($("#email").val() === "") {
                 alert("이메일을 입력하세요.");
                 f.email.focus();
                 return;
             }
 
+            if (authCheck === "Y") {
+                alert("이메일 인증을 완료해주세요.")
+                f.authNumber.focus()
+                return;
+            }
+
             if (confirm("회원가입을 하시겠습니까?")) {
-                f.submit();
+
+                $.ajax({
+                    url: "/login/get",
+                    type: "post", // 전송방식은 Post
+                    dataType: "JSON", // 전송 결과는 JSON으로 받기
+                    data: $("#f").serialize(), // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
+                    success: function (json) { // 호출이 성공했다면..
+
+                        console.log(json);
+
+                        if (json.exists === "Y") {
+                            emailCheck = "N";
+                            authNumber = json.authNumber
+                            alert("사용 가능한 이메일 입니다.\n" +
+                                "인증번호를 발송하였습니다.")
+                            console.log(authNumber);
+
+                        } else {
+
+                            $("#email").focus();
+                            emailCheck = "Y";
+                            alert("사용할 수 없는 이메일 입니다.")
+                        }
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX 호출 중 에러 발생:", error);
+                    }
+                })
             }
 
         }
@@ -192,8 +317,6 @@
                     <div class="input-group mb-3">
                         <input type="text" name="userId" id="userId" class="form-control" placeholder="ID" aria-label="Recipient's id" aria-describedby="btnId">
                         <button class="btn btn-primary" type="button" id="btnId">확인</button>
-                        <span class="valid-feedback">사용 가능한 아이디입니다.</span>
-                        <span class="invalid-feedback">이미 가입된 아이디가 존재합니다.</span>
                     </div>
                 </div>
 
@@ -211,10 +334,19 @@
                 </div>
 
                 <!-- 이메일 입력 영역 -->
-                <div class="form-group">
-                    <label for="email" class="form-label mt-4">이메일</label>
-                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email">
+                <label for="email" class="form-label mt-4">이메일</label>
+                <div class="form-group has-success">
+                    <div class="input-group mb-3">
+                        <input type="email" name="email" id="email" class="form-control" aria-describedby="email" placeholder="email">
+                        <button class="btn btn-primary" type="button" id="btnEmail">확인</button>
+                    </div>
+                    <label for="authNumber" class="form-label mt-4">인증번호</label>
+                    <div class="input-group mb-3" id="toggleEmailVerificationInput">
+                        <input type="text" name="authNumber" class="form-control" id="authNumber" aria-describedby="emailHelp" placeholder="인증번호">
+                        <button class="btn btn-primary" type="button" id="btnAuthNumber">확인</button>
+                    </div>
                 </div>
+
 
                 <!-- 닉네임 입력 영역 -->
                 <label for="nickname" class="form-label mt-4">닉네임</label>
