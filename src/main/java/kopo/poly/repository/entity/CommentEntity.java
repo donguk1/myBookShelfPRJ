@@ -18,26 +18,26 @@ public class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_seq")
+    @Column(name = "COMMENT_SEQ")
     private Long commentSeq;
 
     @NonNull
-    @Column(name = "board_seq")
+    @Column(name = "BOARD_SEQ")
     private Long boardSeq;
 
     @NonNull
-    @Column(name = "contents")
+    @Column(name = "CONTENTS")
     private String contents;
 
-    @Column(name = "dept")
+    @Column(name = "DEPT")
     private int dpet;
 
-    @Column(name = "target_seq")
+    @Column(name = "TARGET_SEQ")
     private Long targetSeq;
 
-    @Column(name = "reg_dt")
+    @Column(name = "REG_DT")
     private String regDt;
 
-    @Column(name = "chg_dt")
+    @Column(name = "CHG_DT")
     private String chgDt;
 }

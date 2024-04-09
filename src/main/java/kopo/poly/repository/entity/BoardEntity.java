@@ -19,35 +19,35 @@ public class BoardEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_seq")
+    @Column(name = "BOARD_SEQ")
     private Long boardSeq;
     
     @NonNull
-    @Column(name = "reg_id", length = 500, nullable = false)        
+    @Column(name = "REG_ID", length = 500, nullable = false)
     private String regId;
     
     @NonNull
-    @Column(name = "title", length = 25, nullable = false)
+    @Column(name = "TITLE", length = 25, nullable = false)
     private String title;
 
     @NonNull
-    @Column(name = "notice_yn", length = 3, nullable = false)
+    @Column(name = "NOTICE_YN", length = 3, nullable = false)
     private String noticeYn;
 
     @NonNull
-    @Column(name = "category", length = 10, nullable = false)
+    @Column(name = "CATEGORY", length = 10, nullable = false)
     private String category;
 
     @NonNull
-    @Column(name = "contents", length = 5000, nullable = false)
+    @Column(name = "CONTENTS", length = 5000, nullable = false)
     private String contents;
 
-    @Column(name = "read_cnt")
+    @Column(name = "READ_CNT")
     Long readCnt;
 
-    @Column(name = "reg_dt")
+    @Column(name = "REG_DT")
     private String regDt;
 
-    @Column(name = "chg_dt")
+    @Column(name = "CHG_DT")
     private String chgDt;
 }

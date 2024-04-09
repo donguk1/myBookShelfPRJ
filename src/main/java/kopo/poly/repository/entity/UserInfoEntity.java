@@ -21,24 +21,25 @@ import java.io.Serializable;
 @Entity
 public class UserInfoEntity implements Serializable {
 
+    @Getter
     @Id
-    @Column(name = "user_id")
+    @Column(name = "USER_ID")
     private String userId;
 
     @NonNull
-    @Column(name = "user_name", length = 500, nullable = false)
+    @Column(name = "USER_NAME", length = 500, nullable = false)
     private String userName;
 
     @NonNull
-    @Column(name = "password", length = 100, nullable = false)
+    @Column(name = "PASSWORD", length = 100, nullable = false)
     private String password;
 
     @NonNull
-    @Column(name = "email", nullable = false)
+    @Column(name = "EMAIL", nullable = false)
     private String email;
 
     @NonNull
-    @Column(name = "nickname", nullable = false)
+    @Column(name = "NICKNAME", nullable = false)
     private String nickName;
 
 }

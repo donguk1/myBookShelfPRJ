@@ -1,6 +1,9 @@
 package kopo.poly.service.impl;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import kopo.poly.dto.UserInfoDTO;
 import kopo.poly.repository.UserInfoRepository;
 import kopo.poly.repository.entity.UserInfoEntity;
 import kopo.poly.service.IUserInfoService;
@@ -8,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.rmi.server.UID;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -23,7 +28,7 @@ public class UserInfoService implements IUserInfoService {
      * 아이디 중복 확인
      */
     @Override
-    public String getUserIdExists(String userId) throws Exception {
+    public String getUserIdExists(final String userId) throws Exception {
 
         log.info("service 아이디 중복 실행");
 
@@ -50,7 +55,7 @@ public class UserInfoService implements IUserInfoService {
      * 이메일 중복 확인
      */
     @Override
-    public String getEmailExists(String email) throws Exception {
+    public String getEmailExists(final String email) throws Exception {
 
         log.info("service 이메일 중복 실행");
 
@@ -96,11 +101,11 @@ public class UserInfoService implements IUserInfoService {
         } else {
 
             UserInfoEntity pEntity = UserInfoEntity.builder()
-                    .userName(userName)
                     .userId(userId)
                     .password(password)
                     .email(email)
                     .nickName(nickname)
+                    .userName(userName)
                     .build();
 
             userInfoRepository.save(pEntity);
@@ -123,7 +128,8 @@ public class UserInfoService implements IUserInfoService {
      * 로그인 
      */
     @Override
-    public int getLogin(String userId, String password) throws Exception {
+    public int getLogin(final String userId,
+                        final String password) throws Exception {
 
         log.info("service 로그인 실행");
 
@@ -132,7 +138,8 @@ public class UserInfoService implements IUserInfoService {
         log.info("userId : " + userId);
         log.info("password : " + password);
 
-        Optional<UserInfoEntity> rEntity = userInfoRepository.findByUserIdAndPassword(userId, password);
+        Optional<UserInfoEntity> rEntity = userInfoRepository
+                .findByUserIdAndPassword(userId, password);
 
         if (rEntity.isPresent()) {
             res = 1;
@@ -144,5 +151,26 @@ public class UserInfoService implements IUserInfoService {
         return res;
     }
 
+    /**
+     * 아이디 찾기
+     */
+    @Override
+    public String findId(String userName, String email) throws Exception {
 
+        log.info("service 아이디 찾기 실행");
+        log.info("userName : " + userName);
+        log.info("email : " + email);
+
+        Optional<UserInfoEntity> rEntity = userInfoRepository
+                .findByUserNameAndEmail(userName, email);
+
+        String userId = null;
+
+        if (rEntity.isPresent()) {
+            userId = rEntity.get().getUserId();
+
+        }
+
+        return userId;
+    }
 }

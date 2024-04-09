@@ -140,11 +140,9 @@ public class UserInfoController {
 
     }
 
-
     /**
      * 회원가입
      */
-    @ResponseBody
     @PostMapping(value = "insertUserInfo")
     public MsgDTO insertUser(HttpServletRequest request) throws Exception {
 
@@ -185,6 +183,25 @@ public class UserInfoController {
                 .build();
     }
 
+    /**
+     * 아이디 찾기
+     */
+     @PostMapping(value = "findId")
+    public String findId(HttpServletRequest request) throws Exception {
 
+         log.info("controller 아이디 찾기 실행");
+
+         String email = CmmUtil.nvl(request.getParameter("email"));
+         String userName = CmmUtil.nvl(request.getParameter("userName"));
+
+         log.info("email : " + email);
+         log.info("userName : " + userName);
+
+         String userId = userInfoService.findId(userName, email);
+
+         log.info("userId : " + userId);
+
+         return "{\"userId\": \"" + userId + "\"}";
+    }
 
 }

@@ -26,6 +26,7 @@
 
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/move.js"></script>
     <script th:inline="javascript">
 
 
@@ -132,7 +133,6 @@
 
         // 아이디 중복 체크
         function userIdExists(f) {
-
 
             // Ajax 호출해서 회원가입하기
             $.ajax({
@@ -349,14 +349,16 @@
                 <!-- 이름 입력 영역 -->
                 <div class="form-group">
                     <label for="userName" class="form-label mt-4">이름</label>
-                    <input type="text" name="email" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="email">
+                    <input type="text" name="userName" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="email">
                 </div>
 
             </fieldset>
                 <br>
         </form>
         <!-- 가입 버튼 영역 -->
-        <button type="submit" id="btnSend" class="btn btn-primary" style="float: right;">가입</button>
+        <button type="submit" id="btnSend" class="btn btn-primary" style="float: right; ">가입</button>
+        <button type="button" id="btnLogin" class="btn btn-primary" style="float: right;margin-right: 5px">로그인</button>
+
     </div>
 </div>
 
