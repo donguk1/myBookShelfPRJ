@@ -134,10 +134,6 @@ public class UserInfoController {
 
         }
 
-
-
-
-
     }
 
     /**
@@ -186,7 +182,7 @@ public class UserInfoController {
     /**
      * 아이디 찾기
      */
-     @PostMapping(value = "findId")
+    @PostMapping(value = "findId")
     public String findId(HttpServletRequest request) throws Exception {
 
          log.info("controller 아이디 찾기 실행");
@@ -202,6 +198,57 @@ public class UserInfoController {
          log.info("userId : " + userId);
 
          return "{\"userId\": \"" + userId + "\"}";
+    }
+
+    /**
+     * 비밀번호 찾기
+     */
+    @PostMapping(value = "newUserPassword")
+    public MsgDTO newUserPassword(HttpServletRequest request) throws Exception {
+
+        log.info("controller 비번 찾기 실행");
+
+        String msg = "";
+        String userId = CmmUtil.nvl(request.getParameter("userId"));
+        String email = CmmUtil.nvl(request.getParameter("email"));
+        String userName = CmmUtil.nvl(request.getParameter("userName"));
+
+        log.info("userId : " + userId);
+        log.info("email : " + email);
+        log.info("userName : " + userName);
+
+        int res = userInfoService.findPassword(userId, userName, email);
+
+        log.info("res : " + res);
+
+        if (res == 1) {
+
+            String password = EncryptUtil.encHashSHA256(mailService.getTmpPassword());
+
+            String title = "임시 비밀번호 발송 메일";
+            String contents = "임시 비밀번호는 " + password + "입니다.";
+
+            res = mailService.doSendMail(email, title, contents);
+
+            if (res == 1) {
+                msg = "임시 비밀번호를 메일로 발송하였습니다.\n메일함을 확인해주세요";
+
+                userInfoService.updatePassword(userId, password, userName, email);
+
+            } else {
+                msg = "일치하는 계정이 없습니다. \n다시 확인해주세요";
+
+            }
+
+        } else {
+            msg = "일치하는 계정이 없습니다. \n다시 확인해주세요";
+
+        }
+
+        return MsgDTO.builder()
+                .msg(msg)
+                .result(res)
+                .build();
     }
 
 }

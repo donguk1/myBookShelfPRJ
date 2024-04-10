@@ -1,651 +1,279 @@
-2024-04-09 13:41:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 13:41:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 13:41:27 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 4.113 seconds (process running for 5.317)
-2024-04-09 13:44:15 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 13:44:15 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 13:44:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.026 seconds (process running for 174.994)
-2024-04-09 13:46:26 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 13:46:26 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 13:46:27 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.007 seconds (process running for 305.488)
-2024-04-09 13:46:57 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 13:46:57 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 13:46:58 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.879 seconds (process running for 336.78)
-2024-04-09 13:50:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 13:50:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 13:50:51 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.078 seconds (process running for 570.121)
-2024-04-09 14:07:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:07:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:08:00 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.954 seconds (process running for 1597.682)
-2024-04-09 14:08:33 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:08:33 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:08:34 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.871 seconds (process running for 1631.26)
-2024-04-09 14:08:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:08:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:08:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.734 seconds (process running for 1652.95)
-2024-04-09 14:10:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:10:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:10:12 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.901 seconds (process running for 1729.539)
-2024-04-09 14:10:28 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:10:28 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:10:29 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.828 seconds (process running for 1746.245)
-2024-04-09 14:10:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:10:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:10:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.751 seconds (process running for 1761.866)
-2024-04-09 14:10:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:10:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:10:56 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.917 seconds (process running for 1773.49)
-2024-04-09 14:15:22 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:15:22 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:15:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.966 seconds (process running for 2040.074)
-2024-04-09 14:17:20 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:17:20 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:17:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.009 seconds (process running for 2158.093)
-2024-04-09 14:18:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:18:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:18:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.946 seconds (process running for 2214.185)
-2024-04-09 14:18:54 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:18:54 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:18:54 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.733 seconds (process running for 2251.702)
-2024-04-09 14:19:28 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:19:28 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:19:28 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.832 seconds (process running for 2285.901)
-2024-04-09 14:20:01 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:20:01 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:20:02 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.977 seconds (process running for 2319.217)
-2024-04-09 14:20:32 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:20:32 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:20:33 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.934 seconds (process running for 2350.347)
-2024-04-09 14:20:58 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:20:58 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:20:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.888 seconds (process running for 2376.465)
-2024-04-09 14:23:29 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:23:29 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:23:30 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.304 seconds (process running for 2527.684)
-2024-04-09 14:33:09 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:33:09 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:33:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.777 seconds (process running for 3108.246)
-2024-04-09 14:33:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:33:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:33:15 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 2.033 seconds (process running for 3112.953)
-2024-04-09 14:34:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:34:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:34:51 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.801 seconds (process running for 3208.243)
-2024-04-09 14:35:27 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:35:27 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:35:29 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.15 seconds (process running for 3246.051)
-2024-04-09 14:35:30 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:35:30 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:35:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.794 seconds (process running for 3248.422)
-2024-04-09 14:37:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:37:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:37:22 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.859 seconds (process running for 3359.577)
-2024-04-09 14:37:56 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:37:56 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:37:56 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.816 seconds (process running for 3393.785)
-2024-04-09 14:38:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:38:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:38:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.754 seconds (process running for 3414.649)
-2024-04-09 14:40:35 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:40:35 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:40:36 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.833 seconds (process running for 3553.695)
-2024-04-09 14:41:09 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 14:41:09 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 14:41:09 [INFO ] k.poly.controller.UserInfoController - email : 1
-2024-04-09 14:41:09 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 14:41:09 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 14:41:09 [INFO ] k.poly.service.impl.UserInfoService - email : 1
-2024-04-09 14:41:24 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:41:24 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:41:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.589 seconds (process running for 3602.246)
-2024-04-09 14:41:40 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 14:41:40 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 14:41:40 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 14:41:40 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 14:41:40 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 14:41:40 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 14:41:46 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 14:41:46 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 14:41:46 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 14:41:46 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 14:41:46 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 14:41:46 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 14:41:46 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 14:41:46 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 14:41:46 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 14:41:46 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 14:41:46 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 14:41:46 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 14:41:47 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 14:41:47 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 14:41:47 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 14:41:47 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 14:41:47 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 14:41:47 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 14:42:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:42:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:42:19 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.997 seconds (process running for 3656.477)
-2024-04-09 14:42:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 14:42:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 14:42:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.632 seconds (process running for 3658.665)
-2024-04-09 14:42:23 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 14:42:23 [INFO ] k.poly.controller.UserInfoController - email : 1
-2024-04-09 14:42:23 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 14:42:23 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 14:42:23 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 14:42:23 [INFO ] k.poly.service.impl.UserInfoService - email : 1
-2024-04-09 14:42:23 [INFO ] k.poly.controller.UserInfoController - userId : Optional.empty
-2024-04-09 14:42:31 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 14:42:31 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 14:42:31 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 14:42:31 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 14:42:31 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 14:42:31 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 14:42:31 [INFO ] k.poly.controller.UserInfoController - userId : Optional[kopo.poly.repository.entity.UserInfoEntity@2fddee1e]
-2024-04-09 15:19:07 [INFO ] k.poly.controller.UserInfoController - controller 로그인 실행
-2024-04-09 15:19:07 [INFO ] k.poly.controller.UserInfoController - userId : 4
-2024-04-09 15:19:07 [INFO ] k.poly.controller.UserInfoController - password : 629bb449e3e9c46949254adb14bdc9dbee91790bf54185ae839d9f4733249481
-2024-04-09 15:19:07 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 실행
-2024-04-09 15:19:07 [INFO ] k.poly.service.impl.UserInfoService - userId : 4
-2024-04-09 15:19:07 [INFO ] k.poly.service.impl.UserInfoService - password : 629bb449e3e9c46949254adb14bdc9dbee91790bf54185ae839d9f4733249481
-2024-04-09 15:19:07 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 종료
-2024-04-09 15:19:07 [INFO ] k.poly.controller.UserInfoController - controller 로그인 종료
-2024-04-09 15:19:19 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:19:19 [INFO ] k.poly.controller.UserInfoController - email : 1
-2024-04-09 15:19:19 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:19:19 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:19:19 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:19:19 [INFO ] k.poly.service.impl.UserInfoService - email : 1
-2024-04-09 15:19:19 [INFO ] k.poly.controller.UserInfoController - userId : Optional.empty
-2024-04-09 15:19:20 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:19:20 [INFO ] k.poly.controller.UserInfoController - email : 1
-2024-04-09 15:19:20 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:19:20 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:19:20 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:19:20 [INFO ] k.poly.service.impl.UserInfoService - email : 1
-2024-04-09 15:19:20 [INFO ] k.poly.controller.UserInfoController - userId : Optional.empty
-2024-04-09 15:19:28 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:19:28 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:19:28 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:19:28 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:19:28 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:19:28 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:19:28 [INFO ] k.poly.controller.UserInfoController - userId : Optional[kopo.poly.repository.entity.UserInfoEntity@3e9d1da0]
-2024-04-09 15:19:33 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:19:33 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:19:33 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:19:33 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:19:33 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:19:33 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:19:33 [INFO ] k.poly.controller.UserInfoController - userId : Optional[kopo.poly.repository.entity.UserInfoEntity@5b9c2934]
-2024-04-09 15:19:34 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:19:34 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:19:34 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:19:34 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:19:34 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:19:34 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:19:34 [INFO ] k.poly.controller.UserInfoController - userId : Optional[kopo.poly.repository.entity.UserInfoEntity@7730695f]
-2024-04-09 15:20:13 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:20:13 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:20:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.819 seconds (process running for 5931.656)
-2024-04-09 15:20:18 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:20:18 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:20:18 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:20:18 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:20:18 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:20:18 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:20:18 [INFO ] k.poly.controller.UserInfoController - userId : Optional[kopo.poly.repository.entity.UserInfoEntity@74afb667]
-2024-04-09 15:21:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:21:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:21:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.655 seconds (process running for 5998.729)
-2024-04-09 15:21:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:21:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:21:24 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.917 seconds (process running for 6001.251)
-2024-04-09 15:21:25 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:21:25 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:21:25 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:21:25 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:21:25 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:21:25 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:21:25 [INFO ] k.poly.controller.UserInfoController - userId : Optional[kopo.poly.repository.entity.UserInfoEntity@2455c4b9]
-2024-04-09 15:24:02 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:24:02 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:24:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:24:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:24:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.143 seconds (process running for 6162.225)
-2024-04-09 15:24:08 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:24:08 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:24:08 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:24:08 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:24:08 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:24:08 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:25:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:25:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:25:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.115 seconds (process running for 6224.019)
-2024-04-09 15:25:08 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:25:08 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:25:09 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.716 seconds (process running for 6226.281)
-2024-04-09 15:25:38 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:25:38 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:25:39 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.703 seconds (process running for 6256.225)
-2024-04-09 15:25:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:25:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:25:41 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.935 seconds (process running for 6258.717)
-2024-04-09 15:26:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:26:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:26:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:26:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:26:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.942 seconds (process running for 6322.935)
-2024-04-09 15:35:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:35:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:35:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:35:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:35:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.813 seconds (process running for 6824.513)
-2024-04-09 15:35:11 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:35:11 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:35:11 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:35:11 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:35:11 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:35:11 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:35:20 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:35:20 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:35:20 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:35:20 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:35:20 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:35:20 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:36:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:36:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:36:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 22872 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:36:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:36:19 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.005 seconds (process running for 6896.527)
-2024-04-09 15:36:23 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:36:23 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:36:23 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:36:23 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:36:23 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:36:23 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:36:23 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 15:39:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 40560 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:39:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:39:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 4.85 seconds (process running for 7.559)
-2024-04-09 15:39:36 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 42224 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:39:36 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:39:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 3.959 seconds (process running for 5.256)
-2024-04-09 15:39:56 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:39:56 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:39:56 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:39:56 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:39:56 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:39:56 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:39:56 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 15:40:23 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 실행
-2024-04-09 15:40:23 [INFO ] k.poly.controller.UserInfoController - userId : 1
-2024-04-09 15:40:23 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복 실행
-2024-04-09 15:40:23 [INFO ] k.poly.service.impl.UserInfoService - userId : 1
-2024-04-09 15:40:23 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복확인 종료
-2024-04-09 15:40:23 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
-2024-04-09 15:40:23 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 완료
-2024-04-09 15:40:30 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 실행
-2024-04-09 15:40:30 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:40:30 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복 실행
-2024-04-09 15:40:30 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:40:30 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복확인 종료
-2024-04-09 15:40:30 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
-2024-04-09 15:40:30 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 완료
-2024-04-09 15:40:30 [INFO ] k.poly.controller.UserInfoController - 인증번호 생성 시작
-2024-04-09 15:40:30 [INFO ] k.poly.controller.UserInfoController - authNumber : 8708483
-2024-04-09 15:40:30 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
-2024-04-09 15:40:30 [INFO ] kopo.poly.service.impl.MailService - toMail : 1@1
-2024-04-09 15:40:30 [INFO ] kopo.poly.service.impl.MailService - title : 이메일 인증번호 발송 메일
-2024-04-09 15:40:30 [INFO ] kopo.poly.service.impl.MailService - contents : 인증번호는 8708483입니다.
-2024-04-09 15:40:36 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
-2024-04-09 15:40:36 [INFO ] k.poly.controller.UserInfoController - 메일 발송
-2024-04-09 15:40:53 [INFO ] k.poly.controller.UserInfoController - controller 회원가입 실행
-2024-04-09 15:40:53 [INFO ] k.poly.controller.UserInfoController - userId : 1
-2024-04-09 15:40:53 [INFO ] k.poly.controller.UserInfoController - password : 629bb449e3e9c46949254adb14bdc9dbee91790bf54185ae839d9f4733249481
-2024-04-09 15:40:53 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:40:53 [INFO ] k.poly.controller.UserInfoController - nickname : 1
-2024-04-09 15:40:53 [INFO ] k.poly.controller.UserInfoController - userName : 
-2024-04-09 15:40:53 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 실행
-2024-04-09 15:40:54 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 종료
-2024-04-09 15:40:54 [INFO ] k.poly.controller.UserInfoController - res : 1
-2024-04-09 15:40:59 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:40:59 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:40:59 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:40:59 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:40:59 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:40:59 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:40:59 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 15:41:57 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 42224 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:41:57 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:41:58 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.447 seconds (process running for 143.65)
-2024-04-09 15:42:00 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 42224 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:42:00 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:42:01 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.983 seconds (process running for 146.183)
-2024-04-09 15:42:07 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 실행
-2024-04-09 15:42:07 [INFO ] k.poly.controller.UserInfoController - userId : 2
-2024-04-09 15:42:07 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복 실행
-2024-04-09 15:42:07 [INFO ] k.poly.service.impl.UserInfoService - userId : 2
-2024-04-09 15:42:07 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복확인 종료
-2024-04-09 15:42:07 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
-2024-04-09 15:42:07 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 완료
-2024-04-09 15:42:15 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 실행
-2024-04-09 15:42:15 [INFO ] k.poly.controller.UserInfoController - email : 2@2
-2024-04-09 15:42:15 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복 실행
-2024-04-09 15:42:15 [INFO ] k.poly.service.impl.UserInfoService - email : 2@2
-2024-04-09 15:42:15 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복확인 종료
-2024-04-09 15:42:15 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
-2024-04-09 15:42:15 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 완료
-2024-04-09 15:42:15 [INFO ] k.poly.controller.UserInfoController - 인증번호 생성 시작
-2024-04-09 15:42:15 [INFO ] k.poly.controller.UserInfoController - authNumber : 4892676
-2024-04-09 15:42:15 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
-2024-04-09 15:42:15 [INFO ] kopo.poly.service.impl.MailService - toMail : 2@2
-2024-04-09 15:42:15 [INFO ] kopo.poly.service.impl.MailService - title : 이메일 인증번호 발송 메일
-2024-04-09 15:42:15 [INFO ] kopo.poly.service.impl.MailService - contents : 인증번호는 4892676입니다.
-2024-04-09 15:42:20 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
-2024-04-09 15:42:20 [INFO ] k.poly.controller.UserInfoController - 메일 발송
-2024-04-09 15:42:30 [INFO ] k.poly.controller.UserInfoController - controller 회원가입 실행
-2024-04-09 15:42:30 [INFO ] k.poly.controller.UserInfoController - userId : 2
-2024-04-09 15:42:30 [INFO ] k.poly.controller.UserInfoController - password : 09a707b21029ff8968f3de4a61e43072730c721d91df999a276fd619208518c6
-2024-04-09 15:42:30 [INFO ] k.poly.controller.UserInfoController - email : 2@2
-2024-04-09 15:42:30 [INFO ] k.poly.controller.UserInfoController - nickname : 2
-2024-04-09 15:42:30 [INFO ] k.poly.controller.UserInfoController - userName : 
-2024-04-09 15:42:30 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 실행
-2024-04-09 15:42:30 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 종료
-2024-04-09 15:42:30 [INFO ] k.poly.controller.UserInfoController - res : 1
-2024-04-09 15:43:37 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 42224 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:43:37 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:43:38 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.951 seconds (process running for 243.325)
-2024-04-09 15:43:41 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 실행
-2024-04-09 15:43:41 [INFO ] k.poly.controller.UserInfoController - userId : 3
-2024-04-09 15:43:41 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복 실행
-2024-04-09 15:43:41 [INFO ] k.poly.service.impl.UserInfoService - userId : 3
-2024-04-09 15:43:41 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복확인 종료
-2024-04-09 15:43:41 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
-2024-04-09 15:43:41 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 완료
-2024-04-09 15:43:45 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 실행
-2024-04-09 15:43:45 [INFO ] k.poly.controller.UserInfoController - email : 3#
-2024-04-09 15:43:45 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복 실행
-2024-04-09 15:43:45 [INFO ] k.poly.service.impl.UserInfoService - email : 3#
-2024-04-09 15:43:45 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복확인 종료
-2024-04-09 15:43:45 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
-2024-04-09 15:43:45 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 완료
-2024-04-09 15:43:45 [INFO ] k.poly.controller.UserInfoController - 인증번호 생성 시작
-2024-04-09 15:43:45 [INFO ] k.poly.controller.UserInfoController - authNumber : 9270390
-2024-04-09 15:43:45 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
-2024-04-09 15:43:45 [INFO ] kopo.poly.service.impl.MailService - toMail : 3#
-2024-04-09 15:43:45 [INFO ] kopo.poly.service.impl.MailService - title : 이메일 인증번호 발송 메일
-2024-04-09 15:43:45 [INFO ] kopo.poly.service.impl.MailService - contents : 인증번호는 9270390입니다.
-2024-04-09 15:43:50 [INFO ] kopo.poly.service.impl.MailService - [ERROR] 메일 발송 결과 실패
-2024-04-09 15:43:50 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
-2024-04-09 15:43:50 [INFO ] k.poly.controller.UserInfoController - 메일 발송 실패
-2024-04-09 15:43:56 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 실행
-2024-04-09 15:43:56 [INFO ] k.poly.controller.UserInfoController - email : 3@3
-2024-04-09 15:43:56 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복 실행
-2024-04-09 15:43:56 [INFO ] k.poly.service.impl.UserInfoService - email : 3@3
-2024-04-09 15:43:56 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복확인 종료
-2024-04-09 15:43:56 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
-2024-04-09 15:43:56 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 완료
-2024-04-09 15:43:56 [INFO ] k.poly.controller.UserInfoController - 인증번호 생성 시작
-2024-04-09 15:43:56 [INFO ] k.poly.controller.UserInfoController - authNumber : 9983604
-2024-04-09 15:43:56 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
-2024-04-09 15:43:56 [INFO ] kopo.poly.service.impl.MailService - toMail : 3@3
-2024-04-09 15:43:56 [INFO ] kopo.poly.service.impl.MailService - title : 이메일 인증번호 발송 메일
-2024-04-09 15:43:56 [INFO ] kopo.poly.service.impl.MailService - contents : 인증번호는 9983604입니다.
-2024-04-09 15:44:01 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
-2024-04-09 15:44:01 [INFO ] k.poly.controller.UserInfoController - 메일 발송
-2024-04-09 15:44:10 [INFO ] k.poly.controller.UserInfoController - controller 회원가입 실행
-2024-04-09 15:44:10 [INFO ] k.poly.controller.UserInfoController - userId : 3
-2024-04-09 15:44:10 [INFO ] k.poly.controller.UserInfoController - password : fbd31078c75b436f3aee9a96260b7be6d59d3a88deee3214ba1f7b7e55728c40
-2024-04-09 15:44:10 [INFO ] k.poly.controller.UserInfoController - email : 3@3
-2024-04-09 15:44:10 [INFO ] k.poly.controller.UserInfoController - nickname : 3
-2024-04-09 15:44:10 [INFO ] k.poly.controller.UserInfoController - userName : 3
-2024-04-09 15:44:10 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 실행
-2024-04-09 15:44:10 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 종료
-2024-04-09 15:44:10 [INFO ] k.poly.controller.UserInfoController - res : 1
-2024-04-09 15:44:32 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:44:32 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:44:32 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:44:32 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:44:32 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:44:32 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:44:32 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 15:44:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:44:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:44:48 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 4.106 seconds (process running for 5.094)
-2024-04-09 15:45:31 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:45:31 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:45:31 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:45:31 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:45:31 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:45:31 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:45:31 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 15:46:38 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:46:38 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:46:39 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.045 seconds (process running for 116.118)
-2024-04-09 15:46:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:46:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:46:41 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.875 seconds (process running for 118.542)
-2024-04-09 15:46:49 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:46:49 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:46:49 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:46:49 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:46:49 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:46:49 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:46:49 [INFO ] k.poly.service.impl.UserInfoService - Optional[kopo.poly.repository.entity.UserInfoEntity@4a08747e]
-2024-04-09 15:46:49 [INFO ] k.poly.service.impl.UserInfoService - UserInfoDTO[userId=null, userName=null, password=null, email=null, nickname=null, existsYn=null, roles=null]
-2024-04-09 15:46:49 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 15:49:01 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:49:01 [INFO ] k.poly.controller.UserInfoController - email : 3@3
-2024-04-09 15:49:01 [INFO ] k.poly.controller.UserInfoController - userName : 3
-2024-04-09 15:49:01 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:49:01 [INFO ] k.poly.service.impl.UserInfoService - userName : 3
-2024-04-09 15:49:01 [INFO ] k.poly.service.impl.UserInfoService - email : 3@3
-2024-04-09 15:49:01 [INFO ] k.poly.service.impl.UserInfoService - Optional[kopo.poly.repository.entity.UserInfoEntity@f14a773]
-2024-04-09 15:49:01 [INFO ] k.poly.service.impl.UserInfoService - UserInfoDTO[userId=null, userName=null, password=null, email=null, nickname=null, existsYn=null, roles=null]
-2024-04-09 15:49:01 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 15:50:49 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:50:49 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:50:51 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:50:51 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:50:52 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.779 seconds (process running for 369.272)
-2024-04-09 15:50:57 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:50:57 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:50:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 2.791 seconds (process running for 376.796)
-2024-04-09 15:51:10 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:51:10 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:51:47 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:51:47 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:51:48 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.944 seconds (process running for 425.23)
-2024-04-09 15:51:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:51:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:52:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:52:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:52:19 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.795 seconds (process running for 456.267)
-2024-04-09 15:52:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:52:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:52:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.895 seconds (process running for 458.787)
-2024-04-09 15:52:25 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 15:52:25 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 15:52:25 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 15:52:25 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 15:52:25 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 15:52:25 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 15:52:25 [INFO ] k.poly.service.impl.UserInfoService - 1
-2024-04-09 15:52:25 [INFO ] k.poly.service.impl.UserInfoService - UserInfoDTO[userId=null, userName=null, password=null, email=null, nickname=null, existsYn=null, roles=null]
-2024-04-09 15:52:25 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 15:58:02 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:58:02 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:58:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 15:58:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 15:58:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.566 seconds (process running for 801.713)
-2024-04-09 16:49:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:49:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:49:20 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:49:20 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:49:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.851 seconds (process running for 3878.188)
-2024-04-09 16:52:32 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:52:32 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:52:34 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.695 seconds (process running for 4070.995)
-2024-04-09 16:52:39 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 16:52:39 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 16:52:39 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 16:52:39 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 16:52:39 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 16:52:39 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 16:52:39 [INFO ] k.poly.controller.UserInfoController - userId : 1
-2024-04-09 16:53:51 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 16:53:51 [INFO ] k.poly.controller.UserInfoController - email : 1@12
-2024-04-09 16:53:51 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 16:53:51 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 16:53:51 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 16:53:51 [INFO ] k.poly.service.impl.UserInfoService - email : 1@12
-2024-04-09 16:55:52 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:55:52 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:55:54 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:55:54 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:55:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.663 seconds (process running for 4272.313)
-2024-04-09 16:56:03 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:56:03 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:56:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:56:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:56:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.971 seconds (process running for 4282.938)
-2024-04-09 16:56:12 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 16:56:12 [INFO ] k.poly.controller.UserInfoController - email : 12
-2024-04-09 16:56:12 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 16:56:12 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 16:56:12 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 16:56:12 [INFO ] k.poly.service.impl.UserInfoService - email : 12
-2024-04-09 16:56:12 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 16:56:27 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:56:27 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:56:27 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.756 seconds (process running for 4304.698)
-2024-04-09 16:57:09 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 16:57:09 [INFO ] k.poly.controller.UserInfoController - email : @1
-2024-04-09 16:57:09 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 16:57:09 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 16:57:09 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 16:57:09 [INFO ] k.poly.service.impl.UserInfoService - email : @1
-2024-04-09 16:57:09 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 16:57:38 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:57:38 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:57:39 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.045 seconds (process running for 4376.549)
-2024-04-09 16:58:23 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 16:58:23 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 16:58:23 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 16:58:23 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 16:58:23 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 16:58:23 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 16:58:23 [INFO ] k.poly.controller.UserInfoController - userId : 1
-2024-04-09 16:58:29 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 16:58:29 [INFO ] k.poly.controller.UserInfoController - email : 1@12
-2024-04-09 16:58:29 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 16:58:29 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 16:58:29 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 16:58:29 [INFO ] k.poly.service.impl.UserInfoService - email : 1@12
-2024-04-09 16:58:29 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 16:59:03 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 16:59:03 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 16:59:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.858 seconds (process running for 4461.578)
-2024-04-09 16:59:27 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 16:59:27 [INFO ] k.poly.controller.UserInfoController - email : 1
-2024-04-09 16:59:27 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 16:59:27 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 16:59:27 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 16:59:27 [INFO ] k.poly.service.impl.UserInfoService - email : 1
-2024-04-09 16:59:27 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 16:59:41 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 16:59:41 [INFO ] k.poly.controller.UserInfoController - email : 1@1
-2024-04-09 16:59:41 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 16:59:41 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 16:59:41 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 16:59:41 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
-2024-04-09 16:59:41 [INFO ] k.poly.controller.UserInfoController - userId : 1
-2024-04-09 16:59:46 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 16:59:46 [INFO ] k.poly.controller.UserInfoController - email : 1@12
-2024-04-09 16:59:46 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 16:59:46 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 16:59:46 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 16:59:46 [INFO ] k.poly.service.impl.UserInfoService - email : 1@12
-2024-04-09 16:59:46 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 17:01:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:01:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:01:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.133 seconds (process running for 4582.811)
-2024-04-09 17:01:11 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 17:01:11 [INFO ] k.poly.controller.UserInfoController - email : 1@12
-2024-04-09 17:01:11 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 17:01:11 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 17:01:11 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 17:01:11 [INFO ] k.poly.service.impl.UserInfoService - email : 1@12
-2024-04-09 17:01:11 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 17:01:53 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:01:53 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:01:54 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.772 seconds (process running for 4631.01)
-2024-04-09 17:02:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:02:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:02:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.822 seconds (process running for 4681.009)
-2024-04-09 17:02:46 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 17:02:46 [INFO ] k.poly.controller.UserInfoController - email : 1
-2024-04-09 17:02:46 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 17:02:46 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 17:02:46 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 17:02:46 [INFO ] k.poly.service.impl.UserInfoService - email : 1
-2024-04-09 17:02:46 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 17:03:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:03:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:03:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 2.194 seconds (process running for 4713.61)
-2024-04-09 17:04:00 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:04:00 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:04:01 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.226 seconds (process running for 4758.769)
-2024-04-09 17:05:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:05:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:05:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.689 seconds (process running for 4824.108)
-2024-04-09 17:05:17 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 17:05:17 [INFO ] k.poly.controller.UserInfoController - email : 1
-2024-04-09 17:05:17 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 17:05:17 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 17:05:17 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 17:05:17 [INFO ] k.poly.service.impl.UserInfoService - email : 1
-2024-04-09 17:05:17 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 17:06:19 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:06:19 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:06:20 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.616 seconds (process running for 4896.878)
-2024-04-09 17:06:27 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
-2024-04-09 17:06:27 [INFO ] k.poly.controller.UserInfoController - email : 1
-2024-04-09 17:06:27 [INFO ] k.poly.controller.UserInfoController - userName : 1
-2024-04-09 17:06:27 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
-2024-04-09 17:06:27 [INFO ] k.poly.service.impl.UserInfoService - userName : 1
-2024-04-09 17:06:27 [INFO ] k.poly.service.impl.UserInfoService - email : 1
-2024-04-09 17:06:27 [INFO ] k.poly.controller.UserInfoController - userId : null
-2024-04-09 17:07:03 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:07:03 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:07:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.007 seconds (process running for 4941.622)
-2024-04-09 17:07:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:07:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:07:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.958 seconds (process running for 4981.268)
-2024-04-09 17:08:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:08:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:08:41 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.723 seconds (process running for 5038.127)
-2024-04-09 17:09:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:09:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:09:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.016 seconds (process running for 5064.307)
-2024-04-09 17:10:09 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:10:09 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:10:10 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.844 seconds (process running for 5127.344)
-2024-04-09 17:10:47 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:10:47 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:10:48 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.891 seconds (process running for 5165.023)
-2024-04-09 17:11:10 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:11:10 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:11:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.975 seconds (process running for 5188.472)
-2024-04-09 17:12:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:12:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:12:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.815 seconds (process running for 5248.608)
-2024-04-09 17:13:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:13:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:13:41 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.096 seconds (process running for 5337.969)
-2024-04-09 17:14:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:14:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:14:08 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.934 seconds (process running for 5365.096)
-2024-04-09 17:14:53 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21696 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
-2024-04-09 17:14:53 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
-2024-04-09 17:14:54 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.891 seconds (process running for 5410.933)
+2024-04-10 10:30:52 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 10:30:52 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 10:30:56 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 4.56 seconds (process running for 5.528)
+2024-04-10 11:16:24 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:16:24 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:16:24 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.816 seconds (process running for 2733.811)
+2024-04-10 11:16:26 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:16:26 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:16:26 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.572 seconds (process running for 2735.943)
+2024-04-10 11:32:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:32:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:32:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.625 seconds (process running for 3724.994)
+2024-04-10 11:34:29 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:34:29 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:34:29 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.669 seconds (process running for 3818.707)
+2024-04-10 11:34:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:34:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:34:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.606 seconds (process running for 3820.868)
+2024-04-10 11:34:36 [INFO ] k.poly.controller.UserInfoController - controller 비번 찾기 실행
+2024-04-10 11:34:36 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-10 11:34:36 [INFO ] k.poly.controller.UserInfoController - email : 1@1
+2024-04-10 11:34:36 [INFO ] k.poly.controller.UserInfoController - userName : 1
+2024-04-10 11:34:36 [INFO ] k.poly.service.impl.UserInfoService - service 비번 찾기 실행
+2024-04-10 11:34:36 [INFO ] k.poly.controller.UserInfoController - res : 0
+2024-04-10 11:35:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:35:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:35:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.62 seconds (process running for 3894.467)
+2024-04-10 11:35:47 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:35:47 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:35:47 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.581 seconds (process running for 3896.626)
+2024-04-10 11:35:53 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 실행
+2024-04-10 11:35:53 [INFO ] k.poly.controller.UserInfoController - userId : 2
+2024-04-10 11:35:53 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복 실행
+2024-04-10 11:35:53 [INFO ] k.poly.service.impl.UserInfoService - userId : 2
+2024-04-10 11:35:53 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복확인 종료
+2024-04-10 11:35:53 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
+2024-04-10 11:35:53 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 완료
+2024-04-10 11:35:58 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 실행
+2024-04-10 11:35:58 [INFO ] k.poly.controller.UserInfoController - email : 2@2
+2024-04-10 11:35:58 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복 실행
+2024-04-10 11:35:58 [INFO ] k.poly.service.impl.UserInfoService - email : 2@2
+2024-04-10 11:35:58 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복확인 종료
+2024-04-10 11:35:58 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
+2024-04-10 11:35:58 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 완료
+2024-04-10 11:35:58 [INFO ] k.poly.controller.UserInfoController - 인증번호 생성 시작
+2024-04-10 11:35:58 [INFO ] k.poly.controller.UserInfoController - authNumber : 7774559
+2024-04-10 11:35:58 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
+2024-04-10 11:35:58 [INFO ] kopo.poly.service.impl.MailService - toMail : 2@2
+2024-04-10 11:35:58 [INFO ] kopo.poly.service.impl.MailService - title : 이메일 인증번호 발송 메일
+2024-04-10 11:35:58 [INFO ] kopo.poly.service.impl.MailService - contents : 인증번호는 7774559입니다.
+2024-04-10 11:35:59 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
+2024-04-10 11:35:59 [INFO ] k.poly.controller.UserInfoController - 메일 발송
+2024-04-10 11:36:09 [INFO ] k.poly.controller.UserInfoController - controller 회원가입 실행
+2024-04-10 11:36:09 [INFO ] k.poly.controller.UserInfoController - userId : 2
+2024-04-10 11:36:09 [INFO ] k.poly.controller.UserInfoController - password : 09a707b21029ff8968f3de4a61e43072730c721d91df999a276fd619208518c6
+2024-04-10 11:36:09 [INFO ] k.poly.controller.UserInfoController - email : 2@2
+2024-04-10 11:36:09 [INFO ] k.poly.controller.UserInfoController - nickname : 2
+2024-04-10 11:36:09 [INFO ] k.poly.controller.UserInfoController - userName : 2
+2024-04-10 11:36:09 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 실행
+2024-04-10 11:36:09 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 종료
+2024-04-10 11:36:09 [INFO ] k.poly.controller.UserInfoController - res : 1
+2024-04-10 11:36:15 [INFO ] k.poly.controller.UserInfoController - controller 아이디 찾기 실행
+2024-04-10 11:36:15 [INFO ] k.poly.controller.UserInfoController - email : 2@2
+2024-04-10 11:36:15 [INFO ] k.poly.controller.UserInfoController - userName : 2
+2024-04-10 11:36:15 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 찾기 실행
+2024-04-10 11:36:15 [INFO ] k.poly.service.impl.UserInfoService - userName : 2
+2024-04-10 11:36:15 [INFO ] k.poly.service.impl.UserInfoService - email : 2@2
+2024-04-10 11:36:15 [INFO ] k.poly.controller.UserInfoController - userId : 2
+2024-04-10 11:36:33 [INFO ] k.poly.controller.UserInfoController - controller 비번 찾기 실행
+2024-04-10 11:36:33 [INFO ] k.poly.controller.UserInfoController - userId : 2
+2024-04-10 11:36:33 [INFO ] k.poly.controller.UserInfoController - email : 2@2
+2024-04-10 11:36:33 [INFO ] k.poly.controller.UserInfoController - userName : 2
+2024-04-10 11:36:33 [INFO ] k.poly.service.impl.UserInfoService - service 비번 찾기 실행
+2024-04-10 11:36:33 [INFO ] k.poly.controller.UserInfoController - res : 1
+2024-04-10 11:36:33 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 시작
+2024-04-10 11:36:33 [INFO ] kopo.poly.service.impl.MailService - 임시 비번 : yLyLjwmAgP
+2024-04-10 11:36:33 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 완료
+2024-04-10 11:36:33 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
+2024-04-10 11:36:33 [INFO ] kopo.poly.service.impl.MailService - toMail : 2@2
+2024-04-10 11:36:33 [INFO ] kopo.poly.service.impl.MailService - title : 임시 비밀번호 발송 메일
+2024-04-10 11:36:33 [INFO ] kopo.poly.service.impl.MailService - contents : 임시 비밀번호는 yLyLjwmAgP입니다.
+2024-04-10 11:36:34 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
+2024-04-10 11:36:34 [INFO ] k.poly.service.impl.UserInfoService - service 비번 업데이트 실행
+2024-04-10 11:37:35 [INFO ] k.poly.controller.UserInfoController - controller 로그인 실행
+2024-04-10 11:37:35 [INFO ] k.poly.controller.UserInfoController - userId : 2
+2024-04-10 11:37:35 [INFO ] k.poly.controller.UserInfoController - password : 09a707b21029ff8968f3de4a61e43072730c721d91df999a276fd619208518c6
+2024-04-10 11:37:35 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 실행
+2024-04-10 11:37:35 [INFO ] k.poly.service.impl.UserInfoService - userId : 2
+2024-04-10 11:37:35 [INFO ] k.poly.service.impl.UserInfoService - password : 09a707b21029ff8968f3de4a61e43072730c721d91df999a276fd619208518c6
+2024-04-10 11:37:35 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 종료
+2024-04-10 11:37:35 [INFO ] k.poly.controller.UserInfoController - controller 로그인 종료
+2024-04-10 11:41:15 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:41:15 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:41:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.742 seconds (process running for 4225.348)
+2024-04-10 11:41:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:41:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:41:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.652 seconds (process running for 4227.55)
+2024-04-10 11:41:23 [INFO ] k.poly.controller.UserInfoController - controller 비번 찾기 실행
+2024-04-10 11:41:23 [INFO ] k.poly.controller.UserInfoController - userId : 2
+2024-04-10 11:41:23 [INFO ] k.poly.controller.UserInfoController - email : 2@
+2024-04-10 11:41:23 [INFO ] k.poly.controller.UserInfoController - userName : 2
+2024-04-10 11:41:23 [INFO ] k.poly.service.impl.UserInfoService - service 비번 찾기 실행
+2024-04-10 11:41:23 [INFO ] k.poly.controller.UserInfoController - res : 0
+2024-04-10 11:41:25 [INFO ] k.poly.controller.UserInfoController - controller 비번 찾기 실행
+2024-04-10 11:41:25 [INFO ] k.poly.controller.UserInfoController - userId : 2
+2024-04-10 11:41:25 [INFO ] k.poly.controller.UserInfoController - email : 2@2
+2024-04-10 11:41:25 [INFO ] k.poly.controller.UserInfoController - userName : 2
+2024-04-10 11:41:25 [INFO ] k.poly.service.impl.UserInfoService - service 비번 찾기 실행
+2024-04-10 11:41:25 [INFO ] k.poly.controller.UserInfoController - res : 1
+2024-04-10 11:41:25 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 시작
+2024-04-10 11:41:25 [INFO ] kopo.poly.service.impl.MailService - 임시 비번 : JDgrAuBk3C
+2024-04-10 11:41:25 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 완료
+2024-04-10 11:41:25 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
+2024-04-10 11:41:25 [INFO ] kopo.poly.service.impl.MailService - toMail : 2@2
+2024-04-10 11:41:25 [INFO ] kopo.poly.service.impl.MailService - title : 임시 비밀번호 발송 메일
+2024-04-10 11:41:25 [INFO ] kopo.poly.service.impl.MailService - contents : 임시 비밀번호는 JDgrAuBk3C입니다.
+2024-04-10 11:41:26 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
+2024-04-10 11:41:26 [INFO ] k.poly.service.impl.UserInfoService - service 비번 업데이트 실행
+2024-04-10 11:42:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:42:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:42:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:42:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:42:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.605 seconds (process running for 4287.785)
+2024-04-10 11:42:24 [INFO ] k.poly.controller.UserInfoController - controller 비번 찾기 실행
+2024-04-10 11:42:24 [INFO ] k.poly.controller.UserInfoController - userId : 2
+2024-04-10 11:42:24 [INFO ] k.poly.controller.UserInfoController - email : 2@2
+2024-04-10 11:42:24 [INFO ] k.poly.controller.UserInfoController - userName : 2
+2024-04-10 11:42:24 [INFO ] k.poly.service.impl.UserInfoService - service 비번 찾기 실행
+2024-04-10 11:42:24 [INFO ] k.poly.controller.UserInfoController - res : 1
+2024-04-10 11:42:24 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 시작
+2024-04-10 11:42:24 [INFO ] kopo.poly.service.impl.MailService - 임시 비번 : pASSndQftN
+2024-04-10 11:42:24 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 완료
+2024-04-10 11:42:24 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
+2024-04-10 11:42:24 [INFO ] kopo.poly.service.impl.MailService - toMail : 2@2
+2024-04-10 11:42:24 [INFO ] kopo.poly.service.impl.MailService - title : 임시 비밀번호 발송 메일
+2024-04-10 11:42:24 [INFO ] kopo.poly.service.impl.MailService - contents : 임시 비밀번호는 pASSndQftN입니다.
+2024-04-10 11:42:25 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
+2024-04-10 11:42:25 [INFO ] k.poly.service.impl.UserInfoService - service 비번 업데이트 실행
+2024-04-10 11:43:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:43:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:43:26 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.577 seconds (process running for 4355.573)
+2024-04-10 11:43:28 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 12304 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:43:28 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:43:28 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.598 seconds (process running for 4357.707)
+2024-04-10 11:44:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 4488 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:44:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:44:26 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 3.633 seconds (process running for 4.331)
+2024-04-10 11:45:45 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 실행
+2024-04-10 11:45:45 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-10 11:45:45 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복 실행
+2024-04-10 11:45:45 [INFO ] k.poly.service.impl.UserInfoService - userId : 1
+2024-04-10 11:45:45 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복확인 종료
+2024-04-10 11:45:45 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
+2024-04-10 11:45:45 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 완료
+2024-04-10 11:45:48 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 실행
+2024-04-10 11:45:48 [INFO ] k.poly.controller.UserInfoController - email : 1@1
+2024-04-10 11:45:48 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복 실행
+2024-04-10 11:45:48 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
+2024-04-10 11:45:48 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복확인 종료
+2024-04-10 11:45:48 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
+2024-04-10 11:45:48 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 완료
+2024-04-10 11:45:48 [INFO ] k.poly.controller.UserInfoController - 인증번호 생성 시작
+2024-04-10 11:45:48 [INFO ] k.poly.controller.UserInfoController - authNumber : 2759949
+2024-04-10 11:45:48 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
+2024-04-10 11:45:48 [INFO ] kopo.poly.service.impl.MailService - toMail : 1@1
+2024-04-10 11:45:48 [INFO ] kopo.poly.service.impl.MailService - title : 이메일 인증번호 발송 메일
+2024-04-10 11:45:48 [INFO ] kopo.poly.service.impl.MailService - contents : 인증번호는 2759949입니다.
+2024-04-10 11:45:49 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
+2024-04-10 11:45:49 [INFO ] k.poly.controller.UserInfoController - 메일 발송
+2024-04-10 11:45:59 [INFO ] k.poly.controller.UserInfoController - controller 회원가입 실행
+2024-04-10 11:45:59 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-10 11:45:59 [INFO ] k.poly.controller.UserInfoController - password : 629bb449e3e9c46949254adb14bdc9dbee91790bf54185ae839d9f4733249481
+2024-04-10 11:45:59 [INFO ] k.poly.controller.UserInfoController - email : 1@1
+2024-04-10 11:45:59 [INFO ] k.poly.controller.UserInfoController - nickname : 1
+2024-04-10 11:45:59 [INFO ] k.poly.controller.UserInfoController - userName : 1
+2024-04-10 11:45:59 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 실행
+2024-04-10 11:45:59 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 종료
+2024-04-10 11:45:59 [INFO ] k.poly.controller.UserInfoController - res : 1
+2024-04-10 11:46:04 [INFO ] k.poly.controller.UserInfoController - controller 비번 찾기 실행
+2024-04-10 11:46:04 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-10 11:46:04 [INFO ] k.poly.controller.UserInfoController - email : 1@1
+2024-04-10 11:46:04 [INFO ] k.poly.controller.UserInfoController - userName : 1
+2024-04-10 11:46:04 [INFO ] k.poly.service.impl.UserInfoService - service 비번 찾기 실행
+2024-04-10 11:46:04 [INFO ] k.poly.controller.UserInfoController - res : 1
+2024-04-10 11:46:04 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 시작
+2024-04-10 11:46:04 [INFO ] kopo.poly.service.impl.MailService - 임시 비번 : I1DiV05MFs
+2024-04-10 11:46:04 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 완료
+2024-04-10 11:46:04 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
+2024-04-10 11:46:04 [INFO ] kopo.poly.service.impl.MailService - toMail : 1@1
+2024-04-10 11:46:04 [INFO ] kopo.poly.service.impl.MailService - title : 임시 비밀번호 발송 메일
+2024-04-10 11:46:04 [INFO ] kopo.poly.service.impl.MailService - contents : 임시 비밀번호는 I1DiV05MFs입니다.
+2024-04-10 11:46:04 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
+2024-04-10 11:46:04 [INFO ] k.poly.service.impl.UserInfoService - service 비번 업데이트 실행
+2024-04-10 11:47:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 4488 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:47:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:47:26 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.752 seconds (process running for 183.933)
+2024-04-10 11:47:27 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 4488 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:47:27 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:47:28 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.604 seconds (process running for 186.098)
+2024-04-10 11:49:37 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 4488 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:49:37 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:49:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 4488 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:49:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:49:40 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.585 seconds (process running for 318.337)
+2024-04-10 11:49:47 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 실행
+2024-04-10 11:49:47 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-10 11:49:47 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복 실행
+2024-04-10 11:49:47 [INFO ] k.poly.service.impl.UserInfoService - userId : 1
+2024-04-10 11:49:47 [INFO ] k.poly.service.impl.UserInfoService - service 아이디 중복확인 종료
+2024-04-10 11:49:47 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
+2024-04-10 11:49:47 [INFO ] k.poly.controller.UserInfoController - controller 아이디 중복체크 완료
+2024-04-10 11:49:50 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 실행
+2024-04-10 11:49:50 [INFO ] k.poly.controller.UserInfoController - email : 1@1
+2024-04-10 11:49:50 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복 실행
+2024-04-10 11:49:50 [INFO ] k.poly.service.impl.UserInfoService - email : 1@1
+2024-04-10 11:49:50 [INFO ] k.poly.service.impl.UserInfoService - service 이메일 중복확인 종료
+2024-04-10 11:49:50 [INFO ] k.poly.controller.UserInfoController - existsYn : Y
+2024-04-10 11:49:50 [INFO ] k.poly.controller.UserInfoController - controller 이메일 중복체크 완료
+2024-04-10 11:49:50 [INFO ] k.poly.controller.UserInfoController - 인증번호 생성 시작
+2024-04-10 11:49:50 [INFO ] k.poly.controller.UserInfoController - authNumber : 9738211
+2024-04-10 11:49:50 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
+2024-04-10 11:49:50 [INFO ] kopo.poly.service.impl.MailService - toMail : 1@1
+2024-04-10 11:49:50 [INFO ] kopo.poly.service.impl.MailService - title : 이메일 인증번호 발송 메일
+2024-04-10 11:49:50 [INFO ] kopo.poly.service.impl.MailService - contents : 인증번호는 9738211입니다.
+2024-04-10 11:49:50 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
+2024-04-10 11:49:50 [INFO ] k.poly.controller.UserInfoController - 메일 발송
+2024-04-10 11:49:57 [INFO ] k.poly.controller.UserInfoController - controller 회원가입 실행
+2024-04-10 11:49:57 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-10 11:49:57 [INFO ] k.poly.controller.UserInfoController - password : 629bb449e3e9c46949254adb14bdc9dbee91790bf54185ae839d9f4733249481
+2024-04-10 11:49:57 [INFO ] k.poly.controller.UserInfoController - email : 1@1
+2024-04-10 11:49:57 [INFO ] k.poly.controller.UserInfoController - nickname : 1
+2024-04-10 11:49:57 [INFO ] k.poly.controller.UserInfoController - userName : 1
+2024-04-10 11:49:57 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 실행
+2024-04-10 11:49:57 [INFO ] k.poly.service.impl.UserInfoService - service 회원가입 종료
+2024-04-10 11:49:57 [INFO ] k.poly.controller.UserInfoController - res : 1
+2024-04-10 11:50:02 [INFO ] k.poly.controller.UserInfoController - controller 비번 찾기 실행
+2024-04-10 11:50:02 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-10 11:50:02 [INFO ] k.poly.controller.UserInfoController - email : 1@1
+2024-04-10 11:50:02 [INFO ] k.poly.controller.UserInfoController - userName : 1
+2024-04-10 11:50:02 [INFO ] k.poly.service.impl.UserInfoService - service 비번 찾기 실행
+2024-04-10 11:50:02 [INFO ] k.poly.controller.UserInfoController - res : 1
+2024-04-10 11:50:02 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 시작
+2024-04-10 11:50:02 [INFO ] kopo.poly.service.impl.MailService - 임시 비번 : hFyUipQtNF
+2024-04-10 11:50:02 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 완료
+2024-04-10 11:50:02 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
+2024-04-10 11:50:02 [INFO ] kopo.poly.service.impl.MailService - toMail : 1@1
+2024-04-10 11:50:02 [INFO ] kopo.poly.service.impl.MailService - title : 임시 비밀번호 발송 메일
+2024-04-10 11:50:02 [INFO ] kopo.poly.service.impl.MailService - contents : 임시 비밀번호는 de3200dd8ddda0ddeefdfce32e2c36a39a093a47776acd957122ccfda2b13df7입니다.
+2024-04-10 11:50:02 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
+2024-04-10 11:50:02 [INFO ] k.poly.service.impl.UserInfoService - service 비번 업데이트 실행
+2024-04-10 11:55:03 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 4488 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:55:03 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:55:03 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.68 seconds (process running for 641.497)
+2024-04-10 11:55:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 4488 (C:\myBookShelfPRJ\build\classes\java\main started by donga in C:\myBookShelfPRJ)
+2024-04-10 11:55:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-10 11:55:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.615 seconds (process running for 643.657)
+2024-04-10 11:55:09 [INFO ] k.poly.controller.UserInfoController - controller 비번 찾기 실행
+2024-04-10 11:55:09 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-10 11:55:09 [INFO ] k.poly.controller.UserInfoController - email : 1@1
+2024-04-10 11:55:09 [INFO ] k.poly.controller.UserInfoController - userName : 1
+2024-04-10 11:55:09 [INFO ] k.poly.service.impl.UserInfoService - service 비번 찾기 실행
+2024-04-10 11:55:09 [INFO ] k.poly.controller.UserInfoController - res : 1
+2024-04-10 11:55:09 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 시작
+2024-04-10 11:55:09 [INFO ] kopo.poly.service.impl.MailService - 임시 비번 : dlcYKMaVWZ
+2024-04-10 11:55:09 [INFO ] kopo.poly.service.impl.MailService - service 임시 비번 생성 완료
+2024-04-10 11:55:09 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 실행
+2024-04-10 11:55:09 [INFO ] kopo.poly.service.impl.MailService - toMail : 1@1
+2024-04-10 11:55:09 [INFO ] kopo.poly.service.impl.MailService - title : 임시 비밀번호 발송 메일
+2024-04-10 11:55:09 [INFO ] kopo.poly.service.impl.MailService - contents : 임시 비밀번호는 8c9827194f2f9a032d2f2cf89a78bb2a3ca94d78fef2dabe86c62fa80fd26257입니다.
+2024-04-10 11:55:10 [INFO ] kopo.poly.service.impl.MailService - service 메일 발송 종료
+2024-04-10 11:55:10 [INFO ] k.poly.service.impl.UserInfoService - service 비번 업데이트 실행
+2024-04-10 11:55:27 [INFO ] k.poly.controller.UserInfoController - controller 로그인 실행
+2024-04-10 11:55:27 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-10 11:55:27 [INFO ] k.poly.controller.UserInfoController - password : 8c9827194f2f9a032d2f2cf89a78bb2a3ca94d78fef2dabe86c62fa80fd26257
+2024-04-10 11:55:27 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 실행
+2024-04-10 11:55:27 [INFO ] k.poly.service.impl.UserInfoService - userId : 1
+2024-04-10 11:55:27 [INFO ] k.poly.service.impl.UserInfoService - password : 8c9827194f2f9a032d2f2cf89a78bb2a3ca94d78fef2dabe86c62fa80fd26257
+2024-04-10 11:55:27 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 종료
+2024-04-10 11:55:27 [INFO ] k.poly.controller.UserInfoController - controller 로그인 종료

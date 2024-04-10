@@ -32,4 +32,20 @@ public interface IUserInfoService {
      */
     String findId(final String userName,
                   final String email) throws Exception;
+
+    /**
+     * 비번 찾기
+     */
+    int findPassword(final String userId,
+                     final String userName,
+                     final String email)throws Exception;
+
+    /**
+     * 비번 업데이트
+     */
+    void updatePassword(final String userId,
+                        final String password,
+                        final String email,
+                        final String userName) throws Exception;
+
 }

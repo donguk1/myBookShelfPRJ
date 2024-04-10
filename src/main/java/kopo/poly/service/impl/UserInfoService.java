@@ -82,11 +82,7 @@ public class UserInfoService implements IUserInfoService {
      * 회원 가입
      */
     @Override
-    public int insertUserInfo(final String userId,
-                              final String password,
-                              final String email,
-                              final String nickname,
-                              final String userName) throws Exception {
+    public int insertUserInfo(String userId, String password, String email, String nickname, String userName) throws Exception {
 
         log.info("service 회원가입 실행");
 
@@ -128,8 +124,7 @@ public class UserInfoService implements IUserInfoService {
      * 로그인 
      */
     @Override
-    public int getLogin(final String userId,
-                        final String password) throws Exception {
+    public int getLogin(String userId, String password) throws Exception {
 
         log.info("service 로그인 실행");
 
@@ -172,5 +167,47 @@ public class UserInfoService implements IUserInfoService {
         }
 
         return userId;
+    }
+
+    /**
+     * 비번 찾기
+     */
+    @Override
+    public int findPassword(String userId, String userName, String email) throws Exception {
+
+        log.info("service 비번 찾기 실행");
+
+        int res = 0;
+
+        Optional<UserInfoEntity> rEntity = userInfoRepository
+                .findByUserIdAndUserNameAndEmail(userId, userName, email);
+
+        if (rEntity.isPresent()) {
+            res = 1;
+
+        }
+
+        return res;
+    }
+
+    /**
+     * 비번 업데이트
+     */
+    @Override
+    public void updatePassword(String userId, String password, String userName, String email) throws Exception {
+
+        log.info("service 비번 업데이트 실행");
+
+        Optional<UserInfoEntity> pEntity = userInfoRepository.findByUserId(userId);
+
+        UserInfoEntity rEntity = UserInfoEntity.builder()
+                .userId(userId)
+                .password(password)
+                .userName(userName)
+                .email(email)
+                .nickName(pEntity.get().getNickName())
+                .build();
+
+        userInfoRepository.save(rEntity);
     }
 }

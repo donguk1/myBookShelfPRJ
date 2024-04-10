@@ -32,5 +32,12 @@ public interface UserInfoRepository extends JpaRepository<UserInfoEntity, String
     Optional<UserInfoEntity> findByUserNameAndEmail(String userName,
                                                     String email);
 
+    /**
+     * 비번 찾기
+     */
+    Optional<UserInfoEntity> findByUserIdAndUserNameAndEmail(String userId,
+                                                             String userName,
+                                                             String email);
+
 
 }
