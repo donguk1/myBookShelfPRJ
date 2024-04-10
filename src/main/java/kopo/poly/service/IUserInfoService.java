@@ -1,5 +1,7 @@
 package kopo.poly.service;
 
+import kopo.poly.dto.UserInfoDTO;
+
 public interface IUserInfoService {
 
     /**
@@ -48,4 +50,16 @@ public interface IUserInfoService {
                         final String email,
                         final String userName) throws Exception;
 
+    /**
+     * 내 정보 가져오기
+     */
+    UserInfoDTO getUserInfo(final String userId)throws Exception;
+
+    /**
+     * 내 정보 업데이트
+     */
+    void updateUserInfo(final String userId,
+                        final String email,
+                        final String userName,
+                        final String nickname) throws Exception;
 }

@@ -37,7 +37,8 @@ public class UserInfoEntity implements Serializable {
     @Column(name = "EMAIL", nullable = false)
     private String email;
 
+    @NonNull
     @Column(name = "NICKNAME", nullable = false)
-    private String nickName;
+    private String nickname;
 
 }

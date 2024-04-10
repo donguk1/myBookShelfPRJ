@@ -100,7 +100,7 @@ public class UserInfoService implements IUserInfoService {
                     .userId(userId)
                     .password(password)
                     .email(email)
-                    .nickName(nickname)
+                    .nickname(nickname)
                     .userName(userName)
                     .build();
 
@@ -205,7 +205,54 @@ public class UserInfoService implements IUserInfoService {
                 .password(password)
                 .userName(userName)
                 .email(email)
-                .nickName(pEntity.get().getNickName())
+                .nickname(pEntity.get().getNickname())
+                .build();
+
+        userInfoRepository.save(rEntity);
+    }
+
+    /**
+     * 내 정보 가져오기
+     */
+    @Override
+    public UserInfoDTO getUserInfo(String userId) throws Exception {
+
+        log.info("service 내 정보 가져오기 실행");
+
+        Optional<UserInfoEntity> pEntity = userInfoRepository.findByUserId(userId);
+
+        UserInfoDTO uDTO;
+
+        if (pEntity.isPresent()) {
+            uDTO = new ObjectMapper().convertValue(pEntity.get(),
+                    new TypeReference<UserInfoDTO>() {
+                    });
+
+        } else {
+            uDTO = UserInfoDTO.builder()
+                    .build();
+
+        }
+
+        return uDTO;
+    }
+
+    /**
+     * 내 정보 업데이트
+     */
+    @Override
+    public void updateUserInfo(String userId, String email, String userName, String nickname) throws Exception {
+
+        log.info("service 내 정보 업데이트");
+
+        Optional<UserInfoEntity> pEntity = userInfoRepository.findByUserId(userId);
+
+        UserInfoEntity rEntity = UserInfoEntity.builder()
+                .userId(userId)
+                .email(email)
+                .nickname(nickname)
+                .userName(userName)
+                .password(pEntity.get().getPassword())
                 .build();
 
         userInfoRepository.save(rEntity);

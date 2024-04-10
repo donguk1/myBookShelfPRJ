@@ -4,6 +4,7 @@ package kopo.poly.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kopo.poly.dto.MsgDTO;
+import kopo.poly.dto.UserInfoDTO;
 import kopo.poly.service.IMailService;
 import kopo.poly.service.IUserInfoService;
 import kopo.poly.util.CmmUtil;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.rmi.server.UID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
@@ -248,6 +250,100 @@ public class UserInfoController {
         return MsgDTO.builder()
                 .msg(msg)
                 .result(res)
+                .build();
+    }
+
+    /**
+     * 내 정보 가져오기
+     */
+    @PostMapping(value = "getUserInfo")
+    public UserInfoDTO getUserInfo(HttpSession session) throws Exception {
+
+        log.info("controller 내 정보 가져오기");
+
+//        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String userId = "1";
+
+        UserInfoDTO uDTO = userInfoService.getUserInfo(userId);
+
+        log.info(uDTO.toString());
+
+        return uDTO;
+    }
+
+    /**
+     * 내 정보 업데이트
+     */
+    @PostMapping(value = "updateUserInfo")
+    public MsgDTO updateUserInfo(HttpServletRequest request) throws Exception {
+
+        log.info("controller 내 정보 업데이트");
+
+        String userId = CmmUtil.nvl(request.getParameter("userId"));
+        String email = CmmUtil.nvl(request.getParameter("email"));
+        String nickname = CmmUtil.nvl(request.getParameter("nickname"));
+        String userName = CmmUtil.nvl(request.getParameter("userName"));
+
+        log.info("userId : " + userId);
+        log.info("email : " + email);
+        log.info("nickname : " + nickname);
+        log.info("userName : " + userName);
+
+        int res = 0;
+
+        try {
+            userInfoService.updateUserInfo(userId, email, userName, nickname);
+            res = 1;
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+
+        }
+
+        return MsgDTO.builder()
+                .result(res)
+                .build();
+    }
+
+    /**
+     * 비밀번호 업데이트
+     */
+    @PostMapping(value = "updatePassword")
+    public MsgDTO updatePassword(HttpSession session, HttpServletRequest request) throws Exception {
+
+        log.info("controller 비밀번호 업데이트");
+
+//        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String userId = "1";
+
+        String email = CmmUtil.nvl(request.getParameter("email"));
+        String userName = CmmUtil.nvl(request.getParameter("userName"));
+        String password = CmmUtil.nvl(EncryptUtil.encHashSHA256(request.getParameter("password")));
+        String newPassword = CmmUtil.nvl(EncryptUtil.encHashSHA256(request.getParameter("newPassword")));
+
+        log.info("userId : " + userId);
+        log.info("email : " + email);
+        log.info("userName : " + userName);
+        log.info("password : " + password);
+        log.info("newPassword : " + newPassword);
+
+        int res = userInfoService.getLogin(userId, password);
+        String msg = "";
+
+        if (res == 1) {
+            userInfoService.updatePassword(userId, newPassword, email, userName);
+
+            msg = "수정되었습니다.";
+
+        } else {
+            msg = "입력하신 정보가 일치하지 않습니다. \n다시 확인해주세요";
+
+        }
+
+        return MsgDTO.builder()
+                .result(res)
+                .msg(msg)
                 .build();
     }
 
