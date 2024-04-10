@@ -223,7 +223,7 @@ public class UserInfoController {
 
         if (res == 1) {
 
-            String password = EncryptUtil.encHashSHA256(mailService.getTmpPassword());
+            String password = mailService.getTmpPassword();
 
             String title = "임시 비밀번호 발송 메일";
             String contents = "임시 비밀번호는 " + password + "입니다.";
@@ -233,7 +233,7 @@ public class UserInfoController {
             if (res == 1) {
                 msg = "임시 비밀번호를 메일로 발송하였습니다.\n메일함을 확인해주세요";
 
-                userInfoService.updatePassword(userId, password, userName, email);
+                userInfoService.updatePassword(userId, EncryptUtil.encHashSHA256(password), userName, email);
 
             } else {
                 msg = "일치하는 계정이 없습니다. \n다시 확인해주세요";
