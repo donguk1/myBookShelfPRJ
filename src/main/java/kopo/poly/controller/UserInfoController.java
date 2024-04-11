@@ -13,10 +13,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.rmi.server.UID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
@@ -275,34 +273,36 @@ public class UserInfoController {
      * 내 정보 업데이트
      */
     @PostMapping(value = "updateUserInfo")
-    public MsgDTO updateUserInfo(HttpServletRequest request) throws Exception {
+    public MsgDTO updateUserInfo(HttpServletRequest request, HttpSession session) throws Exception {
 
         log.info("controller 내 정보 업데이트");
 
-        String userId = CmmUtil.nvl(request.getParameter("userId"));
-        String email = CmmUtil.nvl(request.getParameter("email"));
+//        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String userId = "1";
         String nickname = CmmUtil.nvl(request.getParameter("nickname"));
-        String userName = CmmUtil.nvl(request.getParameter("userName"));
 
         log.info("userId : " + userId);
-        log.info("email : " + email);
         log.info("nickname : " + nickname);
-        log.info("userName : " + userName);
 
         int res = 0;
+        String msg = "";
 
         try {
-            userInfoService.updateUserInfo(userId, email, userName, nickname);
+            userInfoService.updateUserInfo(userId, nickname);
             res = 1;
+            msg = "수정되었습니다.";
 
         } catch (Exception e) {
             log.info(e.toString());
             e.printStackTrace();
 
+            msg = "오류로 실패하였습니다.\n다시 실행해 주세요.";
+
         }
 
         return MsgDTO.builder()
                 .result(res)
+                .msg(msg)
                 .build();
     }
 

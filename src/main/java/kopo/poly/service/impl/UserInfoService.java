@@ -11,8 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.rmi.server.UID;
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -241,7 +239,7 @@ public class UserInfoService implements IUserInfoService {
      * 내 정보 업데이트
      */
     @Override
-    public void updateUserInfo(String userId, String email, String userName, String nickname) throws Exception {
+    public void updateUserInfo(String userId, String nickname) throws Exception {
 
         log.info("service 내 정보 업데이트");
 
@@ -249,9 +247,9 @@ public class UserInfoService implements IUserInfoService {
 
         UserInfoEntity rEntity = UserInfoEntity.builder()
                 .userId(userId)
-                .email(email)
+                .email(pEntity.get().getEmail())
                 .nickname(nickname)
-                .userName(userName)
+                .userName(pEntity.get().getUserName())
                 .password(pEntity.get().getPassword())
                 .build();
 

@@ -116,10 +116,11 @@
                 data: $("#f").serialize(), // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
                 success: function (json) { // /notice/noticeUpdate 호출이 성공했다면..
 
+                    console.log(json);
                     alert(json.msg); // 메시지 띄우기
 
                     if (json.result === 1) { // 수정 성공
-                        getMyInfo();
+                        location.reload()
 
                     }
 
@@ -149,9 +150,35 @@
             }
 
             if (confirm("회원정보를 수정하시겠습니까?")) {
-                fo.submit();
-            }
 
+                const requestData = {
+                    email : document.getElementById("email").value,
+                    userName : document.getElementById("userName").value,
+                    password : document.getElementById("password").value,
+                    newPassword : document.getElementById("newPassword").value
+                }
+
+                console.log(requestData);
+
+                // Ajax 호출해서 회원 정보 수정하기
+                $.ajax({
+                    url: "/user/updatePassword",
+                    type: "post", // 전송방식은 Post
+                    dataType: "JSON", // 전송 결과는 JSON으로 받기
+                    data: requestData,
+                    success: function (json) { // /notice/noticeUpdate 호출이 성공했다면..
+
+                        console.log(json);
+                        alert(json.msg); // 메시지 띄우기
+
+                        if (json.result === 1) { // 수정 성공
+                            location.reload()
+
+                        }
+
+                    }
+                })
+            }
         }
 
         function doSubmitDel(del) {

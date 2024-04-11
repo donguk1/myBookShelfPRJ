@@ -59,7 +59,5 @@ public interface IUserInfoService {
      * 내 정보 업데이트
      */
     void updateUserInfo(final String userId,
-                        final String email,
-                        final String userName,
                         final String nickname) throws Exception;
 }
