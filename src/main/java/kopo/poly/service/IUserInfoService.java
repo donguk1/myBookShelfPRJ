@@ -60,4 +60,9 @@ public interface IUserInfoService {
      */
     void updateUserInfo(final String userId,
                         final String nickname) throws Exception;
+
+    /**
+     * 내 정보 삭제
+     */
+    void deleteUserInfo(final String userId) throws Exception;
 }

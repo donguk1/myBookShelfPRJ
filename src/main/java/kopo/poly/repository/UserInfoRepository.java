@@ -38,6 +38,5 @@ public interface UserInfoRepository extends JpaRepository<UserInfoEntity, String
     Optional<UserInfoEntity> findByUserIdAndUserNameAndEmail(String userId,
                                                              String userName,
                                                              String email);
-
-
+    void deleteByUserId(String userId);
 }

@@ -181,8 +181,18 @@
             }
         }
 
-        function doSubmitDel(del) {
-            del.submit();
+        function doSubmitDel() {            // Ajax 호출해서 회원 정보 수정하기
+            $.ajax({
+                url: "/user/deleteUserInfo",
+                type: "post", // 전송방식은 Post
+                dataType: "JSON",
+                success: function (json) {
+                    console.log(json);
+                    alert(json.msg); // 메시지 띄우기
+                    location.href = "../main.html"
+
+                }
+            })
         }
     </script>
 </head>
@@ -276,7 +286,7 @@
                     <h5 class="modal-title">회원 탈퇴</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/user/delete" method="post" onsubmit="doSubmitDel(this)" id="del">
+                <form id="del">
                     <div class="modal-body">
                         <p>탈퇴를 진행하시려면 비밀번호를 입력해주세요.</p>
                         <div class="form-floating mb-3 mx-auto" style="width: 98%">

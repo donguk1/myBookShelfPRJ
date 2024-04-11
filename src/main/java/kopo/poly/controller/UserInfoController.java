@@ -259,8 +259,7 @@ public class UserInfoController {
 
         log.info("controller 내 정보 가져오기");
 
-//        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
-        String userId = "1";
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
 
         UserInfoDTO uDTO = userInfoService.getUserInfo(userId);
 
@@ -277,8 +276,7 @@ public class UserInfoController {
 
         log.info("controller 내 정보 업데이트");
 
-//        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
-        String userId = "1";
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
         String nickname = CmmUtil.nvl(request.getParameter("nickname"));
 
         log.info("userId : " + userId);
@@ -314,9 +312,7 @@ public class UserInfoController {
 
         log.info("controller 비밀번호 업데이트");
 
-//        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
-        String userId = "1";
-
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
         String email = CmmUtil.nvl(request.getParameter("email"));
         String userName = CmmUtil.nvl(request.getParameter("userName"));
         String password = CmmUtil.nvl(EncryptUtil.encHashSHA256(request.getParameter("password")));
@@ -345,6 +341,25 @@ public class UserInfoController {
                 .result(res)
                 .msg(msg)
                 .build();
+    }
+
+    /**
+     * 내 정보 삭제
+     */
+    @PostMapping(value = "deleteUserInfo")
+    public MsgDTO deleteUserInfo(HttpSession session) throws Exception {
+
+        log.info("controller 회원 탈퇴");
+
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+
+        userInfoService.deleteUserInfo(userId);
+
+        return MsgDTO.builder()
+                .result(1)
+                .msg("탈퇴 하였습니다..")
+                .build();
+
     }
 
 }

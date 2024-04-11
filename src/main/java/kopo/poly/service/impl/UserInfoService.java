@@ -3,6 +3,7 @@ package kopo.poly.service.impl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.transaction.Transactional;
 import kopo.poly.dto.UserInfoDTO;
 import kopo.poly.repository.UserInfoRepository;
 import kopo.poly.repository.entity.UserInfoEntity;
@@ -254,5 +255,18 @@ public class UserInfoService implements IUserInfoService {
                 .build();
 
         userInfoRepository.save(rEntity);
+    }
+
+    /**
+     * 내 정보 삭제
+     */
+    @Transactional
+    @Override
+    public void deleteUserInfo(String userId) throws Exception {
+
+        log.info("controller 회원 탈퇴");
+
+        userInfoRepository.deleteById(userId);
+
     }
 }
