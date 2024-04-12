@@ -935,3 +935,207 @@
 2024-04-11 21:24:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.6 with PID 21676 (C:\SpringBootWorks\myBookShelfPRJ\build\classes\java\main started by donghee in C:\SpringBootWorks\myBookShelfPRJ)
 2024-04-11 21:24:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
 2024-04-11 21:24:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.705 seconds (process running for 1609.185)
+2024-04-12 13:14:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 9412 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 13:14:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 13:15:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 13:15:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 13:15:56 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 6.463 seconds (process running for 7.436)
+2024-04-12 13:17:22 [INFO ] k.poly.controller.UserInfoController - controller 로그인 실행
+2024-04-12 13:17:22 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-12 13:17:22 [INFO ] k.poly.controller.UserInfoController - password : 629bb449e3e9c46949254adb14bdc9dbee91790bf54185ae839d9f4733249481
+2024-04-12 13:17:22 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 실행
+2024-04-12 13:17:22 [INFO ] k.poly.service.impl.UserInfoService - userId : 1
+2024-04-12 13:17:22 [INFO ] k.poly.service.impl.UserInfoService - password : 629bb449e3e9c46949254adb14bdc9dbee91790bf54185ae839d9f4733249481
+2024-04-12 13:17:22 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 종료
+2024-04-12 13:17:22 [INFO ] k.poly.controller.UserInfoController - controller 로그인 종료
+2024-04-12 13:17:25 [INFO ] k.poly.controller.UserInfoController - controller 로그인 실행
+2024-04-12 13:17:25 [INFO ] k.poly.controller.UserInfoController - userId : 1
+2024-04-12 13:17:25 [INFO ] k.poly.controller.UserInfoController - password : 629bb449e3e9c46949254adb14bdc9dbee91790bf54185ae839d9f4733249481
+2024-04-12 13:17:25 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 실행
+2024-04-12 13:17:25 [INFO ] k.poly.service.impl.UserInfoService - userId : 1
+2024-04-12 13:17:25 [INFO ] k.poly.service.impl.UserInfoService - password : 629bb449e3e9c46949254adb14bdc9dbee91790bf54185ae839d9f4733249481
+2024-04-12 13:17:25 [INFO ] k.poly.service.impl.UserInfoService - service 로그인 종료
+2024-04-12 13:17:25 [INFO ] k.poly.controller.UserInfoController - controller 로그인 종료
+2024-04-12 14:44:54 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:44:54 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:44:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.035 seconds (process running for 5345.866)
+2024-04-12 14:47:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:47:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:47:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 1.062 seconds (process running for 5488.19)
+2024-04-12 14:49:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:49:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:49:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.802 seconds (process running for 5636.74)
+2024-04-12 14:50:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:50:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:50:15 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.662 seconds (process running for 5666.138)
+2024-04-12 14:50:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:50:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:50:32 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.736 seconds (process running for 5683.003)
+2024-04-12 14:51:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:51:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:51:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.833 seconds (process running for 5742.649)
+2024-04-12 14:51:52 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:51:52 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:51:52 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.747 seconds (process running for 5763.694)
+2024-04-12 14:52:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:52:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:52:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.809 seconds (process running for 5777.639)
+2024-04-12 14:53:49 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:53:49 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:53:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.754 seconds (process running for 5880.936)
+2024-04-12 14:54:36 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 14:54:36 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 14:54:37 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.66 seconds (process running for 5928.362)
+2024-04-12 15:24:24 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:24:24 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:24:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.794 seconds (process running for 7715.846)
+2024-04-12 15:25:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:25:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:25:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.716 seconds (process running for 7769.211)
+2024-04-12 15:25:42 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:25:42 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:25:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.664 seconds (process running for 7794.401)
+2024-04-12 15:26:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:26:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:26:24 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.739 seconds (process running for 7835.231)
+2024-04-12 15:26:37 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:26:37 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:26:38 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.648 seconds (process running for 7848.82)
+2024-04-12 15:26:49 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:26:49 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:26:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.689 seconds (process running for 7860.934)
+2024-04-12 15:26:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:26:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:26:56 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.642 seconds (process running for 7867.344)
+2024-04-12 15:27:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:27:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:27:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.831 seconds (process running for 7877.075)
+2024-04-12 15:27:12 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:27:12 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:27:13 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.694 seconds (process running for 7883.957)
+2024-04-12 15:28:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:28:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:28:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.658 seconds (process running for 7942.493)
+2024-04-12 15:28:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:28:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:28:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.751 seconds (process running for 7990.648)
+2024-04-12 15:29:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:29:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:29:08 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.692 seconds (process running for 7999.264)
+2024-04-12 15:30:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:30:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:30:26 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.693 seconds (process running for 8076.841)
+2024-04-12 15:30:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:30:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:30:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.704 seconds (process running for 8096.216)
+2024-04-12 15:31:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:31:04 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:31:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.747 seconds (process running for 8116.278)
+2024-04-12 15:31:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:31:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:31:46 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.698 seconds (process running for 8157.108)
+2024-04-12 15:32:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:32:05 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:32:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.633 seconds (process running for 8177.125)
+2024-04-12 15:32:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:32:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:32:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.626 seconds (process running for 8188.791)
+2024-04-12 15:34:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:34:07 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:34:08 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.652 seconds (process running for 8299.24)
+2024-04-12 15:34:41 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:34:41 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:34:41 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.578 seconds (process running for 8332.643)
+2024-04-12 15:35:15 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:35:15 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:35:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.582 seconds (process running for 8367.172)
+2024-04-12 15:35:30 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:35:30 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:35:31 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.635 seconds (process running for 8382.016)
+2024-04-12 15:35:46 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:35:46 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:35:47 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.659 seconds (process running for 8398.006)
+2024-04-12 15:35:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:35:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:35:55 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.592 seconds (process running for 8406.469)
+2024-04-12 15:36:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:36:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:36:12 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.645 seconds (process running for 8423.314)
+2024-04-12 15:36:34 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:36:34 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:36:35 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.646 seconds (process running for 8446.403)
+2024-04-12 15:36:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:36:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:36:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.633 seconds (process running for 8455.386)
+2024-04-12 15:37:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:37:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:37:59 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.664 seconds (process running for 8530.534)
+2024-04-12 15:38:12 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:38:12 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:38:13 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.588 seconds (process running for 8544.148)
+2024-04-12 15:38:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:38:45 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:38:46 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.653 seconds (process running for 8576.821)
+2024-04-12 15:38:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:38:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:38:51 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.742 seconds (process running for 8582.394)
+2024-04-12 15:39:34 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:39:34 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:39:35 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.683 seconds (process running for 8626.338)
+2024-04-12 15:43:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:43:50 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:43:51 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.676 seconds (process running for 8882.281)
+2024-04-12 15:44:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:44:21 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:44:22 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.676 seconds (process running for 8913.156)
+2024-04-12 15:44:57 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:44:57 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:44:57 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.695 seconds (process running for 8948.633)
+2024-04-12 15:45:46 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:45:46 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:45:47 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.617 seconds (process running for 8998.187)
+2024-04-12 15:46:46 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:46:46 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:46:46 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.574 seconds (process running for 9057.733)
+2024-04-12 15:48:32 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:48:32 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:48:33 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.555 seconds (process running for 9163.991)
+2024-04-12 15:52:10 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:52:10 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:52:11 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.588 seconds (process running for 9381.966)
+2024-04-12 15:53:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:53:16 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:53:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.692 seconds (process running for 9448.102)
+2024-04-12 15:53:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:53:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:53:25 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.672 seconds (process running for 9456.581)
+2024-04-12 15:53:32 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:53:32 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:53:33 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.768 seconds (process running for 9464.225)
+2024-04-12 15:53:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:53:43 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:53:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.631 seconds (process running for 9474.934)
+2024-04-12 15:54:01 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:54:01 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:54:02 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.618 seconds (process running for 9493.172)
+2024-04-12 15:54:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:54:14 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:54:15 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.67 seconds (process running for 9505.92)
+2024-04-12 15:54:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 15:54:17 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 15:54:18 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.701 seconds (process running for 9509.28)
+2024-04-12 16:08:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 16:08:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 16:08:06 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.657 seconds (process running for 10337.47)
+2024-04-12 16:08:22 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 16:08:22 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 16:08:23 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.63 seconds (process running for 10354.292)
+2024-04-12 16:08:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 16:08:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 16:08:44 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.635 seconds (process running for 10375.676)
+2024-04-12 16:09:02 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 16:09:02 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 16:09:02 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.635 seconds (process running for 10393.632)
+2024-04-12 16:10:12 [INFO ] kopo.poly.MyBookShelfPrjApplication - Starting MyBookShelfPrjApplication using Java 17.0.9 with PID 23660 (C:\JavaPRJ\myBookShelfPRJ\build\classes\java\main started by data8316-19 in C:\JavaPRJ\myBookShelfPRJ)
+2024-04-12 16:10:12 [INFO ] kopo.poly.MyBookShelfPrjApplication - No active profile set, falling back to 1 default profile: "local"
+2024-04-12 16:10:12 [INFO ] kopo.poly.MyBookShelfPrjApplication - Started MyBookShelfPrjApplication in 0.632 seconds (process running for 10463.795)
