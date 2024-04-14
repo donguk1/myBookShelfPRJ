@@ -2,9 +2,8 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>WATEM : 메모</title>
+    <title>Board</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/map.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
@@ -39,6 +38,8 @@
     <script th:inline="javascript">
 
         $(document).ready(function () {
+
+            $("#header").load("../header.html")
 
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
             $("#btnList").on("click", function () {
@@ -213,11 +214,10 @@
     </script>
 </head>
 <body>
-<!-- 메모 작성 페이지 -->
-
 <!-- 상단바 부분 -->
-
-<br><br>
+<div id="header"></div>
+<br>
+<br>
 
 <!-- 내용 부분 -->
 <form name="f" id="f">

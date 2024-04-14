@@ -362,4 +362,16 @@ public class UserInfoController {
 
     }
 
+    /**
+     * 세션 아이디 가져오기
+     */
+    @PostMapping(value = "getSsUserId")
+    public UserInfoDTO getSsUserId(HttpSession session) throws Exception {
+
+        log.info("controller 세션 아이디 가져오기");
+
+        return UserInfoDTO.builder()
+                .userId(CmmUtil.nvl((String) session.getAttribute("SS_USER_ID")))
+                .build();
+    }
 }
