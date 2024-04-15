@@ -14,5 +14,6 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
      */
     Optional<BoardEntity> findAllByOrderByNoticeYnDescBoardSeqDesc();
 
+    BoardEntity findByRegDtAndChgDt(String regDt, String chgDt);
 
 }

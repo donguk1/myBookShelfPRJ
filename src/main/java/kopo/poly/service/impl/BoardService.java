@@ -3,10 +3,13 @@ package kopo.poly.service.impl;
 
 import kopo.poly.dto.BoardDTO;
 import kopo.poly.repository.BoardRepository;
+import kopo.poly.repository.entity.BoardEntity;
 import kopo.poly.service.IBoardService;
+import kopo.poly.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -41,10 +44,35 @@ public class BoardService implements IBoardService {
     /**
      * 게시글 업데이트
      */
+    @Transactional
     @Override
     public int updateBoard(Long boardSeq, String userId, String title, String noticeYn, String category, String contents) throws Exception {
         return 0;
     }
 
+    /**
+     * 게시글 작성하기
+     */
+    @Override
+    public Long insertBoard(String regId, String title, String noticeYn, String category, String contents) throws Exception {
 
+        log.info("service 게시글 작성하기");
+
+        String dt = DateUtil.getDateTime("yyyy-MM-dd hh:mm:ss");
+
+        boardRepository.save(BoardEntity.builder()
+                .regId(regId)
+                .title(title)
+                .noticeYn(noticeYn)
+                .category(category)
+                .contents(contents)
+                .readCnt(0L)
+                .regDt(dt)
+                .chgDt(dt)
+                .build());
+
+        BoardEntity bEntity = boardRepository.findByRegDtAndChgDt(dt, dt);
+
+        return bEntity.getBoardSeq();
+    }
 }

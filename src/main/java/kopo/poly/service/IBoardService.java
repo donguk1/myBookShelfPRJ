@@ -1,7 +1,6 @@
 package kopo.poly.service;
 
 import kopo.poly.dto.BoardDTO;
-import kopo.poly.repository.entity.BoardEntity;
 
 import java.util.List;
 
@@ -29,4 +28,15 @@ public interface IBoardService {
                     final String noticeYn,
                     final String category,
                     final String contents) throws Exception;
+
+    /**
+     * 게시글 작성하기
+     *
+     * @return
+     */
+    Long insertBoard(final String regId,
+                     final String title,
+                     final String noticeYn,
+                     final String category,
+                     final String contents) throws Exception;
 }

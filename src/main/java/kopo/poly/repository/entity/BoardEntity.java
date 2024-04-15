@@ -22,32 +22,28 @@ public class BoardEntity {
     @Column(name = "BOARD_SEQ")
     private Long boardSeq;
     
-    @NonNull
+
     @Column(name = "REG_ID", length = 500, nullable = false)
     private String regId;
-    
-    @NonNull
+
     @Column(name = "TITLE", length = 25, nullable = false)
     private String title;
 
-    @NonNull
     @Column(name = "NOTICE_YN", length = 3, nullable = false)
     private String noticeYn;
 
-    @NonNull
     @Column(name = "CATEGORY", length = 10, nullable = false)
     private String category;
 
-    @NonNull
     @Column(name = "CONTENTS", length = 5000, nullable = false)
     private String contents;
 
-    @Column(name = "READ_CNT")
+    @Column(name = "READ_CNT", nullable = false)
     Long readCnt;
 
-    @Column(name = "REG_DT")
+    @Column(name = "REG_DT", nullable = false)
     private String regDt;
 
-    @Column(name = "CHG_DT")
+    @Column(name = "CHG_DT", nullable = false)
     private String chgDt;
 }

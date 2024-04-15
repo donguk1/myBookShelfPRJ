@@ -34,8 +34,9 @@
 
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f7b1b926be42fe85ba854921b7d037e&libraries=services"></script>
     <script th:inline="javascript">
+
+        let arr = []; // 이미지 배열 선언
 
         $(document).ready(function () {
 
@@ -55,11 +56,11 @@
                 //div 내용 비워주기
                 // $('#preview').empty();
 
-                var files = e.target.files;
+                let files = e.target.files;
                 arr = Array.prototype.slice.call(files);
 
                 //업로드 가능 파일인지 체크
-                for(var i=0;i<files.length;i++){
+                for(let i=0;i<files.length;i++){
                     if(!checkExtension(files[i].name,files[i].size)){
                         return false;
                     }
@@ -71,8 +72,8 @@
 
         // 파일 확인
         function checkExtension(fileName, fileSize) {
-            var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-            var maxSize = 20971520; // 20MB
+            let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+            let maxSize = 20971520; // 20MB
 
             if (fileSize >= maxSize) {
                 alert('파일 사이즈 초과');
@@ -193,21 +194,46 @@
             for (let i = 0; i < arr.length; i++) {
                 formData.append('file', arr[i]);
             }
+            console.log(formData);
+            // const payload = new URLSearchParams(formData);
+            //
+            // fetch('http://localhost:11000/board/insertBoard', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded'
+            //     },
+            //     body: payload,
+            // })
+            //     .then(res => {
+            //         console.log(res);
+            //         return res.json()
+            //     })
+            //     .then(data => console.log(data));
 
             // Ajax 호출해서 글 등록하기
+
+            console.log(formData);
             $.ajax({
-                url: "/community/communityInsert",
+                url: "/board/insertBoard",
                 type: "post", // 전송방식은 Post
                 data: formData, // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
+                dataType: "JSON",
                 processData: false,  // 중요: processData를 false로 설정해야 폼 데이터가 자동으로 변환되지 않습니다.
                 contentType: false,  // 중요: contentType을 false로 설정해야 멀티파트로 제대로 전송됩니다.
-                success: function (json) { // /community/communityInsert 호출이 성공했다면..
+                success: function (json) {
+
+                    console.log(json.msg);
+                    console.log(json.result);
                     alert(json.msg); // 메시지 띄우기
 
                     if (json.result === 1) {
-                        location.href = "/community/communityList"; // 공지사항 리스트 이동
+                        location.href = "boardList.html"; // 공지사항 리스트 이동
                     }
-                }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                },
+                timeout: 5000
             });
         }
 
@@ -255,7 +281,7 @@
 
         <!-- 버튼 영역 -->
         <div class="ms-auto" style="padding: 0 20px;">
-            <button id="btnSend" type="submit" class="btn btn-outline-dark">등록</button>
+            <button id="btnSend" type="button" class="btn btn-outline-dark">등록</button>
             <button type="reset" class="btn btn-outline-dark">다시 작성</button>
             <button id="btnList" type="button" class="btn btn-outline-dark">목록</button>
         </div>
