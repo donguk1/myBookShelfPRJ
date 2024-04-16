@@ -31,6 +31,7 @@
         }
     </style>
 
+    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
     <script th:inline="javascript">
@@ -62,8 +63,89 @@
                 location.href = "boardReg.html";
             })
 
+            getBoardList();
+
 
         })
+
+        function getBoardList() {
+            $.ajax({
+                url: "/board/getBoardList",
+                type: "post",
+                dataType: "JSON",
+                // data: $("#f").serialize(),
+                success: function (json) {
+                    console.log(json);
+
+                    let currentPage = json.currentPage;
+                    let totalPages = json.totalPages;
+
+                    insertData(json.bList)
+
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
+            });
+        }
+
+        function doDetail(seq) {
+
+        }
+
+        function insertData(bList) {
+
+            let list = $("#boardList")
+            list.empty();
+
+            bList.forEach(function (data) {
+
+                console.log(data);
+
+                let listOne = $("<tr>")
+                    .addClass("listOne table-light")
+                    .click(function () {
+                        doDetail(data.boardSeq)
+                    })
+
+                let category = $("<th>")
+                    // .addClass("badge rounded-pill bg-secondary")
+                    .text(data.category)
+                listOne.append(category)
+
+                let title = $("<th>")
+                    .text(data.title)
+
+                if (data.fileYn === "Y") {
+                    let fileYn = $("<a>")
+                        .addClass("fa-solid fa-image")
+                        .css("color: #27ADFB")
+                    title.append(fileYn)
+
+                }
+                listOne.append(title)
+
+                let commentCnt = $("<th>")
+                    .text(data.commentCnt)
+                listOne.append(commentCnt)
+
+                let nickname = $("<th>")
+                    .text(data.nickname)
+                listOne.append(nickname)
+
+                let regDt = $("<th>")
+                    .text(data.regDt)
+                listOne.append(regDt)
+
+                let readCnt = $("<th>")
+                    .text(data.readCnt)
+                listOne.append(readCnt)
+
+                list.append(listOne)
+            })
+
+        }
 
     </script>
 </head>
@@ -84,19 +166,13 @@
             <tr>
                 <th scope="col" style="width: 10%">카테고리</th>
                 <th scope="col" style="width: 40%">제목</th>
-                <th scope="col" style="width: 20%">작성자</th>
-                <th scope="col" style="width: 30%">작성일</th>
+                <th scope="col" style="width: 10%">댓글수</th>
+                <th scope="col" style="width: 10%">작성자</th>
+                <th scope="col" style="width: 20%">작성일</th>
+                <th scope="col" style="width: 10%">조회수</th>
             </tr>
             </thead>
-            <tbody>
-            <tr class="table-light">
-                <div>
-                    <th>[[${dto.title}]]</th>
-                    <td>[[${dto.nick}]]</td>
-                    <td>[[${dto.dt}]]</td>
-                    <td>[[${dto.mloc}]]</td>
-                </div>
-            </tr>
+            <tbody id="boardList">
             </tbody>
         </table>
     </div>
@@ -105,7 +181,7 @@
     <div class="mx-auto">
         <ul class="pagination" id="pagination">
             <li class="page-item">
-                <a class="page-link" th:href="@{/memo/list?page=1}">&laquo;</a>
+                <a class="page-link" href="boardList.html?page=1">&laquo;</a>
             </li>
             <!-- 이전 페이지로 이동하는 링크 -->
             <li class="page-item" th:if="${currentPage > 1}">

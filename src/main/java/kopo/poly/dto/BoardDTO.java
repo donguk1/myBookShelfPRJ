@@ -13,7 +13,10 @@ public record BoardDTO(
         String contents,
         Long readCnt,
         String regDt,
-        String chgDt
+        String chgDt,
+        Long commentCnt,
+        String fileYn,
+        String nickname
 
 
 ) {

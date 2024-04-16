@@ -1,6 +1,8 @@
 package kopo.poly.service.impl;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kopo.poly.dto.BoardDTO;
 import kopo.poly.repository.BoardRepository;
 import kopo.poly.repository.entity.BoardEntity;
@@ -11,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -28,7 +31,12 @@ public class BoardService implements IBoardService {
 
         log.info("service 보드 리스트 가져오기");
 
-        return null;
+        List<BoardEntity> pList = boardRepository.getBoardList()
+                .orElse(Collections.emptyList());
+
+        return new ObjectMapper().convertValue(pList,
+                new TypeReference<List<BoardDTO>>() {
+                });
     }
 
     /**

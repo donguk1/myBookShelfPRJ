@@ -2,6 +2,7 @@ package kopo.poly.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kopo.poly.dto.BoardDTO;
 import kopo.poly.dto.FileDTO;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.service.IBoardService;
@@ -11,10 +12,15 @@ import kopo.poly.util.CmmUtil;
 import kopo.poly.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -116,5 +122,38 @@ public class BoardController {
                 .result(res)
                 .build();
 
+    }
+
+
+    /**
+     * 게시글 리스트 가져오기
+     */
+    @PostMapping(value = "getBoardList")
+    public Map<String, Object> getBoardList(@RequestParam(defaultValue = "1") int currentPage) throws Exception {
+
+        log.info("controller 게시글 리스트 가져오기");
+
+        List<BoardDTO> bList = boardService.getBoardList();
+
+        // 페이지당 보여줄 아이템 개수 정의
+        int itemPerPage = 10;
+
+        // 페이지네이션을 위해 전체 아이템 개수 구하기
+        int totalItems = bList.size();
+
+        // 전체 페이지 개수 계산
+        int totalPages = (int) Math.ceil((double) totalItems / itemPerPage);
+
+        // 현재 페이지에 해당하는 아이템들만 선택하여 rList에 할당
+        int fromIndex = (currentPage - 1) * itemPerPage;
+        int toIndex = Math.min(fromIndex + itemPerPage, totalItems);
+        bList = bList.subList(fromIndex, toIndex);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("currentPage", currentPage);
+        map.put("totalPages", totalPages);
+        map.put("bList", bList);
+
+        return map;
     }
 }

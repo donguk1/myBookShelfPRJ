@@ -21,7 +21,6 @@ public class BoardEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BOARD_SEQ")
     private Long boardSeq;
-    
 
     @Column(name = "REG_ID", length = 500, nullable = false)
     private String regId;
@@ -46,4 +45,14 @@ public class BoardEntity {
 
     @Column(name = "CHG_DT", nullable = false)
     private String chgDt;
+
+    @Column(name = "COMMENT_CNT")
+    private Long commentCnt;
+
+    @Column(name = "FILE_YN")
+    private String fileYn;
+
+    @Column(name = "NICKNAME")
+    private String nickname;
+
 }
