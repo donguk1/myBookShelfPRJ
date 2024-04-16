@@ -36,12 +36,6 @@
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
     <script th:inline="javascript">
 
-        //상세보기 이동
-        function doDetail(num) {
-            location.href = "/memo/info?boardSeq=" + num;
-        }
-
-
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
@@ -77,11 +71,8 @@
                 success: function (json) {
                     console.log(json);
 
-                    let currentPage = json.currentPage;
-                    let totalPages = json.totalPages;
-
                     insertData(json.bList)
-
+                    pageNation(json.currentPage, json.totalPages)
 
                 },
                 error: function(xhr, status, error) {
@@ -91,7 +82,7 @@
         }
 
         function doDetail(seq) {
-
+            location.href = "boardEditInfo.html?bSeq=" + seq
         }
 
         function insertData(bList) {
@@ -118,11 +109,10 @@
                     .text(data.title)
 
                 if (data.fileYn === "Y") {
-                    let fileYn = $("<a>")
+                    let fileYn = $("<i>")
                         .addClass("fa-solid fa-image")
-                        .css("color: #27ADFB")
+                        // .css({"color": "#27ADFB"})
                     title.append(fileYn)
-
                 }
                 listOne.append(title)
 
@@ -146,6 +136,77 @@
             })
 
         }
+
+        function pageNation(currentPage, totalPages) {
+            let pagesPerGroup = 5;
+            let startPage = ((currentPage - 1) / pagesPerGroup) * pagesPerGroup + 1;
+            let endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
+
+            let pageNation = $(".pagination");
+            pageNation.empty();
+
+            if (startPage > 1) {
+                let start = $("<li>").addClass("page-item");
+
+                if (currentPage === 1) {
+                    start.addClass("disabled");
+
+                }
+
+                let firstLink = $("<a>")
+                    .addClass("page-link")
+                    .attr("href", currentPage === 1 ? "#" : "boardList?page=1")
+                    .html("&laquo;");
+
+                let prevLink = $("<a>").addClass("page-link")
+                    .attr("href", currentPage === 1 ? "#" : "boardList?page=" + (startPage - 1))
+                    .html("&lt;");
+                start.append(firstLink, prevLink);
+                pageNation.append(start);
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                let listItem = $("<li>")
+                    .addClass("page-item");
+
+                if (i === currentPage) {
+                    listItem.addClass("active");
+
+                }
+
+                let pageLink = $("<a>")
+                    .addClass("page-link")
+                    .attr("href", i === currentPage ? "#" : "/community/communityList?page=" + i)
+                    .html(i);
+                listItem.append(pageLink);
+                pageNation.append(listItem);
+
+            }
+
+            if (endPage < totalPages) {
+                let end = $("<li>")
+                    .addClass("page-item");
+
+                if (currentPage === totalPages) {
+                    end.addClass("disabled");
+                }
+
+                let nextLink = $("<a>")
+                    .addClass("page-link")
+                    .attr("href", currentPage === totalPages ? "#" : "/community/communityList?page=" + (endPage + 1))
+                    .html("&gt;");
+
+                let lastLink = $("<a>")
+                    .addClass("page-link")
+                    .attr("href", currentPage === totalPages ? "#" : "/community/communityList?page=" + totalPages)
+                    .html("&raquo;");
+
+                end.append(nextLink, lastLink);
+                pageNation.append(end);
+
+            }
+        }
+
 
     </script>
 </head>
@@ -180,24 +241,24 @@
     <!-- 페이지네이션 영역-->
     <div class="mx-auto">
         <ul class="pagination" id="pagination">
-            <li class="page-item">
-                <a class="page-link" href="boardList.html?page=1">&laquo;</a>
-            </li>
-            <!-- 이전 페이지로 이동하는 링크 -->
-            <li class="page-item" th:if="${currentPage > 1}">
-                <a class="page-link" th:href="@{/memo/list(page=${currentPage - 1})}">&lt;</a>
-            </li>
-            <!-- 현재 페이지 주변에 페이지 번호 링크 표시 -->
-            <li class="page-item" th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" th:class="${pageNumber == currentPage ? 'active' : ''}">
-                <a class="page-link" th:href="@{/memo/list(page=${pageNumber})}" th:text="${pageNumber}"></a>
-            </li>
-            <!-- 다음 페이지로 이동하는 링크 -->
-            <li class="page-item" th:if="${currentPage < totalPages}">
-                <a class="page-link" th:href="@{/memo/list(page=${currentPage + 1})}">&gt;</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" th:href="@{/memo/list(page=${totalPages})}">&raquo;</a>
-            </li>
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" href="boardList.html?page=1">&laquo;</a>-->
+<!--            </li>-->
+<!--            &lt;!&ndash; 이전 페이지로 이동하는 링크 &ndash;&gt;-->
+<!--            <li class="page-item" th:if="${currentPage > 1}">-->
+<!--                <a class="page-link" th:href="@{/memo/list(page=${currentPage - 1})}">&lt;</a>-->
+<!--            </li>-->
+<!--            &lt;!&ndash; 현재 페이지 주변에 페이지 번호 링크 표시 &ndash;&gt;-->
+<!--            <li class="page-item" th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" th:class="${pageNumber == currentPage ? 'active' : ''}">-->
+<!--                <a class="page-link" th:href="@{/memo/list(page=${pageNumber})}" th:text="${pageNumber}"></a>-->
+<!--            </li>-->
+<!--            &lt;!&ndash; 다음 페이지로 이동하는 링크 &ndash;&gt;-->
+<!--            <li class="page-item" th:if="${currentPage < totalPages}">-->
+<!--                <a class="page-link" th:href="@{/memo/list(page=${currentPage + 1})}">&gt;</a>-->
+<!--            </li>-->
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" th:href="@{/memo/list(page=${totalPages})}">&raquo;</a>-->
+<!--            </li>-->
         </ul>
     </div>
 
