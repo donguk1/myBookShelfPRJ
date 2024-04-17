@@ -12,10 +12,7 @@ import kopo.poly.util.CmmUtil;
 import kopo.poly.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
@@ -128,12 +125,14 @@ public class BoardController {
     /**
      * 게시글 리스트 가져오기
      */
-    @PostMapping(value = "getBoardList")
-    public Map<String, Object> getBoardList(@RequestParam(defaultValue = "1") int currentPage) throws Exception {
+    @GetMapping(value = "getBoardList")
+    public Map<String, Object> getBoardList(@RequestParam(defaultValue = "1") int page) throws Exception {
 
         log.info("controller 게시글 리스트 가져오기");
 
         List<BoardDTO> bList = boardService.getBoardList();
+
+        log.info("page : " + page);
 
         // 페이지당 보여줄 아이템 개수 정의
         int itemPerPage = 10;
@@ -145,12 +144,12 @@ public class BoardController {
         int totalPages = (int) Math.ceil((double) totalItems / itemPerPage);
 
         // 현재 페이지에 해당하는 아이템들만 선택하여 rList에 할당
-        int fromIndex = (currentPage - 1) * itemPerPage;
+        int fromIndex = (page - 1) * itemPerPage;
         int toIndex = Math.min(fromIndex + itemPerPage, totalItems);
         bList = bList.subList(fromIndex, toIndex);
 
         Map<String, Object> map = new HashMap<>();
-        map.put("currentPage", currentPage);
+        map.put("currentPage", page);
         map.put("totalPages", totalPages);
         map.put("bList", bList);
 

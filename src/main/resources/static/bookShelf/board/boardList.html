@@ -39,6 +39,8 @@
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
+            console.log("reload");
+
             $("#header").load("../header.html")
 
             $("#btnSend").on("click", function () {
@@ -63,11 +65,12 @@
         })
 
         function getBoardList() {
+
             $.ajax({
                 url: "/board/getBoardList",
-                type: "post",
+                type: "GET",
                 dataType: "JSON",
-                // data: $("#f").serialize(),
+                data: {page: document.getElementsByName("page").values()},
                 success: function (json) {
                     console.log(json);
 
@@ -85,6 +88,7 @@
             location.href = "boardEditInfo.html?bSeq=" + seq
         }
 
+        // 리스트 보여주기
         function insertData(bList) {
 
             let list = $("#boardList")
@@ -137,6 +141,7 @@
 
         }
 
+        // 페이징
         function pageNation(currentPage, totalPages) {
             let pagesPerGroup = 5;
             let startPage = ((currentPage - 1) / pagesPerGroup) * pagesPerGroup + 1;
@@ -146,7 +151,8 @@
             pageNation.empty();
 
             if (startPage > 1) {
-                let start = $("<li>").addClass("page-item");
+                let start = $("<li>")
+                    .addClass("page-item");
 
                 if (currentPage === 1) {
                     start.addClass("disabled");
@@ -155,11 +161,12 @@
 
                 let firstLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", currentPage === 1 ? "#" : "boardList?page=1")
+                    .attr("href", currentPage === 1 ? "#" : "boardList.html?page=1")
+                    .name("page")
                     .html("&laquo;");
 
                 let prevLink = $("<a>").addClass("page-link")
-                    .attr("href", currentPage === 1 ? "#" : "boardList?page=" + (startPage - 1))
+                    .attr("href", currentPage === 1 ? "#" : "boardList.html?page=" + (startPage - 1))
                     .html("&lt;");
                 start.append(firstLink, prevLink);
                 pageNation.append(start);
@@ -176,7 +183,8 @@
 
                 let pageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", i === currentPage ? "#" : "/community/communityList?page=" + i)
+                    .attr("href", i === currentPage ? "#" : "boardList.html?page=" + i)
+                    .attr("data-page", i) // 페이지 번호를 data-page 속성으로 설정
                     .html(i);
                 listItem.append(pageLink);
                 pageNation.append(listItem);
@@ -193,12 +201,12 @@
 
                 let nextLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", currentPage === totalPages ? "#" : "/community/communityList?page=" + (endPage + 1))
+                    .attr("href", currentPage === totalPages ? "#" : "boardList.html?page=" + (endPage + 1))
                     .html("&gt;");
 
                 let lastLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", currentPage === totalPages ? "#" : "/community/communityList?page=" + totalPages)
+                    .attr("href", currentPage === totalPages ? "#" : "boardList.html?page=" + totalPages)
                     .html("&raquo;");
 
                 end.append(nextLink, lastLink);
