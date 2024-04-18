@@ -1,23 +1,23 @@
 $(document).ready(function () {
 
     // 회원가입
-    $("#btnSignUp").on("click", function () { // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
-        location.href = "../login/signUp.html";
+    $("#btnSignUp").on("click", function () { 
+        location.href = "../user/signUp";
     })
 
     // 로그인
-    $("#btnLogin").on("click", function () {
-        location.href = "../login/login.html";
+    $("#btnuser").on("click", function () {
+        location.href = "../user/user";
     })
 
     // 아이디 찾기
     $("#btnFindId").on("click", function () {
-        location.href = "../login/findId.html";
+        location.href = "../user/findId";
     })
 
     // 비번 찾기
     $("#btnFindPassword").on("click", function () {
-        location.href = "../login/findPassword.html";
+        location.href = "../user/findPassword";
     })
 
 
