@@ -37,26 +37,26 @@
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
-            $("#header").load("header.html")
+            $("#header").load("header")
 
             // 게시물 리스트
             $("#btnBoardList").on("click", function () {
-                location.href = "board/boardList.html";
+                location.href = "board/boardList";
             })
 
             // 내 활동 리스트
             $("#btnMyActivity").on("click", function () {
-                location.href = "user/myActivity.html";
+                location.href = "user/myActivity";
             })
 
             // 오늘의 추천도서
             $("#btnRecommend").on("click", function () {
-                location.href = "user/recommend.html";
+                location.href = "user/recommend";
             })
 
             // 북마크 리스트
             $("#btnBookmark").on("click", function () {
-                location.href = "user/myBookmarkList.html";
+                location.href = "user/myBookmarkList";
             })
         })
     </script>

@@ -11,25 +11,88 @@ import kopo.poly.util.CmmUtil;
 import kopo.poly.util.EncryptUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
 @RequiredArgsConstructor
-@RestController
-@RequestMapping(value = "user")
+@Controller
+@RequestMapping(value = "/user")
 public class UserInfoController {
 
     private final IUserInfoService userInfoService;
     private final IMailService mailService;
 
     /**
+     * 아이디 찾기 이동
+     */
+    @GetMapping(value = "/findId")
+    public String findId() {
+        log.info("controller 아이디 찾기 이동");
+        
+        return "/user/findId";
+    }
+    
+    /**
+     * 비밀번호 찾기 이동
+     */
+    @GetMapping(value = "/findPassword")
+    public String findPassword() {
+        log.info("controller 비밀번호 찾기 이동");
+
+        return "/user/findPassword";
+    }
+
+    /**
+     * 로그인 이동
+     */
+    @GetMapping(value = "/login")
+    public String login() {
+        log.info("controller 로그인 이동");
+
+        return "/user/login";
+    }
+
+    /**
+     * 내 활동 이동
+     */
+    @GetMapping(value = "/myActivity")
+    public String myActivity() {
+        log.info("controller 내 활동 이동");
+
+        return "/user/myActivity";
+    }
+    
+    /**
+     * 마이페이지 이동
+     */
+    @GetMapping(value = "/myPage")
+    public String myPage() {
+        log.info("controller 마이페이지 이동");
+
+        return "/user/myPage";
+    }
+
+    /**
+     * 회원가입 이동
+     */
+    @GetMapping(value = "/signUp")
+    public String signUp() {
+        log.info("controller 회원가입 이동");
+
+        return "/user/signUp";
+    }
+    
+    /**
      * 로그인 실행
      */
-    @PostMapping(value = "getLogin")
+    @ResponseBody
+    @PostMapping(value = "loginProc")
     public int getLogin(HttpServletRequest request, HttpSession session) throws Exception {
 
         log.info("controller 로그인 실행");
@@ -63,6 +126,7 @@ public class UserInfoController {
     /**
      * 아이디 중복 체크
      */
+    @ResponseBody
     @PostMapping(value = "getUserIdExists")
     public String getUserIdExists(HttpServletRequest request) throws Exception {
 
@@ -84,6 +148,7 @@ public class UserInfoController {
     /**
      * 이메일 중복 체크
      */
+    @ResponseBody
     @PostMapping(value = "getEmailExists")
     public String getEmailExists(HttpServletRequest request) throws Exception {
 
@@ -139,6 +204,7 @@ public class UserInfoController {
     /**
      * 회원가입
      */
+    @ResponseBody
     @PostMapping(value = "insertUserInfo")
     public MsgDTO insertUser(HttpServletRequest request) throws Exception {
 
@@ -182,8 +248,9 @@ public class UserInfoController {
     /**
      * 아이디 찾기
      */
-    @PostMapping(value = "findId")
-    public String findId(HttpServletRequest request) throws Exception {
+    @ResponseBody
+    @PostMapping(value = "getUserId")
+    public String getUserId(HttpServletRequest request) throws Exception {
 
          log.info("controller 아이디 찾기 실행");
 
@@ -203,6 +270,7 @@ public class UserInfoController {
     /**
      * 비밀번호 찾기
      */
+    @ResponseBody
     @PostMapping(value = "newUserPassword")
     public MsgDTO newUserPassword(HttpServletRequest request) throws Exception {
 
@@ -254,6 +322,7 @@ public class UserInfoController {
     /**
      * 내 정보 가져오기
      */
+    @ResponseBody
     @PostMapping(value = "getUserInfo")
     public UserInfoDTO getUserInfo(HttpSession session) throws Exception {
 
@@ -271,6 +340,7 @@ public class UserInfoController {
     /**
      * 내 정보 업데이트
      */
+    @ResponseBody
     @PostMapping(value = "updateUserInfo")
     public MsgDTO updateUserInfo(HttpServletRequest request, HttpSession session) throws Exception {
 
@@ -307,6 +377,7 @@ public class UserInfoController {
     /**
      * 비밀번호 업데이트
      */
+    @ResponseBody
     @PostMapping(value = "updatePassword")
     public MsgDTO updatePassword(HttpSession session, HttpServletRequest request) throws Exception {
 
@@ -346,6 +417,7 @@ public class UserInfoController {
     /**
      * 내 정보 삭제
      */
+    @ResponseBody
     @PostMapping(value = "deleteUserInfo")
     public MsgDTO deleteUserInfo(HttpSession session) throws Exception {
 
@@ -365,6 +437,7 @@ public class UserInfoController {
     /**
      * 세션 아이디 가져오기
      */
+    @ResponseBody
     @PostMapping(value = "getSsUserId")
     public UserInfoDTO getSsUserId(HttpSession session) throws Exception {
 

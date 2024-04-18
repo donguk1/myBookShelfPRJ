@@ -2,6 +2,12 @@ server:
   port: 11000
 
 spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+    check-template-location: true
+    suffix: .html
+
   profiles:
     default: local
 
@@ -20,8 +26,3 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
-  thymeleaf:
-    prefix: classpath:/templates/
-    cache: false
-    check-template-location: true
-    suffix: .html

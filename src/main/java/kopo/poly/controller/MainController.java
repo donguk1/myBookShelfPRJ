@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
 
-    @GetMapping(value = "main")
+    @GetMapping(value = "/main")
     public String main() {
 
         log.info("메인 페이지 이동");
 
-        return "main";
+        return "/main";
     }
 }

@@ -6,8 +6,8 @@ $(document).ready(function () {
     })
 
     // 로그인
-    $("#btnuser").on("click", function () {
-        location.href = "../user/user";
+    $("#btnLogin").on("click", function () {
+        location.href = "../user/login";
     })
 
     // 아이디 찾기
