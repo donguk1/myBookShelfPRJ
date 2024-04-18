@@ -204,4 +204,11 @@ public class BoardController {
 
         return map;
     }
+
+    /**
+     * 게시글 정보 가져오기
+     */
+    @ResponseBody
+    @PostMapping(value = "getBoardInfo")
+    public Map<String, Ob>
 }

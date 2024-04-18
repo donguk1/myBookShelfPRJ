@@ -41,9 +41,14 @@
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
+            const urlParams = new URL(location.href).searchParams;
+            const bSeq = urlParams.get('bSeq');
+
+            console.log(bSeq);
+
             getSsUserId();
 
-            $("#header").load("../header.html")
+            getBoardInfo(bSeq);
 
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
             $("#btnEdit").on("click", function () {
@@ -77,6 +82,20 @@
             });
         }
 
+        function getBoardInfo(bSeq) {
+            $.ajax({
+                url: "/board/getBoardInfo",
+                type: "post",
+                dataType: "JSON",
+                data: {"bSeq" : bSeq},
+                success: function (json) {
+
+                    ssUserId = json.userId
+                }
+
+            });
+        }
+
         //수정하기
         function doEdit() {
             if (ssUserId === $("#regId")) {
@@ -97,7 +116,9 @@
             if (ssUserId === $("#regId")) {
 
                 if (confirm("작성한 메모를 삭제하시겠습니까?")) {
-                    location.href = "/memo/memoDelete?num=" + num;
+
+
+
                 }
 
             } else if (ssUserId === "") {
@@ -113,7 +134,7 @@
 <body>
 <!-- 메모 상세보기 페이지 -->
 <!-- 상단바 부분 -->
-<div id="header"></div>
+<%@include file="../header.jsp" %>
 <br>
 <br>
 
