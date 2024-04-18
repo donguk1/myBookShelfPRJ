@@ -1,5 +1,12 @@
+<%@ page import="kopo.poly.dto.BoardDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Objects" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    List<BoardDTO> bList = (List<BoardDTO>) request.getAttribute("bList");
+%>
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Board</title>
@@ -39,10 +46,6 @@
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
-            console.log("reload");
-
-            $("#header").load("../header.html")
-
             $("#btnSend").on("click", function () {
 
                 let f = document.getElementById("f");
@@ -56,10 +59,9 @@
             })
 
             $("#btnBoardReg").on("click", function () {
-                location.href = "boardReg.html";
+                location.href = "boardReg";
             })
 
-            getBoardList();
 
 
         })
@@ -85,7 +87,7 @@
         }
 
         function doDetail(seq) {
-            location.href = "boardEditInfo.html?bSeq=" + seq
+            location.href = "boardInfo?bSeq=" + seq
         }
 
         // 리스트 보여주기
@@ -141,88 +143,13 @@
 
         }
 
-        // 페이징
-        function pageNation(currentPage, totalPages) {
-            let pagesPerGroup = 5;
-            let startPage = ((currentPage - 1) / pagesPerGroup) * pagesPerGroup + 1;
-            let endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
-
-            let pageNation = $(".pagination");
-            pageNation.empty();
-
-            if (startPage > 1) {
-                let start = $("<li>")
-                    .addClass("page-item");
-
-                if (currentPage === 1) {
-                    start.addClass("disabled");
-
-                }
-
-                let firstLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", currentPage === 1 ? "#" : "boardList.html?page=1")
-                    .name("page")
-                    .html("&laquo;");
-
-                let prevLink = $("<a>").addClass("page-link")
-                    .attr("href", currentPage === 1 ? "#" : "boardList.html?page=" + (startPage - 1))
-                    .html("&lt;");
-                start.append(firstLink, prevLink);
-                pageNation.append(start);
-            }
-
-            for (let i = startPage; i <= endPage; i++) {
-                let listItem = $("<li>")
-                    .addClass("page-item");
-
-                if (i === currentPage) {
-                    listItem.addClass("active");
-
-                }
-
-                let pageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", i === currentPage ? "#" : "boardList.html?page=" + i)
-                    .attr("data-page", i) // 페이지 번호를 data-page 속성으로 설정
-                    .html(i);
-                listItem.append(pageLink);
-                pageNation.append(listItem);
-
-            }
-
-            if (endPage < totalPages) {
-                let end = $("<li>")
-                    .addClass("page-item");
-
-                if (currentPage === totalPages) {
-                    end.addClass("disabled");
-                }
-
-                let nextLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", currentPage === totalPages ? "#" : "boardList.html?page=" + (endPage + 1))
-                    .html("&gt;");
-
-                let lastLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", currentPage === totalPages ? "#" : "boardList.html?page=" + totalPages)
-                    .html("&raquo;");
-
-                end.append(nextLink, lastLink);
-                pageNation.append(end);
-
-            }
-        }
-
-
     </script>
 </head>
 <body>
 <!-- 메모 목록 페이지 -->
 
 <!-- 상단바 부분 -->
-<div id="header"></div>
+<%@include file="../header.jsp" %>
 <br>
 <br>
 
@@ -241,32 +168,63 @@
                 <th scope="col" style="width: 10%">조회수</th>
             </tr>
             </thead>
-            <tbody id="boardList">
-            </tbody>
+            <%for(BoardDTO dto : bList) {%>
+                <tbody id="boardList" >
+                    <tr onclick="doDetail(<%=dto.boardSeq()%>)">
+                        <th><%=dto.category()%></th>
+                        <th><%=dto.title()%>
+                            <%if (Objects.equals(dto.fileYn(), "Y")) { %>
+                            <i class="fa-solid fa-image"></i>
+                            <% } %>
+                        </th>
+                        <th><%=dto.commentCnt()%></th>
+                        <th><%=dto.nickname()%></th>
+                        <th><%=dto.regDt()%></th>
+                        <th><%=dto.readCnt()%></th>
+                    </tr>
+                </tbody>
+            <%}%>
         </table>
     </div>
 
     <!-- 페이지네이션 영역-->
-    <div class="mx-auto">
-        <ul class="pagination" id="pagination">
-<!--            <li class="page-item">-->
-<!--                <a class="page-link" href="boardList.html?page=1">&laquo;</a>-->
-<!--            </li>-->
-<!--            &lt;!&ndash; 이전 페이지로 이동하는 링크 &ndash;&gt;-->
-<!--            <li class="page-item" th:if="${currentPage > 1}">-->
-<!--                <a class="page-link" th:href="@{/memo/list(page=${currentPage - 1})}">&lt;</a>-->
-<!--            </li>-->
-<!--            &lt;!&ndash; 현재 페이지 주변에 페이지 번호 링크 표시 &ndash;&gt;-->
-<!--            <li class="page-item" th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" th:class="${pageNumber == currentPage ? 'active' : ''}">-->
-<!--                <a class="page-link" th:href="@{/memo/list(page=${pageNumber})}" th:text="${pageNumber}"></a>-->
-<!--            </li>-->
-<!--            &lt;!&ndash; 다음 페이지로 이동하는 링크 &ndash;&gt;-->
-<!--            <li class="page-item" th:if="${currentPage < totalPages}">-->
-<!--                <a class="page-link" th:href="@{/memo/list(page=${currentPage + 1})}">&gt;</a>-->
-<!--            </li>-->
-<!--            <li class="page-item">-->
-<!--                <a class="page-link" th:href="@{/memo/list(page=${totalPages})}">&raquo;</a>-->
-<!--            </li>-->
+    <div class="center-pagination">
+        <ul class="pagination">
+            <%
+                int currentPage = (int) request.getAttribute("currentPage");
+                int totalPages = (int) request.getAttribute("totalPages");
+                // 각 그룹당 표시할 페이지 수 정의
+                int pagesPerGroup = 5;
+                int startPage = ((currentPage - 1) / pagesPerGroup) * pagesPerGroup + 1;
+                int endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
+            %>
+            <% if (startPage > 1) { %>
+            <li class="page-item <%= currentPage == 1 ? "disabled" : "" %>">
+                <a class="page-link"
+                   href="<%= currentPage == 1 ? "#" : "/community/communityList?page=1" %>">&laquo;</a>
+            </li>
+            <li class="page-item <%= currentPage == 1 ? "disabled" : "" %>">
+                <a class="page-link"
+                   href="<%= currentPage == 1 ? "#" : "/community/communityList?page=" + (startPage - 1) %>">&lt;</a>
+            </li>
+            <% } %>
+            <% for (int i = startPage; i <= endPage; i++) { %>
+            <li class="page-item <%= i == currentPage ? "active" : "" %>">
+                <a class="page-link"
+                   href="<%= i == currentPage ? "#" : "/community/communityList?page=" + i %>"><%= i %>
+                </a>
+            </li>
+            <% } %>
+            <% if (endPage < totalPages) { %>
+            <li class="page-item <%= currentPage == totalPages ? "disabled" : "" %>">
+                <a class="page-link"
+                   href="<%= currentPage == totalPages ? "#" : "/community/communityList?page=" + (endPage + 1)  %>">&gt;</a>
+            </li>
+            <li class="page-item <%= currentPage == totalPages ? "disabled" : "" %>">
+                <a class="page-link"
+                   href="<%= currentPage == totalPages ? "#" : "/community/communityList?page=" + (totalPages) %>">&raquo;</a>
+            </li>
+            <% } %>
         </ul>
     </div>
 

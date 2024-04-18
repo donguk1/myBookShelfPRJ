@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -349,7 +350,7 @@
                 <!-- 이름 입력 영역 -->
                 <div class="form-group">
                     <label for="userName" class="form-label mt-4">이름</label>
-                    <input type="text" name="userName" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="email">
+                    <input type="text" name="userName" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="이름">
                 </div>
 
             </fieldset>

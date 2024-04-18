@@ -33,8 +33,6 @@ public class UserInfoController {
      */
     @GetMapping(value = "/findId")
     public String findId() {
-        log.info("controller 아이디 찾기 이동");
-        
         return "/user/findId";
     }
     
@@ -43,8 +41,6 @@ public class UserInfoController {
      */
     @GetMapping(value = "/findPassword")
     public String findPassword() {
-        log.info("controller 비밀번호 찾기 이동");
-
         return "/user/findPassword";
     }
 
@@ -53,8 +49,6 @@ public class UserInfoController {
      */
     @GetMapping(value = "/login")
     public String login() {
-        log.info("controller 로그인 이동");
-
         return "/user/login";
     }
 
@@ -63,8 +57,6 @@ public class UserInfoController {
      */
     @GetMapping(value = "/myActivity")
     public String myActivity() {
-        log.info("controller 내 활동 이동");
-
         return "/user/myActivity";
     }
     
@@ -73,8 +65,6 @@ public class UserInfoController {
      */
     @GetMapping(value = "/myPage")
     public String myPage() {
-        log.info("controller 마이페이지 이동");
-
         return "/user/myPage";
     }
 
@@ -83,8 +73,6 @@ public class UserInfoController {
      */
     @GetMapping(value = "/signUp")
     public String signUp() {
-        log.info("controller 회원가입 이동");
-
         return "/user/signUp";
     }
     

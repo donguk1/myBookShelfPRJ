@@ -12,6 +12,8 @@ import kopo.poly.util.CmmUtil;
 import kopo.poly.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,17 +23,63 @@ import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor
-@RestController
-@RequestMapping(value = "board")
+@Controller
+@RequestMapping(value = "/board")
 public class BoardController {
 
     private final IBoardService boardService;
     private final IS3Service s3Service;
     private final IFileService fileService;
+    /**
+     * 보드 리스트 이동
+     */
+    @GetMapping(value = "/boardList")
+    public String boardList(ModelMap modelMap,
+                            @RequestParam(defaultValue = "1") int page) throws Exception {
+
+        List<BoardDTO> bList = boardService.getBoardList();
+
+        // 페이지당 보여줄 아이템 개수 정의
+        int itemPerPage = 10;
+
+        // 페이지네이션을 위해 전체 아이템 개수 구하기
+        int totalItems = bList.size();
+
+        // 전체 페이지 개수 계산
+        int totalPages = (int) Math.ceil((double) totalItems / itemPerPage);
+
+        // 현재 페이지에 해당하는 아이템들만 선택하여 rList에 할당
+        int fromIndex = (page - 1) * itemPerPage;
+        int toIndex = Math.min(fromIndex + itemPerPage, totalItems);
+        bList = bList.subList(fromIndex, toIndex);
+
+        modelMap.addAttribute("bList", bList);
+        modelMap.addAttribute("currentPage", page);
+        modelMap.addAttribute("totalPages", totalPages);
+
+        log.info("bList : " + bList.size());
+
+        return "/board/boardList";
+    }
+
+    /**
+     * 작성페이지 이동
+     */
+    @GetMapping(value = "/boardReg")
+    public String boardReg() {
+        return "/board/boardReg";
+    }
+
+    /**
+     * 상세보기 이동
+     */
+    @GetMapping(value = "/boardInfo")
+    public String boardInfo() {return "/board/boardInfo";}
 
     /**
      * 게시글 작성하기
      */
+    @ResponseBody
     @PostMapping(value = "insertBoard")
     public MsgDTO insertBoard(HttpSession session, HttpServletRequest request,
                               @RequestParam(value = "file", required = false) List<MultipartFile> files) throws Exception {
@@ -125,6 +173,7 @@ public class BoardController {
     /**
      * 게시글 리스트 가져오기
      */
+    @ResponseBody
     @GetMapping(value = "getBoardList")
     public Map<String, Object> getBoardList(@RequestParam(defaultValue = "1") int page) throws Exception {
 
@@ -135,7 +184,7 @@ public class BoardController {
         log.info("page : " + page);
 
         // 페이지당 보여줄 아이템 개수 정의
-        int itemPerPage = 10;
+        int itemPerPage = 0;
 
         // 페이지네이션을 위해 전체 아이템 개수 구하기
         int totalItems = bList.size();

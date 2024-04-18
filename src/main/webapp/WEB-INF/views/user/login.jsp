@@ -1,5 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>로그인</title>
@@ -11,31 +12,38 @@
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/js/move.js"></script>
-    <script th:inline="javascript">
+    <script type="text/javascript">
 
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
-            $("#header").load("../header.html")
-
-            // 네이버 로그인
-            $("#btnNaverLogin").on("click", function () {
-                location.href = naverHref;
-            })
-
-            // 카카오 로그인
-            $("#btnKakaoLogin").on("click", function () {
-                location.href = kakaoHref;
-            })
+            // // 네이버 로그인
+            // $("#btnNaverLogin").on("click", function () {
+            //     location.href = naverHref;
+            // })
+            //
+            // // 카카오 로그인
+            // $("#btnKakaoLogin").on("click", function () {
+            //     location.href = kakaoHref;
+            // })
 
             // 로그인
             $("#btnSend").on("click", function () {
+                console.log("123");
                 login()
             })
+
+            $("#password").on("keypress", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // 폼 제출 방지
+                    $("#btnSend").click();
+                }
+            });
 
         })
 
         function login() {
+            console.log("234");
             let f = document.getElementById("f"); // form 태그
 
             if (f.userId.value === "") {
@@ -50,34 +58,34 @@
                 return;
             }
 
+            console.log($("#f").serialize());
+
             $.ajax({
-                    url: "/user/loginProc",
-                    type: "post", // 전송방식은 Post
-                    dataType: "JSON", // 전송 결과는 JSON으로 받기
-                    data: $("#f").serialize(),
-                    success: function (json) {
+                url: "/user/loginProc",
+                type: "post", // 전송방식은 Post
+                dataType: "JSON", // 전송 결과는 JSON으로 받기
+                data: $("#f").serialize(),
+                success: function (json) {
 
-                        if (json === 1) {
-                            location.href = "../main.html";
+                    console.log(json);
 
-                        } else { // 회원가입 실패
-                            alert("실패하였습니다. \n" +
-                                "다시 확인해주세요"); // 메시지 띄우기
-                        }
+                    if (json === 1) {
+                        location.href = "/main";
 
+                    } else { // 회원가입 실패
+                        alert("실패하였습니다. \n" +
+                            "다시 확인해주세요"); // 메시지 띄우기
                     }
                 }
-            )
-
+            })
         }
     </script>
 </head>
 <body>
 <!-- 로그인 페이지 -->
-<!-- 상단바 부분 -->
-<div id="header"></div>
-<br>
-<br>
+<%@include file="../header.jsp" %>
+<br/>
+<br/>
 
 <!-- 내용 부분 -->
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
@@ -110,7 +118,7 @@
 
         <!-- 로그인 버튼 영역 -->
         <div class="d-grid gap-2">
-            <button id="btnSend" class="btn btn-primary btn-lg" type="button">로그인</button>
+            <button type="button" id="btnSend" class="btn btn-primary btn-lg">로그인</button>
         </div>
         <br>
 

@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -40,11 +41,11 @@
 
         $(document).ready(function () {
 
-            $("#header").load("../header.html")
+            getSsUserId()
 
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
             $("#btnList").on("click", function () {
-                location.href = "boardList.html"; // 메모 리스트 이동
+                location.href = "boardList"; // 메모 리스트 이동
             })
 
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
@@ -69,6 +70,28 @@
                 preview(arr);
             });//file change
         })
+
+        // 세션 아이디 가져오기
+        function getSsUserId() {
+
+            $.ajax({
+                url: "/user/getSsUserId",
+                type: "post",
+                dataType: "JSON",
+                data: $("#f").serialize(),
+                success: function (json) {
+
+                    console.log(json);
+
+                    if (!(json.userId.length > 0)) {
+                        alert("로그인 후 이용 가능한 서비스입니다.")
+                        location.href="/user/login"
+                    }
+
+                }
+
+            });
+        }
 
         // 파일 확인
         function checkExtension(fileName, fileSize) {
@@ -194,25 +217,7 @@
             for (let i = 0; i < arr.length; i++) {
                 formData.append('file', arr[i]);
             }
-            console.log(formData);
-            // const payload = new URLSearchParams(formData);
-            //
-            // fetch('http://localhost:11000/board/insertBoard', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/x-www-form-urlencoded'
-            //     },
-            //     body: payload,
-            // })
-            //     .then(res => {
-            //         console.log(res);
-            //         return res.json()
-            //     })
-            //     .then(data => console.log(data));
 
-            // Ajax 호출해서 글 등록하기
-
-            console.log(formData);
             $.ajax({
                 url: "/board/insertBoard",
                 type: "post", // 전송방식은 Post
@@ -227,7 +232,7 @@
                     alert(json.msg); // 메시지 띄우기
 
                     if (json.result === 1) {
-                        location.href = "boardList.html"; // 공지사항 리스트 이동
+                        location.href = "boardList"; // 공지사항 리스트 이동
                     }
                 },
                 error: function(xhr, status, error) {
@@ -241,9 +246,9 @@
 </head>
 <body>
 <!-- 상단바 부분 -->
-<div id="header"></div>
-<br>
-<br>
+<%@include file="../header.jsp" %>
+<br/>
+<br/>
 
 <!-- 내용 부분 -->
 <form name="f" id="f">

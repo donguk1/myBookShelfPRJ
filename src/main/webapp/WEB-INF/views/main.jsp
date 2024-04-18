@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -64,7 +65,7 @@
 <body>
 <!-- 메인 페이지 -->
 <!-- 상단바 부분 -->
-<div id="header"></div>
+<%@include file="header.jsp" %>
 <br>
 <br>
 

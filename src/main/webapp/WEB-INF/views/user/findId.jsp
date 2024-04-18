@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>비밀번호 찾기</title>
+    <title>아이디 찾기</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,24 +26,18 @@
 
 
             $("#btnSend").on("click", function () { // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
-                checkUserData()
+                checkIdData()
 
             })
 
         })
 
         // 아이디 찾기
-        function checkUserData() {
+        function checkIdData() {
 
             console.log("1");
 
             let f = document.getElementById("f");
-
-            if (f.userId.value === "") {
-                alert("아이디를 입력하세요.");
-                f.userId.focus();
-                return false;
-            }
 
             if (f.userName.value === "") {
                 alert("이름을 입력하세요.");
@@ -58,7 +53,7 @@
 
             // Ajax 호출해서 아이디 찾기
             $.ajax({
-                url: "/user/newUserPassword",
+                url: "/user/getUserId",
                 type: "post", // 전송방식은 Post
                 dataType: "JSON", // 전송 결과는 JSON으로 받기
                 data: $("#f").serialize(), // form 태그 내 input 등 객체를 자동으로 전송할 형태로 변경하기
@@ -66,10 +61,11 @@
 
                     console.log(json);
 
-                    alert(json.msg)
+                    if (json.userId === 'null') {
+                        alert("일치하는 회원정보가 없습니다.\n다시 확인해주세요.");
 
-                    if (json.result === 1) {
-                        location.href = "login.html";
+                    } else {
+                        alert("아이디는 " + json.userId + "입니다.");
 
                     }
 
@@ -93,19 +89,12 @@
     <br/>
 
     <div class="card-body mx-auto">
-        <h1 style="font-family: 'Do Hyeon', sans-serif;">비밀번호 찾기</h1>
+        <h1 style="font-family: 'Do Hyeon', sans-serif;">아이디 찾기</h1>
     </div>
     <hr/>
 
     <h6 style="text-align: center">* 회원정보에 등록한 정보를 입력해주세요.</h6>
     <form id="f" class="mx-auto" style="width:80%;" >
-
-        <div class="form-group">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="userId" id="userId" placeholder="아이디">
-                <label for="userId">아이디</label>
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="form-floating mb-3">
@@ -124,9 +113,9 @@
         <br/>
         <br/>
 
-        <!-- 비밀번호 찾기 버튼 영역 -->
+        <!-- 아이디 찾기 버튼 영역 -->
         <div class="d-grid gap-2">
-            <button id="btnSend" type="button" class="btn btn-lg btn-primary">비밀번호 찾기</button>
+            <button id="btnSend" type="button" class="btn btn-lg btn-primary">아이디 찾기</button>
         </div>
         <br/>
 
@@ -135,7 +124,7 @@
                 <button id="btnSignUp" type="button" class="btn btn-link" style="justify-content: center">회원가입</button>
             </div>
             <div class="mx-auto">
-                <button id="btnFindId" type="button" class="btn btn-link" style="justify-content: center">아이디 찾기</button>
+                <button id="btnFindPassword" type="button" class="btn btn-link" style="justify-content: center">비밀번호 찾기</button>
                 <button id="btnLogin" type="button" class="btn btn-link" style="justify-content: center">로그인</button>
             </div>
         </div>
