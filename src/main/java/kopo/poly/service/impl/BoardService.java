@@ -150,4 +150,15 @@ public class BoardService implements IBoardService {
 
         return bEntity.getBoardSeq();
     }
+
+    /**
+     * 게시글 삭제하기
+     */
+    @Override
+    public void deleteBoard(Long boardSeq) throws Exception {
+
+        boardRepository.delete(BoardEntity.builder()
+                        .boardSeq(boardSeq)
+                        .build());
+    }
 }

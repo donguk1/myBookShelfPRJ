@@ -38,5 +38,8 @@ public interface IBoardService {
                      final String category,
                      final String contents) throws Exception;
 
-
+    /**
+     * 게시글 삭제하기
+     */
+    void deleteBoard(final Long boardSeq)throws Exception;
 }

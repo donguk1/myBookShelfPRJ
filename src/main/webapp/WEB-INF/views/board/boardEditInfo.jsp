@@ -115,10 +115,28 @@
         //삭제하기
         function doDelete() {
 
-            if (ssUserId === $("#regId")) {
+            console.log(document.getElementById("regId").value);
+            console.log(ssUserId);
+
+            if (ssUserId === document.getElementById("regId").value) {
 
                 if (confirm("작성한 메모를 삭제하시겠습니까?")) {
-                    location.href = "/memo/memoDelete?num=" + num;
+                    $.ajax({
+                        url: "/board/deleteBoard",
+                        type: "post",
+                        dataType: "JSON",
+                        data: {
+                            "boardSeq" : document.getElementById("bSeq").value
+                        },
+                        success: function (json) {
+
+                            console.log(json);
+
+                            location.href = "boardList"
+
+                        }
+                    })
+
                 }
 
             } else if (ssUserId === "") {

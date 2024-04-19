@@ -323,4 +323,40 @@ public class BoardController {
                 .build();
 
     }
+
+    /**
+     * 게시글 삭제
+     */
+    @PostMapping(value = "deleteBoard")
+    public MsgDTO deleteBoard(HttpSession session, HttpServletRequest request) throws Exception {
+
+        log.info("controller 게시글 삭제");
+
+        Long boardSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("boardSeq")));
+        String msg;
+
+        log.info("boardSeq : " + boardSeq);
+
+        try {
+            String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+
+            log.info("userId : " + userId);
+            log.info("boardSeq : " + boardSeq);
+
+            boardService.deleteBoard(boardSeq);
+
+            msg = "삭제되었습니다.";
+
+        } catch (Exception e) {
+            msg = "실패하였습니다.";
+
+            log.info(e.toString());
+            e.printStackTrace();
+
+        }
+
+        return MsgDTO.builder()
+                .msg(msg)
+                .build();
+    }
 }
