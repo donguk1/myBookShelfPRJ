@@ -2,6 +2,7 @@ package kopo.poly.repository;
 
 import kopo.poly.repository.entity.BoardEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -10,11 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
-
-    /**
-     * 게시글 리스트 가져오기
-     */
-    Optional<BoardEntity> findAllByOrderByNoticeYnDescBoardSeqDesc();
 
     /**
      * 작성된 PK 가져오기
@@ -47,5 +43,18 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
             "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
     nativeQuery = true)
     Optional<List<BoardEntity>> getBoardList();
+
+    /**
+     * 조회수 증가
+     */
+    @Modifying(clearAutomatically = true)
+    @Query(value = "UPDATE BOARD B SET " +
+            "B.READ_CNT = IFNULL(B.READ_CNT, 0) + 1 " +
+            "WHERE B.BOARD_SEQ = ?1 ",
+            nativeQuery = true)
+    void updateReadCnt(Long boardSeq);
+
+
+
 
 }

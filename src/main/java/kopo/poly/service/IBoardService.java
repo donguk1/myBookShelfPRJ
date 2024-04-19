@@ -31,12 +31,12 @@ public interface IBoardService {
 
     /**
      * 게시글 작성하기
-     *
-     * @return
      */
     Long insertBoard(final String regId,
                      final String title,
                      final String noticeYn,
                      final String category,
                      final String contents) throws Exception;
+
+
 }

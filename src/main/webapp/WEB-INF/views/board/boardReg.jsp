@@ -176,7 +176,7 @@
             return tcount;
         }
 
-        // 메모 저장하기
+        // 저장하기
         function doSubmit() {
 
             let f = document.getElementById("f"); // form 태그

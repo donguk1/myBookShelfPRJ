@@ -29,7 +29,6 @@
 
             // 로그인
             $("#btnSend").on("click", function () {
-                console.log("123");
                 login()
             })
 
@@ -43,7 +42,6 @@
         })
 
         function login() {
-            console.log("234");
             let f = document.getElementById("f"); // form 태그
 
             if (f.userId.value === "") {

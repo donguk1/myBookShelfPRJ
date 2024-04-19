@@ -1,18 +1,20 @@
 package kopo.poly.service.impl;
 
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.transaction.Transactional;
 import kopo.poly.dto.BoardDTO;
 import kopo.poly.repository.BoardRepository;
 import kopo.poly.repository.entity.BoardEntity;
+import kopo.poly.repository.entity.QBoardEntity;
+import kopo.poly.repository.entity.QUserInfoEntity;
 import kopo.poly.service.IBoardService;
 import kopo.poly.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,6 +24,8 @@ import java.util.List;
 public class BoardService implements IBoardService {
 
     private final BoardRepository boardRepository;
+
+    private final JPAQueryFactory queryFactory;
 
     /**
      * 리스트 가져오기
@@ -34,9 +38,28 @@ public class BoardService implements IBoardService {
         List<BoardEntity> pList = boardRepository.getBoardList()
                 .orElse(Collections.emptyList());
 
-        return new ObjectMapper().convertValue(pList,
-                new TypeReference<List<BoardDTO>>() {
-                });
+        List<BoardDTO> bList = new ArrayList<>();
+
+        pList.forEach(e -> {
+            BoardDTO rDTO = BoardDTO.builder()
+                    .boardSeq(e.getBoardSeq())
+                    .regId(e.getRegId())
+                    .noticeYn(e.getNoticeYn())
+                    .title(e.getTitle())
+                    .category(e.getCategory())
+                    .contents(e.getContents())
+                    .commentCnt(e.getCommentCnt())
+                    .chgDt(e.getChgDt())
+                    .regDt(e.getRegDt())
+                    .readCnt(e.getReadCnt())
+                    .nickname(e.getNickname())
+                    .fileYn(e.getFileYn())
+                    .build();
+
+            bList.add(rDTO);
+        });
+
+        return bList;
     }
 
     /**
@@ -45,8 +68,37 @@ public class BoardService implements IBoardService {
      * @param type 조회수 증가여부
      */
     @Override
+    @Transactional
     public BoardDTO getBoardInfo(Long boardSeq, Boolean type) throws Exception {
-        return null;
+
+        log.info("service 상세정보 가져오기");
+
+        if (type) {
+            boardRepository.updateReadCnt(boardSeq);
+
+        }
+
+        QBoardEntity be = QBoardEntity.boardEntity;
+        QUserInfoEntity ue = QUserInfoEntity.userInfoEntity;
+
+        BoardEntity bEntity = queryFactory
+                .selectFrom(be)
+                .join(be.userInfo, ue)
+                .where(be.boardSeq.eq(boardSeq))
+                .fetchOne();
+
+        return BoardDTO.builder()
+                .boardSeq(bEntity.getBoardSeq())
+                .title(bEntity.getTitle())
+                .category(bEntity.getCategory())
+                .readCnt(bEntity.getReadCnt())
+                .nickname(bEntity.getUserInfo().getNickname())
+                .regDt(bEntity.getRegDt())
+                .chgDt(bEntity.getChgDt())
+                .contents(bEntity.getContents())
+                .regId(bEntity.getRegId())
+                .noticeYn(bEntity.getNoticeYn())
+                .build();
     }
 
     /**
@@ -55,7 +107,22 @@ public class BoardService implements IBoardService {
     @Transactional
     @Override
     public int updateBoard(Long boardSeq, String userId, String title, String noticeYn, String category, String contents) throws Exception {
-        return 0;
+
+        log.info("service 게시글 업데이트");
+
+        String dt = DateUtil.getDateTime("yyyy-MM-dd hh:mm:ss");
+
+        boardRepository.save(BoardEntity.builder()
+                .boardSeq(boardSeq)
+                .title(title)
+                .noticeYn(noticeYn)
+                .category(category)
+                .contents(contents)
+                .readCnt(0L)
+                .chgDt(dt)
+                .build());
+
+        return 1;
     }
 
     /**
