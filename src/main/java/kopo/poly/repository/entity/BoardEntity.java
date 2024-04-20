@@ -22,7 +22,7 @@ public class BoardEntity {
     @Column(name = "BOARD_SEQ")
     private Long boardSeq;
 
-    @Column(name = "REG_ID", length = 500, nullable = false)
+    @Column(name = "REG_ID", length = 500, nullable = false, updatable = false)
     private String regId;
 
     @Column(name = "TITLE", length = 25, nullable = false)
@@ -40,7 +40,7 @@ public class BoardEntity {
     @Column(name = "READ_CNT", nullable = false)
     Long readCnt;
 
-    @Column(name = "REG_DT", nullable = false)
+    @Column(name = "REG_DT", nullable = false, updatable = false)
     private String regDt;
 
     @Column(name = "CHG_DT", nullable = false)
@@ -55,4 +55,7 @@ public class BoardEntity {
     @Column(name = "NICKNAME")
     private String nickname;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
+    private UserInfoEntity userInfo;
 }
