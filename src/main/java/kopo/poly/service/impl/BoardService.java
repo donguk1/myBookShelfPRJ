@@ -155,6 +155,7 @@ public class BoardService implements IBoardService {
      * 게시글 삭제하기
      */
     @Override
+    @Transactional
     public void deleteBoard(Long boardSeq) throws Exception {
 
         boardRepository.delete(BoardEntity.builder()

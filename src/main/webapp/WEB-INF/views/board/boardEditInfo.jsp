@@ -94,29 +94,8 @@
             });
         }
 
-        //수정하기
-        function doEdit() {
-
-            console.log(ssUserId);
-            console.log(document.getElementById("regId").value);
-
-            if (ssUserId === document.getElementById("regId").value) {
-                location.href = "boardEditInfo?bSeq=" + document.getElementById("bSeq").value;
-
-            } else if (ssUserId === "") {
-                alert("로그인 하시길 바랍니다.");
-
-            } else {
-                alert("본인이 작성한 메모만 수정 가능합니다.");
-
-            }
-        }
-
         //삭제하기
         function doDelete() {
-
-            console.log(document.getElementById("regId").value);
-            console.log(ssUserId);
 
             if (ssUserId === document.getElementById("regId").value) {
 
@@ -132,9 +111,13 @@
 
                             console.log(json);
 
-                            location.href = "boardList"
+                            location.href = "/board/boardList";
 
-                        }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("AJAX 호출 중 에러 발생:", error);
+                        },
+                        timeout: 5000
                     })
 
                 }

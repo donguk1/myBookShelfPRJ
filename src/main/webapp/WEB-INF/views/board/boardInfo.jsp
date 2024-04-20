@@ -94,22 +94,7 @@
             }
         }
 
-        //삭제하기
-        function doDelete() {
 
-            if (ssUserId === $("#regId")) {
-
-                if (confirm("작성한 메모를 삭제하시겠습니까?")) {
-                    location.href = "/memo/memoDelete?num=" + num;
-                }
-
-            } else if (ssUserId === "") {
-                alert("로그인 하시길 바랍니다.");
-
-            } else {
-                alert("본인이 작성한 메모만 삭제 가능합니다.");
-            }
-        }
 
         // 본문 내용 가져오기
         function getBoardInfo() {

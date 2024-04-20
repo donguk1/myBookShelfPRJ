@@ -327,6 +327,7 @@ public class BoardController {
     /**
      * 게시글 삭제
      */
+    @ResponseBody
     @PostMapping(value = "deleteBoard")
     public MsgDTO deleteBoard(HttpSession session, HttpServletRequest request) throws Exception {
 
@@ -334,8 +335,7 @@ public class BoardController {
 
         Long boardSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("boardSeq")));
         String msg;
-
-        log.info("boardSeq : " + boardSeq);
+        int res = 1;
 
         try {
             String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
@@ -349,6 +349,7 @@ public class BoardController {
 
         } catch (Exception e) {
             msg = "실패하였습니다.";
+            res = 0;
 
             log.info(e.toString());
             e.printStackTrace();
@@ -357,6 +358,7 @@ public class BoardController {
 
         return MsgDTO.builder()
                 .msg(msg)
+                .result(res)
                 .build();
     }
 }
