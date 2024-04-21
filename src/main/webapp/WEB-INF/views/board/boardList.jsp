@@ -242,7 +242,7 @@
                 <option value="문학">문학</option>
                 <option value="역사">역사</option>
             </select>
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="keyword">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword">
             <button type="submit" class="btn btn-secondary my-2 my-sm-0" id="btnSend" onclick="getSelectMemoList">검색</button>
         </div>
     </form>

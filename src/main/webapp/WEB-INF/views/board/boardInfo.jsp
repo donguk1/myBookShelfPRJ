@@ -58,6 +58,11 @@
             $("#btnList").on("click", function () {
                 location.href = "boardList"; // 메모 리스트 이동
             })
+
+            // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
+            $("#bookmark").on("click", function () {
+                bookmark()
+            })
         })
 
         // 세션 아이디 가져오기
@@ -94,8 +99,6 @@
             }
         }
 
-
-
         // 본문 내용 가져오기
         function getBoardInfo() {
 
@@ -119,7 +122,7 @@
                     console.log(json);
                     document.getElementById("bSeq").value = bSeq;
                     document.getElementById("regId").value = json.regId;
-                    document.getElementById("category").value = json.category;
+                    document.getElementById("category").textContent = json.category;
                     document.getElementById("title").value = json.title;
                     document.getElementById("nickname").innerText = "작성자 : " + json.nickname;
                     document.getElementById("regDt").innerText = "등록일 : " + json.regDt;
@@ -130,6 +133,43 @@
             });
         }
 
+        // 북마크
+        function bookmark() {
+
+            if (ssUserId === "") {
+                if (confirm("로그인한 회원만 이용 가능한 기능입니다.\n" +
+                    "로그인 하시겠습니까?")) {
+                    location.href = "/user/login"
+                }
+                return
+
+            }
+
+            const data = {
+                "boardSeq" : document.getElementById("bSeq").value,
+                "type" : document.getElementById("bookmark").checked
+            }
+
+            console.log(data);
+
+            $.ajax({
+                url: "/bookmark/updateBookmark",
+                type: "post",
+                dataType: "JSON",
+                data: data,
+                success: function (json) {
+
+                    console.log(json);
+
+                    if (json.result === 0) {
+                        alert("오류로 인해 실패 했습니다.\n" +
+                            "다시 실행해주세요")
+                    }
+
+                }
+
+            });
+        }
     </script>
 </head>
 <body>
@@ -151,7 +191,7 @@
             <!-- 타이틀 출력 -->
             <div class="card-header">
                 <!-- 카테고리 -->
-                <span class="badge rounded-pill bg-secondary" id="category"></span>
+                <span class="badge rounded-pill bg-secondary" id="category" style="margin-bottom: 0.5%"></span>
 
                 <!-- 타이틀 -->
                 <h3 style="font-family: 'Do Hyeon', sans-serif;">
@@ -168,6 +208,8 @@
                 <i class="fa-regular fa-eye"></i>
                 <span  id="readCnt"></span >
             </h6>
+
+            <input type="checkbox" name="bookmark" id="bookmark">
 
             <!-- 이미지 출력 -->
             <div class="imageArea" style="width: 100%; padding-bottom: 10px;" id="img">
