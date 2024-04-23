@@ -30,10 +30,20 @@
             right: 0;
             z-index: 1000;
         }
+
+        .readTextarea {
+            width: 100%;
+            resize: none;
+            overflow-y: hidden; /* prevents scroll bar flash */
+            border: none;
+            outline: none;
+        }
     </style>
 
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
+
     <script type="text/javascript">
 
         let ssUserId;
@@ -62,10 +72,28 @@
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
             $("#bookmark").on("click", function () {
                 bookmark()
+                bookmarkCheck()
             })
         })
 
-        // 세션 아이디 가져오기
+        function bookmarkCheck() {
+            console.log("1");
+            const element = document.getElementById('bookmark');
+
+            if (element.classList.contains('fa-regular')) {
+                element.classList.remove('fa-regular');
+                element.classList.add('fa-solid');
+                console.log("2");
+
+            } else {
+                element.classList.remove('fa-solid');
+                element.classList.add('fa-regular');
+                console.log("3");
+            }
+        }
+
+
+                // 세션 아이디 가져오기
         function getSsUserId() {
 
             $.ajax({
@@ -123,7 +151,7 @@
                     document.getElementById("bSeq").value = bSeq;
                     document.getElementById("regId").value = json.regId;
                     document.getElementById("category").textContent = json.category;
-                    document.getElementById("title").value = json.title;
+                    document.getElementById("title").textContent = json.title;
                     document.getElementById("nickname").innerText = "작성자 : " + json.nickname;
                     document.getElementById("regDt").innerText = "등록일 : " + json.regDt;
                     document.getElementById("readCnt").innerText = "조회수 : " + json.readCnt;
@@ -183,19 +211,24 @@
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
     <div class="card-body">
         <div class="card mb-3">
-
             <!-- PK -->
             <input type="hidden" id="bSeq">
             <input type="hidden" id="regId">
 
             <!-- 타이틀 출력 -->
             <div class="card-header">
-                <!-- 카테고리 -->
-                <span class="badge rounded-pill bg-secondary" id="category" style="margin-bottom: 0.5%"></span>
+                <div style="justify-content: space-between; display: flex;">
+                    <!-- 카테고리 -->
+                    <span class="badge rounded-pill bg-secondary" id="category" style="margin-bottom: 0.5%"></span>
+
+                    <!-- 북마크 -->
+                    <i class="fa-solid fa-bookmark fa-2xl" id="bookmark" style="padding-top: 0.8%"></i>
+                </div>
 
                 <!-- 타이틀 -->
                 <h3 style="font-family: 'Do Hyeon', sans-serif;">
-                    <input class="form-control me-sm-2" type="text" id="title" disabled="">
+                    <span type="text" id="title" disabled="">
+                    </span>
                 </h3>
             </div>
 
@@ -209,19 +242,16 @@
                 <span  id="readCnt"></span >
             </h6>
 
-            <input type="checkbox" name="bookmark" id="bookmark">
-
             <!-- 이미지 출력 -->
             <div class="imageArea" style="width: 100%; padding-bottom: 10px;" id="img">
                 <img src=""  width="100%"><br><br>
             </div>
 
             <!-- 내용 입력 영역 -->
-            <div class="form-group">
-                <textarea class="form-control mx-auto" id="contents" rows="14" readonly name="contents" style="width: 98%"></textarea>
+            <div>
+                <textarea class="readTextarea" id="contents" rows="16" readonly name="contents" style="width: 98%; border: None; padding: 10px"></textarea>
                 <br>
             </div>
-
         </div>
     </div>
 

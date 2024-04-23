@@ -188,7 +188,7 @@
     </div>
 
     <!-- 페이지네이션 영역-->
-    <div class="center-pagination">
+    <div class="center-pagination mx-auto">
         <ul class="pagination">
             <%
                 int currentPage = (int) request.getAttribute("currentPage");
@@ -201,28 +201,28 @@
             <% if (startPage > 1) { %>
             <li class="page-item <%= currentPage == 1 ? "disabled" : "" %>">
                 <a class="page-link"
-                   href="<%= currentPage == 1 ? "#" : "/community/communityList?page=1" %>">&laquo;</a>
+                   href="<%= currentPage == 1 ? "#" : "/board/boardList?page=1" %>">&laquo;</a>
             </li>
             <li class="page-item <%= currentPage == 1 ? "disabled" : "" %>">
                 <a class="page-link"
-                   href="<%= currentPage == 1 ? "#" : "/community/communityList?page=" + (startPage - 1) %>">&lt;</a>
+                   href="<%= currentPage == 1 ? "#" : "/board/boardList?page=" + (startPage - 1) %>">&lt;</a>
             </li>
             <% } %>
             <% for (int i = startPage; i <= endPage; i++) { %>
             <li class="page-item <%= i == currentPage ? "active" : "" %>">
                 <a class="page-link"
-                   href="<%= i == currentPage ? "#" : "/community/communityList?page=" + i %>"><%= i %>
+                   href="<%= i == currentPage ? "#" : "/board/boardList?page=" + i %>"><%= i %>
                 </a>
             </li>
             <% } %>
             <% if (endPage < totalPages) { %>
             <li class="page-item <%= currentPage == totalPages ? "disabled" : "" %>">
                 <a class="page-link"
-                   href="<%= currentPage == totalPages ? "#" : "/community/communityList?page=" + (endPage + 1)  %>">&gt;</a>
+                   href="<%= currentPage == totalPages ? "#" : "/board/boardList?page=" + (endPage + 1)  %>">&gt;</a>
             </li>
             <li class="page-item <%= currentPage == totalPages ? "disabled" : "" %>">
                 <a class="page-link"
-                   href="<%= currentPage == totalPages ? "#" : "/community/communityList?page=" + (totalPages) %>">&raquo;</a>
+                   href="<%= currentPage == totalPages ? "#" : "/board/boardList?page=" + (totalPages) %>">&raquo;</a>
             </li>
             <% } %>
         </ul>
