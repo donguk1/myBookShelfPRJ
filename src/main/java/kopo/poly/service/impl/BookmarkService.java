@@ -1,14 +1,14 @@
 package kopo.poly.service.impl;
 
 import jakarta.transaction.Transactional;
-import kopo.poly.dto.BookmarkDTO;
-import kopo.poly.repository.BoardRepository;
 import kopo.poly.repository.BookmarkRepository;
 import kopo.poly.repository.entity.BookmarkEntity;
-import kopo.poly.repository.entity.IBookmarkService;
+import kopo.poly.service.IBookmarkService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -33,10 +33,27 @@ public class BookmarkService implements IBookmarkService {
                     .build());
 
         } else {
-            bookmarkRepository.delete(BookmarkEntity.builder()
-                    .userId(userId)
-                    .boardSeq(boardSeq)
-                    .build());
+            Optional<BookmarkEntity> bookmark = bookmarkRepository.findByUserIdAndBoardSeq(userId, boardSeq);
+            bookmark.ifPresent(bookmarkRepository::delete);
         }
+    }
+
+    /**
+     * 북마크 여부 가져오기
+     */
+    @Override
+    public int getBookmark(String userId, Long boardSeq) throws Exception {
+
+        log.info("service 북마크 여부 가져오기");
+
+        Optional<BookmarkEntity> entity = bookmarkRepository.findByUserIdAndBoardSeq(userId, boardSeq);
+
+        int res = 0;
+
+        if (entity.isPresent()) {
+            res = 1;
+        }
+
+        return res;
     }
 }

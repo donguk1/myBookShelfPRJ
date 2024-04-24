@@ -47,12 +47,13 @@
     <script type="text/javascript">
 
         let ssUserId;
+        let bookmaker;
 
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
-            getSsUserId();
-            getBoardInfo();
+            getSsUserId()
+            getBoardInfo()
 
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
             $("#btnEdit").on("click", function () {
@@ -70,30 +71,31 @@
             })
 
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
-            $("#bookmark").on("click", function () {
-                bookmark()
+            $("#bookmarkIcon").on("click", function () {
                 bookmarkCheck()
+                bookmark()
             })
         })
 
+        // 북마크 모양 수정
         function bookmarkCheck() {
-            console.log("1");
-            const element = document.getElementById('bookmark');
+            const element = document.getElementById('bookmarkIcon');
 
             if (element.classList.contains('fa-regular')) {
                 element.classList.remove('fa-regular');
                 element.classList.add('fa-solid');
-                console.log("2");
+
+                bookmaker = true;
 
             } else {
                 element.classList.remove('fa-solid');
                 element.classList.add('fa-regular');
-                console.log("3");
+
+                bookmaker = false;
             }
         }
 
-
-                // 세션 아이디 가져오기
+        // 세션 아이디 가져오기
         function getSsUserId() {
 
             $.ajax({
@@ -138,8 +140,6 @@
                 "type" : true
             }
 
-            console.log(data);
-
             $.ajax({
                 url: "/board/getBoardInfo",
                 type: "post",
@@ -147,7 +147,6 @@
                 data: data,
                 success: function (json) {
 
-                    console.log(json);
                     document.getElementById("bSeq").value = bSeq;
                     document.getElementById("regId").value = json.regId;
                     document.getElementById("category").textContent = json.category;
@@ -156,6 +155,8 @@
                     document.getElementById("regDt").innerText = "등록일 : " + json.regDt;
                     document.getElementById("readCnt").innerText = "조회수 : " + json.readCnt;
                     document.getElementById("contents").value = json.contents;
+
+                    getBookmark()
                 }
 
             });
@@ -175,10 +176,8 @@
 
             const data = {
                 "boardSeq" : document.getElementById("bSeq").value,
-                "type" : document.getElementById("bookmark").checked
+                "type" : bookmaker
             }
-
-            console.log(data);
 
             $.ajax({
                 url: "/bookmark/updateBookmark",
@@ -186,8 +185,6 @@
                 dataType: "JSON",
                 data: data,
                 success: function (json) {
-
-                    console.log(json);
 
                     if (json.result === 0) {
                         alert("오류로 인해 실패 했습니다.\n" +
@@ -197,6 +194,41 @@
                 }
 
             });
+        }
+
+        // 북마크 여부 가져오기
+        function getBookmark() {
+
+            const data = {
+                "boardSeq" : document.getElementById("bSeq").value
+            }
+
+            $.ajax({
+                url: "/bookmark/getBookmark",
+                type: "post",
+                dataType: "JSON",
+                data: data,
+                success: function (json) {
+
+                    console.log(json);
+
+                    const element = document.getElementById('bookmarkIcon');
+
+                    if (json.result === 1) {
+                        element.classList.add('fa-solid');
+                        bookmaker = true;
+
+                    } else {
+                        element.classList.add('fa-regular');
+
+                        bookmaker = false;
+                    }
+
+
+                }
+
+            });
+
         }
     </script>
 </head>
@@ -222,7 +254,7 @@
                     <span class="badge rounded-pill bg-secondary" id="category" style="margin-bottom: 0.5%"></span>
 
                     <!-- 북마크 -->
-                    <i class="fa-solid fa-bookmark fa-2xl" id="bookmark" style="padding-top: 0.8%"></i>
+                    <i class="fa-bookmark fa-2xl" id="bookmarkIcon" style="padding-top: 0.8%"></i>
                 </div>
 
                 <!-- 타이틀 -->
@@ -236,9 +268,7 @@
 
             <h6> &nbsp;&nbsp;
                 <span  id="nickname"></span >  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                <i class="fa-solid fa-pencil"></i>
                 <span  id="regDt"></span >  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                <i class="fa-regular fa-eye"></i>
                 <span  id="readCnt"></span >
             </h6>
 

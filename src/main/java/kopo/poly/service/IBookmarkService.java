@@ -1,4 +1,4 @@
-package kopo.poly.repository.entity;
+package kopo.poly.service;
 
 public interface IBookmarkService {
 
@@ -8,4 +8,10 @@ public interface IBookmarkService {
     void updateBookmark(final String userId,
                         final Long boardSeq,
                         final boolean type) throws Exception;
+
+    /**
+     * 북마크 여부 가져오기
+     */
+    int getBookmark(final String userId,
+                    final Long boardSeq) throws Exception;
 }
