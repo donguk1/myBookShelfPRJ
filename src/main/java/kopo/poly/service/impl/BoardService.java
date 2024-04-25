@@ -76,6 +76,7 @@ public class BoardService implements IBoardService {
         log.info("service 상세정보 가져오기");
 
         if (type) {
+            log.info("조회수 업데이트");
             boardRepository.updateReadCnt(boardSeq);
 
         }

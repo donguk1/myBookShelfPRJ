@@ -57,7 +57,7 @@
 
             // 북마크 리스트
             $("#btnBookmark").on("click", function () {
-                location.href = "user/myBookmarkList";
+                location.href = "user/myBookmark";
             })
         })
     </script>

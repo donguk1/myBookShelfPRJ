@@ -2,9 +2,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Objects" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%
-    List<BoardDTO> bList = (List<BoardDTO>) request.getAttribute("bList");
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -46,6 +43,8 @@
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
+            getMyBookmark()
+
             $("#btnSend").on("click", function () {
 
                 let f = document.getElementById("f");
@@ -58,26 +57,24 @@
 
             })
 
-            $("#btnBoardReg").on("click", function () {
-                location.href = "boardReg";
-            })
-
-
-
         })
 
-        function getBoardList() {
+        // 북마크 리스트 가져오기
+        function getMyBookmark() {
+
+            const urlParams = new URL(location.href).searchParams;
+            const page = urlParams.get('page');
 
             $.ajax({
                 url: "/board/getMyBookmark",
                 type: "POST",
                 dataType: "JSON",
-                data: {page: document.getElementsByName("page").values()},
+                data: {"page" : page},
                 success: function (json) {
                     console.log(json);
 
                     insertData(json.bList)
-                    pageNation(json.currentPage, json.totalPages)
+                    // pageNation(json.currentPage, json.totalPages)
 
                 },
                 error: function(xhr, status, error) {
@@ -87,7 +84,7 @@
         }
 
         function doDetail(seq) {
-            location.href = "boardInfo?bSeq=" + seq
+            location.href = "/board/boardInfo?bSeq=" + seq
         }
 
         // 리스트 보여주기
@@ -168,63 +165,15 @@
                 <th scope="col" style="width: 10%">조회수</th>
             </tr>
             </thead>
-            <%for(BoardDTO dto : bList) {%>
-                <tbody id="boardList" >
-                    <tr onclick="doDetail(<%=dto.boardSeq()%>)">
-                        <th><%=dto.category()%></th>
-                        <th><%=dto.title()%>
-                            <%if (Objects.equals(dto.fileYn(), "Y")) { %>
-                            <i class="fa-solid fa-image"></i>
-                            <% } %>
-                        </th>
-                        <th><%=dto.commentCnt()%></th>
-                        <th><%=dto.nickname()%></th>
-                        <th><%=dto.regDt()%></th>
-                        <th><%=dto.readCnt()%></th>
-                    </tr>
-                </tbody>
-            <%}%>
+            <tbody id="boardList">
+
+            </tbody>
         </table>
     </div>
 
     <!-- 페이지네이션 영역-->
     <div class="center-pagination mx-auto">
         <ul class="pagination">
-            <%
-                int currentPage = (int) request.getAttribute("currentPage");
-                int totalPages = (int) request.getAttribute("totalPages");
-                // 각 그룹당 표시할 페이지 수 정의
-                int pagesPerGroup = 5;
-                int startPage = ((currentPage - 1) / pagesPerGroup) * pagesPerGroup + 1;
-                int endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
-            %>
-            <% if (startPage > 1) { %>
-            <li class="page-item <%= currentPage == 1 ? "disabled" : "" %>">
-                <a class="page-link"
-                   href="<%= currentPage == 1 ? "#" : "/board/boardList?page=1" %>">&laquo;</a>
-            </li>
-            <li class="page-item <%= currentPage == 1 ? "disabled" : "" %>">
-                <a class="page-link"
-                   href="<%= currentPage == 1 ? "#" : "/board/boardList?page=" + (startPage - 1) %>">&lt;</a>
-            </li>
-            <% } %>
-            <% for (int i = startPage; i <= endPage; i++) { %>
-            <li class="page-item <%= i == currentPage ? "active" : "" %>">
-                <a class="page-link"
-                   href="<%= i == currentPage ? "#" : "/board/boardList?page=" + i %>"><%= i %>
-                </a>
-            </li>
-            <% } %>
-            <% if (endPage < totalPages) { %>
-            <li class="page-item <%= currentPage == totalPages ? "disabled" : "" %>">
-                <a class="page-link"
-                   href="<%= currentPage == totalPages ? "#" : "/board/boardList?page=" + (endPage + 1)  %>">&gt;</a>
-            </li>
-            <li class="page-item <%= currentPage == totalPages ? "disabled" : "" %>">
-                <a class="page-link"
-                   href="<%= currentPage == totalPages ? "#" : "/board/boardList?page=" + (totalPages) %>">&raquo;</a>
-            </li>
-            <% } %>
         </ul>
     </div>
 

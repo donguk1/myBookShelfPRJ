@@ -77,7 +77,7 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
                 ") THEN 'Y' ELSE 'N' END AS FILE_YN " +
             "FROM BOARD B " +
                 "INNER JOIN BOOKMARK BM ON BM.BOARD_SEQ = B.BOARD_SEQ " +
-                "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID" +
+                "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
             "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
     nativeQuery = true)
     List<BoardEntity> getMyBoardList(String userId);
