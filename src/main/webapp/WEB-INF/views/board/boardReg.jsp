@@ -13,10 +13,10 @@
             right: 0;
             top: 60px;
         }
+
         .dropdown-menu a {
             display: block;
         }
-        .dropdown-menu a:hover {background-color: #ddd;}
 
         .dropdown:hover .dropdown-menu {display: block;}
 
@@ -53,7 +53,7 @@
                 doSubmit(); // 글 등록하기 실행
             })
 
-            $("input[type='file']").change(function(e){
+            $("input[type='file']").change(function(e) {
                 //div 내용 비워주기
                 // $('#preview').empty();
 
@@ -61,8 +61,8 @@
                 arr = Array.prototype.slice.call(files);
 
                 //업로드 가능 파일인지 체크
-                for(let i=0;i<files.length;i++){
-                    if(!checkExtension(files[i].name,files[i].size)){
+                for (let i = 0; i < files.length; i++) {
+                    if (!checkExtension(files[i].name, files[i].size)) {
                         return false;
                     }
                 }
@@ -85,7 +85,7 @@
 
                     if (!(json.userId.length > 0)) {
                         alert("로그인 후 이용 가능한 서비스입니다.")
-                        location.href="/user/login"
+                        location.href = "/user/login"
                     }
 
                 }
@@ -150,7 +150,7 @@
         function removeImage(button) {
             let fileName = $(button).val();
 
-            arr = arr.filter(function(file) {
+            arr = arr.filter(function (file) {
                 return file.name !== fileName;
             });
 
@@ -235,7 +235,7 @@
                         location.href = "boardList"; // 공지사항 리스트 이동
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error("AJAX 호출 중 에러 발생:", error);
                 },
                 timeout: 5000
@@ -250,6 +250,23 @@
 <br/>
 <br/>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        const formElement = document.getElementById("f");
+
+        function handleOnsubmit(event) {
+            console.log("onsubmit called !! ", event)
+            console.log("event : ", event)
+            alert("asdfasdf")
+
+            event.preventDefault();
+        }
+
+        formElement.addEventListener('submit', handleOnsubmit)
+
+
+    })
+</script>
 <!-- 내용 부분 -->
 <form name="f" id="f">
     <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
@@ -272,13 +289,15 @@
                 <br>
                 <!-- 내용 입력 영역 -->
                 <div class="form-group">
-                    <textarea class="form-control mx-auto" id="contents" rows="14" placeholder="내용을 입력하세요." name="contents" style="width: 98%"></textarea>
+                    <textarea class="form-control mx-auto" id="contents" rows="14" placeholder="내용을 입력하세요."
+                              name="contents" style="width: 98%"></textarea>
                     <br>
                 </div>
 
                 <!-- 파일 -->
                 <div class="card-body ">
-                    <input class="form-control" type="file" id="file" multiple name="file" accept=".jpeg, .jpg, .gif, .png">
+                    <input class="form-control" type="file" id="file" multiple name="file"
+                           accept=".jpeg, .jpg, .gif, .png">
                     <div id="preview"></div>
                 </div>
             </div>

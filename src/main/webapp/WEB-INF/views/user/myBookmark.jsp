@@ -74,7 +74,7 @@
                     console.log(json);
 
                     insertData(json.bList)
-                    // pageNation(json.currentPage, json.totalPages)
+                    // pagination(json.currentPage, json.totalPages)
 
                 },
                 error: function(xhr, status, error) {
@@ -140,6 +140,19 @@
 
         }
 
+        // 페이징
+        function pagination(currentPage, totalPages) {
+
+            let list = $("#pagination")
+            list.empty();
+
+            let pagesPerGroup = 5
+            let startPage = ((currentPage - 1) / pagesPerGroup) * pagesPerGroup + 1;
+            let endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
+
+            if ()
+        }
+
     </script>
 </head>
 <body>
@@ -173,7 +186,7 @@
 
     <!-- 페이지네이션 영역-->
     <div class="center-pagination mx-auto">
-        <ul class="pagination">
+        <ul class="pagination" id="pagination">
         </ul>
     </div>
 
