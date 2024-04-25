@@ -42,4 +42,9 @@ public interface IBoardService {
      * 게시글 삭제하기
      */
     void deleteBoard(final Long boardSeq)throws Exception;
+
+    /**
+     * 내 북마크 가져오기
+     */
+    List<BoardDTO> getMyBookmarkList(final String userId) throws Exception;
 }

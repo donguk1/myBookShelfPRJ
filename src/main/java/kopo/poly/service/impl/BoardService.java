@@ -5,6 +5,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.transaction.Transactional;
 import kopo.poly.dto.BoardDTO;
 import kopo.poly.repository.BoardRepository;
+import kopo.poly.repository.BookmarkRepository;
 import kopo.poly.repository.entity.BoardEntity;
 import kopo.poly.repository.entity.QBoardEntity;
 import kopo.poly.repository.entity.QUserInfoEntity;
@@ -23,9 +24,10 @@ import java.util.List;
 @Service
 public class BoardService implements IBoardService {
 
-    private final BoardRepository boardRepository;
-
     private final JPAQueryFactory queryFactory;
+
+    private final BoardRepository boardRepository;
+    private final BookmarkRepository bookmarkRepository;
 
     /**
      * 리스트 가져오기
@@ -161,5 +163,40 @@ public class BoardService implements IBoardService {
         boardRepository.delete(BoardEntity.builder()
                         .boardSeq(boardSeq)
                         .build());
+    }
+
+    /**
+     * 내 북마크 가져오기
+     */
+    @Transactional
+    @Override
+    public List<BoardDTO> getMyBookmarkList(String userId) throws Exception {
+
+        log.info("service 내 북마크 가져오기");
+
+        List<BoardEntity> pList = boardRepository.getMyBoardList(userId);
+
+        List<BoardDTO> bList = new ArrayList<>();
+
+        pList.forEach(e -> {
+            BoardDTO rDTO = BoardDTO.builder()
+                    .boardSeq(e.getBoardSeq())
+                    .regId(e.getRegId())
+                    .noticeYn(e.getNoticeYn())
+                    .title(e.getTitle())
+                    .category(e.getCategory())
+                    .contents(e.getContents())
+                    .commentCnt(e.getCommentCnt())
+                    .chgDt(e.getChgDt())
+                    .regDt(e.getRegDt())
+                    .readCnt(e.getReadCnt())
+                    .nickname(e.getNickname())
+                    .fileYn(e.getFileYn())
+                    .build();
+
+            bList.add(rDTO);
+        });
+
+        return bList;
     }
 }

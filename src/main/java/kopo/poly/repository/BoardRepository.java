@@ -54,7 +54,32 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
             nativeQuery = true)
     void updateReadCnt(Long boardSeq);
 
-
-
+    /**
+     * 내 북마크 가져오기
+     */
+    @Query(value =
+            "SELECT " +
+                "B.BOARD_SEQ," +
+                "B.REG_ID, " +
+                "B.NOTICE_YN," +
+                "B.TITLE," +
+                "B.CATEGORY," +
+                "B.CONTENTS," +
+                "U.NICKNAME," +
+                "TO_CHAR(B.REG_DT, 'yyyy-MM-dd') AS REG_DT, " +
+                "B.CHG_DT," +
+                "B.READ_CNT," +
+                "(SELECT COUNT(C.COMMENT_SEQ)" +
+                "FROM COMMENT C " +
+                "WHERE C.BOARD_SEQ = B.BOARD_SEQ) AS COMMENT_CNT, " +
+                "CASE WHEN EXISTS (" +
+                "SELECT 1 FROM FILE F WHERE B.BOARD_SEQ = F.BOARD_SEQ" +
+                ") THEN 'Y' ELSE 'N' END AS FILE_YN " +
+            "FROM BOARD B " +
+                "INNER JOIN BOOKMARK BM ON BM.BOARD_SEQ = B.BOARD_SEQ " +
+                "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID" +
+            "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
+    nativeQuery = true)
+    List<BoardEntity> getMyBoardList(String userId);
 
 }
