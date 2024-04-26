@@ -47,4 +47,9 @@ public interface IBoardService {
      * 내 북마크 가져오기
      */
     List<BoardDTO> getMyBookmarkList(final String userId) throws Exception;
+
+    /**
+     * 내 게시글 가져오기
+     */
+    List<BoardDTO> getMyBoard(final String userId) throws Exception;
 }

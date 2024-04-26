@@ -276,7 +276,7 @@
                         alert(json.msg)
 
                         if (json.result === 1) {
-                            location.href="login.html"
+                            location.href="login"
 
                         }
 

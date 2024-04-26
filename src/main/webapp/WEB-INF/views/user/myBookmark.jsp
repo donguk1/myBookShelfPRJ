@@ -74,7 +74,7 @@
                     console.log(json);
 
                     insertData(json.bList)
-                    // pagination(json.currentPage, json.totalPages)
+                    pagination(json.currentPage, json.totalPages)
 
                 },
                 error: function(xhr, status, error) {
@@ -123,10 +123,6 @@
                     .text(data.commentCnt)
                 listOne.append(commentCnt)
 
-                let nickname = $("<th>")
-                    .text(data.nickname)
-                listOne.append(nickname)
-
                 let regDt = $("<th>")
                     .text(data.regDt)
                 listOne.append(regDt)
@@ -142,16 +138,85 @@
 
         // 페이징
         function pagination(currentPage, totalPages) {
-
-            let list = $("#pagination")
+            let list = $(".pagination");
             list.empty();
 
-            let pagesPerGroup = 5
+            let pagesPerGroup = 5;
             let startPage = ((currentPage - 1) / pagesPerGroup) * pagesPerGroup + 1;
             let endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
 
-            if ()
+            console.log(currentPage);
+            console.log(totalPages);
+            console.log(startPage);
+            console.log(endPage);
+
+            if (startPage > 1) {
+                let prevFirstPageItem = $("<li>")
+                    .addClass("page-item")
+                    .toggleClass("disabled", currentPage === 1);
+
+                let prevFirstPageLink = $("<a>")
+                    .addClass("page-link")
+                    .attr("href", currentPage === 1 ? "#" : "/user/myBookmark?page=1")
+                    .html("&laquo;");
+
+                prevFirstPageItem.append(prevFirstPageLink);
+                list.append(prevFirstPageItem);
+
+                let prevPageItem = $("<li>")
+                    .addClass("page-item")
+                    .toggleClass("disabled", currentPage === 1);
+
+                let prevPageLink = $("<a>")
+                    .addClass("page-link")
+                    .attr("href", currentPage === 1 ? "#" : "/user/myBookmark?page=" + (startPage - 1))
+                    .html("&lt;");
+
+                prevPageItem.append(prevPageLink);
+                list.append(prevPageItem);
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                let pageItem = $("<li>")
+                    .addClass("page-item")
+                    .toggleClass("active", i === currentPage);
+
+                let pageLink = $("<a>")
+                    .addClass("page-link")
+                    .attr("href", i === currentPage ? "#" : "/user/myBookmark?page=" + i)
+                    .text(i);
+
+                pageItem.append(pageLink);
+                list.append(pageItem);
+            }
+
+            if (endPage < totalPages) {
+                let nextPageItem = $("<li>")
+                    .addClass("page-item")
+                    .toggleClass("disabled", currentPage === totalPages);
+
+                let nextPageLink = $("<a>")
+                    .addClass("page-link")
+                    .attr("href", currentPage === totalPages ? "#" : "/user/myBookmark?page=" + (endPage + 1))
+                    .html("&gt;");
+
+                nextPageItem.append(nextPageLink);
+                list.append(nextPageItem);
+
+                let nextLastPageItem = $("<li>")
+                    .addClass("page-item")
+                    .toggleClass("disabled", currentPage === totalPages);
+
+                let nextLastPageLink = $("<a>")
+                    .addClass("page-link")
+                    .attr("href", currentPage === totalPages ? "#" : "/user/myBookmark?page=" + totalPages)
+                    .html("&raquo;");
+
+                nextLastPageItem.append(nextLastPageLink);
+                list.append(nextLastPageItem);
+            }
         }
+
 
     </script>
 </head>
@@ -173,13 +238,11 @@
                 <th scope="col" style="width: 10%">카테고리</th>
                 <th scope="col" style="width: 40%">제목</th>
                 <th scope="col" style="width: 10%">댓글수</th>
-                <th scope="col" style="width: 10%">작성자</th>
                 <th scope="col" style="width: 20%">작성일</th>
                 <th scope="col" style="width: 10%">조회수</th>
             </tr>
             </thead>
             <tbody id="boardList">
-
             </tbody>
         </table>
     </div>
