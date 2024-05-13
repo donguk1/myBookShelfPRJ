@@ -14,6 +14,7 @@ import kopo.poly.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -43,27 +44,27 @@ public class BoardController {
     public String boardList(ModelMap modelMap,
                             @RequestParam(defaultValue = "1") int page) throws Exception {
 
-        List<BoardDTO> bList = boardService.getBoardList();
+//        List<BoardDTO> bList = boardService.getBoardList();
+//
+//        // 페이지당 보여줄 아이템 개수 정의
+//        int itemPerPage = 10;
+//
+//        // 페이지네이션을 위해 전체 아이템 개수 구하기
+//        int totalItems = bList.size();
+//
+//        // 전체 페이지 개수 계산
+//        int totalPages = (int) Math.ceil((double) totalItems / itemPerPage);
+//
+//        // 현재 페이지에 해당하는 아이템들만 선택하여 rList에 할당
+//        int fromIndex = (page - 1) * itemPerPage;
+//        int toIndex = Math.min(fromIndex + itemPerPage, totalItems);
+//        bList = bList.subList(fromIndex, toIndex);
+//
+//        modelMap.addAttribute("bList", bList);
+//        modelMap.addAttribute("currentPage", page);
+//        modelMap.addAttribute("totalPages", totalPages);
 
-        // 페이지당 보여줄 아이템 개수 정의
-        int itemPerPage = 10;
-
-        // 페이지네이션을 위해 전체 아이템 개수 구하기
-        int totalItems = bList.size();
-
-        // 전체 페이지 개수 계산
-        int totalPages = (int) Math.ceil((double) totalItems / itemPerPage);
-
-        // 현재 페이지에 해당하는 아이템들만 선택하여 rList에 할당
-        int fromIndex = (page - 1) * itemPerPage;
-        int toIndex = Math.min(fromIndex + itemPerPage, totalItems);
-        bList = bList.subList(fromIndex, toIndex);
-
-        modelMap.addAttribute("bList", bList);
-        modelMap.addAttribute("currentPage", page);
-        modelMap.addAttribute("totalPages", totalPages);
-
-        log.info("bList : " + bList.size());
+//        log.info("bList : " + bList.size());
 
         return "/board/boardList";
     }
@@ -222,17 +223,20 @@ public class BoardController {
      */
     @ResponseBody
     @PostMapping(value = "getBoardListPage")
-    public Page<BoardDTO> getBoardListPage(@PageableDefault(direction = Sort.Direction.DESC) Pageable pageable) throws Exception {
-
+    public Page<BoardDTO> getBoardListPage(HttpServletRequest request) throws Exception {
         log.info("controller getBoardListPage 게시글 리스트 가져오기");
 
-        log.info(pageable.toString());
+        int page = Integer.parseInt(request.getParameter("page"));
 
-        Page<BoardDTO> tmp = boardService.getBoardList(pageable);
+        if (page < 0) {
+            page = 0;
+        }
 
-        log.info("123 : " + tmp);
+        log.info(String.valueOf(page));
 
-        return tmp;
+        return boardService.getBoardList(
+                PageRequest.of(page -1,
+                        10));
     }
 
     /**
