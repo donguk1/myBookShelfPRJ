@@ -12,6 +12,8 @@ import kopo.poly.service.IBoardService;
 import kopo.poly.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -60,6 +62,14 @@ public class BoardService implements IBoardService {
         });
 
         return bList;
+    }
+
+    @Override
+    public Page<BoardDTO> getBoardList(Pageable pageable) throws Exception {
+
+        log.info("service 보드 리스트 가져오기");
+
+        return boardRepository.getBoardListPage(pageable).map(BoardDTO::from);
     }
 
     /**

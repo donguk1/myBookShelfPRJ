@@ -46,6 +46,8 @@
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
+            getBoardList()
+
             $("#btnSend").on("click", function () {
 
                 let f = document.getElementById("f");
@@ -69,15 +71,15 @@
         function getBoardList() {
 
             $.ajax({
-                url: "/board/getBoardList",
-                type: "GET",
+                url: "/board/getBoardListPage",
+                type: "POST",
                 dataType: "JSON",
                 data: {page: document.getElementsByName("page").values()},
                 success: function (json) {
                     console.log(json);
-
-                    insertData(json.bList)
-                    pageNation(json.currentPage, json.totalPages)
+                    //
+                    // insertData(json.bList)
+                    // pageNation(json.currentPage, json.totalPages)
 
                 },
                 error: function(xhr, status, error) {

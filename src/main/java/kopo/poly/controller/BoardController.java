@@ -13,6 +13,10 @@ import kopo.poly.util.CmmUtil;
 import kopo.poly.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -211,6 +215,24 @@ public class BoardController {
         map.put("bList", bList);
 
         return map;
+    }
+
+    /**
+     * 게시글 리스트 가져오기
+     */
+    @ResponseBody
+    @PostMapping(value = "getBoardListPage")
+    public Page<BoardDTO> getBoardListPage(@PageableDefault(direction = Sort.Direction.DESC) Pageable pageable) throws Exception {
+
+        log.info("controller getBoardListPage 게시글 리스트 가져오기");
+
+        log.info(pageable.toString());
+
+        Page<BoardDTO> tmp = boardService.getBoardList(pageable);
+
+        log.info("123 : " + tmp);
+
+        return tmp;
     }
 
     /**
