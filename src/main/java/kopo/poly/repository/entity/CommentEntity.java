@@ -2,6 +2,7 @@ package kopo.poly.repository.entity;
 
 
 import jakarta.persistence.*;
+import kopo.poly.repository.entity.id.CommentId;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -14,6 +15,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @Builder
 @Entity
+@IdClass(CommentId.class)
 public class CommentEntity {
 
     @Id
@@ -21,7 +23,7 @@ public class CommentEntity {
     @Column(name = "COMMENT_SEQ")
     private Long commentSeq;
 
-    @NonNull
+    @Id
     @Column(name = "BOARD_SEQ")
     private Long boardSeq;
 

@@ -253,6 +253,8 @@
                     <!-- 카테고리 -->
                     <span class="badge rounded-pill bg-secondary" id="category" style="margin-bottom: 0.5%"></span>
 
+                    <p></p>
+
                     <!-- 북마크 -->
                     <i class="fa-bookmark fa-2xl" id="bookmarkIcon" style="padding-top: 0.8%"></i>
                 </div>

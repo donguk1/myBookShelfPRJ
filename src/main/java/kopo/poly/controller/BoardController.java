@@ -6,6 +6,7 @@ import kopo.poly.dto.BoardDTO;
 import kopo.poly.dto.FileDTO;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.service.IBoardService;
+import kopo.poly.service.ICommentService;
 import kopo.poly.service.IFileService;
 import kopo.poly.service.IS3Service;
 import kopo.poly.util.CmmUtil;
@@ -28,6 +29,7 @@ import java.util.Map;
 public class BoardController {
 
     private final IBoardService boardService;
+    private final ICommentService commentService;
     private final IS3Service s3Service;
     private final IFileService fileService;
     /**

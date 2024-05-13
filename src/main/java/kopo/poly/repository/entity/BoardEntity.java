@@ -38,7 +38,7 @@ public class BoardEntity {
     private String contents;
 
     @Column(name = "READ_CNT", nullable = false)
-    Long readCnt;
+    private Long readCnt;
 
     @Column(name = "REG_DT", nullable = false, updatable = false)
     private String regDt;
