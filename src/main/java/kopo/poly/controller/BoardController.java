@@ -181,7 +181,7 @@ public class BoardController {
 
 
     /**
-     * 게시글 리스트 가져오기
+     * 게시글 리스트 가져오기(사용 X)
      */
     @ResponseBody
     @GetMapping(value = "getBoardList")
@@ -237,14 +237,18 @@ public class BoardController {
      */
     @ResponseBody
     @PostMapping(value = "getBoardInfo")
-    public BoardDTO getBoardInfo(HttpServletRequest request) throws Exception {
+    public Map<String, Object> getBoardInfo(HttpServletRequest request) throws Exception {
 
         log.info("controller 게시글 가져오기");
 
         Long bSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("bSeq")));
         Boolean type = Boolean.valueOf(CmmUtil.nvl(request.getParameter("type")));
 
-        return boardService.getBoardInfo(bSeq, type);
+        Map<String, Object> map = new HashMap<>();
+        map.put("boardInfo", boardService.getBoardInfo(bSeq, type));
+        map.put("commentList", commentService.getCommentList(bSeq));
+
+        return map;
 
     }
 
