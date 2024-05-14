@@ -30,7 +30,7 @@ public class BoardService implements IBoardService {
     private final BoardRepository boardRepository;
 
     /**
-     * 리스트 가져오기
+     * 리스트 가져오기(사용 x)
      */
     @Override
     public List<BoardDTO> getBoardList() throws Exception {
@@ -64,6 +64,9 @@ public class BoardService implements IBoardService {
         return bList;
     }
 
+    /**
+     * 리스트 가져오기(페이징 사용)
+     */
     @Override
     public Page<BoardDTO> getBoardList(Pageable pageable) throws Exception {
 
@@ -74,7 +77,6 @@ public class BoardService implements IBoardService {
 
     /**
      * 게시글 상세정보 가져오기
-     * @param boardSeq PK
      * @param type 조회수 증가여부
      */
     @Override

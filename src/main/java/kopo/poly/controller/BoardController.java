@@ -15,9 +15,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -226,17 +223,13 @@ public class BoardController {
     public Page<BoardDTO> getBoardListPage(HttpServletRequest request) throws Exception {
         log.info("controller getBoardListPage 게시글 리스트 가져오기");
 
-        int page = Integer.parseInt(request.getParameter("page"));
-
-        if (page < 0) {
-            page = 0;
-        }
+        String pageStr = request.getParameter("page");
+        int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
         log.info(String.valueOf(page));
 
         return boardService.getBoardList(
-                PageRequest.of(page -1,
-                        10));
+                PageRequest.of(page-2, 10));
     }
 
     /**
@@ -464,5 +457,13 @@ public class BoardController {
         map.put("totalPages", totalPages);
 
         return map;
+    }
+
+    public int safeParseInt(String input, int defaultValue) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            return defaultValue; // 기본값 반환
+        }
     }
 }

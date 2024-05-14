@@ -71,13 +71,25 @@
         function getBoardList() {
 
             const urlParams = new URL(location.href).searchParams;
-            const page = urlParams.get('page');
+            let page = urlParams.get('page');
+
+            // page 값이 null이거나 빈 문자열인 경우 0으로 초기화
+            if (page === null || page.trim() === "") {
+                page = 1;
+            } else {
+                page = parseInt(page, 10);
+
+                // page 값이 NaN이거나 음수인 경우 0으로 초기화
+                if (isNaN(page) || page < 0) {
+                    page = 1;
+                }
+            }
 
             $.ajax({
                 url: "/board/getBoardListPage",
                 type: "POST",
                 dataType: "JSON",
-                data: {page: page},
+                data: {page: page + 1},
                 success: function (json) {
                     console.log(json);
 
