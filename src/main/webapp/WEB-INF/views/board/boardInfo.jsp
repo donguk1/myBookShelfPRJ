@@ -16,9 +16,13 @@
         .dropdown-menu a {
             display: block;
         }
-        .dropdown-menu a:hover {background-color: #ddd;}
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
 
-        .dropdown:hover .dropdown-menu {display: block;}
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
 
         /* 드롭다운 메뉴가 나타날 때 네비게이션 바가 밀리는 현상을 방지 */
         .navbar-nav {
@@ -149,6 +153,7 @@
                     console.log(json);
 
                     insertData(json.boardInfo)
+                    insertData(json.commentList)
 
                     getBookmark()
                 }
@@ -242,6 +247,11 @@
                 document.getElementById('bookmarkIcon').classList.add('fa-regular')
             }
         }
+
+        function getCommentList(list) {
+
+        }
+
     </script>
 </head>
 <body>
@@ -308,9 +318,19 @@
 </div>
 
 <%-- 댓글 영역 --%>
-<div class="card">
-    <div class="card-body">
+<div class="card mx-auto" style="width: 95%">
+    <div class="card-body" >
         <h5 class="card-title" style="text-align: left"></h5>
+        <div class="commentArea mx-auto" style="text-align: center">
+            <textarea name="commentContents" id="commentContents" style="width: 95%; height: 80px"></textarea>
+            <button class="btn btn-primary" type="button" id="btnComment" style="width: 95%">등록</button>
+        </div>
+        <hr/>
+        <table class="table table-hover">
+            <tbody id="commentList">
+
+            </tbody>
+        </table>
     </div>
 </div>
 
