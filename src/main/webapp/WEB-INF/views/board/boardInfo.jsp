@@ -72,7 +72,6 @@
 
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
             $("#bookmarkIcon").on("click", function () {
-                bookmarkCheck()
                 bookmark()
             })
         })
@@ -147,19 +146,26 @@
                 data: data,
                 success: function (json) {
 
-                    document.getElementById("bSeq").value = bSeq;
-                    document.getElementById("regId").value = json.regId;
-                    document.getElementById("category").textContent = json.category;
-                    document.getElementById("title").textContent = json.title;
-                    document.getElementById("nickname").innerText = "작성자 : " + json.nickname;
-                    document.getElementById("regDt").innerText = "등록일 : " + json.regDt;
-                    document.getElementById("readCnt").innerText = "조회수 : " + json.readCnt;
-                    document.getElementById("contents").value = json.contents;
+                    console.log(json);
+
+                    insertData(json.boardInfo)
 
                     getBookmark()
                 }
 
             });
+        }
+
+        // 본문 내용 입력
+        function insertData(json) {
+            document.getElementById("bSeq").value = bSeq;
+            document.getElementById("regId").value = json.regId;
+            document.getElementById("category").textContent = json.category;
+            document.getElementById("title").textContent = json.title;
+            document.getElementById("nickname").innerText = "작성자 : " + json.nickname;
+            document.getElementById("regDt").innerText = "등록일 : " + json.regDt;
+            document.getElementById("readCnt").innerText = "조회수 : " + json.readCnt;
+            document.getElementById("contents").value = json.contents;
         }
 
         // 북마크
@@ -189,6 +195,8 @@
                     if (json.result === 0) {
                         alert("오류로 인해 실패 했습니다.\n" +
                             "다시 실행해주세요")
+                    } else {
+                        bookmarkCheck()
                     }
 
                 }
@@ -203,32 +211,36 @@
                 "boardSeq" : document.getElementById("bSeq").value
             }
 
-            $.ajax({
-                url: "/bookmark/getBookmark",
-                type: "post",
-                dataType: "JSON",
-                data: data,
-                success: function (json) {
+            if (ssUserId.length > 0) {
 
-                    console.log(json);
+                $.ajax({
+                    url: "/bookmark/getBookmark",
+                    type: "post",
+                    dataType: "JSON",
+                    data: data,
+                    success: function (json) {
 
-                    const element = document.getElementById('bookmarkIcon');
+                        console.log(json);
 
-                    if (json.result === 1) {
-                        element.classList.add('fa-solid');
-                        bookmaker = true;
+                        const element = document.getElementById('bookmarkIcon');
 
-                    } else {
-                        element.classList.add('fa-regular');
+                        if (json.result === 1) {
+                            element.classList.add('fa-solid');
+                            bookmaker = true;
 
-                        bookmaker = false;
+                        } else {
+                            element.classList.add('fa-regular');
+
+                            bookmaker = false;
+                        }
+
+
                     }
 
-
-                }
-
-            });
-
+                });
+            } else {
+                document.getElementById('bookmarkIcon').classList.add('fa-regular')
+            }
         }
     </script>
 </head>
@@ -293,6 +305,13 @@
         <button id="btnList" type="button" class="btn btn-outline-dark">목록</button>
     </div>
     <br>
+</div>
+
+<%-- 댓글 영역 --%>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title" style="text-align: left"></h5>
+    </div>
 </div>
 
 </body>
