@@ -2,9 +2,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Objects" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%
-    List<BoardDTO> bList = (List<BoardDTO>) request.getAttribute("bList");
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -128,7 +125,6 @@
                     })
 
                 let category = $("<th>")
-                    // .addClass("badge rounded-pill bg-secondary")
                     .text(data.category)
                 listOne.append(category)
 
@@ -138,7 +134,6 @@
                 if (data.fileYn === "Y") {
                     let fileYn = $("<i>")
                         .addClass("fa-solid fa-image")
-                        // .css({"color": "#27ADFB"})
                     title.append(fileYn)
                 }
                 listOne.append(title)
