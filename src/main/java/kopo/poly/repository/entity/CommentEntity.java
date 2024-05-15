@@ -19,20 +19,23 @@ import org.hibernate.annotations.DynamicUpdate;
 public class CommentEntity {
 
     @Id
+    @Column(name = "BOARD_SEQ")
+    private Long boardSeq;
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COMMENT_SEQ")
     private Long commentSeq;
-
-    @Id
-    @Column(name = "BOARD_SEQ")
-    private Long boardSeq;
 
     @NonNull
     @Column(name = "CONTENTS")
     private String contents;
 
+    @Column(name = "REG_ID")
+    private String regId;
+
     @Column(name = "DEPT")
-    private int dpet;
+    private int dept;
 
     @Column(name = "TARGET_SEQ")
     private Long targetSeq;

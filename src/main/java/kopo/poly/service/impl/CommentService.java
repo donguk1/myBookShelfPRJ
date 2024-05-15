@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kopo.poly.dto.CommentDTO;
 import kopo.poly.repository.CommentRepository;
+import kopo.poly.repository.entity.CommentEntity;
 import kopo.poly.service.ICommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,8 +37,19 @@ public class CommentService implements ICommentService {
      * 댓글 작성
      */
     @Override
-    public int insertComment(Long boardSeq, String userId, String contents, int dept) throws Exception {
-        return 0;
+    public void insertComment(Long boardSeq, String userId, String contents, int dept, Long targetSeq) throws Exception {
+
+        log.info("service insertComment");
+
+        CommentEntity entity = CommentEntity.builder()
+                .boardSeq(boardSeq)
+                .regId(userId)
+                .contents(contents)
+                .dept(dept)
+                .targetSeq(targetSeq)
+                .build();
+
+        commentRepository.save(entity);
     }
 
     /**

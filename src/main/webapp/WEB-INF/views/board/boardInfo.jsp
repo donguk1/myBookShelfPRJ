@@ -59,17 +59,14 @@
             getSsUserId()
             getBoardInfo()
 
-            // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
             $("#btnEdit").on("click", function () {
                 doEdit(); // 메모 수정하기 실행
             })
 
-            // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
             $("#btnDelete").on("click", function () {
                 doDelete(); // 메모 삭제하기 실행
             })
 
-            // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
             $("#btnList").on("click", function () {
                 location.href = "boardList"; // 메모 리스트 이동
             })
@@ -121,7 +118,7 @@
             console.log(document.getElementById("regId").value);
 
             if (ssUserId === document.getElementById("regId").value) {
-                location.href = "boardEditInfo?bSeq=" + document.getElementById("bSeq").value;
+                location.href = "boardEditInfo?boardSeq=" + document.getElementById("boardSeq").value;
 
             } else if (ssUserId === "") {
                 alert("로그인 하시길 바랍니다.");
@@ -164,7 +161,7 @@
         // 본문 내용 입력
         function insertData(json) {
 
-            document.getElementById("bSeq").value = json.boardSeq;
+            document.getElementById("boardSeq").value = json.boardSeq;
             document.getElementById("regId").value = json.regId;
             document.getElementById("category").textContent = json.category;
             document.getElementById("title").textContent = json.title;
@@ -187,7 +184,7 @@
             }
 
             const data = {
-                "boardSeq" : document.getElementById("bSeq").value,
+                "boardSeq" : document.getElementById("boardSeq").value,
                 "type" : bookmaker
             }
 
@@ -214,7 +211,7 @@
         function getBookmark() {
 
             const data = {
-                "boardSeq" : document.getElementById("bSeq").value
+                "boardSeq" : document.getElementById("boardSeq").value
             }
 
             console.log(data);
@@ -253,6 +250,45 @@
 
         function getCommentList(list) {
 
+
+        }
+
+        function insertComment(dept, targetSeq) {
+            const boardSeqValue = document.getElementById("boardSeq").value;
+            const contentsValue = document.getElementById("commentContents").value;
+
+            console.log(boardSeqValue);
+            console.log(contentsValue);
+
+            if (!boardSeqValue) {
+                console.error('boardSeq is empty');
+                return;
+            }
+
+            fetch('/comment/insertComment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    boardSeq: boardSeqValue,
+                    contents: contentsValue,
+                    dept: dept
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    // 추가적인 로직을 여기에 추가할 수 있습니다.
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
 
     </script>
@@ -269,7 +305,7 @@
     <div class="card-body">
         <div class="card mb-3">
             <!-- PK -->
-            <input type="hidden" id="bSeq">
+            <input type="hidden" id="boardSeq">
             <input type="hidden" id="regId">
 
             <!-- 타이틀 출력 -->
@@ -326,7 +362,7 @@
         <h5 class="card-title" style="text-align: left"></h5>
         <div class="commentArea mx-auto" style="text-align: center">
             <textarea name="commentContents" id="commentContents" style="width: 95%; height: 80px"></textarea>
-            <button class="btn btn-primary" type="button" id="btnComment" style="width: 95%">등록</button>
+            <button class="btn btn-primary" type="button" id="btnComment" style="width: 95%" onclick="insertComment(0)">등록</button>
         </div>
         <hr/>
         <table class="table table-hover">
