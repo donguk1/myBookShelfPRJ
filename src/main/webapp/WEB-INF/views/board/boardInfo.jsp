@@ -153,7 +153,7 @@
                     console.log(json);
 
                     insertData(json.boardInfo)
-                    insertData(json.commentList)
+                    // insertData(json.commentList)
 
                     getBookmark()
                 }
@@ -163,7 +163,8 @@
 
         // 본문 내용 입력
         function insertData(json) {
-            document.getElementById("bSeq").value = bSeq;
+
+            document.getElementById("bSeq").value = json.boardSeq;
             document.getElementById("regId").value = json.regId;
             document.getElementById("category").textContent = json.category;
             document.getElementById("title").textContent = json.title;
@@ -215,6 +216,8 @@
             const data = {
                 "boardSeq" : document.getElementById("bSeq").value
             }
+
+            console.log(data);
 
             if (ssUserId.length > 0) {
 
