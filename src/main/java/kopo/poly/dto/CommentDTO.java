@@ -12,6 +12,7 @@ public record CommentDTO(
         String regDt,
         String chgDt,
         Long targetSeq,
-        int dept
+        int dept,
+        String nickname
 ) {
 }

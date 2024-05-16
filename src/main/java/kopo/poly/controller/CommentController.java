@@ -75,6 +75,8 @@ public class CommentController {
 
         Long boardSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("boardSeq")));
 
+        log.info("boardSeq : " + boardSeq);
+
         return commentService.getCommentList(boardSeq);
     }
 }

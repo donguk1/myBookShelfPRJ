@@ -2,20 +2,27 @@ package kopo.poly.service.impl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import kopo.poly.dto.BoardDTO;
 import kopo.poly.dto.CommentDTO;
 import kopo.poly.repository.CommentRepository;
 import kopo.poly.repository.entity.CommentEntity;
+import kopo.poly.repository.entity.QCommentEntity;
+import kopo.poly.repository.entity.QUserInfoEntity;
 import kopo.poly.service.ICommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class CommentService implements ICommentService {
+
+    private final JPAQueryFactory queryFactory;
 
     private final CommentRepository commentRepository;
 
@@ -27,10 +34,33 @@ public class CommentService implements ICommentService {
 
         log.info("service 댓글 리스트 가져오기");
 
-        return new ObjectMapper().convertValue(
-                commentRepository.findByBoardSeqOrderByCommentSeq(boardSeq),
-                new TypeReference<>() {
-                });
+        QUserInfoEntity ue = QUserInfoEntity.userInfoEntity;
+        QCommentEntity ce = QCommentEntity.commentEntity;
+
+        List<CommentEntity> cList = queryFactory
+                .selectFrom(ce)
+                .join(ce.userInfo, ue)
+                .where(ce.boardSeq.eq(boardSeq))
+                .fetchJoin().fetch();
+        
+        List<CommentDTO> dtoList = new ArrayList<>();
+        
+        cList.forEach(commentEntity -> {
+
+            dtoList.add(CommentDTO.builder()
+                        .boardSeq(commentEntity.getBoardSeq())
+                        .commentSeq(commentEntity.getCommentSeq())
+                        .dept(commentEntity.getDept())
+                        .targetSeq(commentEntity.getTargetSeq())
+                        .regId(commentEntity.getRegId())
+                        .nickname(commentEntity.getUserInfo().getNickname())
+                        .regDt(commentEntity.getRegDt())
+                        .chgDt(commentEntity.getChgDt())
+                        .contents(commentEntity.getContents())
+                        .build());
+        });
+
+        return dtoList;
     }
 
     /**

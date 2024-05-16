@@ -47,4 +47,12 @@ public class CommentEntity {
     @Column(name = "CHG_DT")
     private String chgDt;
 
+    @Column(name = "NICKNAME")
+    private String nickname;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
+    private UserInfoEntity userInfo;
 }
+
+

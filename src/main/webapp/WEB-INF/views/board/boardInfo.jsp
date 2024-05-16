@@ -50,6 +50,8 @@
 
     <script type="text/javascript">
 
+        const urlParams = new URL(location.href).searchParams;
+
         let ssUserId;
         let bookmaker;
 
@@ -59,6 +61,10 @@
             getSsUserId()
             getBoardInfo()
             getCommentList()
+
+            $("div[id^='updateComment']").hide();
+            $("div[id^='updateRecomment']").hide();
+            $("div[id^='recommentArea']").hide();
 
             $("#btnEdit").on("click", function () {
                 doEdit(); // 메모 수정하기 실행
@@ -77,6 +83,151 @@
                 bookmark()
             })
         })
+
+        // 답글쓰기 버튼 클릭 시 답글 폼 보여주기
+        function showReRegArea(commentSeq) {
+            $("#reCommentArea_" + commentSeq).show();
+        }
+
+        // 댓글 수정 버튼 클릭 시 수정 폼 보여주기
+        function showEditArea(commentSeq) {
+            $("#baseComment_" + commentSeq).hide();
+            $("#updateComment_" + commentSeq).show();
+            console.log("commentSeq : " + commentSeq);
+        }
+
+        // 댓글 수정 취소 버튼 클릭 시 수정 폼 숨기기
+        function showHideArea(commentSeq) {
+            $("#baseComment_" + commentSeq).show();
+            $("#updateComment_" + commentSeq).hide();
+            console.log("commentSeq : " + commentSeq);
+        }
+
+        // 답글 수정 버튼 클릭 시 수정 폼 보여주기
+        function showReEditArea(commentSeq) {
+            $("#reBaseComment_" + commentSeq).hide();
+            $("#updateRecomment_" + commentSeq).show();
+            console.log("commentSeq : " + commentSeq);
+        }
+
+        // 댓글 수정 취소 버튼 클릭 시 수정 폼 숨기기
+        function showReHideArea(commentSeq) {
+            $("#reBaseComment_" + commentSeq).show();
+            $("#updateRecomment_" + commentSeq).hide();
+            console.log("commentSeq : " + commentSeq);
+        }
+
+
+
+        // 댓글 수정
+        function doCoEdit(commentSeq) {
+
+            const coUser = document.getElementById("commentUser_" + commentSeq).value;
+            const upComment = document.getElementById("upComment_" + commentSeq).value;
+            const nSeq = document.getElementById("nSeq").value;
+
+            console.log("commentSeq : " + commentSeq);
+            console.log("ssId : " + session_user_id);
+            console.log("coUser : " + coUser);
+            console.log("upComment : " + upComment);
+            console.log("nSeq : " + nSeq);
+
+            if (session_user_id === "") {
+                if (confirm("로그인 정보가 없습니다. \n로그인 하시겠습니까?")) {
+                    location.href = "/user/login";
+                }
+                return;
+
+            } else if (session_user_id === coUser) {
+
+                if (upComment === "") {
+                    alert("내용을 작성하세요.");
+                    document.getElementById("upComment_" + commentSeq).focus();
+                    return;
+
+                }
+
+                // 요청 데이터를 JavaScript 객체로 구성
+                const requestData = {
+                    upComment: upComment,
+                    nSeq: nSeq,
+                    commentSeq: commentSeq,
+                };
+
+
+                $.ajax({
+                    url: "/comment/updateComment",
+                    type: "post",
+                    dataType: "JSON",
+                    data: requestData,
+                    success: function (json) {
+                        if (json.result === 1) {
+                            alert(json.msg);
+                            location.reload();
+                        } else {
+                            alert(json.msg);
+                        }
+
+                    }
+                })
+            } else {
+                alert("본인이 쓴 글만 수정 가능합니다.")
+            }
+        }
+
+        // 댓글 삭제
+        function doCoDelete(commentSeq) {
+
+            const coUser = document.getElementById("commentUser_" + commentSeq).value;
+            const upComment = document.getElementById("upComment_" + commentSeq).value;
+            const nSeq = document.getElementById("nSeq").value;
+
+            console.log("commentSeq : " + commentSeq);
+            console.log("ssId : " + session_user_id);
+            console.log("coUser : " + coUser);
+            console.log("upComment : " + upComment);
+            console.log("nSeq : " + nSeq);
+
+            if (session_user_id === "") {
+                if (confirm("로그인 정보가 없습니다. \n로그인 하시겠습니까?")) {
+                    location.href = "/user/login";
+                }
+                return;
+
+            } else if (session_user_id === coUser) {
+
+                if (!confirm("삭제 하시겠습니까?")) {
+                    return;
+                }
+
+                // 요청 데이터를 JavaScript 객체로 구성
+                const requestData = {
+                    upComment: upComment,
+                    nSeq: nSeq,
+                    commentSeq: commentSeq,
+                };
+
+
+                $.ajax({
+                    url: "/comment/deleteComment",
+                    type: "post",
+                    dataType: "JSON",
+                    data: requestData,
+                    success: function (json) {
+
+                        alert(json.msg);
+
+                        if (json.result === 1) {
+                            location.reload();
+
+                        }
+
+                    }
+                })
+            } else {
+                alert("본인이 쓴 글만 수정 가능합니다.")
+            }
+        }
 
         // 북마크 모양 수정
         function bookmarkCheck() {
@@ -114,7 +265,6 @@
 
         //수정하기
         function doEdit() {
-
             console.log(ssUserId);
             console.log(document.getElementById("regId").value);
 
@@ -132,9 +282,6 @@
 
         // 본문 내용 가져오기
         function getBoardInfo() {
-
-            const urlParams = new URL(location.href).searchParams;
-
             $.ajax({
                 url: "/board/getBoardInfo",
                 type: "post",
@@ -153,7 +300,6 @@
 
         // 본문 내용 입력
         function insertData(json) {
-
             document.getElementById("boardSeq").value = json.boardSeq;
             document.getElementById("regId").value = json.regId;
             document.getElementById("category").textContent = json.category;
@@ -233,45 +379,19 @@
             }
         }
 
-        // 댓글 리스트 가져오기
-        function getCommentList() {
-            const urlParams = new URL(location.href).searchParams;
-
-            $.ajax({
-                url: "/comment/getCommentList",
-                type: "post",
-                dataType: "JSON",
-                data: {
-                    "boardSeq" : urlParams.get('bSeq'),
-                },
-                success: function (json) {
-
-                    console.log(json);
-
-
-
-                }
-
-            });
-        }
-
         // 댓글 달기
         function insertComment(dept, targetSeq) {
-
-            let data = {
-                'boardSeq': document.getElementById("boardSeq").value,
-                'contents': document.getElementById("commentContents").value,
-                'dept': dept,
-                'targetSeq': targetSeq
-            }
-
-            console.log(data);
 
             $.ajax({
                 url: "/comment/insertComment",
                 type: "post",
                 dataType: "JSON",
-                data: data,
+                data: {
+                    'boardSeq': document.getElementById("boardSeq").value,
+                    'contents': document.getElementById("commentContents").value,
+                    'dept': dept,
+                    'targetSeq': targetSeq
+                },
                 success: function (json) {
 
                     alert(json.msg)
@@ -283,6 +403,208 @@
 
             });
         }
+
+        // 댓글 리스트 가져오기
+        function getCommentList() {
+            $.ajax({
+                url: "/comment/getCommentList",
+                type: "post",
+                dataType: "JSON",
+                data: {
+                    "boardSeq" : urlParams.get('bSeq'),
+                },
+                success: function (json) {
+                    console.log(json);
+                    insertCommentList(json)
+                }
+            });
+        }
+
+        // 댓글 내용 입력
+        function insertCommentList(json) {
+
+            let commentList = $("#commentList")
+            commentList.empty()
+
+            json.forEach(function (data) {
+
+                let tr = $("<tr>")
+                let td = $("<td>")
+
+                // hidden userId
+                let userId = $("<input>")
+                    .attr({
+                        "type" : "hidden",
+                        "name" : "commentUser",
+                        "id" : "commentUser_" + data.regId,
+                        "value" : data.regId
+                    })
+                td.append(userId)
+
+                // hidden commentSeq
+                let commentSeq = $("<input>")
+                    .attr({
+                        "type" : "hidden",
+                        "name" : "commentSeq",
+                        "id" : "commentSeq_" + data.commentSeq,
+                        "value" : data.commentSeq
+                    })
+                td.append(commentSeq)
+
+                // nickname
+                let strong = $("<strong>")
+                    .text("작성자 : " + data.nickname);
+
+                // regDt
+                let span = $("<span>")
+                    .css("float", "right")
+                    .text("작성일 : " + data.regDt);
+                td.append($("<p>")
+                    .append(strong, span)
+                )
+
+                // 기본 상태
+                let baseComment = $("<div>")
+                    .attr("id", "baseComment_" + data.commentSeq)
+
+                // 댓글 내용
+                let readComment = $("<textarea>")
+                    .prop("readonly", true) // 또는 false
+                    .addClass("readTextarea")
+                    .text(data.contents);
+                baseComment.append(readComment)
+
+                // 답글 쓰기
+                let btnShowReRegArea = $("<button>")
+                    .addClass("btn btn-link")
+                    .attr("type", "button")
+                    .text("답글 쓰기")
+                    .click(function () {
+                        showReRegArea(data.commentSeq)
+                    })
+                baseComment.append($("<div>")
+                    .css("float", "left")
+                    .append(btnShowReRegArea)
+                )
+
+                // 수정
+                let btnShowEditArea = $("<button>")
+                    .addClass("btn btn-light btn-sm")
+                    .attr("type", "button")
+                    .text("수정")
+                    .click(function () {
+                        showEditArea(data.commentSeq)
+                    })
+
+                // 삭제
+                let btnDoCoDelete = $("<button>")
+                    .addClass("btn btn-light btn-sm")
+                    .attr("type", "button")
+                    .text("삭제")
+                    .click(function () {
+                        doCoDelete(data.commentSeq)
+                    })
+                baseComment.append($("<div>")
+                    .css("float", "right")
+                    .append(btnShowEditArea, btnDoCoDelete)
+                )
+
+                td.append(baseComment)
+
+                // 업데이트 상태
+                let updateComment = $("<div>")
+                    .attr("id", "updateComment_" + data.commentSeq)
+
+                // 수정 가능한 댓글 내용
+                let updateTextarea = $("<textarea>")
+                    .attr({
+                        "name" : "upComment",
+                        "id" : "upComment_" + data.commentSeq,
+                        "row": "3",
+                    })
+                    .css("width" , "95%")
+                    .text(data.contents)
+
+                updateComment.append($("<div>")
+                        .addClass("commentArea mx-auto")
+                        .append(updateTextarea),
+                    $("<br>")
+                )
+
+                // 수정
+                let btnDoCoEdit = $("<button>")
+                    .addClass("btn btn-light btn-sm")
+                    .attr("type", "button")
+                    .text("수정")
+                    .click(function () {
+                        doCoEdit(data.commentSeq)
+                    })
+
+                // 취소
+                let btnShowHideArea = $("<button>")
+                    .addClass("btn btn-light btn-sm")
+                    .attr("type", "button")
+                    .text("취소")
+                    .click(function () {
+                        showHideArea(data.commentSeq)
+                    })
+                updateComment.append($("<div>")
+                    .css("float", "right")
+                    .append(btnDoCoEdit, btnShowHideArea)
+                )
+
+                td.append(updateComment)
+
+                // 답글부
+                let reCommentArea = $("<div>")
+                    .addClass("commentArea mx-auto")
+                    .css("text-align", "center")
+                    .attr("id", "reCommentArea_" + data.commentSeq)
+
+                // 답글 작성
+                let reContent = $("<textarea>")
+                    .attr({
+                        "name" : "commentReContents",
+                        "id" : "commentReContents_" + data.commentSeq
+                    })
+                    .css({
+                        "width" : "95%",
+                        "height" : "80px"
+                    })
+                reCommentArea.append(reContent)
+
+                // 답글 등록 버튼
+                let btnReComment = $("<button>")
+                    .addClass("btn btn-primary")
+                    .attr("type", "button")
+                    .css("width", "95%")
+                    .click(function (){
+                        doReComment(data.commentSeq)
+                    })
+                    .text("답글 등록")
+                reCommentArea.append(btnReComment)
+
+                td.append(reCommentArea)
+                tr.append(td)
+                commentList.append(tr)
+            })
+
+            $("div[id^='updateComment']").hide();
+            $("div[id^='updateRecomment']").hide();
+            $("div[id^='reCommentArea']").hide();
+
+            // textarea 요소 찾기
+            let textarea = $('.readTextarea');
+
+            // 각 textarea에 대해 실행
+            textarea.each(function () {
+                this.style.height = 'auto'; // 초기 높이 설정
+
+                // 스크롤 높이 설정
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+        }
+
 
     </script>
 </head>
