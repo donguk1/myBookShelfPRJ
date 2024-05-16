@@ -146,8 +146,7 @@
 
                     console.log(json);
 
-                    insertData(json.boardInfo)
-                    // insertData(json.commentList)
+                    insertData(json)
 
                     getBookmark()
                 }
@@ -260,11 +259,9 @@
                 data: data,
                 success: function (json) {
 
-                    if (json.result === 0) {
-                        alert("오류로 인해 실패 했습니다.\n" +
-                            "다시 실행해주세요")
-                    } else {
-                        bookmarkCheck()
+                    alert(json.msg)
+                    if (json.result === 1) {
+                        getCommentList()
                     }
 
                 }
