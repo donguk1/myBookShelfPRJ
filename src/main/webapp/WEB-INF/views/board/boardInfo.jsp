@@ -58,6 +58,7 @@
 
             getSsUserId()
             getBoardInfo()
+            getCommentList()
 
             $("#btnEdit").on("click", function () {
                 doEdit(); // 메모 수정하기 실행
@@ -144,13 +145,9 @@
                 },
                 success: function (json) {
 
-                    console.log(json);
-
                     insertData(json)
-
                     getBookmark()
                 }
-
             });
         }
 
@@ -236,11 +233,29 @@
             }
         }
 
-        function getCommentList(list) {
+        // 댓글 리스트 가져오기
+        function getCommentList() {
+            const urlParams = new URL(location.href).searchParams;
+
+            $.ajax({
+                url: "/comment/getCommentList",
+                type: "post",
+                dataType: "JSON",
+                data: {
+                    "boardSeq" : urlParams.get('bSeq'),
+                },
+                success: function (json) {
+
+                    console.log(json);
 
 
+
+                }
+
+            });
         }
 
+        // 댓글 달기
         function insertComment(dept, targetSeq) {
 
             let data = {

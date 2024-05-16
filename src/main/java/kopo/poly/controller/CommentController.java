@@ -2,6 +2,7 @@ package kopo.poly.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kopo.poly.dto.CommentDTO;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.service.ICommentService;
 import kopo.poly.util.CmmUtil;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping(value = "comment")
@@ -21,7 +24,7 @@ public class CommentController {
     private final ICommentService commentService;
 
     /**
-     * 댓글 닭기
+     * 댓글 달기
      */
     @PostMapping(value = "insertComment")
     public MsgDTO insertComment(HttpServletRequest request, HttpSession session) throws Exception {
@@ -62,5 +65,16 @@ public class CommentController {
                 .build();
     }
 
+    /**
+     * 댓글 리스트 가져오기
+     */
+    @PostMapping(value = "getCommentList")
+    public List<CommentDTO> getCommentList(HttpServletRequest request) throws Exception {
 
+        log.info("controller getCommentList");
+
+        Long boardSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("boardSeq")));
+
+        return commentService.getCommentList(boardSeq);
+    }
 }
