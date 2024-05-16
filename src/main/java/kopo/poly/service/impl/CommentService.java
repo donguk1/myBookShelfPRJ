@@ -37,16 +37,32 @@ public class CommentService implements ICommentService {
      * 댓글 작성
      */
     @Override
-    public void insertComment(Long boardSeq, String userId, String contents, int dept, Long targetSeq) throws Exception {
+    public void insertComment(Long boardSeq,
+                              String userId,
+                              String contents,
+                              int dept,
+                              Long targetSeq,
+                              String dt) throws Exception {
 
         log.info("service insertComment");
 
+        CommentEntity pEntity = commentRepository.findTopByBoardSeq(boardSeq);
+
+        if (pEntity == null) {
+            pEntity = CommentEntity.builder()
+                    .commentSeq(0L)
+                    .build();
+        }
+
         CommentEntity entity = CommentEntity.builder()
                 .boardSeq(boardSeq)
+                .commentSeq(pEntity.getCommentSeq() + 1)
                 .regId(userId)
                 .contents(contents)
                 .dept(dept)
                 .targetSeq(targetSeq)
+                .regDt(dt)
+                .chgDt(dt)
                 .build();
 
         commentRepository.save(entity);

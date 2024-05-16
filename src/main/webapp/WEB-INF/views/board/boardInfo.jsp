@@ -133,18 +133,15 @@
         function getBoardInfo() {
 
             const urlParams = new URL(location.href).searchParams;
-            const bSeq = urlParams.get('bSeq');
-
-            const data = {
-                "bSeq" : bSeq,
-                "type" : true
-            }
 
             $.ajax({
                 url: "/board/getBoardInfo",
                 type: "post",
                 dataType: "JSON",
-                data: data,
+                data: {
+                    "bSeq" : urlParams.get('bSeq'),
+                    "type" : true
+                },
                 success: function (json) {
 
                     console.log(json);
@@ -210,22 +207,14 @@
         // 북마크 여부 가져오기
         function getBookmark() {
 
-            const data = {
-                "boardSeq" : document.getElementById("boardSeq").value
-            }
-
-            console.log(data);
-
             if (ssUserId.length > 0) {
 
                 $.ajax({
                     url: "/bookmark/getBookmark",
                     type: "post",
                     dataType: "JSON",
-                    data: data,
+                    data: {"boardSeq" : document.getElementById("boardSeq").value},
                     success: function (json) {
-
-                        console.log(json);
 
                         const element = document.getElementById('bookmarkIcon');
 
@@ -254,41 +243,33 @@
         }
 
         function insertComment(dept, targetSeq) {
-            const boardSeqValue = document.getElementById("boardSeq").value;
-            const contentsValue = document.getElementById("commentContents").value;
 
-            console.log(boardSeqValue);
-            console.log(contentsValue);
-
-            if (!boardSeqValue) {
-                console.error('boardSeq is empty');
-                return;
+            let data = {
+                'boardSeq': document.getElementById("boardSeq").value,
+                'contents': document.getElementById("commentContents").value,
+                'dept': dept,
+                'targetSeq': targetSeq
             }
 
-            fetch('/comment/insertComment', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    boardSeq: boardSeqValue,
-                    contents: contentsValue,
-                    dept: dept
-                })
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
+            console.log(data);
+
+            $.ajax({
+                url: "/comment/insertComment",
+                type: "post",
+                dataType: "JSON",
+                data: data,
+                success: function (json) {
+
+                    if (json.result === 0) {
+                        alert("오류로 인해 실패 했습니다.\n" +
+                            "다시 실행해주세요")
+                    } else {
+                        bookmarkCheck()
                     }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log(data);
-                    // 추가적인 로직을 여기에 추가할 수 있습니다.
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+
+                }
+
+            });
         }
 
     </script>
@@ -362,7 +343,7 @@
         <h5 class="card-title" style="text-align: left"></h5>
         <div class="commentArea mx-auto" style="text-align: center">
             <textarea name="commentContents" id="commentContents" style="width: 95%; height: 80px"></textarea>
-            <button class="btn btn-primary" type="button" id="btnComment" style="width: 95%" onclick="insertComment(0)">등록</button>
+            <button class="btn btn-primary" type="button" id="btnComment" style="width: 95%" onclick="insertComment(0, 0)">등록</button>
         </div>
         <hr/>
         <table class="table table-hover">

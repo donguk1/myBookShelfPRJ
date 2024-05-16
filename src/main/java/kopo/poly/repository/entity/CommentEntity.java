@@ -2,8 +2,11 @@ package kopo.poly.repository.entity;
 
 
 import jakarta.persistence.*;
-import kopo.poly.repository.entity.id.CommentId;
-import lombok.*;
+import kopo.poly.repository.entity.PK.CommentPK;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -15,7 +18,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @Builder
 @Entity
-@IdClass(CommentId.class)
+@IdClass(CommentPK.class)
 public class CommentEntity {
 
     @Id
@@ -23,11 +26,9 @@ public class CommentEntity {
     private Long boardSeq;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COMMENT_SEQ")
     private Long commentSeq;
 
-    @NonNull
     @Column(name = "CONTENTS")
     private String contents;
 
@@ -45,4 +46,5 @@ public class CommentEntity {
 
     @Column(name = "CHG_DT")
     private String chgDt;
+
 }

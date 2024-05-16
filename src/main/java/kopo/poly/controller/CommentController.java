@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpSession;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.service.ICommentService;
 import kopo.poly.util.CmmUtil;
+import kopo.poly.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,8 +37,16 @@ public class CommentController {
             String contents = CmmUtil.nvl(request.getParameter("contents"));
             int dept = Integer.parseInt(CmmUtil.nvl(request.getParameter("dept")));
             Long targetSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("targetSeq")));
+            String dt = DateUtil.getDateTime("yyyy-MM-dd hh:mm:ss");
 
-            commentService.insertComment(boardSeq, userId, contents, dept, targetSeq);
+            log.info("boardSeq : " + boardSeq);
+            log.info("userId : " + userId);
+            log.info("contents : " + contents);
+            log.info("dept : " + dept);
+            log.info("targetSeq : " + targetSeq);
+            log.info("dt : " + dt);
+
+            commentService.insertComment(boardSeq, userId, contents, dept, targetSeq, dt);
 
         } catch (Exception e) {
             log.info(e.toString());

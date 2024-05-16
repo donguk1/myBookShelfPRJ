@@ -15,10 +15,11 @@ public interface ICommentService {
      * 댓글 작성
      */
     void insertComment(final Long boardSeq,
-                      final String userId,
-                      final String contents,
-                      final int dept,
-                      final Long targetSeq) throws Exception;
+                        final String userId,
+                        final String contents,
+                        final int dept,
+                        final Long targetSeq,
+                        final String dt) throws Exception;
 
     /**
      * 댓글 삭제
