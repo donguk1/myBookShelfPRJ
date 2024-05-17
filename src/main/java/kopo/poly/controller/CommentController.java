@@ -80,6 +80,9 @@ public class CommentController {
         return commentService.getCommentList(boardSeq);
     }
 
+    /**
+     * 댓글 수정하기
+     */
     @PostMapping(value = "updateComment")
     public MsgDTO updateComment(HttpServletRequest request, HttpSession session) throws Exception {
 
@@ -96,6 +99,39 @@ public class CommentController {
 
         try {
             commentService.updateComment(boardSeq, commentSeq, userId, contents, dt);
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+
+            msg = "오류로 인해 실패하였습니다. \n다시 시도해 주세요";
+            res = 0;
+
+        }
+
+        return MsgDTO.builder()
+                .msg(msg)
+                .result(res)
+                .build();
+    }
+
+    /**
+     * 댓글 삭제하기
+     */
+    @PostMapping(value = "deleteComment")
+    public MsgDTO deleteComment(HttpServletRequest request, HttpSession session) throws Exception {
+
+        log.info("controller updateComment");
+
+        Long boardSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("boardSeq")));
+        Long commentSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("commentSeq")));
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+
+        String msg = "수정 되었습니다.";
+        int res = 1;
+
+        try {
+            commentService.deleteComment(boardSeq, commentSeq, userId);
 
         } catch (Exception e) {
             log.info(e.toString());

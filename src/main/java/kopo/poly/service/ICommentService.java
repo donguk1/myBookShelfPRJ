@@ -24,8 +24,9 @@ public interface ICommentService {
     /**
      * 댓글 삭제
      */
-    void deleteComment(final Long commentSeq,
-                      final String userId) throws Exception;
+    void deleteComment(final Long boardSeq,
+                       final Long commentSeq,
+                       final String userId) throws Exception;
 
     /**
      * 댓글 수정

@@ -98,9 +98,15 @@ public class CommentService implements ICommentService {
      * 댓글 삭제
      */
     @Override
-    public void deleteComment(Long commentSeq, String userId) throws Exception {
+    public void deleteComment(Long boardSeq, Long commentSeq, String userId) throws Exception {
 
+        log.info("service deleteComment");
 
+        commentRepository.delete(CommentEntity.builder()
+                        .boardSeq(boardSeq)
+                        .commentSeq(commentSeq)
+                        .regId(userId)
+                        .build());
     }
 
     /**

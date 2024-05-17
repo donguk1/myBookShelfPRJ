@@ -154,18 +154,17 @@
                     commentSeq: commentSeq,
                 };
 
-
                 $.ajax({
                     url: "/comment/updateComment",
                     type: "post",
                     dataType: "JSON",
                     data: requestData,
                     success: function (json) {
+
+                        alert(json.msg);
+
                         if (json.result === 1) {
-                            alert(json.msg);
                             getCommentList()
-                        } else {
-                            alert(json.msg);
                         }
 
                     }
@@ -180,21 +179,21 @@
 
             const coUser = document.getElementById("commentUser_" + commentSeq).value;
             const upComment = document.getElementById("upComment_" + commentSeq).value;
-            const nSeq = document.getElementById("nSeq").value;
+            const boardSeq = document.getElementById("boardSeq").value;
 
             console.log("commentSeq : " + commentSeq);
-            console.log("ssId : " + session_user_id);
+            console.log("ssUserId : " + ssUserId);
             console.log("coUser : " + coUser);
             console.log("upComment : " + upComment);
-            console.log("nSeq : " + nSeq);
+            console.log("boardSeq : " + boardSeq);
 
-            if (session_user_id === "") {
+            if (ssUserId === "") {
                 if (confirm("로그인 정보가 없습니다. \n로그인 하시겠습니까?")) {
                     location.href = "/user/login";
                 }
                 return;
 
-            } else if (session_user_id === coUser) {
+            } else if (ssUserId === coUser) {
 
                 if (!confirm("삭제 하시겠습니까?")) {
                     return;
@@ -203,10 +202,9 @@
                 // 요청 데이터를 JavaScript 객체로 구성
                 const requestData = {
                     upComment: upComment,
-                    nSeq: nSeq,
+                    boardSeq: boardSeq,
                     commentSeq: commentSeq,
                 };
-
 
                 $.ajax({
                     url: "/comment/deleteComment",
@@ -218,8 +216,7 @@
                         alert(json.msg);
 
                         if (json.result === 1) {
-                            location.reload();
-
+                            getCommentList()
                         }
 
                     }
