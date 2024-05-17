@@ -97,6 +97,7 @@ public class CommentService implements ICommentService {
     /**
      * 댓글 삭제
      */
+    @Transactional
     @Override
     public void deleteComment(Long boardSeq, Long commentSeq, String userId) throws Exception {
 
