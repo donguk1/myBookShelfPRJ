@@ -17,4 +17,6 @@ public interface CommentRepository extends JpaRepository<CommentEntity, CommentP
 
     CommentEntity findTopByBoardSeq(Long boardSeq) throws Exception;
 
+    Long countByBoardSeq(Long boardSeq) throws Exception;
+
 }

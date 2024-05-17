@@ -403,6 +403,8 @@
                     alert(json.msg)
                     if (json.result === 1) {
                         getCommentList()
+
+                        document.getElementById("commentContents").value = ""
                     }
 
                 }

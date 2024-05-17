@@ -64,7 +64,6 @@ public class CommentService implements ICommentService {
     /**
      * 댓글 작성
      */
-    @Transactional
     @Override
     public void insertComment(Long boardSeq,
                               String userId,
@@ -75,17 +74,15 @@ public class CommentService implements ICommentService {
 
         log.info("service insertComment");
 
-        CommentEntity pEntity = commentRepository.findTopByBoardSeq(boardSeq);
+        Long commentSeq = commentRepository.countByBoardSeq(boardSeq);
 
-        if (pEntity == null) {
-            pEntity = CommentEntity.builder()
-                    .commentSeq(0L)
-                    .build();
+        if (commentSeq == null) {
+            commentSeq = 0L;
         }
 
         CommentEntity entity = CommentEntity.builder()
                 .boardSeq(boardSeq)
-                .commentSeq(pEntity.getCommentSeq() + 1)
+                .commentSeq(commentSeq + 1)
                 .regId(userId)
                 .contents(contents)
                 .dept(dept)
