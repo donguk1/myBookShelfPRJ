@@ -127,7 +127,7 @@ public class CommentController {
         Long commentSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("commentSeq")));
         String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
 
-        String msg = "수정 되었습니다.";
+        String msg = "삭제 되었습니다.";
         int res = 1;
 
         try {

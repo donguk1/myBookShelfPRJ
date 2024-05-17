@@ -24,6 +24,28 @@ public class CommentService implements ICommentService {
 
     private final CommentRepository commentRepository;
 
+    private List<CommentEntity> getChildren(List<CommentEntity> parents, Long boardSeq) {
+
+        List<CommentEntity> result = new ArrayList<>();
+
+        QUserInfoEntity ue = QUserInfoEntity.userInfoEntity;
+        QCommentEntity ce = QCommentEntity.commentEntity;
+
+        for (CommentEntity parent : parents) {
+            result.add(parent);
+
+            List<CommentEntity> children = queryFactory
+                    .selectFrom(ce)
+                    .join(ce.userInfo, ue).fetchJoin()
+                    .where(ce.targetSeq.eq(parent.getCommentSeq()))
+                    .fetch();
+
+            result.addAll(getChildren(children, boardSeq));
+        }
+
+        return result;
+    }
+
     /**
      * 댓글 리스트 가져오기
      */
@@ -37,13 +59,16 @@ public class CommentService implements ICommentService {
 
         List<CommentEntity> cList = queryFactory
                 .selectFrom(ce)
-                .join(ce.userInfo, ue)
-                .where(ce.boardSeq.eq(boardSeq))
-                .fetchJoin().fetch();
-        
+                .join(ce.userInfo, ue).fetchJoin()
+                .where(ce.boardSeq.eq(boardSeq),
+                        ce.targetSeq.isNull())
+                .fetch();
+
+        List<CommentEntity> hierarchicalResult  = getChildren(cList, boardSeq);
+
         List<CommentDTO> dtoList = new ArrayList<>();
-        
-        cList.forEach(commentEntity -> {
+
+        hierarchicalResult .forEach(commentEntity -> {
 
             dtoList.add(CommentDTO.builder()
                         .boardSeq(commentEntity.getBoardSeq())
