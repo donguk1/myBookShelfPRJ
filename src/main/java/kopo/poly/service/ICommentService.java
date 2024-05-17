@@ -24,15 +24,17 @@ public interface ICommentService {
     /**
      * 댓글 삭제
      */
-    int deleteComment(final Long commentSeq,
+    void deleteComment(final Long commentSeq,
                       final String userId) throws Exception;
 
     /**
      * 댓글 수정
      */
-    int updateComment(final Long commentSeq,
+    void updateComment(final Long boardSeq,
+                      final Long commentSeq,
                       final String userId,
-                      final String contents) throws Exception;
+                      final String contents,
+                      final String dt) throws Exception;
 
     /**
      * 대댓글 작성

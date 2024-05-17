@@ -35,13 +35,13 @@ public class CommentEntity {
     @Column(name = "REG_ID")
     private String regId;
 
-    @Column(name = "DEPT")
+    @Column(name = "DEPT", updatable = false)
     private int dept;
 
-    @Column(name = "TARGET_SEQ")
+    @Column(name = "TARGET_SEQ", updatable = false)
     private Long targetSeq;
 
-    @Column(name = "REG_DT")
+    @Column(name = "REG_DT", updatable = false)
     private String regDt;
 
     @Column(name = "CHG_DT")

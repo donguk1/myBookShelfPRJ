@@ -1,9 +1,6 @@
 package kopo.poly.service.impl;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import kopo.poly.dto.BoardDTO;
 import kopo.poly.dto.CommentDTO;
 import kopo.poly.repository.CommentRepository;
 import kopo.poly.repository.entity.CommentEntity;
@@ -13,6 +10,7 @@ import kopo.poly.service.ICommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +64,7 @@ public class CommentService implements ICommentService {
     /**
      * 댓글 작성
      */
+    @Transactional
     @Override
     public void insertComment(Long boardSeq,
                               String userId,
@@ -102,15 +101,28 @@ public class CommentService implements ICommentService {
      * 댓글 삭제
      */
     @Override
-    public int deleteComment(Long commentSeq, String userId) throws Exception {
-        return 0;
+    public void deleteComment(Long commentSeq, String userId) throws Exception {
+
+
     }
 
     /**
      * 댓글 수정
      */
+    @Transactional
     @Override
-    public int updateComment(Long commentSeq, String userId, String contents) throws Exception {
-        return 0;
+    public void updateComment(Long boardSeq, Long commentSeq, String userId, String contents, String dt) throws Exception {
+
+        log.info("service updateComment");
+
+        CommentEntity entity = CommentEntity.builder()
+                .boardSeq(boardSeq)
+                .commentSeq(commentSeq)
+                .regId(userId)
+                .contents(contents)
+                .chgDt(dt)
+                .build();
+
+        commentRepository.save(entity);
     }
 }

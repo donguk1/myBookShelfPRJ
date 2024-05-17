@@ -124,21 +124,21 @@
 
             const coUser = document.getElementById("commentUser_" + commentSeq).value;
             const upComment = document.getElementById("upComment_" + commentSeq).value;
-            const nSeq = document.getElementById("nSeq").value;
+            const boardSeq = document.getElementById("boardSeq").value;
 
             console.log("commentSeq : " + commentSeq);
-            console.log("ssId : " + session_user_id);
+            console.log("ssUserId : " + ssUserId);
             console.log("coUser : " + coUser);
             console.log("upComment : " + upComment);
-            console.log("nSeq : " + nSeq);
+            console.log("boardSeq : " + boardSeq);
 
-            if (session_user_id === "") {
+            if (ssUserId === "") {
                 if (confirm("로그인 정보가 없습니다. \n로그인 하시겠습니까?")) {
                     location.href = "/user/login";
                 }
                 return;
 
-            } else if (session_user_id === coUser) {
+            } else if (ssUserId === coUser) {
 
                 if (upComment === "") {
                     alert("내용을 작성하세요.");
@@ -150,7 +150,7 @@
                 // 요청 데이터를 JavaScript 객체로 구성
                 const requestData = {
                     upComment: upComment,
-                    nSeq: nSeq,
+                    boardSeq: boardSeq,
                     commentSeq: commentSeq,
                 };
 
@@ -163,7 +163,7 @@
                     success: function (json) {
                         if (json.result === 1) {
                             alert(json.msg);
-                            location.reload();
+                            getCommentList()
                         } else {
                             alert(json.msg);
                         }
@@ -382,6 +382,12 @@
         // 댓글 달기
         function insertComment(dept, targetSeq) {
 
+            if (document.getElementById("commentContents").value === "") {
+                alert("내용 입력 후 등록 가능합니다.")
+                document.getElementById("commentContents").focus()
+                return
+            }
+
             $.ajax({
                 url: "/comment/insertComment",
                 type: "post",
@@ -414,7 +420,6 @@
                     "boardSeq" : urlParams.get('bSeq'),
                 },
                 success: function (json) {
-                    console.log(json);
                     insertCommentList(json)
                 }
             });
@@ -436,7 +441,7 @@
                     .attr({
                         "type" : "hidden",
                         "name" : "commentUser",
-                        "id" : "commentUser_" + data.regId,
+                        "id" : "commentUser_" + data.commentSeq,
                         "value" : data.regId
                     })
                 td.append(userId)
