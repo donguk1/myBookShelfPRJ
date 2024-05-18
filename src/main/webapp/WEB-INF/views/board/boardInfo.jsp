@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
     <style type="text/css">
         .dropdown-menu {
             right: 0;
@@ -379,9 +380,40 @@
         // 댓글 달기
         function insertComment(dept, targetSeq) {
 
-            if (document.getElementById("commentContents").value === "") {
+            // 댓글용
+            if (targetSeq === 0) {
+                if (document.getElementById("commentContents").value === "") {
+                    alert("내용 입력 후 등록 가능합니다.")
+                    document.getElementById("commentContents").focus()
+                    return
+
+                }
+
+                $.ajax({
+                    url: "/comment/insertComment",
+                    type: "post",
+                    dataType: "JSON",
+                    data: {
+                        'boardSeq': document.getElementById("boardSeq").value,
+                        'contents': document.getElementById("commentContents").value,
+                        'dept': dept,
+                        'targetSeq': targetSeq
+                    },
+                    success: function (json) {
+
+                        alert(json.msg)
+                        if (json.result === 1) {
+                            getCommentList()
+
+                            document.getElementById("commentContents").value = ""
+                        }
+
+                    }
+                })
+                // 대댓글용
+            }  else if (document.getElementById("commentReContents_" + targetSeq).value === "") {
                 alert("내용 입력 후 등록 가능합니다.")
-                document.getElementById("commentContents").focus()
+                document.getElementById(targetSeq).focus()
                 return
             }
 
@@ -391,7 +423,7 @@
                 dataType: "JSON",
                 data: {
                     'boardSeq': document.getElementById("boardSeq").value,
-                    'contents': document.getElementById("commentContents").value,
+                    'contents': document.getElementById("commentReContents_" + targetSeq).value,
                     'dept': dept,
                     'targetSeq': targetSeq
                 },
@@ -436,6 +468,25 @@
 
                 let tr = $("<tr>")
                 let td = $("<td>")
+                    .css({
+                        width: data.dept === 1 ? '90%' : '',
+                        float: data.dept === 1 ? 'right' : ''
+                    });
+
+                if (data.dept === 1) {
+                    let div = $("<div>")
+                        .css({
+                            "width" : "5%",
+                            "float" : "left"
+                        })
+
+                    let i = $("<i>")
+                        .addClass("fa-solid fa-turn-up fa-rotate-90 fa-lg")
+                        .css("color", "#839db8")
+
+                    div.append(i)
+                    td.append(div)
+                }
 
                 // hidden userId
                 let userId = $("<input>")
@@ -481,17 +532,19 @@
                 baseComment.append(readComment)
 
                 // 답글 쓰기
-                let btnShowReRegArea = $("<button>")
-                    .addClass("btn btn-link")
-                    .attr("type", "button")
-                    .text("답글 쓰기")
-                    .click(function () {
-                        showReRegArea(data.commentSeq)
-                    })
-                baseComment.append($("<div>")
-                    .css("float", "left")
-                    .append(btnShowReRegArea)
-                )
+                if (data.dept === 0 ) {
+                    let btnShowReRegArea = $("<button>")
+                        .addClass("btn btn-link")
+                        .attr("type", "button")
+                        .text("답글 쓰기")
+                        .click(function () {
+                            showReRegArea(data.commentSeq)
+                        })
+                    baseComment.append($("<div>")
+                        .css("float", "left")
+                        .append(btnShowReRegArea)
+                    )
+                }
 
                 // 수정
                 let btnShowEditArea = $("<button>")
@@ -562,35 +615,37 @@
                 td.append(updateComment)
 
                 // 답글부
-                let reCommentArea = $("<div>")
-                    .addClass("commentArea mx-auto")
-                    .css("text-align", "center")
-                    .attr("id", "reCommentArea_" + data.commentSeq)
+                if (data.dept === 0) {
+                    let reCommentArea = $("<div>")
+                        .addClass("commentArea mx-auto")
+                        .css("text-align", "center")
+                        .attr("id", "reCommentArea_" + data.commentSeq)
 
-                // 답글 작성
-                let reContent = $("<textarea>")
-                    .attr({
-                        "name" : "commentReContents",
-                        "id" : "commentReContents_" + data.commentSeq
-                    })
-                    .css({
-                        "width" : "95%",
-                        "height" : "80px"
-                    })
-                reCommentArea.append(reContent)
+                    // 답글 작성
+                    let reContent = $("<textarea>")
+                        .attr({
+                            "name": "commentReContents",
+                            "id": "commentReContents_" + data.commentSeq
+                        })
+                        .css({
+                            "width": "95%",
+                            "height": "80px"
+                        })
+                    reCommentArea.append(reContent)
 
-                // 답글 등록 버튼
-                let btnReComment = $("<button>")
-                    .addClass("btn btn-primary")
-                    .attr("type", "button")
-                    .css("width", "95%")
-                    .click(function (){
-                        doReComment(data.commentSeq)
-                    })
-                    .text("답글 등록")
-                reCommentArea.append(btnReComment)
+                    // 답글 등록 버튼
+                    let btnReComment = $("<button>")
+                        .addClass("btn btn-primary")
+                        .attr("type", "button")
+                        .css("width", "95%")
+                        .click(function () {
+                            insertComment(1, data.commentSeq)
+                        })
+                        .text("답글 등록")
+                    reCommentArea.append(btnReComment)
+                    td.append(reCommentArea)
+                }
 
-                td.append(reCommentArea)
                 tr.append(td)
                 commentList.append(tr)
             })
