@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Board</title>
+    <title>myBookMark</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,6 +40,8 @@
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
     <script th:inline="javascript">
 
+        let currentPage
+
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
@@ -63,18 +65,32 @@
         function getMyBookmark() {
 
             const urlParams = new URL(location.href).searchParams;
-            const page = urlParams.get('page');
+            currentPage = urlParams.get('page');
+
+            // page 값이 null이거나 빈 문자열인 경우 0으로 초기화
+            if (currentPage === null || currentPage.trim() === "") {
+                currentPage = 1;
+            } else {
+                currentPage = parseInt(currentPage, 10);
+
+                // page 값이 NaN이거나 음수인 경우 0으로 초기화
+                if (isNaN(currentPage) || currentPage < 0) {
+                    currentPage = 1;
+                }
+            }
+
+            currentPage++
 
             $.ajax({
                 url: "/board/getMyBookmark",
                 type: "POST",
                 dataType: "JSON",
-                data: {"page" : page},
+                data: {"page" : currentPage},
                 success: function (json) {
                     console.log(json);
 
-                    insertData(json.bList)
-                    pagination(json.currentPage, json.totalPages)
+                    insertData(json.content)
+                    pagination(json.totalPages)
 
                 },
                 error: function(xhr, status, error) {
@@ -95,7 +111,7 @@
 
             bList.forEach(function (data) {
 
-                console.log(data);
+                // console.log(data);
 
                 let listOne = $("<tr>")
                     .addClass("listOne table-light")
@@ -104,7 +120,6 @@
                     })
 
                 let category = $("<th>")
-                    // .addClass("badge rounded-pill bg-secondary")
                     .text(data.category)
                 listOne.append(category)
 
@@ -114,7 +129,6 @@
                 if (data.fileYn === "Y") {
                     let fileYn = $("<i>")
                         .addClass("fa-solid fa-image")
-                        // .css({"color": "#27ADFB"})
                     title.append(fileYn)
                 }
                 listOne.append(title)
@@ -122,6 +136,10 @@
                 let commentCnt = $("<th>")
                     .text(data.commentCnt)
                 listOne.append(commentCnt)
+
+                let nickname = $("<th>")
+                    .text(data.nickname)
+                listOne.append(nickname)
 
                 let regDt = $("<th>")
                     .text(data.regDt)
@@ -137,27 +155,28 @@
         }
 
         // 페이징
-        function pagination(currentPage, totalPages) {
-            let list = $(".pagination");
+        function pagination(totalPages) {
+            let list = $("#pagination");
             list.empty();
 
             let pagesPerGroup = 5;
-            let startPage = ((currentPage - 1) / pagesPerGroup) * pagesPerGroup + 1;
+            let startPage = ((currentPage -2) / pagesPerGroup) * pagesPerGroup + 1;
             let endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
+            let page = currentPage - 1
 
-            console.log(currentPage);
-            console.log(totalPages);
-            console.log(startPage);
-            console.log(endPage);
+            console.log("page : ", page);
+            console.log("totalPages : ", totalPages);
+            console.log("startPage : ", startPage);
+            console.log("endPage : ", endPage);
 
             if (startPage > 1) {
                 let prevFirstPageItem = $("<li>")
                     .addClass("page-item")
-                    .toggleClass("disabled", currentPage === 1);
+                    .toggleClass("disabled", page === 1);
 
                 let prevFirstPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", currentPage === 1 ? "#" : "/user/myBookmark?page=1")
+                    .attr("href", page === 1 ? "#" : "/board/boardList?page=1")
                     .html("&laquo;");
 
                 prevFirstPageItem.append(prevFirstPageLink);
@@ -165,25 +184,30 @@
 
                 let prevPageItem = $("<li>")
                     .addClass("page-item")
-                    .toggleClass("disabled", currentPage === 1);
+                    .toggleClass("disabled", page === 1);
 
                 let prevPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", currentPage === 1 ? "#" : "/user/myBookmark?page=" + (startPage - 1))
+                    .attr("href", page === 1 ? "#" : "/board/boardList?page=" + (startPage - 1))
                     .html("&lt;");
 
                 prevPageItem.append(prevPageLink);
                 list.append(prevPageItem);
             }
 
-            for (let i = startPage; i <= endPage; i++) {
+            for (let i = page - 3; i <= page + 3 && i <= endPage; i++) {
+
+                if (i < 1) continue
+
+                if (page > endPage) break
+
                 let pageItem = $("<li>")
                     .addClass("page-item")
-                    .toggleClass("active", i === currentPage);
+                    .toggleClass("active", i === page);
 
                 let pageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", i === currentPage ? "#" : "/user/myBookmark?page=" + i)
+                    .attr("href", i === page ? "#" : "/board/boardList?page=" + i)
                     .text(i);
 
                 pageItem.append(pageLink);
@@ -193,11 +217,11 @@
             if (endPage < totalPages) {
                 let nextPageItem = $("<li>")
                     .addClass("page-item")
-                    .toggleClass("disabled", currentPage === totalPages);
+                    .toggleClass("disabled", page === totalPages);
 
                 let nextPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", currentPage === totalPages ? "#" : "/user/myBookmark?page=" + (endPage + 1))
+                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + (endPage + 1))
                     .html("&gt;");
 
                 nextPageItem.append(nextPageLink);
@@ -205,11 +229,11 @@
 
                 let nextLastPageItem = $("<li>")
                     .addClass("page-item")
-                    .toggleClass("disabled", currentPage === totalPages);
+                    .toggleClass("disabled", page === totalPages);
 
                 let nextLastPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", currentPage === totalPages ? "#" : "/user/myBookmark?page=" + totalPages)
+                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + totalPages)
                     .html("&raquo;");
 
                 nextLastPageItem.append(nextLastPageLink);
@@ -238,6 +262,7 @@
                 <th scope="col" style="width: 10%">카테고리</th>
                 <th scope="col" style="width: 40%">제목</th>
                 <th scope="col" style="width: 10%">댓글수</th>
+                <th scope="col" style="width: 10%">작성자</th>
                 <th scope="col" style="width: 20%">작성일</th>
                 <th scope="col" style="width: 10%">조회수</th>
             </tr>

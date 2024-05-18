@@ -181,34 +181,11 @@ public class BoardService implements IBoardService {
      */
     @Transactional
     @Override
-    public List<BoardDTO> getMyBookmarkList(String userId) throws Exception {
+    public Page<BoardDTO> getMyBookmarkList(Pageable pageable, String userId) throws Exception {
 
         log.info("service 내 북마크 가져오기");
 
-        List<BoardEntity> pList = boardRepository.getMyBookmarkList(userId);
-
-        List<BoardDTO> bList = new ArrayList<>();
-
-        pList.forEach(e -> {
-            BoardDTO rDTO = BoardDTO.builder()
-                    .boardSeq(e.getBoardSeq())
-                    .regId(e.getRegId())
-                    .noticeYn(e.getNoticeYn())
-                    .title(e.getTitle())
-                    .category(e.getCategory())
-                    .contents(e.getContents())
-                    .commentCnt(e.getCommentCnt())
-                    .chgDt(e.getChgDt())
-                    .regDt(e.getRegDt())
-                    .readCnt(e.getReadCnt())
-                    .nickname(e.getNickname())
-                    .fileYn(e.getFileYn())
-                    .build();
-
-            bList.add(rDTO);
-        });
-
-        return bList;
+        return boardRepository.getMyBookmarkList(pageable, userId).map(BoardDTO::from);
     }
 
     /**

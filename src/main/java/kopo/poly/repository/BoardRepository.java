@@ -110,7 +110,7 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
             "WHERE B.REG_ID = ?1 " +
             "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
     nativeQuery = true)
-    List<BoardEntity> getMyBookmarkList(String userId);
+    Page<BoardEntity> getMyBookmarkList(Pageable pageable, String userId);
 
     /**
      * 내 게시글 가져오기
