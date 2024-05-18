@@ -221,12 +221,13 @@ public class BoardController {
     @ResponseBody
     @PostMapping(value = "getBoardListPage")
     public Page<BoardDTO> getBoardListPage(HttpServletRequest request) throws Exception {
+
         log.info("controller getBoardListPage 게시글 리스트 가져오기");
 
         String pageStr = request.getParameter("page");
         int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
-        log.info(String.valueOf(page));
+        log.info("page : " + page);
 
         return boardService.getBoardList(
                 PageRequest.of(page-2, 10));
@@ -425,36 +426,19 @@ public class BoardController {
      */
     @ResponseBody
     @PostMapping(value = "getMyBoard")
-    public Map<String, Object> getMyBoard(HttpSession session, HttpServletRequest request,
-                                          @RequestParam(defaultValue = "1") int page) throws Exception {
+    public Page<BoardDTO> getMyBoard(HttpSession session, HttpServletRequest request) throws Exception {
+
+        log.info("controller getMyBoard");
 
         String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String pageStr = request.getParameter("page");
+        int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
         log.info("userId : " + userId);
         log.info("page : " + page);
 
-        List<BoardDTO> bList = boardService.getMyBookmarkList(userId);
+        return boardService.getMyBoard(PageRequest.of(page-2, 10), userId);
 
-        // 페이지당 보여줄 아이템 개수 정의
-        int itemPerPage = 10;
-
-        // 페이지네이션을 위해 전체 아이템 개수 구하기
-        int totalItems = bList.size();
-
-        // 전체 페이지 개수 계산
-        int totalPages = (int) Math.ceil((double) totalItems / itemPerPage);
-
-        // 현재 페이지에 해당하는 아이템들만 선택하여 rList에 할당
-        int fromIndex = (page - 1) * itemPerPage;
-        int toIndex = Math.min(fromIndex + itemPerPage, totalItems);
-        bList = bList.subList(fromIndex, toIndex);
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("bList", bList);
-        map.put("currentPage", page);
-        map.put("totalPages", totalPages);
-
-        return map;
     }
 
     public int safeParseInt(String input, int defaultValue) {

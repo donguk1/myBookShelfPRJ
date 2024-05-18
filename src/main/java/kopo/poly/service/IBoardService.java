@@ -55,5 +55,5 @@ public interface IBoardService {
     /**
      * 내 게시글 가져오기
      */
-    List<BoardDTO> getMyBoard(final String userId) throws Exception;
+    Page<BoardDTO> getMyBoard(Pageable pageable, final String userId) throws Exception;
 }

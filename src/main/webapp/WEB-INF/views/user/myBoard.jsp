@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Board</title>
+    <title>myBoard</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +45,7 @@
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
-            getBoardList()
+            getMyBoard()
 
             $("#btnSend").on("click", function () {
 
@@ -59,13 +59,10 @@
 
             })
 
-            $("#btnBoardReg").on("click", function () {
-                location.href = "boardReg";
-            })
-
         })
 
-        function getBoardList() {
+        // 북마크 리스트 가져오기
+        function getMyBoard() {
 
             const urlParams = new URL(location.href).searchParams;
             currentPage = urlParams.get('page');
@@ -85,10 +82,10 @@
             currentPage++
 
             $.ajax({
-                url: "/board/getBoardListPage",
+                url: "/board/getMyBoard",
                 type: "POST",
                 dataType: "JSON",
-                data: {page: currentPage},
+                data: {"page" : currentPage},
                 success: function (json) {
                     console.log(json);
 
@@ -103,7 +100,7 @@
         }
 
         function doDetail(seq) {
-            location.href = "boardInfo?bSeq=" + seq
+            location.href = "/board/boardInfo?bSeq=" + seq
         }
 
         // 리스트 보여주기
@@ -114,7 +111,7 @@
 
             bList.forEach(function (data) {
 
-                // console.log(data);
+                console.log(data);
 
                 let listOne = $("<tr>")
                     .addClass("listOne table-light")
@@ -123,6 +120,7 @@
                     })
 
                 let category = $("<th>")
+                    // .addClass("badge rounded-pill bg-secondary")
                     .text(data.category)
                 listOne.append(category)
 
@@ -132,6 +130,7 @@
                 if (data.fileYn === "Y") {
                     let fileYn = $("<i>")
                         .addClass("fa-solid fa-image")
+                    // .css({"color": "#27ADFB"})
                     title.append(fileYn)
                 }
                 listOne.append(title)
@@ -270,6 +269,7 @@
             </tr>
             </thead>
             <tbody id="boardList">
+
             </tbody>
         </table>
     </div>

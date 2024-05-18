@@ -64,6 +64,14 @@ public class UserInfoController {
     public String myActivity() {
         return "/user/myActivity";
     }
+
+    /**
+     * 내 정보 이동
+     */
+    @GetMapping(value = "/myInfo")
+    public String myInfo() {
+        return "/user/myInfo";
+    }
     
     /**
      * 마이페이지 이동
@@ -71,6 +79,14 @@ public class UserInfoController {
     @GetMapping(value = "/myPage")
     public String myPage() {
         return "/user/myPage";
+    }
+
+    /**
+     * 내 정보 이동
+     */
+    @GetMapping(value = "/myBoard")
+    public String myBoard() {
+        return "/user/myBoard";
     }
 
     /**

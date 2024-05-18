@@ -24,8 +24,6 @@
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
-            $("#header").load("../header.html")
-
             let f = document.getElementById("f"); // form 태그
 
             getMyInfo();
@@ -202,7 +200,7 @@
 <body>
 
 <!-- 상단바 부분 -->
-<div id="header"></div>
+<%@include file="../header.jsp" %>
 <br>
 <br>
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">

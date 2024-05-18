@@ -40,12 +40,10 @@
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
     <script th:inline="javascript">
 
-        let currentPage
-
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
-            getBoardList()
+            getMyBookmark()
 
             $("#btnSend").on("click", function () {
 
@@ -59,41 +57,24 @@
 
             })
 
-            $("#btnBoardReg").on("click", function () {
-                location.href = "boardReg";
-            })
-
         })
 
-        function getBoardList() {
+        // 북마크 리스트 가져오기
+        function getMyBookmark() {
 
             const urlParams = new URL(location.href).searchParams;
-            currentPage = urlParams.get('page');
-
-            // page 값이 null이거나 빈 문자열인 경우 0으로 초기화
-            if (currentPage === null || currentPage.trim() === "") {
-                currentPage = 1;
-            } else {
-                currentPage = parseInt(currentPage, 10);
-
-                // page 값이 NaN이거나 음수인 경우 0으로 초기화
-                if (isNaN(currentPage) || currentPage < 0) {
-                    currentPage = 1;
-                }
-            }
-
-            currentPage++
+            const page = urlParams.get('page');
 
             $.ajax({
-                url: "/board/getBoardListPage",
+                url: "/board/getMyBoard",
                 type: "POST",
                 dataType: "JSON",
-                data: {page: currentPage},
+                data: {"page" : page},
                 success: function (json) {
                     console.log(json);
 
-                    insertData(json.content)
-                    pagination(json.totalPages)
+                    insertData(json.bList)
+                    // pagination(json.currentPage, json.totalPages)
 
                 },
                 error: function(xhr, status, error) {
@@ -103,7 +84,7 @@
         }
 
         function doDetail(seq) {
-            location.href = "boardInfo?bSeq=" + seq
+            location.href = "/board/boardInfo?bSeq=" + seq
         }
 
         // 리스트 보여주기
@@ -114,7 +95,7 @@
 
             bList.forEach(function (data) {
 
-                // console.log(data);
+                console.log(data);
 
                 let listOne = $("<tr>")
                     .addClass("listOne table-light")
@@ -123,6 +104,7 @@
                     })
 
                 let category = $("<th>")
+                    // .addClass("badge rounded-pill bg-secondary")
                     .text(data.category)
                 listOne.append(category)
 
@@ -132,6 +114,7 @@
                 if (data.fileYn === "Y") {
                     let fileYn = $("<i>")
                         .addClass("fa-solid fa-image")
+                    // .css({"color": "#27ADFB"})
                     title.append(fileYn)
                 }
                 listOne.append(title)
@@ -158,91 +141,17 @@
         }
 
         // 페이징
-        function pagination(totalPages) {
-            let list = $("#pagination");
-            list.empty();
-
-            let pagesPerGroup = 5;
-            let startPage = ((currentPage -2) / pagesPerGroup) * pagesPerGroup + 1;
-            let endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
-            let page = currentPage - 1
-
-            console.log("page : ", page);
-            console.log("totalPages : ", totalPages);
-            console.log("startPage : ", startPage);
-            console.log("endPage : ", endPage);
-
-            if (startPage > 1) {
-                let prevFirstPageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("disabled", page === 1);
-
-                let prevFirstPageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", page === 1 ? "#" : "/board/boardList?page=1")
-                    .html("&laquo;");
-
-                prevFirstPageItem.append(prevFirstPageLink);
-                list.append(prevFirstPageItem);
-
-                let prevPageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("disabled", page === 1);
-
-                let prevPageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", page === 1 ? "#" : "/board/boardList?page=" + (startPage - 1))
-                    .html("&lt;");
-
-                prevPageItem.append(prevPageLink);
-                list.append(prevPageItem);
-            }
-
-            for (let i = page - 3; i <= page + 3 && i <= endPage; i++) {
-
-                if (i < 1) continue
-
-                if (page > endPage) break
-
-                let pageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("active", i === page);
-
-                let pageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", i === page ? "#" : "/board/boardList?page=" + i)
-                    .text(i);
-
-                pageItem.append(pageLink);
-                list.append(pageItem);
-            }
-
-            if (endPage < totalPages) {
-                let nextPageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("disabled", page === totalPages);
-
-                let nextPageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + (endPage + 1))
-                    .html("&gt;");
-
-                nextPageItem.append(nextPageLink);
-                list.append(nextPageItem);
-
-                let nextLastPageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("disabled", page === totalPages);
-
-                let nextLastPageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + totalPages)
-                    .html("&raquo;");
-
-                nextLastPageItem.append(nextLastPageLink);
-                list.append(nextLastPageItem);
-            }
-        }
+        // function pagination(currentPage, totalPages) {
+        //
+        //     let list = $("#pagination")
+        //     list.empty();
+        //
+        //     let pagesPerGroup = 5
+        //     let startPage = ((currentPage - 1) / pagesPerGroup) * pagesPerGroup + 1;
+        //     let endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
+        //
+        //     if ()
+        // }
 
     </script>
 </head>
@@ -270,6 +179,7 @@
             </tr>
             </thead>
             <tbody id="boardList">
+
             </tbody>
         </table>
     </div>
