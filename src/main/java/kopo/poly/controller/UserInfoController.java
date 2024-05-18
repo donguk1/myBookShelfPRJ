@@ -104,6 +104,12 @@ public class UserInfoController {
     public String myBookmark() { return "/user/myBookmark"; };
 
     /**
+     * 내 댓글 리스트
+     */
+    @GetMapping(value = "/myComment")
+    public String myComment() { return "/user/myComment"; };
+
+    /**
      * 로그인 실행
      */
     @ResponseBody

@@ -9,6 +9,8 @@ import kopo.poly.repository.entity.QUserInfoEntity;
 import kopo.poly.service.ICommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -84,6 +86,17 @@ public class CommentService implements ICommentService {
         });
 
         return dtoList;
+    }
+
+    /**
+     * 내 댓글 리스트 가져오기
+     */
+    @Override
+    public Page<CommentDTO> getMyComment(Pageable pageable, String regId) throws Exception {
+
+        log.info("service getMyComment");
+
+        return commentRepository.findByRegId(pageable, regId).map(CommentDTO::from);
     }
 
     /**

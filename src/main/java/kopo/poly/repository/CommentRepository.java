@@ -2,6 +2,8 @@ package kopo.poly.repository;
 
 import kopo.poly.repository.entity.CommentEntity;
 import kopo.poly.repository.entity.PK.CommentPK;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +20,7 @@ public interface CommentRepository extends JpaRepository<CommentEntity, CommentP
     CommentEntity findTopByBoardSeq(Long boardSeq) throws Exception;
 
     Long countByBoardSeq(Long boardSeq) throws Exception;
+
+    Page<CommentEntity> findByRegId(Pageable pageable, String regId) throws Exception;
 
 }

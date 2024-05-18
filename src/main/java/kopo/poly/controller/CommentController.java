@@ -9,6 +9,8 @@ import kopo.poly.util.CmmUtil;
 import kopo.poly.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -81,6 +83,24 @@ public class CommentController {
     }
 
     /**
+     * 댓글 리스트 가져오기
+     */
+    @PostMapping(value = "getMyComment")
+    public Page<CommentDTO> getMyComment(HttpServletRequest request, HttpSession session) throws Exception {
+
+        log.info("controller getMyComment");
+
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String pageStr = request.getParameter("page");
+        int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
+
+        log.info("userId : " + userId);
+        log.info("page : " + page);
+
+        return commentService.getMyComment(PageRequest.of(page-2, 10), userId);
+    }
+
+    /**
      * 댓글 수정하기
      */
     @PostMapping(value = "updateComment")
@@ -146,5 +166,13 @@ public class CommentController {
                 .msg(msg)
                 .result(res)
                 .build();
+    }
+
+    public int safeParseInt(String input, int defaultValue) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            return defaultValue; // 기본값 반환
+        }
     }
 }
