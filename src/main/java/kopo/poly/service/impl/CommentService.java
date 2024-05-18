@@ -61,7 +61,7 @@ public class CommentService implements ICommentService {
                 .selectFrom(ce)
                 .join(ce.userInfo, ue).fetchJoin()
                 .where(ce.boardSeq.eq(boardSeq),
-                        ce.targetSeq.isNull())
+                        ce.targetSeq.eq(0L))
                 .fetch();
 
         List<CommentEntity> hierarchicalResult  = getChildren(cList, boardSeq);

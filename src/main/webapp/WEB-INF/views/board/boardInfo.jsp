@@ -683,7 +683,7 @@
         <h5 class="card-title" style="text-align: left"></h5>
         <div class="commentArea mx-auto" style="text-align: center">
             <textarea name="commentContents" id="commentContents" style="width: 95%; height: 80px"></textarea>
-            <button class="btn btn-primary" type="button" id="btnComment" style="width: 95%" onclick="insertComment(0, null)">등록</button>
+            <button class="btn btn-primary" type="button" id="btnComment" style="width: 95%" onclick="insertComment(0, 0)">등록</button>
         </div>
         <hr/>
         <table class="table table-hover">
