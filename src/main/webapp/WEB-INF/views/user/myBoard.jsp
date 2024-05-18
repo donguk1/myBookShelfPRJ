@@ -178,7 +178,7 @@
 
                 let prevFirstPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", page === 1 ? "#" : "/board/boardList?page=1")
+                    .attr("href", page === 1 ? "#" : "myBoard?page=1")
                     .html("&laquo;");
 
                 prevFirstPageItem.append(prevFirstPageLink);
@@ -190,7 +190,7 @@
 
                 let prevPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", page === 1 ? "#" : "/board/boardList?page=" + (startPage - 1))
+                    .attr("href", page === 1 ? "#" : "myBoard?page=" + (startPage - 1))
                     .html("&lt;");
 
                 prevPageItem.append(prevPageLink);
@@ -209,7 +209,7 @@
 
                 let pageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", i === page ? "#" : "/board/boardList?page=" + i)
+                    .attr("href", i === page ? "#" : "myBoard?page=" + i)
                     .text(i);
 
                 pageItem.append(pageLink);
@@ -223,7 +223,7 @@
 
                 let nextPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + (endPage + 1))
+                    .attr("href", page === totalPages ? "#" : "myBoard?page=" + (endPage + 1))
                     .html("&gt;");
 
                 nextPageItem.append(nextPageLink);
@@ -235,7 +235,7 @@
 
                 let nextLastPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + totalPages)
+                    .attr("href", page === totalPages ? "#" : "myBoard?page=" + totalPages)
                     .html("&raquo;");
 
                 nextLastPageItem.append(nextLastPageLink);
