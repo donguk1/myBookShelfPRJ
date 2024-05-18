@@ -110,6 +110,18 @@ public class UserInfoController {
     public String myComment() { return "/user/myComment"; };
 
     /**
+     * 내 책장 보기
+     */
+    @GetMapping(value = "/bookShelf")
+    public String bookShelf() { return "/user/bookShelf"; };
+
+    /**
+     * 캘린더 보기
+     */
+    @GetMapping(value = "/calendar")
+    public String calendar() { return "/user/calendar"; };
+
+    /**
      * 로그인 실행
      */
     @ResponseBody

@@ -1,0 +1,284 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*
+낮은 해상도의 PC, 태블릿 가로 : ~1024px
+테블릿 가로 : 768px ~ 1023px
+모바일 가로, 태블릿 : 480px ~ 767px
+모바일 : ~ 480px
+*/
+
+/*.navbar {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    padding: 10px 20px;*/
+/*}*/
+.navbar-brand {
+    font-size: 1.5em;
+    margin: 0 auto;
+}
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+.nav-item {
+    /*margin-left: 20px;*/
+    list-style: none;
+}
+.nav-link {
+    color: #839DB8;
+    text-decoration: none;
+}
+.nav-link:hover {
+    color: #27ADFB;
+}
+
+.bottom-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.bottom-menu-item {
+    flex: 1;
+    text-align: center;
+}
+
+.bottom-menu-link {
+    color: #839DB8;
+    text-decoration: none;
+}
+
+.bottom-menu-link:hover {
+    color: #27ADFB;
+}
+
+.search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    position: relative;
+}
+
+.search-bar input {
+    border-radius: 25px;
+    padding-right: 40px;
+    border: 2px solid #839DB8;
+}
+
+.search-button {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+}
+
+.search-button i {
+    color: #27ADFB;
+}
+
+@media (max-width: 767px) {
+    .search-button {
+        position: absolute;
+        right: 5px;
+        top: 30%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+    }
+}
+
+.area-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.area {
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 40%;
+}
+
+.area-container.horizontal {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.area-container.horizontal .view-box {
+    flex: 0 0 48%;
+    height: 220px;
+}
+
+.community-area {
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.view-box {
+    height: 60%;
+}
+
+.backBtn {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#backBtn i {
+    font-size: 24px; /* Adjust the size of the arrow icon */
+    color : #839DB8
+}
+
+/* 헤더 스타일 */
+.appHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    z-index: 1000;
+}
+
+/* 푸터 스타일 */
+.appFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.webFooter {
+    margin-top: 10px;
+    height: 78px;
+    position: relative;
+}
+
+/* 내용 스타일 */
+main {
+    padding: 165px 0 78px 0;
+    height: auto;
+    min-height: 100%;
+}
+
+@media (max-width: 991px) {
+    main {
+        padding: 80px 20px;
+    }
+
+}
+
+.areaTitle {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: small;
+}
+.listOne{
+    content: ''; /* 가상 요소 생성 */
+    display: block; /* 인라인 요소를 블록 요소로 변경 */
+    width: 100%; /* 가로 길이를 100%로 설정하여 가득 차게 함 */
+    border-bottom: 1px solid lightgrey; /* 연한 회색 밑줄을 추가 */
+    padding-top: 15px; /* 위쪽 내부 여백을 10px로 설정 */
+    padding-bottom: 15px; /* 아래쪽 내부 여백을 10px로 설정 */
+    white-space: nowrap; /* 텍스트를 한 줄에 표시하도록 설정 */
+    overflow: hidden; /* 넘치는 부분은 숨기기 */
+    text-overflow: ellipsis; /* 생략 부호(...) 사용 */
+}
+
+.mainUp2listOne{
+    content: ''; /* 가상 요소 생성 */
+    display: block; /* 인라인 요소를 블록 요소로 변경 */
+    width: 100%; /* 가로 길이를 100%로 설정하여 가득 차게 함 */
+    height: 45px;
+    border-bottom: 1px solid lightgrey; /* 연한 회색 밑줄을 추가 */
+    padding-top: 15px; /* 위쪽 내부 여백을 10px로 설정 */
+    padding-bottom: 15px; /* 아래쪽 내부 여백을 10px로 설정 */
+    white-space: nowrap; /* 텍스트를 한 줄에 표시하도록 설정 */
+    overflow: hidden; /* 넘치는 부분은 숨기기 */
+    text-overflow: ellipsis; /* 생략 부호(...) 사용 */
+}
+
+.mainUp2listOne:hover{
+    background-color: #E5E6E7FF;
+    cursor: pointer;
+}
+
+
+.listOne:hover{
+    background-color: #E5E6E7FF;
+    cursor: pointer;
+}
+
+#load {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 0.8;
+    background: white;
+    z-index: 99;
+    text-align: center;
+}
+
+#load > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+}
+
+.bellIcon .nav-link.active,
+.bellIcon .nav-link:active,
+.bellIcon .nav-link:focus {
+    color: #839DB8; /* 누르기 전 텍스트 색상 */
+    background-color: transparent; /* 누르기 전 배경색 */
+    border-color: transparent; /* 누르기 전 테두리 색상 */
+}
+
+
+/* Webkit 기반 브라우저용 */
+/* 수직 스크롤바 */
+::-webkit-scrollbar {
+    width: 10px; /* 스크롤바 너비 */
+}
+
+/* 수직 스크롤바 */
+::-webkit-scrollbar-thumb {
+    background: #839DB8; /* 스크롤바 색상 */
+    border-radius: 5px; /* 스크롤바 모양 설정 */
+}
+
+/* 스크롤바 트랙 */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* 스크롤바 트랙 배경색 */
+}

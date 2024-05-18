@@ -62,7 +62,7 @@
 
             // 내 도서 리스트
             $("#btnMyBook").on("click", function () {
-                location.href = "btnMyBook";
+                location.href = "myBook";
             })
         })
     </script>
