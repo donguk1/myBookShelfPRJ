@@ -58,7 +58,7 @@ function insertBookShelf() {
 
 
     $.ajax({
-        url: "/bookShelf/insertBookShelf",
+        url: "/bookShelf/insertBook",
         type: "post",
         dataType: "JSON",
         data: requestData,
