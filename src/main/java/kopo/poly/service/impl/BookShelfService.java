@@ -10,6 +10,8 @@ import kopo.poly.repository.entity.QBookShelfEntity;
 import kopo.poly.service.IBookShelfService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,6 +70,17 @@ public class BookShelfService implements IBookShelfService {
                         .build())
                 .collect(Collectors.toList());
     };
+
+    /**
+     * 도서 가져오기(Pageable)
+     */
+    @Override
+    public Page<BookShelfDTO> getMyBookPage(String userId, Pageable pageable) throws Exception {
+
+        log.info("service getMyBookPage");
+
+        return bookShelfRepository.findByRegIdOrderByRegDt(userId, pageable).map(BookShelfDTO::from);
+    }
 
     /**
      * 도서 여부

@@ -122,6 +122,13 @@ public class UserInfoController {
     public String calendar() { return "/user/calendar"; };
 
     /**
+     * 내 도서 보기
+     */
+    @GetMapping(value = "/myBookList")
+    public String myBookList() { return "/user/myBookList"; };
+
+
+    /**
      * 로그인 실행
      */
     @ResponseBody
