@@ -2,17 +2,18 @@ package kopo.poly.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kopo.poly.dto.BookShelfDTO;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.service.IBookShelfService;
 import kopo.poly.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.CacheMode;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.rmi.dgc.VMID;
+import java.sql.Date;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -54,4 +55,36 @@ public class BookShelfController {
                 .msg(msg)
                 .build();
     }
+
+    @PostMapping(value = "getMyBookList")
+    public List<BookShelfDTO> getMyBookList(HttpSession session, HttpServletRequest request) throws Exception {
+
+        log.info("controller getMyBookList");
+
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String dt = CmmUtil.nvl(request.getParameter("date"));
+
+        log.info("userId : " + userId);
+        log.info("dt : " + dt);
+
+        return bookShelfService.getMyBookList(userId, dt);
+    }
+
+    @PostMapping(value = "checkMyBook")
+    public List<BookShelfDTO> checkMyBook(HttpSession session, HttpServletRequest request) throws Exception {
+
+        log.info("controller checkMyBook");
+
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        Date doMonth = Date.valueOf(CmmUtil.nvl(request.getParameter("doMonth")));
+        Date nextMonth = Date.valueOf(CmmUtil.nvl(request.getParameter("nextMonth")));
+
+        log.info("userId : " + userId);
+        log.info("doMonth : " + doMonth);
+        log.info("nextMonth : " + nextMonth);
+
+        return bookShelfService.checkMyBook(userId, doMonth, nextMonth);
+    }
+
+
 }

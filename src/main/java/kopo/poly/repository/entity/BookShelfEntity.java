@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.sql.Date;
+
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,5 +32,6 @@ public class BookShelfEntity {
     private String  regId;
 
     @Column(name = "REG_DT")
-    private String regDt;
+    @Temporal(TemporalType.DATE)
+    private Date regDt;
 }

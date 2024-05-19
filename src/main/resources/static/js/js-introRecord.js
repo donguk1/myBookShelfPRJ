@@ -76,9 +76,10 @@ function insertBookShelf() {
 
 /* 도서 조회 */
 function getBookShelfList(choiceDay) {
+
     $.ajax({
-        url: "/bookShelf/bookShelfList",
-        type: "get",
+        url: "/bookShelf/getMyBookList",
+        type: "post",
         data: {date: choiceDay},
         dataType: "JSON",
         success: function (json) {
@@ -130,9 +131,17 @@ function getBookShelfList(choiceDay) {
                 dropdownMenu.append(editLink, deleteLink, cancelLink);
                 etcBtn.append(editBtn, dropdownMenu);
 
-                let bookShelfTime = $("<strong>").addClass("bookShelfTime").text(bookShelf.time);
-                let bookShelfTitle = $("<div>").addClass("bookShelfTitle").text(bookShelf.title);
-                let bookShelfCon = $("<div>").addClass("bookShelfCon").text(bookShelf.contents);
+                let bookShelfTime = $("<strong>")
+                    .addClass("bookShelfTime")
+                    .text(bookShelf.time);
+
+                let bookShelfTitle = $("<div>")
+                    .addClass("bookShelfTitle")
+                    .text(bookShelf.title);
+
+                let bookShelfCon = $("<div>")
+                    .addClass("bookShelfCon")
+                    .text(bookShelf.contents);
 
                 bookShelfItem.append(etcBtn, bookShelfTime, bookShelfTitle, bookShelfCon);
                 bookShelfDiv.append(bookShelfItem);
@@ -143,6 +152,29 @@ function getBookShelfList(choiceDay) {
             console.error("에러: " + error);
         }
     });
+}
+
+
+/* 도서 여부 확인 */
+function checkBookShelf(doMonth , callback) {
+
+    const Month = doYYMonth(doMonth);
+    const nextMonth = nextYYMonth(doMonth)
+
+    $.ajax({
+        url: "/bookShelf/checkMyBook",
+        type: "post",
+        dataType: "JSON",
+        data:  {doMonth : Month,
+            nextMonth: nextMonth},
+        success: function (json) {
+
+            console.log(json)
+
+
+            callback(json);
+        }
+    })
 }
 
 /* 일정 수정창 팝업시 값 입력 */
@@ -329,6 +361,29 @@ function buildCalendar() {
     // 7로 나눈값을 올림( Math.ceil() )하고 다시 시작일의 요일값( doMonth.getDay() )을 빼준다.
     let daysLength = (Math.ceil((doMonth.getDay() + lastDate.getDate()) / 7) * 7) - doMonth.getDay();
 
+    checkBookShelf(doMonth, function (sList) {
+        sList.forEach(function (bookShelf) {
+
+            const bookShelfDate = new Date(bookShelf.regDt);
+            const bookShelfDay = bookShelfDate.getDate();
+            console.log("bookShelfDate : " + bookShelfDate)
+            console.log("bookShelfDay : " + bookShelfDay)
+
+            // 캘린더에 해당 일정을 표시하는 로직 추가
+            const cellIndex = bookShelfDay + doMonth.getDay() - 1;
+            const rowNumber = Math.floor(cellIndex / 7);
+            const columnIndex = cellIndex % 7;
+
+            if (rowNumber < tbCalendar.rows.length) {
+                const cell = tbCalendar.rows[rowNumber].cells[columnIndex];
+                const circleSc = document.createElement('div');
+                circleSc.classList.add('circleSc');
+                cell.appendChild(circleSc);
+            }
+        });
+
+    });
+
     // @param 달력 출력
     // @details 시작값은 1일을 직접 지정하고 요일값( doMonth.getDay() )를 빼서 마이너스( - )로 for문을 시작한다.
     for (let day = 1 - doMonth.getDay(); daysLength >= day; day++) {
@@ -462,9 +517,8 @@ function calendarChoiceDay(column) {
 
     // $("#btnradio4").click(); // 날짜 클릭했을때 일정이 기본으로 뜨게
     getBookShelfList(choiceDay);
-    getMealList(choiceDay);
-    getInbodyList(choiceDay);
-    getExerciseList(choiceDay);
+
+
 }
 
 /**

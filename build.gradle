@@ -22,6 +22,9 @@ repositories {
 }
 
 dependencies {
+    // JSON 직렬화/역직렬화
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
     // JDBC
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 
