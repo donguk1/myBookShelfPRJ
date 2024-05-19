@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -43,6 +44,9 @@ public class BookShelfService implements IBookShelfService {
                         .build());
     }
 
+    /**
+     * 도서 가져오기
+     */
     @Override
     public List<BookShelfDTO> getMyBookList(String userId, String dt) throws Exception {
 
@@ -65,7 +69,9 @@ public class BookShelfService implements IBookShelfService {
                 .collect(Collectors.toList());
     };
 
-
+    /**
+     * 도서 여부
+     */
     @Override
     public List<BookShelfDTO> checkMyBook(String regId, Date doMonth, Date nextMonth) throws Exception {
 
@@ -88,4 +94,18 @@ public class BookShelfService implements IBookShelfService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * 도서 삭제하기
+     */
+    @Override
+    public void deleteMyBook(String regId, String dt, String title) throws Exception {
+
+        log.info("service deleteMyBook");
+
+        bookShelfRepository.delete(BookShelfEntity.builder()
+                        .regId(regId)
+                        .regDt(Date.valueOf(dt))
+                        .title(title)
+                        .build());
+    }
 }

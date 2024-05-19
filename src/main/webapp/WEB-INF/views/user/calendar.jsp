@@ -57,6 +57,10 @@
 
 <main class="container">
     <h2 style="text-align: center">기록</h2>
+
+    <div id="registerBtns" style="float: right">
+        <button id="registerBookShelf" type="button" class="btn btn-outline-primary" >도서 추가</button>
+    </div>
     <hr/>
 
     <%-- 달력 --%>
@@ -86,18 +90,6 @@
     </table>
     <br>
 
-    <%-- 달력 밑 +버튼 --%>
-<%--    <div style="text-align: center">--%>
-<%--        <button id="btnPlus" class="btn btn-link" type="button"><i--%>
-<%--                class="fa-regular fa-calendar-plus fa-2xl" style="color: #27ADFB;"></i></button>--%>
-<%--    </div>--%>
-
-    <%-- +버튼 누르면 나오는 등록 버튼들 --%>
-    <div id="registerBtns" style="margin-top: 15px">
-        <button id="registerBookShelf" type="button" class="btn btn-outline-primary">도서</button>
-    </div>
-    <br>
-
     <%-------------팝업창들--------------%>
 
     <!-- 도서 추가 팝업 -->
@@ -116,10 +108,6 @@
                                    placeholder="책 제목">
                             <label for="bookShelfTitle">책 제목</label>
                         </div>
-<%--                        <div class="form-floating mb-3">--%>
-<%--                            <input type="date" class="form-control" name="bookShelfTime" id="bookShelfTime" >--%>
-<%--                            <label for="bookShelfTime">날짜 설정</label>--%>
-<%--                        </div>--%>
                     </div>
                 </form>
                 <br/><br/>
@@ -144,16 +132,9 @@
                     <input type="hidden" name="bookShelfSeq" id="bookShelfSeq">
                     <div class="form-group mx-auto" style="width: 90%;">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="bookShelf" id="bookShelfEditTitle">
-                            <label for="bookShelf">제목</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="time" class="form-control" name="bookShelfTime" id="bookShelfEditTime">
-                            <label for="bookShelfTime">시간 설정</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="text" class="form-control" name="bookShelfCon" id="bookShelfEditContents">
-                            <label for="bookShelfCon">내용</label>
+                            <input type="hidden" id="oldTitle">
+                            <input type="text" class="form-control" name="bookShelf" id="newTitle">
+                            <label for="newTitle">제목</label>
                         </div>
                     </div>
                 </form>
@@ -167,6 +148,9 @@
     </div>
 
 
+    <div id="bookShelfList">
+        <div id="bookShelf"></div>
+    </div>
 
 
 </main>

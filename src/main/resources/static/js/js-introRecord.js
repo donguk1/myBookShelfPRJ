@@ -25,9 +25,9 @@ $(document).ready(function () {
         insertBookShelf(); // 일정 추가 함수 실행
     })
 
-    // 일정 수정
+    // 도서 수정
     $("#editBtnSc").on("click", function () {
-        editBookShelf()
+        updateMyBook()
     })
 
 
@@ -83,11 +83,10 @@ function getBookShelfList(choiceDay) {
         data: {date: choiceDay},
         dataType: "JSON",
         success: function (json) {
+
+            console.log(json);
             let bookShelfDiv = $("#bookShelf");
             bookShelfDiv.empty();
-
-            console.log("choiceDay : " + choiceDay);
-            console.log(json);
 
             json.forEach(function (bookShelf) {
 
@@ -154,7 +153,6 @@ function getBookShelfList(choiceDay) {
     });
 }
 
-
 /* 도서 여부 확인 */
 function checkBookShelf(doMonth , callback) {
 
@@ -169,7 +167,6 @@ function checkBookShelf(doMonth , callback) {
             nextMonth: nextMonth},
         success: function (json) {
 
-            console.log(json)
 
 
             callback(json);
@@ -179,30 +176,26 @@ function checkBookShelf(doMonth , callback) {
 
 /* 일정 수정창 팝업시 값 입력 */
 function setBookShelfInfoInModal(bookShelf) {
+
     console.log("Setting bookShelf info in modal: ", bookShelf);
-    $("#bookShelfEditTitle").val(bookShelf.title);
-    $("#bookShelfEditTime").val(bookShelf.time);
-    $("#bookShelfEditContents").val(bookShelf.contents);
-    $("#bookShelfSeq").val(bookShelf.bookShelfSeq);
+
+
+    $("#newTitle").val(bookShelf.title);
+    $("#oldTitle").val(bookShelf.title);
 }
 
-/* 일정 수정 */
-function editBookShelf() {
-    // 선택한 일정을 수정하는 동작을 추가합니다.
-    // 예: 수정할 폼을 띄우거나, Ajax 요청을 보내서 서버에 수정 요청을 보냅니다.
-
-    let requestData = {
-        bookShelfSeq : document.getElementById("bookShelfSeq").value,
-        title : document.getElementById("bookShelfEditTitle").value,
-        contents : document.getElementById("bookShelfEditContents").value,
-        time : document.getElementById("bookShelfEditTime").value
-    };
+/* 도서 수정 */
+function updateMyBook() {
 
     $.ajax({
-        url: "/bookShelf/bookShelfUpdate",
+        url: "/bookShelf/updateMyBook",
         type: "post",
         dataType: "JSON",
-        data: requestData,
+        data: {
+            newTitle : document.getElementById("newTitle").value,
+            oldTitle : document.getElementById("oldTitle").value,
+            choiceDay : choiceDay
+        },
         success: function (json) {
             alert(json.msg);
             location.reload();
@@ -224,6 +217,31 @@ function deleteBookShelf(bookShelf) {
             type: "post",
             dataType: "JSON",
             data: bookShelf,
+            success: function (json) {
+                alert(json.msg);
+                location.reload();
+
+            }
+        })
+    }
+}
+
+/* 일정 삭제 */
+function deleteBookShelf(bookShelf) {
+    // 선택한 일정을 삭제하는 동작을 추가합니다.
+    // 예: Ajax 요청을 보내서 서버에 삭제 요청을 보냅니다.
+
+    console.log(bookShelf)
+
+    if (confirm("삭제 하시겠습니까?")) {
+        $.ajax({
+            url: "/bookShelf/deleteBookShelf",
+            type: "post",
+            dataType: "JSON",
+            data: {
+                title : bookShelf.title,
+                choiceDay : choiceDay
+            },
             success: function (json) {
                 alert(json.msg);
                 location.reload();
@@ -366,8 +384,6 @@ function buildCalendar() {
 
             const bookShelfDate = new Date(bookShelf.regDt);
             const bookShelfDay = bookShelfDate.getDate();
-            console.log("bookShelfDate : " + bookShelfDate)
-            console.log("bookShelfDay : " + bookShelfDay)
 
             // 캘린더에 해당 일정을 표시하는 로직 추가
             const cellIndex = bookShelfDay + doMonth.getDay() - 1;

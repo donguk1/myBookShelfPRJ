@@ -19,7 +19,12 @@ public interface IBookShelfService {
     List<BookShelfDTO> getMyBookList(final String userId, final String dt) throws Exception;
 
     /**
-     * 도서 여보
+     * 도서 여부
      */
     List<BookShelfDTO> checkMyBook(final String regId, final Date doMonth, final Date nextMonth) throws Exception;
+
+    /**
+     * 도서 삭제하기
+     */
+    void deleteMyBook(final String regId, final String dt, final String title) throws Exception;
 }

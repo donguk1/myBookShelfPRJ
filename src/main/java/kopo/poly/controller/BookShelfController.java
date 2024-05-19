@@ -87,4 +87,79 @@ public class BookShelfController {
     }
 
 
+    /**
+     * 내 도서 수정하기
+     */
+    @PostMapping(value = "updateMyBook")
+    public MsgDTO updateMyBook(HttpSession session, HttpServletRequest request) throws Exception {
+
+        log.info("controller updateMyBook");
+
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String newTitle = CmmUtil.nvl(request.getParameter("newTitle"));
+        String oldTitle = CmmUtil.nvl(request.getParameter("oldTitle"));
+        String dt = CmmUtil.nvl(request.getParameter("choiceDay"));
+
+        log.info("userId : " + userId);
+        log.info("newTitle : " + newTitle);
+        log.info("oldTitle : " + oldTitle);
+        log.info("dt : " + dt);
+
+        String msg = "수정 되었습니다";
+        int res = 1;
+
+        try {
+            bookShelfService.deleteMyBook(userId, dt, oldTitle);
+            bookShelfService.insertBook(newTitle, userId, dt);
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+
+            msg = "오류로 인해 실패 했습니다. \n다시 실행해 주세요";
+            res = 1;
+        }
+
+        return MsgDTO.builder()
+                .result(res)
+                .msg(msg)
+                .build();
+
+    }
+    /**
+     * 내 도서 삭제하기
+     */
+    @PostMapping(value = "deleteBookShelf")
+    public MsgDTO deleteBookShelf(HttpSession session, HttpServletRequest request) throws Exception {
+
+        log.info("controller deleteBookShelf");
+
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String title = CmmUtil.nvl(request.getParameter("title"));
+        String dt = CmmUtil.nvl(request.getParameter("choiceDay"));
+
+        log.info("userId : " + userId);
+        log.info("title : " + title);
+        log.info("dt : " + dt);
+
+        String msg = "삭제 되었습니다";
+        int res = 1;
+
+        try {
+            bookShelfService.deleteMyBook(userId, dt, title);
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+
+            msg = "오류로 인해 실패 했습니다. \n다시 실행해 주세요";
+            res = 1;
+        }
+
+        return MsgDTO.builder()
+                .result(res)
+                .msg(msg)
+                .build();
+
+    }
 }
