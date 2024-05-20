@@ -14,10 +14,10 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  color: #444444;
-}
+/*body {*/
+/*  font-family: 'Noto Sans KR', sans-serif;*/
+/*  color: #444444;*/
+/*}*/
 
 a {
   text-decoration: none;
@@ -147,20 +147,19 @@ h6 {
   position: relative;
 }
 
-.navbar a,
-.navbar a:focus {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0 10px 30px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  /*color: #0f394c;*/
-  white-space: nowrap;
-  transition: 0.3s;
-  text-transform: uppercase;
-}
+/*.navbar a,*/
+/*.navbar a:focus {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  padding: 10px 0 10px 30px;*/
+/*  font-size: 15px;*/
+/*  font-weight: 600;*/
+/*  !*color: #0f394c;*!*/
+/*  white-space: nowrap;*/
+/*  transition: 0.3s;*/
+/*  text-transform: uppercase;*/
+/*}*/
 
 .navbar a i,
 .navbar a:focus i {

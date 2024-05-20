@@ -12,16 +12,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
 
-    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+<%--    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">--%>
+<%--    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">--%>
+<%--    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">--%>
+<%--    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">--%>
+<%--    <link href="/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">--%>
 
 
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/bluStyle.css" rel="stylesheet">
+<%--    <link href="/css/style.css" rel="stylesheet">--%>
+<%--    <link href="/css/bluStyle.css" rel="stylesheet">--%>
     <link rel="stylesheet" type="text/css" href="/css/introRecord.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
 
@@ -56,13 +57,13 @@
 <%@include file="../header.jsp" %>
 
 <main class="container">
-    <h2 style="text-align: center">기록</h2>
+    <%--<h2 style="text-align: center">기록</h2>--%>
 
-    <div id="registerBtns" style="float: right">
-        <button id="registerBookShelf" type="button" class="btn btn-outline-primary" >도서 추가</button>
+    <div id="registerBtns" style="margin: 10px 0"> <%-- 위치 원하는 위치 몰라서 ... --%>
+        <button id="registerBookShelf" type="button" class="btn btn-secondary my-2 my-sm-0">도서 추가</button>
     </div>
-    <hr/>
 
+    <%--<hr/>--%>
     <%-- 달력 --%>
     <table class="scriptCalendar">
         <thead style="font-weight: bolder;">
@@ -125,7 +126,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">도서 수정</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn btn-secondary my-2 my-sm-0" ></button>
                 </div>
                 <form name="bookShelfEdit" id="bookShelfEditf"> <!-- onsubmit="editbookShelf();" -->
                     <br/><br/>
