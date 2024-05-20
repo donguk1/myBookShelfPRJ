@@ -65,7 +65,7 @@
 
     <%--<hr/>--%>
     <%-- 달력 --%>
-    <table class="scriptCalendar">
+    <table class="scriptCalendar" style="border-collapse: inherit;">
         <thead style="font-weight: bolder;">
         <tr>
             <td onclick="prevCalendar()" style="cursor:pointer;"><i class="fa-solid fa-chevron-left"

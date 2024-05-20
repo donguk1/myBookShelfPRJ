@@ -50,9 +50,9 @@
                 location.href = "user/myActivity";
             })
 
-            // 오늘의 추천도서
+            // 무작위 도서 추천
             $("#btnRecommend").on("click", function () {
-                location.href = "user/recommend";
+                location.href = "recommend/bookRecommend";
             })
 
             // 북마크 리스트
