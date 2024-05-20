@@ -6,6 +6,6 @@ import java.util.Map;
 
 public interface ILLMService {
 
-    ResponseEntity<Map> getLLMData(String content) throws Exception;
+    ResponseEntity<Map> getLLMData() throws Exception;
 ;
 }

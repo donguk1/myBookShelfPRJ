@@ -22,7 +22,7 @@ public class LLMService implements ILLMService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Override
-    public ResponseEntity<Map> getLLMData(String content) throws Exception {
+    public ResponseEntity<Map> getLLMData() throws Exception {
 
         log.info(this.getClass().getName() + " getLLMData");
 
@@ -30,7 +30,7 @@ public class LLMService implements ILLMService {
         headers.set("Content-Type", "application/json");
 
         Map<String, String> body = new HashMap<>();
-        body.put("content", "오늘의 추천 도서를 알려줘");
+        body.put("content", "오늘의 추천 도서의 제목만 알려줘");
 
         HttpEntity<Map<String , String >> entity = new HttpEntity<>(body, headers);
 
