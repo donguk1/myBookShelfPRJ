@@ -73,11 +73,83 @@
                 success: function (json) {
                     console.log(json);
 
+                    insertData(json.items)
+
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX 호출 중 에러 발생:", error);
                 }
             });
+        }
+
+        function insertData(items){
+
+
+            if (items.length !== 0) {
+
+                items.forEach(function (item) {
+
+
+                    console.log("T");
+
+                    let div = $("#data")
+                    div.empty()
+
+                    div.append(
+                        $("<span>")
+                            .html("저자 : " + item.author),
+
+                        $("<br>"),
+
+                        $("<span>")
+                            .html("가격 : " + item.discount + "원")
+                            .css("float", "left"),
+
+                        $("<a>")
+                            .html("바로가기")
+                            .attr({
+                                "href": item.link,
+                                "target": "_blank"
+                            })
+                            .css("float", "right"),
+
+                        $("<br>"),
+
+                        $("<img>")
+                            .attr("src", item.image)
+                            .css({
+                                "width": "40%",
+                                "float": "right",
+                                "margin-right": "2%"
+                            }),
+
+                        $("<span>")
+                            .html(item.description.replace(/[\n.!?]/g, '<br>'))
+                            .attr("readonly", "readonly")
+                            .css({
+                                "width": "40%",
+                                "height": "300px",
+                                "border": "none"
+                            }),
+
+                        $("<br>")
+                    )
+                })
+
+            } else {
+
+                console.log("F")
+
+                let div = $("#data")
+                div.empty()
+
+                div.append(
+                    $("<span>")
+                        .html("조회된 정보가 없습니다."),
+                    $("<br>")
+            )
+        }
+
         }
 
 
@@ -101,6 +173,7 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control" id="bookTitle" name="bookTitle" disabled="">
             </div>
+            <div id="data"></div>
         </div>
     </form>
 
