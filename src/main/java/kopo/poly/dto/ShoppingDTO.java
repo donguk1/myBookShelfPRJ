@@ -17,16 +17,6 @@ public record ShoppingDTO(
         List<item> items
 ) {
 
-//    @Data
-//    @JsonIgnoreProperties(ignoreUnknown = true)
-//    public static class channel{
-//        private DateTime lastBuildData;
-//        private int total;
-//        private int start;
-//        private int display;
-//        List<item> items;
-//    }
-
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class item {
