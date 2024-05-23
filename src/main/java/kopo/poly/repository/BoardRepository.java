@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -49,31 +50,27 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
 
     @Query(value =
             "SELECT " +
-                "B.BOARD_SEQ," +
-                "B.REG_ID, " +
-                "B.NOTICE_YN," +
-                "B.TITLE," +
-                "B.CATEGORY," +
-                "B.CONTENTS," +
-                "U.NICKNAME," +
-                "TO_CHAR(B.REG_DT, 'yyyy-MM-dd') AS REG_DT, " +
-                "B.CHG_DT," +
-                "B.READ_CNT," +
-                "(SELECT COUNT(C.COMMENT_SEQ)" +
-                    "FROM COMMENT C " +
-                    "WHERE C.BOARD_SEQ = B.BOARD_SEQ) AS COMMENT_CNT, " +
-                "CASE WHEN EXISTS (" +
-                    "SELECT 1 " +
-                    "FROM FILE F " +
-                    "WHERE B.BOARD_SEQ = F.BOARD_SEQ" +
-                ") THEN 'Y' ELSE 'N' END AS FILE_YN " +
-            "FROM BOARD B " +
-                "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
-            "WHERE B.CATEGORY LIKE %:category% " +
-                "AND B.TITLE LIKE %:keyword% " +
-            "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
+                    "B.BOARD_SEQ, " +
+                    "B.REG_ID, " +
+                    "B.NOTICE_YN, " +
+                    "B.TITLE, " +
+                    "B.CATEGORY, " +
+                    "B.CONTENTS, " +
+                    "U.NICKNAME, " +
+                    "TO_CHAR(B.REG_DT, 'yyyy-MM-dd') AS REG_DT, " +
+                    "B.CHG_DT, " +
+                    "B.READ_CNT, " +
+                    "(SELECT COUNT(C.COMMENT_SEQ) FROM COMMENT C WHERE C.BOARD_SEQ = B.BOARD_SEQ) AS COMMENT_CNT, " +
+                    "CASE WHEN EXISTS (SELECT 1 FROM FILE F WHERE B.BOARD_SEQ = F.BOARD_SEQ) THEN 'Y' ELSE 'N' END AS FILE_YN " +
+                    "FROM BOARD B " +
+                    "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
+                    "WHERE B.CATEGORY LIKE %:category% " +
+                    "AND B.TITLE LIKE %:keyword% " +
+                    "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
             nativeQuery = true)
-    Page<BoardEntity> getBoardListPage(Pageable pageable, String category, String keyword);
+    Page<BoardEntity> getBoardListPage(Pageable pageable,
+                                       @Param("category") String category,
+                                       @Param("keyword") String keyword);
 
     /**
      * 조회수 증가
@@ -90,56 +87,58 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
      */
     @Query(value =
             "SELECT " +
-                "B.BOARD_SEQ," +
-                "B.REG_ID, " +
-                "B.NOTICE_YN," +
-                "B.TITLE," +
-                "B.CATEGORY," +
-                "B.CONTENTS," +
-                "U.NICKNAME," +
-                "TO_CHAR(B.REG_DT, 'yyyy-MM-dd') AS REG_DT, " +
-                "B.CHG_DT," +
-                "B.READ_CNT," +
-                "(SELECT COUNT(C.COMMENT_SEQ)" +
-                "FROM COMMENT C " +
-                "WHERE C.BOARD_SEQ = B.BOARD_SEQ) AS COMMENT_CNT, " +
-                "CASE WHEN EXISTS (" +
-                "SELECT 1 FROM FILE F WHERE B.BOARD_SEQ = F.BOARD_SEQ" +
-                ") THEN 'Y' ELSE 'N' END AS FILE_YN " +
-            "FROM BOARD B " +
-                "INNER JOIN BOOKMARK BM ON BM.BOARD_SEQ = B.BOARD_SEQ " +
-                "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
-            "WHERE B.REG_ID = ?1 " +
-            "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
-    nativeQuery = true)
-    Page<BoardEntity> getMyBookmarkList(Pageable pageable, String userId);
+                    "B.BOARD_SEQ, " +
+                    "B.REG_ID, " +
+                    "B.NOTICE_YN, " +
+                    "B.TITLE, " +
+                    "B.CATEGORY, " +
+                    "B.CONTENTS, " +
+                    "U.NICKNAME, " +
+                    "TO_CHAR(B.REG_DT, 'yyyy-MM-dd') AS REG_DT, " +
+                    "B.CHG_DT, " +
+                    "B.READ_CNT, " +
+                    "(SELECT COUNT(C.COMMENT_SEQ) FROM COMMENT C WHERE C.BOARD_SEQ = B.BOARD_SEQ) AS COMMENT_CNT, " +
+                    "CASE WHEN EXISTS (SELECT 1 FROM FILE F WHERE B.BOARD_SEQ = F.BOARD_SEQ) THEN 'Y' ELSE 'N' END AS FILE_YN " +
+                    "FROM BOARD B " +
+                    "INNER JOIN BOOKMARK BM ON BM.BOARD_SEQ = B.BOARD_SEQ " +
+                    "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
+                    "WHERE B.REG_ID = :userId " +
+                    "AND B.CATEGORY LIKE %:category% " +
+                    "AND B.TITLE LIKE %:keyword% " +
+                    "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
+            nativeQuery = true)
+    Page<BoardEntity> getMyBookmarkList(Pageable pageable,
+                                        @Param("userId") String userId,
+                                        @Param("keyword") String keyword,
+                                        @Param("category") String category);
 
     /**
      * 내 게시글 가져오기
      */
     @Query(value =
             "SELECT " +
-                "B.BOARD_SEQ," +
-                "B.REG_ID, " +
-                "B.NOTICE_YN," +
-                "B.TITLE," +
-                "B.CATEGORY," +
-                "B.CONTENTS," +
-                "U.NICKNAME," +
-                "TO_CHAR(B.REG_DT, 'yyyy-MM-dd') AS REG_DT, " +
-                "B.CHG_DT," +
-                "B.READ_CNT," +
-                "(SELECT COUNT(C.COMMENT_SEQ)" +
-                "FROM COMMENT C " +
-                "WHERE C.BOARD_SEQ = B.BOARD_SEQ) AS COMMENT_CNT, " +
-                "CASE WHEN EXISTS (" +
-                "SELECT 1 FROM FILE F WHERE B.BOARD_SEQ = F.BOARD_SEQ" +
-                ") THEN 'Y' ELSE 'N' END AS FILE_YN " +
-            "FROM BOARD B " +
-                "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
-            "WHERE B.REG_ID = ?1 " +
-            "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
+                    "B.BOARD_SEQ, " +
+                    "B.REG_ID, " +
+                    "B.NOTICE_YN, " +
+                    "B.TITLE, " +
+                    "B.CATEGORY, " +
+                    "B.CONTENTS, " +
+                    "U.NICKNAME, " +
+                    "TO_CHAR(B.REG_DT, 'yyyy-MM-dd') AS REG_DT, " +
+                    "B.CHG_DT, " +
+                    "B.READ_CNT, " +
+                    "(SELECT COUNT(C.COMMENT_SEQ) FROM COMMENT C WHERE C.BOARD_SEQ = B.BOARD_SEQ) AS COMMENT_CNT, " +
+                    "CASE WHEN EXISTS (SELECT 1 FROM FILE F WHERE B.BOARD_SEQ = F.BOARD_SEQ) THEN 'Y' ELSE 'N' END AS FILE_YN " +
+                    "FROM BOARD B " +
+                    "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
+                    "WHERE B.REG_ID = :userId " +
+                    "AND B.CATEGORY LIKE %:category% " +
+                    "AND B.TITLE LIKE %:keyword% " +
+                    "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
             nativeQuery = true)
-    Page<BoardEntity> getMyBoardList(Pageable pageable, String userID);
+    Page<BoardEntity> getMyBoardList(Pageable pageable,
+                                     @Param("userId") String userId,
+                                     @Param("keyword") String keyword,
+                                     @Param("category") String category);
 
 }

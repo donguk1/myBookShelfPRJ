@@ -371,13 +371,18 @@ public class BoardController {
         log.info("controller 내 북마크 리스트 가져오기");
 
         String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String category = CmmUtil.nvl(request.getParameter("category"));
+        String keyword = CmmUtil.nvl(request.getParameter("keyword"));
         String pageStr = request.getParameter("page");
         int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
         log.info("userId : " + userId);
         log.info("page : " + page);
+        log.info("category : " + category);
+        log.info("keyword : " + keyword);
+        log.info("page : " + page);
 
-        return boardService.getMyBookmarkList(PageRequest.of(page-2, 10), userId);
+        return boardService.getMyBookmarkList(PageRequest.of(page-2, 10), userId, keyword, category);
     }
 
     /**
@@ -390,13 +395,19 @@ public class BoardController {
         log.info("controller getMyBoard");
 
         String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String category = CmmUtil.nvl(request.getParameter("category"));
+        String keyword = CmmUtil.nvl(request.getParameter("keyword"));
         String pageStr = request.getParameter("page");
         int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
         log.info("userId : " + userId);
         log.info("page : " + page);
+        log.info("category : " + category);
+        log.info("keyword : " + keyword);
+        log.info("page : " + page);
 
-        return boardService.getMyBoard(PageRequest.of(page-2, 10), userId);
+        return boardService.getMyBoard(
+                PageRequest.of(page-2, 10), userId, keyword, category);
 
     }
 

@@ -45,17 +45,6 @@
 
             getMyBoard()
 
-            $("#btnSend").on("click", function () {
-
-                let f = document.getElementById("f");
-
-                if (f.keyword.value === "") {
-                    alert("검색어를 입력하세요");
-                    f.keyword.focus();
-                    return;
-                }
-
-            })
 
         })
 
@@ -64,6 +53,8 @@
 
             const urlParams = new URL(location.href).searchParams;
             currentPage = urlParams.get('page');
+            let category = urlParams.get('category');
+            let keyword = urlParams.get('keyword');
 
             // page 값이 null이거나 빈 문자열인 경우 0으로 초기화
             if (currentPage === null || currentPage.trim() === "") {
@@ -83,7 +74,11 @@
                 url: "/board/getMyBoard",
                 type: "POST",
                 dataType: "JSON",
-                data: {"page" : currentPage},
+                data: {
+                    page: currentPage,
+                    category: category,
+                    keyword: keyword
+                },
                 success: function (json) {
                     console.log(json);
 
@@ -281,8 +276,8 @@
     <!-- 검색 버튼 영역 -->
     <form class="form-inline my-2 my-lg-0 mx-auto" id="f">
         <div class="input-group mb-3">
-            <select name="type" id="type" style="margin-right: 3%">
-                <option selected value="all">전체</option>
+            <select name="category" id="category" style="margin-right: 3%">
+                <option selected value="">전체</option>
                 <option value="기타">기타</option>
                 <option value="철학">철학</option>
                 <option value="종교">종교</option>
@@ -293,7 +288,7 @@
                 <option value="역사">역사</option>
             </select>
             <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword">
-            <button type="submit" class="btn btn-secondary my-2 my-sm-0" id="btnSend" onclick="getSelectMemoList">검색</button>
+            <button type="submit" class="btn btn-secondary my-2 my-sm-0" id="btnSend">검색</button>
         </div>
     </form>
     <br>

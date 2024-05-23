@@ -52,10 +52,16 @@ public interface IBoardService {
     /**
      * 내 북마크 가져오기
      */
-    Page<BoardDTO> getMyBookmarkList(Pageable pageable, final String userId) throws Exception;
+    Page<BoardDTO> getMyBookmarkList(Pageable pageable,
+                                     final String userId,
+                                     final String keyword,
+                                     final String category) throws Exception;
 
     /**
      * 내 게시글 가져오기
      */
-    Page<BoardDTO> getMyBoard(Pageable pageable, final String userId) throws Exception;
+    Page<BoardDTO> getMyBoard(Pageable pageable,
+                              final String userId,
+                              final String keyword,
+                              final String category) throws Exception;
 }

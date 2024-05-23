@@ -181,22 +181,22 @@ public class BoardService implements IBoardService {
      */
     @Transactional
     @Override
-    public Page<BoardDTO> getMyBookmarkList(Pageable pageable, String userId) throws Exception {
+    public Page<BoardDTO> getMyBookmarkList(Pageable pageable, String userId, String keyword, String category) throws Exception {
 
         log.info("service 내 북마크 가져오기");
 
-        return boardRepository.getMyBookmarkList(pageable, userId).map(BoardDTO::from);
+        return boardRepository.getMyBookmarkList(pageable, userId, keyword, category).map(BoardDTO::from);
     }
 
     /**
      * 내 북마크 가져오기
      */
     @Override
-    public Page<BoardDTO> getMyBoard(Pageable pageable, String userId) throws Exception {
+    public Page<BoardDTO> getMyBoard(Pageable pageable, String userId, String keyword, String category) throws Exception {
 
         log.info("service 내 북마크 가져오기");
 
-        return boardRepository.getMyBoardList(pageable, userId).map(BoardDTO::from);
+        return boardRepository.getMyBoardList(pageable, userId, keyword, category).map(BoardDTO::from);
     }
 }
 
