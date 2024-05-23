@@ -26,7 +26,7 @@ public class BookmarkService implements IBookmarkService {
 
         log.info("service 북마크 수정 실행");
 
-        if (type) {
+        if (!type) {
             bookmarkRepository.save(BookmarkEntity.builder()
                     .userId(userId)
                     .boardSeq(boardSeq)
