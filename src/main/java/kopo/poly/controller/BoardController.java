@@ -16,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,32 +37,9 @@ public class BoardController {
      * 보드 리스트 이동
      */
     @GetMapping(value = "/boardList")
-    public String boardList(ModelMap modelMap,
-                            @RequestParam(defaultValue = "1") int page) throws Exception {
+    public String boardList() throws Exception {
 
-//        List<BoardDTO> bList = boardService.getBoardList();
-//
-//        // 페이지당 보여줄 아이템 개수 정의
-//        int itemPerPage = 10;
-//
-//        // 페이지네이션을 위해 전체 아이템 개수 구하기
-//        int totalItems = bList.size();
-//
-//        // 전체 페이지 개수 계산
-//        int totalPages = (int) Math.ceil((double) totalItems / itemPerPage);
-//
-//        // 현재 페이지에 해당하는 아이템들만 선택하여 rList에 할당
-//        int fromIndex = (page - 1) * itemPerPage;
-//        int toIndex = Math.min(fromIndex + itemPerPage, totalItems);
-//        bList = bList.subList(fromIndex, toIndex);
-//
-//        modelMap.addAttribute("bList", bList);
-//        modelMap.addAttribute("currentPage", page);
-//        modelMap.addAttribute("totalPages", totalPages);
-
-//        log.info("bList : " + bList.size());
-
-        return "/board/boardList";
+        return "board/boardList";
     }
 
     /**
@@ -71,7 +47,7 @@ public class BoardController {
      */
     @GetMapping(value = "/boardReg")
     public String boardReg() {
-        return "/board/boardReg";
+        return "board/boardReg";
     }
 
     /**

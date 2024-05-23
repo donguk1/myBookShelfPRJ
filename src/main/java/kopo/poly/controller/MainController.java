@@ -17,6 +17,6 @@ public class MainController {
 
         log.info("메인 페이지 이동");
 
-        return "/main";
+        return "main";
     }
 }

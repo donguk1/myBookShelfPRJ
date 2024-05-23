@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> 회원가입</title>
+    <title>BookShelf</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +27,8 @@
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/js/move.js"></script>
-    <script th:inline="javascript">
+    <script type="text/javascript">
+
 
 
         // 아이디 중복체크여부 (중복 Y / 중복아님 : N)
@@ -42,6 +42,8 @@
         let authCheck = "Y"
 
         $(document).ready(function() {
+
+            $("#header").load("/header.html");
 
             let f = document.getElementById("f");
 
@@ -294,7 +296,7 @@
 <body>
 <!-- 회원가입 페이지 -->
 <!-- 상단바 부분 -->
-<div id="header"></div>
+<div th:include="header.html"></div>
 <br>
 <br>
 

@@ -1,17 +1,13 @@
-<%@ page import="kopo.poly.dto.BoardDTO" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Objects" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>myBookMark</title>
+    <title>myBoard</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
-    <style th:inline="css">
+    <style>
         .dropdown-menu {
             right: 0;
             top: 60px;
@@ -38,14 +34,16 @@
     <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
-    <script th:inline="javascript">
+    <script type="text/javascript">
 
         let currentPage
 
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
-            getMyBookmark()
+            $("#header").load("/header.html");
+
+            getMyBoard()
 
             $("#btnSend").on("click", function () {
 
@@ -62,7 +60,7 @@
         })
 
         // 북마크 리스트 가져오기
-        function getMyBookmark() {
+        function getMyBoard() {
 
             const urlParams = new URL(location.href).searchParams;
             currentPage = urlParams.get('page');
@@ -82,7 +80,7 @@
             currentPage++
 
             $.ajax({
-                url: "/board/getMyBookmark",
+                url: "/board/getMyBoard",
                 type: "POST",
                 dataType: "JSON",
                 data: {"page" : currentPage},
@@ -111,7 +109,7 @@
 
             bList.forEach(function (data) {
 
-                // console.log(data);
+                console.log(data);
 
                 let listOne = $("<tr>")
                     .addClass("listOne table-light")
@@ -120,6 +118,7 @@
                     })
 
                 let category = $("<th>")
+                    // .addClass("badge rounded-pill bg-secondary")
                     .text(data.category)
                 listOne.append(category)
 
@@ -129,6 +128,7 @@
                 if (data.fileYn === "Y") {
                     let fileYn = $("<i>")
                         .addClass("fa-solid fa-image")
+                    // .css({"color": "#27ADFB"})
                     title.append(fileYn)
                 }
                 listOne.append(title)
@@ -176,7 +176,7 @@
 
                 let prevFirstPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", page === 1 ? "#" : "/board/boardList?page=1")
+                    .attr("href", page === 1 ? "#" : "myBoard?page=1")
                     .html("&laquo;");
 
                 prevFirstPageItem.append(prevFirstPageLink);
@@ -188,7 +188,7 @@
 
                 let prevPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", page === 1 ? "#" : "/board/boardList?page=" + (startPage - 1))
+                    .attr("href", page === 1 ? "#" : "myBoard?page=" + (startPage - 1))
                     .html("&lt;");
 
                 prevPageItem.append(prevPageLink);
@@ -207,7 +207,7 @@
 
                 let pageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", i === page ? "#" : "/board/boardList?page=" + i)
+                    .attr("href", i === page ? "#" : "myBoard?page=" + i)
                     .text(i);
 
                 pageItem.append(pageLink);
@@ -221,7 +221,7 @@
 
                 let nextPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + (endPage + 1))
+                    .attr("href", page === totalPages ? "#" : "myBoard?page=" + (endPage + 1))
                     .html("&gt;");
 
                 nextPageItem.append(nextPageLink);
@@ -233,7 +233,7 @@
 
                 let nextLastPageLink = $("<a>")
                     .addClass("page-link")
-                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + totalPages)
+                    .attr("href", page === totalPages ? "#" : "myBoard?page=" + totalPages)
                     .html("&raquo;");
 
                 nextLastPageItem.append(nextLastPageLink);
@@ -241,14 +241,13 @@
             }
         }
 
-
     </script>
 </head>
 <body>
 <!-- 메모 목록 페이지 -->
 
 <!-- 상단바 부분 -->
-<%@include file="../header.jsp" %>
+<div th:include="header.html"></div>
 <br>
 <br>
 
@@ -268,6 +267,7 @@
             </tr>
             </thead>
             <tbody id="boardList">
+
             </tbody>
         </table>
     </div>

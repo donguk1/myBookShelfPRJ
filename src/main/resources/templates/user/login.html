@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>로그인</title>
+    <title>BookShelf</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +15,8 @@
 
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
+
+            $("#header").load("/header.html");
 
             // // 네이버 로그인
             // $("#btnNaverLogin").on("click", function () {
@@ -68,7 +69,7 @@
                     console.log(json);
 
                     if (json === 1) {
-                        location.href = "/main";
+                        location.href = "../main";
 
                     } else { // 회원가입 실패
                         alert("실패하였습니다. \n" +
@@ -81,7 +82,7 @@
 </head>
 <body>
 <!-- 로그인 페이지 -->
-<%@include file="../header.jsp" %>
+<div th:include="header.html"></div>
 <br/>
 <br/>
 

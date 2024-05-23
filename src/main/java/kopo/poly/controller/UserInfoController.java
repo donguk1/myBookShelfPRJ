@@ -3,10 +3,8 @@ package kopo.poly.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import kopo.poly.dto.BoardDTO;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.dto.UserInfoDTO;
-import kopo.poly.service.IBoardService;
 import kopo.poly.service.IMailService;
 import kopo.poly.service.IUserInfoService;
 import kopo.poly.util.CmmUtil;
@@ -19,9 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
@@ -38,7 +33,7 @@ public class UserInfoController {
      */
     @GetMapping(value = "/findId")
     public String findId() {
-        return "/user/findId";
+        return "user/findId";
     }
     
     /**
@@ -46,7 +41,7 @@ public class UserInfoController {
      */
     @GetMapping(value = "/findPassword")
     public String findPassword() {
-        return "/user/findPassword";
+        return "user/findPassword";
     }
 
     /**
@@ -54,7 +49,7 @@ public class UserInfoController {
      */
     @GetMapping(value = "/login")
     public String login() {
-        return "/user/login";
+        return "user/login";
     }
 
     /**

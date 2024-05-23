@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>myInfo</title>
+    <title>BookShelf</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,43 +33,37 @@
 
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
-    <script th:inline="javascript">
+    <script type="text/javascript">
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
 
-            $("#header").load("header")
 
-            // 내 게시물 리스트
-            $("#btnMyBoard").on("click", function () {
-                location.href = "myBoard";
+            // 게시물 리스트
+            $("#btnBoardList").on("click", function () {
+                location.href = "board/boardList";
             })
 
-            // 내 정보 보기
+            // 내 활동 리스트
             $("#btnMyActivity").on("click", function () {
-                location.href = "myPage";
+                location.href = "user/myActivity";
             })
 
-            // 내 댓글 리스트
-            $("#btnMyComment").on("click", function () {
-                location.href = "myComment";
+            // 무작위 도서 추천
+            $("#btnRecommend").on("click", function () {
+                location.href = "recommend/bookRecommend";
             })
 
             // 북마크 리스트
             $("#btnBookmark").on("click", function () {
-                location.href = "myBookmark";
-            })
-
-            // 내 도서 리스트
-            $("#btnMyBook").on("click", function () {
-                location.href = "myBookList";
+                location.href = "user/myBookmark";
             })
         })
     </script>
 </head>
 <body>
 <!-- 메인 페이지 -->
+<div th:include="header.html"></div>
 <!-- 상단바 부분 -->
-<%@include file="../header.jsp" %>
 <br>
 <br>
 
@@ -79,23 +72,19 @@
 
 
     <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnMyActivity" class="btn btn-link btn-lg" style="height: 100px" type="button">내 정보 보기</button>
+        <button id="btnBoardList" class="btn btn-link btn-lg" style=" height: 100px" type="button">게시글 보기</button>
     </div>
 
     <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnMyBoard" class="btn btn-link btn-lg" style=" height: 100px" type="button">내 게시글 보기</button>
+        <button id="btnMyActivity" class="btn btn-link btn-lg" style="height: 100px" type="button">내 활동 보기</button>
     </div>
 
     <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnMyComment" class="btn btn-link btn-lg" style="height: 100px" type="button">내 댓글 보기</button>
+        <button id="btnRecommend" class="btn btn-link btn-lg" style="height: 100px" type="button">오늘의 추천 도서</button>
     </div>
 
     <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnBookmark" class="btn btn-link btn-lg" style="height: 100px" type="button">내 북마크 보기</button>
-    </div>
-
-    <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnMyBook" class="btn btn-link btn-lg" style="height: 100px" type="button">내 도서 보기</button>
+        <button id="btnBookmark" class="btn btn-link btn-lg" style="height: 100px" type="button">북마크</button>
     </div>
 
 </div>

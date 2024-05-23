@@ -1,20 +1,16 @@
 server:
   port: 11000
 
-  # JSP Real Time Update
-  servlet-jsp:
-    init-parameters:
-      development: 'true'
 
   # Chat address
   address: 0.0.0.0
 
 spring:
-  # JSP
-  mvc:
-    view:
-      prefix: /WEB-INF/views/
-      suffix: .jsp
+#  thymeleaf:
+#    prefix: classpath:/templates/
+#    suffix: html
+#    cache: false
+#    check-template-location: true
 
   profiles:
     default: local

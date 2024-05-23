@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>내 정보</title>
+    <title>BookShelf</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +22,8 @@
 
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
+
+            $("#header").load("/header.html");
 
             let f = document.getElementById("f"); // form 태그
 
@@ -190,7 +191,7 @@
                 success: function (json) {
                     console.log(json);
                     alert(json.msg); // 메시지 띄우기
-                    location.href = "../main.html"
+                    location.href = "../main"
 
                 }
             })
@@ -200,7 +201,7 @@
 <body>
 
 <!-- 상단바 부분 -->
-<%@include file="../header.jsp" %>
+<div th:include="header.html"></div>
 <br>
 <br>
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
