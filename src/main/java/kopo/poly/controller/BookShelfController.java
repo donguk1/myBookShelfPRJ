@@ -174,13 +174,16 @@ public class BookShelfController {
         log.info("controller getMyBookPage");
 
         String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String title = CmmUtil.nvl(request.getParameter("title"));
         String pageStr = request.getParameter("page");
         int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
         log.info("userId : " + userId);
         log.info("page : " + page);
+        log.info("title : " + title);
 
-        return bookShelfService.getMyBookPage(userId, PageRequest.of(page-2, 10));
+        return bookShelfService.getMyBookPage(userId,
+                PageRequest.of(page-2, 10), title);
     }
 
     public int safeParseInt(String input, int defaultValue) {

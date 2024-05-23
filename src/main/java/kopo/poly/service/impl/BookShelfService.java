@@ -1,7 +1,5 @@
 package kopo.poly.service.impl;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import kopo.poly.dto.BookShelfDTO;
 import kopo.poly.repository.BookShelfRepository;
@@ -12,13 +10,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,11 +69,11 @@ public class BookShelfService implements IBookShelfService {
      * 도서 가져오기(Pageable)
      */
     @Override
-    public Page<BookShelfDTO> getMyBookPage(String userId, Pageable pageable) throws Exception {
+    public Page<BookShelfDTO> getMyBookPage(String userId, Pageable pageable, String title) throws Exception {
 
         log.info("service getMyBookPage");
 
-        return bookShelfRepository.findByRegIdOrderByRegDt(userId, pageable).map(BookShelfDTO::from);
+        return bookShelfRepository.findByRegIdAndTitleContainingOrderByRegDtDesc(userId, pageable, title).map(BookShelfDTO::from);
     }
 
     /**

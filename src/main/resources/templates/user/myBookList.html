@@ -69,6 +69,7 @@
 
             const urlParams = new URL(location.href).searchParams;
             currentPage = urlParams.get('page');
+            let title = urlParams.get('title');
 
             // page 값이 null이거나 빈 문자열인 경우 0으로 초기화
             if (currentPage === null || currentPage.trim() === "") {
@@ -88,7 +89,10 @@
                 url: "/bookShelf/getMyBookPage",
                 type: "POST",
                 dataType: "JSON",
-                data: {"page" : currentPage},
+                data: {
+                    "page" : currentPage,
+                    "title": title
+                },
                 success: function (json) {
                     console.log(json);
 
@@ -252,8 +256,8 @@
     <!-- 검색 버튼 영역 -->
     <form class="form-inline my-2 my-lg-0 mx-auto" id="f">
         <div class="input-group mb-3">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword">
-            <button type="submit" class="btn btn-secondary my-2 my-sm-0" id="btnSend" onclick="getSelectMemoList">검색</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="title">
+            <button type="submit" class="btn btn-secondary my-2 my-sm-0" id="btnSend">검색</button>
         </div>
     </form>
     <br>
