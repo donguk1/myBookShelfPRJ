@@ -69,9 +69,11 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
                 ") THEN 'Y' ELSE 'N' END AS FILE_YN " +
             "FROM BOARD B " +
                 "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
+            "WHERE B.CATEGORY LIKE %:category% " +
+                "AND B.TITLE LIKE %:keyword% " +
             "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
             nativeQuery = true)
-    Page<BoardEntity> getBoardListPage(Pageable pageable);
+    Page<BoardEntity> getBoardListPage(Pageable pageable, String category, String keyword);
 
     /**
      * 조회수 증가

@@ -68,11 +68,11 @@ public class BoardService implements IBoardService {
      * 리스트 가져오기(페이징 사용)
      */
     @Override
-    public Page<BoardDTO> getBoardList(Pageable pageable) throws Exception {
+    public Page<BoardDTO> getBoardList(Pageable pageable, String category, String keyword ) throws Exception {
 
         log.info("service 보드 리스트 가져오기");
 
-        return boardRepository.getBoardListPage(pageable).map(BoardDTO::from);
+        return boardRepository.getBoardListPage(pageable, category, keyword).map(BoardDTO::from);
     }
 
     /**

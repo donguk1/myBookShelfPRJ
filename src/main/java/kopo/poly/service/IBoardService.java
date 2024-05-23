@@ -13,7 +13,9 @@ public interface IBoardService {
      */
     List<BoardDTO> getBoardList() throws Exception;
 
-    Page<BoardDTO> getBoardList(Pageable pageable) throws Exception;
+    Page<BoardDTO> getBoardList(Pageable pageable,
+                                final String category,
+                                final String keyword) throws Exception;
 
     /**
      * 게시글 상세정보 가져오기

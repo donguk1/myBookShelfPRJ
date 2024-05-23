@@ -134,7 +134,6 @@ public class BoardController {
                 }
             }
             msg = "작성되었습니다.";
-            log.info("123");
 
         } catch (Exception e) {
             log.info(e.toString());
@@ -142,7 +141,6 @@ public class BoardController {
 
             res = 0;
             msg = "오류로 인해 실패하였습니다. 다시 실행해주세요";
-            log.info("345");
 
         }
 
@@ -200,13 +198,18 @@ public class BoardController {
 
         log.info("controller getBoardListPage 게시글 리스트 가져오기");
 
+        String category = CmmUtil.nvl(request.getParameter("category"));
+        String keyword = CmmUtil.nvl(request.getParameter("keyword"));
         String pageStr = request.getParameter("page");
         int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
+
+        log.info("category : " + category);
+        log.info("keyword : " + keyword);
         log.info("page : " + page);
 
         return boardService.getBoardList(
-                PageRequest.of(page-2, 10));
+                PageRequest.of(page-2, 10), category, keyword);
     }
 
     /**
