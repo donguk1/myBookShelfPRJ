@@ -10,8 +10,7 @@
     <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
     <style type="text/css">
         .dropdown-menu {
-            right: 0;
-            top: 60px;
+
         }
         .dropdown-menu a {
             display: block;
@@ -24,23 +23,45 @@
             display: block;
         }
 
-        /* 드롭다운 메뉴가 나타날 때 네비게이션 바가 밀리는 현상을 방지 */
-        .navbar-nav {
-            position: relative;
-        }
-
-        .navbar-nav .dropdown-menu {
-            position: absolute;
-            right: 0;
-            z-index: 1000;
-        }
-
         .readTextarea {
             width: 100%;
             resize: none;
             overflow-y: hidden; /* prevents scroll bar flash */
             border: none;
             outline: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #nickname {
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-menu li {
+            padding: 8px 16px;
+        }
+
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: black;
+            display: block;
+        }
+
+        .dropdown-menu li:hover {
+            background-color: #f1f1f1;
         }
     </style>
 
@@ -57,6 +78,31 @@
 
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
+
+            let dropdown = document.getElementById("dropdown");
+
+            document.getElementById("nickname").addEventListener("click", function() {
+                if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                    dropdown.style.display = "block";
+                } else {
+                    dropdown.style.display = "none";
+                }
+            });
+
+            // Hide the dropdown if clicked outside
+            document.addEventListener("click", function(event) {
+                if (!nickname.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.style.display = "none";
+                }
+            });
+
+            document.getElementById("btnRecordBoard").addEventListener("click", function () {
+                window.name = document.getElementById("regId").value
+
+                location.href = "recordBoardList"
+
+            })
+
 
             $("#header").load("/header.html");
 
@@ -708,6 +754,11 @@
 
             <h6> &nbsp;&nbsp;
                 <span  id="nickname"></span >  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                <ul id="dropdown" class="dropdown-menu" style="margin-left: 1%">
+                    <li><a id="btnRecordBoard">작성한 글 보기</a></li>
+<!--                    <li><a href="">설정</a></li>-->
+<!--                    <li><a href="">로그아웃</a></li>-->
+                </ul>
                 <span  id="regDt"></span >  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <span  id="readCnt"></span >
             </h6>

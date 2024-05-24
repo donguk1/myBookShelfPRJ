@@ -43,6 +43,15 @@ public class BoardController {
     }
 
     /**
+     * 대상 작성 글 리스트 이동
+     */
+    @GetMapping(value = "/recordBoardList")
+    public String recordBoardList() throws Exception {
+
+        return "board/recordBoardList";
+    }
+
+    /**
      * 작성페이지 이동
      */
     @GetMapping(value = "/boardReg")
@@ -210,6 +219,31 @@ public class BoardController {
 
         return boardService.getBoardList(
                 PageRequest.of(page-2, 10), category, keyword);
+    }
+
+    /**
+     * 대상 게시글 리스트 가져오기
+     */
+    @ResponseBody
+    @PostMapping(value = "getRecordBoardList")
+    public Page<BoardDTO> getRecordBoardList(HttpServletRequest request) throws Exception {
+
+        log.info("controller getRecordBoardList 대상 게시글 리스트 가져오기");
+
+        String regId = CmmUtil.nvl(request.getParameter("regId"));
+        String category = CmmUtil.nvl(request.getParameter("category"));
+        String keyword = CmmUtil.nvl(request.getParameter("keyword"));
+        String pageStr = request.getParameter("page");
+        int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
+
+
+        log.info("category : " + category);
+        log.info("keyword : " + keyword);
+        log.info("page : " + page);
+        log.info("regId : " + regId);
+
+        return boardService.getMyBookmarkList(PageRequest.of(page-2, 10), regId, keyword, category);
+
     }
 
     /**
