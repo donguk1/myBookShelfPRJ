@@ -23,6 +23,9 @@ public class FileEntity {
     @Column(name = "BOARD_SEQ", nullable = false)
     private Long boardSeq;
 
+    @Column(name = "NOTICE_SEQ", nullable = false)
+    private Long noticeSeq;
+
     @NonNull
     @Column(name = "SAVE_FILE_URL", nullable = false)
     private String saveFileUrl;

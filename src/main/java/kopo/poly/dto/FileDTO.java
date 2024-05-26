@@ -13,7 +13,8 @@ public record FileDTO(
         String regDt,           // 작성일
         String fileSize,        // 파일 크기
         int page,               // 이미지 장수
-        String saveFileUrl      // 저장 경로
+        String saveFileUrl,     // 저장 경로
+        Long noticeSeq
 
 ) {
 }

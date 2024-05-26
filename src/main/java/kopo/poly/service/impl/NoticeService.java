@@ -1,0 +1,58 @@
+package kopo.poly.service.impl;
+
+import kopo.poly.repository.NoticeRepository;
+import kopo.poly.repository.entity.NoticeEntity;
+import kopo.poly.service.INoticeService;
+import kopo.poly.util.DateUtil;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.FindAndModifyOptions;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Service;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Criteria;
+@Slf4j
+@RequiredArgsConstructor
+@Service
+public class NoticeService implements INoticeService {
+
+    private final NoticeRepository noticeRepository;
+
+    @Autowired
+    private MongoOperations mongoOperations;
+
+    public long generateSequence(String seqName) {
+        NoticeEntity counter = mongoOperations.findAndModify(
+                Query.query(Criteria.where("_id").is(seqName)),
+                new Update().inc("noticeSeq", 1),
+                FindAndModifyOptions.options().returnNew(true).upsert(true),
+                NoticeEntity.class);
+        return counter != null && counter.getNoticeSeq() != null ? counter.getNoticeSeq() : 0L;
+    }
+
+    @Override
+    public Long insertNotice(String userId, String title, String contents) throws Exception {
+
+        log.info("service insertNotice");
+
+        String dt = DateUtil.getDateTime("yyyy-MM-dd hh:mm:ss");
+
+        noticeRepository.save(NoticeEntity.builder()
+                        .noticeSeq(generateSequence("noticeSeq"))
+                        .regId(userId)
+                        .title(title)
+                        .contents(contents)
+                        .regDt(dt)
+                        .chgDt(dt)
+                        .readCnt(0L)
+                        .build());
+
+        return noticeRepository.findByRegDtAndChgDt(dt, dt).getNoticeSeq();
+    }
+
+
+
+
+}

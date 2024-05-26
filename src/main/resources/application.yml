@@ -6,11 +6,6 @@ server:
   address: 0.0.0.0
 
 spring:
-#  thymeleaf:
-#    prefix: classpath:/templates/
-#    suffix: html
-#    cache: false
-#    check-template-location: true
 
   profiles:
     default: local
