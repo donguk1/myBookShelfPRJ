@@ -20,7 +20,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class NoticeEntity {
 
     @Id
-    private String id;
+    private String _id;
 
     private Long noticeSeq;
 

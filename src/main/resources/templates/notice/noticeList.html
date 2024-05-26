@@ -53,7 +53,6 @@
 
             const urlParams = new URL(location.href).searchParams;
             currentPage = urlParams.get('page');
-            let category = urlParams.get('category');
             let keyword = urlParams.get('keyword');
 
             // page 값이 null이거나 빈 문자열인 경우 0으로 초기화
@@ -71,12 +70,11 @@
             currentPage++
 
             $.ajax({
-                url: "/notice/getNoticeListPage",
+                url: "/notice/getNoticeList",
                 type: "POST",
                 dataType: "JSON",
                 data: {
                     page: currentPage,
-                    category: category,
                     keyword: keyword
                 },
                 success: function (json) {
@@ -112,26 +110,12 @@
                         doDetail(data.noticeSeq)
                     })
 
-                let category = $("<th>")
-                    .text(data.category)
-                listOne.append(category)
-
                 let title = $("<th>")
                     .text(data.title)
-
-                if (data.fileYn === "Y") {
-                    let fileYn = $("<i>")
-                        .addClass("fa-solid fa-image")
-                    title.append(fileYn)
-                }
                 listOne.append(title)
 
-                let commentCnt = $("<th>")
-                    .text(data.commentCnt)
-                listOne.append(commentCnt)
-
                 let nickname = $("<th>")
-                    .text(data.nickname)
+                    .text("관리자")
                 listOne.append(nickname)
 
                 let regDt = $("<th>")
@@ -251,9 +235,7 @@
         <table class="table table-hover" style="text-align: center">
             <thead>
             <tr>
-                <th scope="col" style="width: 10%">카테고리</th>
                 <th scope="col" style="width: 40%">제목</th>
-                <th scope="col" style="width: 10%">댓글수</th>
                 <th scope="col" style="width: 10%">작성자</th>
                 <th scope="col" style="width: 20%">작성일</th>
                 <th scope="col" style="width: 10%">조회수</th>
@@ -273,17 +255,6 @@
     <!-- 검색 버튼 영역 -->
     <form class="form-inline my-2 my-lg-0 mx-auto" id="f">
         <div class="input-group mb-3">
-            <select name="category" id="category" style="margin-right: 3%">
-                <option selected value="">전체</option>
-                <option value="기타">기타</option>
-                <option value="철학">철학</option>
-                <option value="종교">종교</option>
-                <option value="과학">과학</option>
-                <option value="예술">예술</option>
-                <option value="언어">언어</option>
-                <option value="문학">문학</option>
-                <option value="역사">역사</option>
-            </select>
             <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword">
             <button type="submit" class="btn btn-secondary my-2 my-sm-0" id="btnSend">검색</button>
         </div>

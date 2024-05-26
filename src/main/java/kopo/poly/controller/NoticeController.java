@@ -2,8 +2,10 @@ package kopo.poly.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kopo.poly.dto.NoticeDTO;
 import kopo.poly.dto.FileDTO;
 import kopo.poly.dto.MsgDTO;
+import kopo.poly.dto.NoticeDTO;
 import kopo.poly.service.IFileService;
 import kopo.poly.service.INoticeService;
 import kopo.poly.service.IS3Service;
@@ -11,6 +13,8 @@ import kopo.poly.util.CmmUtil;
 import kopo.poly.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -132,5 +136,44 @@ public class NoticeController {
                 .msg(msg)
                 .result(res)
                 .build();
+    }
+
+    @ResponseBody
+    @PostMapping(value = "getNoticeList")
+    public Page<NoticeDTO> getNoticeList(HttpServletRequest request) throws Exception {
+
+        log.info("controller getNoticeList ");
+
+        String keyword = CmmUtil.nvl(request.getParameter("keyword"));
+        String pageStr = request.getParameter("page");
+        int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
+
+        log.info("keyword : " + keyword);
+        log.info("page : " + page);
+
+        return noticeService.getNoticeList(
+                PageRequest.of(page-2, 10), keyword);
+
+    }
+
+    @ResponseBody
+    @PostMapping(value = "getNoticeInfo")
+    public NoticeDTO getNoticeInfo(HttpServletRequest request) throws Exception {
+
+        log.info("controller 게시글 가져오기");
+
+        Long bSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("bSeq")));
+        Boolean type = Boolean.valueOf(CmmUtil.nvl(request.getParameter("type")));
+
+        return noticeService.getNoticeInfo(bSeq, type);
+    }
+
+
+    public int safeParseInt(String input, int defaultValue) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            return defaultValue; // 기본값 반환
+        }
     }
 }

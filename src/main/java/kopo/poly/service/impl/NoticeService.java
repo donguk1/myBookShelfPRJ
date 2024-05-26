@@ -1,18 +1,29 @@
 package kopo.poly.service.impl;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import kopo.poly.dto.BoardDTO;
+import kopo.poly.dto.NoticeDTO;
 import kopo.poly.repository.NoticeRepository;
+import kopo.poly.repository.entity.BoardEntity;
 import kopo.poly.repository.entity.NoticeEntity;
+import kopo.poly.repository.entity.QBoardEntity;
+import kopo.poly.repository.entity.QUserInfoEntity;
 import kopo.poly.service.INoticeService;
 import kopo.poly.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.transaction.annotation.Transactional;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -20,8 +31,9 @@ public class NoticeService implements INoticeService {
 
     private final NoticeRepository noticeRepository;
 
-    @Autowired
-    private MongoOperations mongoOperations;
+    private final MongoOperations mongoOperations;
+
+    private final MongoTemplate mongoTemplate;
 
     public long generateSequence(String seqName) {
         NoticeEntity counter = mongoOperations.findAndModify(
@@ -52,7 +64,32 @@ public class NoticeService implements INoticeService {
         return noticeRepository.findByRegDtAndChgDt(dt, dt).getNoticeSeq();
     }
 
+    @Override
+    public Page<NoticeDTO> getNoticeList(Pageable pageable, String keyword) throws Exception {
+
+        log.info("service getNoticeList");
+
+        return noticeRepository.findByRegIdOrderByNoticeSeq("admin", pageable, keyword).map(NoticeDTO::from);
+    }
+
+    @Override
+    @Transactional
+    public NoticeDTO getNoticeInfo(Long noticeSeq, Boolean type) throws Exception {
 
 
+        log.info("service 상세정보 가져오기");
 
+        if (type) {
+            log.info("조회수 업데이트");
+
+            Query query = new Query(Criteria.where("noticeSeq").is(noticeSeq)
+                    .andOperator(Criteria.where("regId").is("admin")));
+            Update update = new Update().inc("readCnt", 1);
+            mongoTemplate.updateFirst(query, update, NoticeEntity.class);
+
+        }
+
+        return NoticeDTO.from(noticeRepository.findByRegIdAndNoticeSeq("admin", noticeSeq));
+
+    }
 }
