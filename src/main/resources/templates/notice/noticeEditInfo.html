@@ -135,10 +135,10 @@
         function getNoticeInfo() {
 
             const urlParams = new URL(location.href).searchParams;
-            const bSeq = urlParams.get('bSeq');
+            const nSeq = urlParams.get('nSeq');
 
             const data = {
-                "bSeq" : bSeq,
+                "nSeq" : nSeq,
                 "type" : false
             }
 
@@ -152,9 +152,8 @@
                 success: function (json) {
 
                     console.log(json);
-                    document.getElementById("bSeq").value = bSeq;
+                    document.getElementById("nSeq").value = nSeq;
                     document.getElementById("regId").value = json.regId;
-                    document.getElementById("category").value = json.category;
                     document.getElementById("title").value = json.title;
                     document.getElementById("contents").value  = json.contents;
                 }
@@ -250,12 +249,6 @@
 
             let f = document.getElementById("f"); // form 태그
 
-            if (f.category.value === "") {
-                alert("카테고리를 선택하시기 바랍니다.");
-                f.category.focus();
-                return;
-            }
-
             if (f.title.value === "") {
                 alert("제목을 입력하시기 바랍니다.");
                 f.title.focus();
@@ -281,8 +274,7 @@
             let formData = new FormData();
             formData.append('title', f.title.value);
             formData.append('contents', f.contents.value);
-            formData.append('category', f.category.value);
-            formData.append('bSeq', f.bSeq.value);
+            formData.append('nSeq', f.nSeq.value);
             // 이미지 파일들을 formData에 추가
             for (let i = 0; i < arr.length; i++) {
                 formData.append('file', arr[i]);
@@ -302,7 +294,7 @@
                     alert(json.msg); // 메시지 띄우기
 
                     if (json.result === 1) {
-                        location.href = "noticeInfo?bSeq=" + f.bSeq.value; // 공지사항 리스트 이동
+                        location.href = "noticeInfo?nSeq=" + f.nSeq.value; // 공지사항 리스트 이동
                     }
                 },
                 error: function(xhr, status, error) {
@@ -328,23 +320,13 @@
             <div class="card mb-3">
 
                 <!-- PK -->
-                <input type="hidden" id="bSeq">
+                <input type="hidden" id="nSeq">
                 <input type="hidden" id="regId">
 
                 <!-- 타이틀 입력 영역 -->
                 <h3 class="card-header" style="font-family: 'Do Hyeon', sans-serif;">
                     <input class="form-control me-sm-2" type="text" placeholder="제목을 입력하세요." name="title" id="title">
                 </h3>
-                <select class="form-select" name="category" id="category" style="width: 150px; margin: 10px 5px">
-                    <option selected value="기타">기타</option>
-                    <option value="철학">철학</option>
-                    <option value="종교">종교</option>
-                    <option value="과학">과학</option>
-                    <option value="예술">예술</option>
-                    <option value="언어">언어</option>
-                    <option value="문학">문학</option>
-                    <option value="역사">역사</option>
-                </select>
                 <br>
                 <!-- 내용 입력 영역 -->
                 <div class="form-group">

@@ -20,4 +20,8 @@ public interface INoticeService {
     NoticeDTO getNoticeInfo(final Long noticeSeq,
                           final Boolean type) throws Exception;
 
+    int updateNotice(final Long noticeSeq,
+                      final String title,
+                      final String contents) throws Exception;
+
 }

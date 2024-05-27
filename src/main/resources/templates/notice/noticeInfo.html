@@ -119,7 +119,7 @@
             console.log(document.getElementById("regId").value);
 
             if (ssUserId === document.getElementById("regId").value) {
-                location.href = "noticeEditInfo?noticeSeq=" + document.getElementById("noticeSeq").value;
+                location.href = "noticeEditInfo?nSeq=" + document.getElementById("nSeq").value;
 
             } else if (ssUserId === "") {
                 alert("로그인 하시길 바랍니다.");
@@ -137,7 +137,7 @@
                 type: "post",
                 dataType: "JSON",
                 data: {
-                    "bSeq" : urlParams.get('bSeq'),
+                    "nSeq" : urlParams.get('nSeq'),
                     "type" : true
                 },
                 success: function (json) {
@@ -149,7 +149,7 @@
 
         // 본문 내용 입력
         function insertData(json) {
-            document.getElementById("noticeSeq").value = json.noticeSeq;
+            document.getElementById("nSeq").value = json.noticeSeq;
             document.getElementById("regId").value = json.regId;
             document.getElementById("title").textContent = json.title;
             document.getElementById("nickname").innerText = "작성자 : 관리자";
@@ -174,7 +174,7 @@
     <div class="card-body">
         <div class="card mb-3">
             <!-- PK -->
-            <input type="hidden" id="noticeSeq">
+            <input type="hidden" id="nSeq">
             <input type="hidden" id="regId">
 
             <!-- 타이틀 출력 -->

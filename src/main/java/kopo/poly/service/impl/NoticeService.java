@@ -92,4 +92,25 @@ public class NoticeService implements INoticeService {
         return NoticeDTO.from(noticeRepository.findByRegIdAndNoticeSeq("admin", noticeSeq));
 
     }
+
+    @Override
+    @Transactional
+    public int updateNotice(Long noticeSeq, String title, String contents) throws Exception {
+
+        log.info("service updateNotice");
+
+        String dt = DateUtil.getDateTime("yyyy-MM-dd hh:mm:ss");
+
+        Query query = new Query(
+                Criteria.where("noticeSeq").is(noticeSeq)
+                        .andOperator(Criteria.where("regId").is("admin")));
+
+        Update update = new Update().set("title", title)
+                .set("content", contents)
+                .set("chgDt", dt);
+
+        mongoTemplate.updateFirst(query, update, NoticeEntity.class);
+
+        return 1;
+    }
 }

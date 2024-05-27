@@ -336,7 +336,6 @@ public class BoardController {
                 }
             }
             msg = "수정되었습니다.";
-            log.info("123");
 
         } catch (Exception e) {
             log.info(e.toString());
@@ -344,11 +343,8 @@ public class BoardController {
 
             res = 0;
             msg = "오류로 인해 실패하였습니다. 다시 실행해주세요";
-            log.info("345");
 
         }
-
-        log.info("qwe");
 
         return MsgDTO.builder()
                 .msg(msg)
