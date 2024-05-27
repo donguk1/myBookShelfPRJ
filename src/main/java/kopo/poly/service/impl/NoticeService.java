@@ -63,7 +63,7 @@ public class NoticeService implements INoticeService {
 
         log.info("service getNoticeList");
 
-        return noticeRepository.findByRegIdOrderByNoticeSeq("admin", pageable, keyword).map(NoticeDTO::from);
+        return noticeRepository.findByRegIdLikeAndTitleOrderByNoticeSeq("admin", pageable, keyword).map(NoticeDTO::from);
     }
 
     @Override

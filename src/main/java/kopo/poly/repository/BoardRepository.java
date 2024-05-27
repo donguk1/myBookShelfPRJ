@@ -62,11 +62,11 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
                     "B.READ_CNT, " +
                     "(SELECT COUNT(C.COMMENT_SEQ) FROM COMMENT C WHERE C.BOARD_SEQ = B.BOARD_SEQ) AS COMMENT_CNT, " +
                     "CASE WHEN EXISTS (SELECT 1 FROM FILE F WHERE B.BOARD_SEQ = F.BOARD_SEQ) THEN 'Y' ELSE 'N' END AS FILE_YN " +
-                    "FROM BOARD B " +
-                    "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
-                    "WHERE B.CATEGORY LIKE %:category% " +
-                    "AND B.TITLE LIKE %:keyword% " +
-                    "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
+            "FROM BOARD B " +
+                "LEFT JOIN USER_INFO U ON B.REG_ID = U.USER_ID " +
+            "WHERE B.CATEGORY LIKE %:category% " +
+                "AND B.TITLE LIKE %:keyword% " +
+            "ORDER BY B.NOTICE_YN DESC, B.BOARD_SEQ DESC",
             nativeQuery = true)
     Page<BoardEntity> getBoardListPage(Pageable pageable,
                                        @Param("category") String category,
