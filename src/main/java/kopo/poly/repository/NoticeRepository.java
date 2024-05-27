@@ -13,7 +13,7 @@ public interface NoticeRepository extends MongoRepository<NoticeEntity, Long> {
 
 //    @Query()
     Page<NoticeEntity> findByRegIdOrderByNoticeSeq(String regId, Pageable pageable, String keyword);
-    Page<NoticeEntity> findByRegIdLikeAndTitleOrderByNoticeSeq(String regId, Pageable pageable, String title);
+    Page<NoticeEntity> findByRegIdLikeAndTitleRegexOrderByNoticeSeqDesc(String regId, Pageable pageable, String title);
 
     NoticeEntity findByRegIdAndNoticeSeq(String regId, Long noticeSeq);
 }
