@@ -106,13 +106,15 @@
                         type: "post",
                         dataType: "JSON",
                         data: {
-                            "noticeSeq" : document.getElementById("bSeq").value
+                            "nSeq" : document.getElementById("nSeq").value
                         },
                         success: function (json) {
 
-                            console.log(json);
+                            alert(json.msg)
 
-                            location.href = "/notice/noticeList";
+                            if (json.result === 1) {
+                                location.href = "/notice/noticeList";
+                            }
 
                         },
                         error: function(xhr, status, error) {

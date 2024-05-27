@@ -2,7 +2,6 @@ package kopo.poly.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import kopo.poly.dto.NoticeDTO;
 import kopo.poly.dto.FileDTO;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.dto.NoticeDTO;
@@ -248,6 +247,41 @@ public class NoticeController {
 
         }
 
+
+        return MsgDTO.builder()
+                .msg(msg)
+                .result(res)
+                .build();
+    }
+
+    @ResponseBody
+    @PostMapping(value = "deleteNotice")
+    public MsgDTO deleteNotice(HttpServletRequest request, HttpSession session) throws Exception {
+
+        log.info("controller deleteNotice");
+
+        Long nSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("nSeq")));
+        String msg;
+        int res = 1;
+
+        try {
+            String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+
+            log.info("userId : " + userId);
+            log.info("nSeq : " + nSeq);
+
+            noticeService.deleteNotice(nSeq);
+
+            msg = "삭제되었습니다.";
+
+        } catch (Exception e) {
+            msg = "실패하였습니다.";
+            res = 0;
+
+            log.info(e.toString());
+            e.printStackTrace();
+
+        }
 
         return MsgDTO.builder()
                 .msg(msg)

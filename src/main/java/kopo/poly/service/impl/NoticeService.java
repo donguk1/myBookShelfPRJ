@@ -1,27 +1,21 @@
 package kopo.poly.service.impl;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import kopo.poly.dto.BoardDTO;
 import kopo.poly.dto.NoticeDTO;
 import kopo.poly.repository.NoticeRepository;
-import kopo.poly.repository.entity.BoardEntity;
 import kopo.poly.repository.entity.NoticeEntity;
-import kopo.poly.repository.entity.QBoardEntity;
-import kopo.poly.repository.entity.QUserInfoEntity;
 import kopo.poly.service.INoticeService;
 import kopo.poly.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
@@ -112,5 +106,17 @@ public class NoticeService implements INoticeService {
         mongoTemplate.updateFirst(query, update, NoticeEntity.class);
 
         return 1;
+    }
+
+    @Override
+    public void deleteNotice(Long noticeSeq) throws Exception {
+
+        log.info("service deleteNotice");
+
+        Query query = new Query(
+                Criteria.where("noticeSeq").is(noticeSeq)
+                        .andOperator(Criteria.where("regId").is("admin")));
+
+        mongoOperations.remove(query, NoticeEntity.class);
     }
 }

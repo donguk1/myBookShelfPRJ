@@ -1,6 +1,5 @@
 package kopo.poly.service;
 
-import kopo.poly.dto.BoardDTO;
 import kopo.poly.dto.NoticeDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,4 +23,5 @@ public interface INoticeService {
                       final String title,
                       final String contents) throws Exception;
 
+    void deleteNotice(final Long noticeSeq) throws Exception;
 }
