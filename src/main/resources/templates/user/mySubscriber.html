@@ -96,12 +96,13 @@
 
                 let listOne = $("<tr>")
                     .addClass("listOne table-light")
-                    .click(function () {
-                        doDetail(data.regId)
-                    })
+
 
                 let targetNickname = $("<th>")
                     .text(data.regNickname)
+                    .click(function () {
+                        doDetail(data.regId)
+                    })
                 listOne.append(targetNickname)
 
                 let button = $("<button>")
