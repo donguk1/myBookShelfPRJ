@@ -11,7 +11,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookShelfId implements Serializable {
+public class BookShelfPK implements Serializable {
 
     private String title;
 

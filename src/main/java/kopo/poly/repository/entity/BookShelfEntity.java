@@ -1,7 +1,7 @@
 package kopo.poly.repository.entity;
 
 import jakarta.persistence.*;
-import kopo.poly.repository.entity.PK.BookShelfId;
+import kopo.poly.repository.entity.PK.BookShelfPK;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +20,7 @@ import java.sql.Date;
 @DynamicUpdate
 @Builder
 @Entity
-@IdClass(BookShelfId.class)
+@IdClass(BookShelfPK.class)
 public class BookShelfEntity {
 
     @Id
