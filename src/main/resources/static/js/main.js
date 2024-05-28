@@ -193,7 +193,7 @@
       disableOnInteraction: false
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-pagination.js',
       type: 'bullets',
       clickable: true
     }
@@ -211,7 +211,7 @@
     },
     slidesPerView: 'auto',
     pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-pagination.js',
       type: 'bullets',
       clickable: true
     }
