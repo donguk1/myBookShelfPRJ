@@ -65,7 +65,7 @@
             currentPage++
 
             $.ajax({
-                url: "/subscribe/getMySubscribeList",
+                url: "/subscribe/getMySubscriberList",
                 type: "POST",
                 dataType: "JSON",
                 data: {"page" : currentPage},
@@ -97,11 +97,11 @@
                 let listOne = $("<tr>")
                     .addClass("listOne table-light")
                     .click(function () {
-                        doDetail(data.targetId)
+                        doDetail(data.regId)
                     })
 
                 let targetNickname = $("<th>")
-                    .text(data.targetNickname)
+                    .text(data.regNickname)
                 listOne.append(targetNickname)
 
                 let button = $("<button>")
@@ -217,12 +217,11 @@
 <br>
 
 <!-- 내용 부분 -->
-
-
+<button id="btnBoardReg" class="btn btn-secondary my-2 my-sm-0" style="margin-left: 89%">글 쓰기</button>
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif; margin-top: 1%">
     <div class="card-body">
         <table class="table table-hover" style="text-align: center">
-            <h4 class="mx-auto" style="text-align: center">내 구독 리스트</h4>
+            <h4 class="mx-auto" style="text-align: center">내 구독자 리스트</h4>
             <thead>
             <tr>
                 <th scope="col" style="width: 80%">닉네임</th>

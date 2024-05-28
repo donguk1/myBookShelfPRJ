@@ -39,4 +39,22 @@ public class SubscribeController {
                 PageRequest.of(page-2, 10), regId
         );
     }
+
+    /**
+     * 내 구독자 리스트 보기
+     */
+    @PostMapping(value = "getMySubscriberList")
+    public Page<SubscribeDTO> getMySubscriberList(HttpServletRequest request, HttpSession session) throws Exception {
+
+        String targetId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String pageStr = request.getParameter("page");
+        int page = SafeUtil.safeParseInt(pageStr, 0); // 기본값으로 0을 사용
+
+        log.info("page : " + page);
+        log.info("targetId : " + targetId);
+
+        return subscribeService.getMySubscriberList(
+                PageRequest.of(page-2, 10), targetId
+        );
+    }
 }

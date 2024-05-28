@@ -54,4 +54,37 @@ public class SubscribeRepositoryImpl implements SubscribeRepository {
 
         return new PageImpl<>(subscribeEntities, pageable, results.getTotal());
     }
+
+    @Override
+    public Page<SubscribeEntity> getMySubscriberList(Pageable pageable, String targetId) throws Exception {
+
+        QSubscribeEntity qse = QSubscribeEntity.subscribeEntity;
+        QUserInfoEntity que = QUserInfoEntity.userInfoEntity;
+
+        QueryResults<Tuple> results = queryFactory
+                .select(qse, que.nickname, que.userId, que.userName, que.password, que.email)
+                .from(qse)
+                .join(qse.userInfo, que)
+                .fetchJoin()
+                .where(qse.targetId.eq(targetId))
+                .limit(pageable.getPageSize())
+                .offset(pageable.getOffset())
+                .fetchResults();
+
+        List<SubscribeEntity> subscribeEntities = results.getResults().stream()
+                .map(tuple -> {
+                    SubscribeEntity subscribeEntity = tuple.get(qse);
+                    String nickname = tuple.get(que.nickname);
+
+
+                    return SubscribeEntity.builder()
+                            .regId(subscribeEntity.getRegId())
+                            .targetId(targetId)
+                            .regNickname(nickname)
+                            .build();
+                })
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(subscribeEntities, pageable, results.getTotal());
+    }
 }

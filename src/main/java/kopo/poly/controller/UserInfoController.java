@@ -125,6 +125,12 @@ public class UserInfoController {
     /**
      * 내 구독 보기
      */
+    @GetMapping(value = "/mySubscriber")
+    public String mySubscriber() { return "/user/mySubscriber"; };
+
+    /**
+     * 내 구독자 보기
+     */
     @GetMapping(value = "/mySubscribe")
     public String mySubscribe() { return "/user/mySubscribe"; };
 

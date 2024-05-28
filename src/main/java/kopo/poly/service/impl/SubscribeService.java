@@ -20,16 +20,20 @@ public class SubscribeService implements ISubscribeService {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public Page<SubscribeDTO> getMySubscribeList(Pageable pageable, String targetId) throws Exception {
+    public Page<SubscribeDTO> getMySubscribeList(Pageable pageable, String regId) throws Exception {
 
         log.info("service getMySubscribeList");
 
-        return subscribeRepository.getMySubscribeList(pageable, targetId)
+        return subscribeRepository.getMySubscribeList(pageable, regId)
                 .map(SubscribeDTO::from);
-    }
+}
 
-    @Override
-    public Page<SubscribeDTO> getMySubscriberList(Pageable pageable, String regId) throws Exception {
-        return null;
+@Override
+    public Page<SubscribeDTO> getMySubscriberList(Pageable pageable, String targetId) throws Exception {
+
+        log.info("service getMySubscriberList");
+
+        return subscribeRepository.getMySubscriberList(pageable, targetId)
+                .map(SubscribeDTO::from);
     }
 }

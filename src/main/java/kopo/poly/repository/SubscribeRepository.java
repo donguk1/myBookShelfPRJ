@@ -8,4 +8,5 @@ import org.springframework.data.domain.Pageable;
 public interface SubscribeRepository {
 
     Page<SubscribeEntity> getMySubscribeList(Pageable pageable, String regId) throws Exception;
+    Page<SubscribeEntity> getMySubscriberList(Pageable pageable, String targetId) throws Exception;
 }

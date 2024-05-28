@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface ISubscribeService {
 
-    Page<SubscribeDTO> getMySubscribeList(Pageable pageable, String targetId) throws Exception;
-    Page<SubscribeDTO> getMySubscriberList(Pageable pageable, String regId) throws Exception;
+    Page<SubscribeDTO> getMySubscribeList(Pageable pageable, String regId) throws Exception;
+    Page<SubscribeDTO> getMySubscriberList(Pageable pageable, String targetId) throws Exception;
 }
