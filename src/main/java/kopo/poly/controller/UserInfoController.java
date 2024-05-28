@@ -122,6 +122,12 @@ public class UserInfoController {
     @GetMapping(value = "/myBookList")
     public String myBookList() { return "/user/myBookList"; };
 
+    /**
+     * 내 구독 보기
+     */
+    @GetMapping(value = "/mySubscribe")
+    public String mySubscribe() { return "/user/mySubscribe"; };
+
 
     /**
      * 로그인 실행

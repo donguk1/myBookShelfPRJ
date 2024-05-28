@@ -11,6 +11,7 @@ import kopo.poly.service.IFileService;
 import kopo.poly.service.IS3Service;
 import kopo.poly.util.CmmUtil;
 import kopo.poly.util.FileUtil;
+import kopo.poly.util.SafeUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -210,7 +211,7 @@ public class BoardController {
         String category = CmmUtil.nvl(request.getParameter("category"));
         String keyword = CmmUtil.nvl(request.getParameter("keyword"));
         String pageStr = request.getParameter("page");
-        int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
+        int page = SafeUtil.safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
 
         log.info("category : " + category);
@@ -234,7 +235,7 @@ public class BoardController {
         String category = CmmUtil.nvl(request.getParameter("category"));
         String keyword = CmmUtil.nvl(request.getParameter("keyword"));
         String pageStr = request.getParameter("page");
-        int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
+        int page = SafeUtil.safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
 
         log.info("category : " + category);
@@ -404,7 +405,7 @@ public class BoardController {
         String category = CmmUtil.nvl(request.getParameter("category"));
         String keyword = CmmUtil.nvl(request.getParameter("keyword"));
         String pageStr = request.getParameter("page");
-        int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
+        int page = SafeUtil.safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
         log.info("userId : " + userId);
         log.info("page : " + page);
@@ -428,7 +429,7 @@ public class BoardController {
         String category = CmmUtil.nvl(request.getParameter("category"));
         String keyword = CmmUtil.nvl(request.getParameter("keyword"));
         String pageStr = request.getParameter("page");
-        int page = safeParseInt(pageStr, 0); // 기본값으로 0을 사용
+        int page = SafeUtil.safeParseInt(pageStr, 0); // 기본값으로 0을 사용
 
         log.info("userId : " + userId);
         log.info("page : " + page);
@@ -441,11 +442,5 @@ public class BoardController {
 
     }
 
-    public int safeParseInt(String input, int defaultValue) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            return defaultValue; // 기본값 반환
-        }
-    }
+
 }
