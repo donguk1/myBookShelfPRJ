@@ -8,4 +8,6 @@ public interface ISubscribeService {
 
     Page<SubscribeDTO> getMySubscribeList(Pageable pageable, String regId) throws Exception;
     Page<SubscribeDTO> getMySubscriberList(Pageable pageable, String targetId) throws Exception;
+
+    int getSubCheck(String targetId, String regId) throws Exception;
 }

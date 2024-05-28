@@ -26,14 +26,22 @@ public class SubscribeService implements ISubscribeService {
 
         return subscribeRepository.getMySubscribeList(pageable, regId)
                 .map(SubscribeDTO::from);
-}
+    }
 
-@Override
+    @Override
     public Page<SubscribeDTO> getMySubscriberList(Pageable pageable, String targetId) throws Exception {
 
         log.info("service getMySubscriberList");
 
         return subscribeRepository.getMySubscriberList(pageable, targetId)
                 .map(SubscribeDTO::from);
+    }
+
+    @Override
+    public int getSubCheck(String targetId, String regId) throws Exception {
+
+        log.info("service getSubCheck");
+
+        return subscribeRepository.getSubCheck(targetId, regId);
     }
 }

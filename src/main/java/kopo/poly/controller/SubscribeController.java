@@ -57,4 +57,18 @@ public class SubscribeController {
                 PageRequest.of(page-2, 10), targetId
         );
     }
+
+    /**
+     * 구독여부 확인하기
+     */
+    @PostMapping(value = "getSubCheck")
+    public int getSubCheck(HttpServletRequest request, HttpSession session) throws Exception {
+
+        log.info("controller getSubCheck");
+
+        String targetId = CmmUtil.nvl(request.getParameter("targetId"));
+        String regId = CmmUtil.nvl(request.getParameter("regId"));
+
+        return subscribeService.getSubCheck(targetId, regId);
+    }
 }

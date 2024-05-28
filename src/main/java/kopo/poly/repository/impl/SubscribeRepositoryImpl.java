@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -86,5 +87,19 @@ public class SubscribeRepositoryImpl implements SubscribeRepository {
                 .collect(Collectors.toList());
 
         return new PageImpl<>(subscribeEntities, pageable, results.getTotal());
+    }
+
+    @Override
+    public int getSubCheck(String targetId, String regId) throws Exception {
+
+        QSubscribeEntity qse = QSubscribeEntity.subscribeEntity;
+
+        Optional<SubscribeEntity> se = Optional.ofNullable(queryFactory
+                .selectFrom(qse)
+                .where(qse.targetId.eq(targetId),
+                        qse.regId.eq(regId))
+                .fetchOne());
+
+        return se.isPresent() ? 1 : 0;
     }
 }
