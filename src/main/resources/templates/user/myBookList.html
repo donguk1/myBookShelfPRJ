@@ -99,7 +99,7 @@
 
                     insertData(json.content)
                     pagination(json.totalPages, currentPage)
-                    document.getElementById("keyword").value = title
+                    document.getElementById("title").value = title
 
                 },
                 error: function(xhr, status, error) {
@@ -172,7 +172,7 @@
     <!-- 검색 버튼 영역 -->
     <form class="form-inline my-2 my-lg-0 mx-auto" id="f">
         <div class="input-group mb-3">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="title">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="title" id="title">
             <button type="submit" class="btn btn-secondary my-2 my-sm-0" id="btnSend">검색</button>
         </div>
     </form>
