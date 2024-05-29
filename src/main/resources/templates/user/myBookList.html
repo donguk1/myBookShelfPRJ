@@ -125,9 +125,8 @@
                     .text(data.title)
                 listOne.append(title)
 
-
                 let regDt = $("<th>")
-                    .text(data.regDt)
+                    .text(`${data.regDt[0]}-${String(data.regDt[1]).padStart(2, '0')}-${String(data.regDt[2]).padStart(2, '0')}`)
                 listOne.append(regDt)
 
                 list.append(listOne)
