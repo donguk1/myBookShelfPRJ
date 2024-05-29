@@ -84,7 +84,6 @@
             });
         }
 
-
         // 리스트 보여주기
         function insertData(bList) {
 
@@ -107,12 +106,30 @@
 
                 let button = $("<button>")
                     .text("구독취소")
-
+                    .click(function () {
+                        updateSubscribe(data.targetId)
+                    })
                 listOne.append(button)
 
                 list.append(listOne)
             })
 
+        }
+
+        function updateSubscribe(id) {
+
+            $.ajax({
+                url: "/subscribe/updateSubscribe",
+                type: "POST",
+                dataType: "JSON",
+                data: {targetId: id},
+                success: function (json) {
+                    getMySubscribe()
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
+            });
         }
 
         function doDetail(id) {
