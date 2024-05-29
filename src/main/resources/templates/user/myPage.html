@@ -13,6 +13,64 @@
         .nav-item {
             visibility: hidden;
         }
+
+        hr{
+            /*height:100vh;*/
+            width:.5vw;
+            border-width:0;
+            color:#000;
+            background-color:#000;
+        }
+
+        /* 숨기기 위해 기본 체크박스 스타일 설정 */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* 커스텀 체크박스 스타일 */
+        input[type="checkbox"] + label {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            font-size: 18px;
+            user-select: none;
+        }
+
+        input[type="checkbox"] + label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        /* 체크박스 체크 시 스타일 */
+        input[type="checkbox"]:checked + label::before {
+            background: #4caf50;
+            border-color: #4caf50;
+        }
+
+        input[type="checkbox"]:checked + label::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 5px;
+            width: 8px;
+            height: 14px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+
+        /* 레이블 텍스트 스타일 */
+        input[type="checkbox"] + label {
+            margin-bottom: 10px;
+            display: inline-block;
+        }
     </style>
 
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
@@ -28,10 +86,15 @@
             let f = document.getElementById("f"); // form 태그
 
             getMyInfo();
+            getPreferList()
 
             // 정보 수정
             $("#btnSend").on("click", function () { // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
                 doSubmit(f);
+            })
+
+            $("#btnPrefer").on("click", function () { // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
+                updatePrefer()
             })
 
             // 비밀번호 재설정 팝업창 열기 클릭 이벤트
@@ -67,6 +130,44 @@
             });
 
         })
+
+        function getPreferList() {
+            $.ajax({
+                url: "/prefer/getPreferList",
+                type: "post",
+                dataType: "JSON",
+                success: function (json) {
+                    console.log(json);
+
+                    json.forEach(function (data) {
+                        let checkbox = document.getElementById(data.category);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                        }
+                    });
+                }
+            });
+        }
+
+        function updatePrefer() {
+
+            const query = 'input[name="category"]:checked';
+            const selectedEls = document.querySelectorAll(query);
+            const selectedIds = Array.from(selectedEls).map(el => el.id);
+
+            console.log(selectedIds); // 예: ["문학", "역사"]
+
+            $.ajax({
+                url: "/prefer/updatePrefer",
+                type: "post",
+                dataType: "JSON",
+                traditional: true,
+                data: { "category": selectedIds },
+                success: function (json) {
+                }
+            });
+
+        }
 
         // 내 정보 가져오기
         function getMyInfo() {
@@ -211,42 +312,68 @@
     </div>
     <br>
 
-    <form id="f" class="mx-auto" style="width: 80%;">
+    <form id="f" class="mx-auto" style="width: 80%;" >
+        <div style="justify-content: space-between; display: flex">
+            <!-- 왼쪽 개인 정보-->
+            <div style="width: 60%; margin-right: 5%">
+                <div class="form-group">
+                    <label class="form-label mt-4">아이디</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="userId" name="userId" disabled="">
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label class="form-label mt-4">아이디</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="userId" name="userId" disabled="">
+                <div class="form-group">
+                    <label class="form-label mt-4">이메일</label>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" id="email" name="email" disabled="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label mt-4">이름</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="userName" name="userName" disabled="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label mt-4">닉네임</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="nickname" name="nickname">
+                    </div>
+                </div>
+
+                <div class="mx-auto" style="text-align: center">
+                    <button id="btnSend" type="button" class="btn btn-primary">내정보 수정</button>
+                    <button id="btnChgPw" type="button" class="btn btn-primary">비밀번호 수정</button>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="form-label mt-4">이메일</label>
-            <div class="input-group mb-3">
-                <input type="email" class="form-control" id="email" name="email" disabled="">
+            <hr>
+
+            <!-- 오른쪽 선호 종류 -->
+            <div style="width: 40%; margin-left: 5%">
+                <br/>
+                <h1 class="mx-auto" style="text-align: center"> 선호 장르</h1>
+
+                <p><input type="checkbox" value="철학" name="category" id="철학"><label for="철학">철학</label></p>
+                <p><input type="checkbox" value="종교" name="category" id="종교"><label for="종교">종교</label></p>
+                <p><input type="checkbox" value="과학" name="category" id="과학"><label for="과학">과학</label></p>
+                <p><input type="checkbox" value="예술" name="category" id="예술"><label for="예술">예술</label></p>
+                <p><input type="checkbox" value="언어" name="category" id="언어"><label for="언어">언어</label></p>
+                <p><input type="checkbox" value="문학" name="category" id="문학"><label for="문학">문학</label></p>
+                <p><input type="checkbox" value="역사" name="category" id="역사"><label for="역사">역사</label></p>
+
+                <div class="mx-auto" style="text-align: center">
+                    <button id="btnPrefer" type="button" class="btn btn-primary">수정 하기</button>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="form-label mt-4">이름</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="userName" name="userName" disabled="">
-            </div>
         </div>
-
-        <div class="form-group">
-            <label class="form-label mt-4">닉네임</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="nickname" name="nickname">
-            </div>
-        </div>
-
     </form>
     <br/>
-    <div class="mx-auto" style="text-align: center">
-        <button id="btnSend" type="button" class="btn btn-primary">내정보 수정</button>
-        <button id="btnChgPw" type="button" class="btn btn-primary">비밀번호 수정</button>
-    </div>
+
     <button type="button" id="btnDel" class="btn btn-link" data-bs-toggle="modal" data-bs-target="userDelete">회원 탈퇴</button>
 </div>
 
@@ -284,6 +411,7 @@
         </div>
     </div>
 </div>
+
 <!-- 회원 탈퇴 팝업 -->
 <div id="userDelete" class="modal fade">
     <div class="modal-dialog">
