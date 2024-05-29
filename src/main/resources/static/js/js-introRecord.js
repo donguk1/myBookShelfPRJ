@@ -5,16 +5,6 @@ let today = new Date();
 $(document).ready(function () {
 
 
-    // + 버튼 클릭했을때
-    $("#btnPlus").on("click", function () {
-        toggleRegisterBtns(); // 등록 버튼 토글 함수 실행
-    })
-
-    // + 버튼 클릭 시 등록버튼 보이기/숨기기 토글
-    function toggleRegisterBtns() {
-        $("#registerBtns").toggle();
-    }
-
     // 일정 버튼 눌렀을때 일정 추가 모달 열기
     $("#registerBookShelf").on("click", function () {
         $("#bookShelfModal").modal("show");
@@ -29,8 +19,6 @@ $(document).ready(function () {
     $("#editBtnSc").on("click", function () {
         updateMyBook()
     })
-
-
 
     // 오늘 날짜를 자동으로 선택하는 블록 추가
     let todayCell = getTodayCell(); // 오늘 날짜에 해당하는 셀을 가져오는 함수
@@ -251,9 +239,6 @@ function deleteBookShelf(bookShelf) {
     }
 }
 
-
-
-
 // 개수
 $(document).ready(function(){
     $('.btn-number').click(function(e){
@@ -290,7 +275,7 @@ function getTodayCell() {
 
     // 셀을 순회하면서 오늘 날짜에 해당하는 셀을 찾음
     let cells = document.querySelectorAll(".scriptCalendar > tbody td");
-    for (let i = 0; i < cells.length; i++) {
+    for (let i = cells.length - 1; i >= 0; i--) {
         if (cells[i].innerText == day && cells[i].style.color !== "#A9A9A9") {
             return cells[i];
         }
