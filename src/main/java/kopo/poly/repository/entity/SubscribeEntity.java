@@ -1,6 +1,7 @@
 package kopo.poly.repository.entity;
 
 import jakarta.persistence.*;
+import kopo.poly.repository.entity.PK.SubscribePK;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,6 +17,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @AllArgsConstructor
 @Table(name = "SUBSCRIBE")
 @Entity
+@IdClass(SubscribePK.class)
 public class SubscribeEntity {
 
     @Id

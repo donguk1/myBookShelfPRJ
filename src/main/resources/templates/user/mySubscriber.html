@@ -84,7 +84,6 @@
             });
         }
 
-
         // 리스트 보여주기
         function insertData(bList) {
 
@@ -98,19 +97,12 @@
                 let listOne = $("<tr>")
                     .addClass("listOne table-light")
 
-
                 let targetNickname = $("<th>")
                     .text(data.regNickname)
                     .click(function () {
                         doDetail(data.regId)
                     })
                 listOne.append(targetNickname)
-
-                let button = $("<button>")
-                    .text("구독취소")
-
-                listOne.append(button)
-
                 list.append(listOne)
             })
 
@@ -140,7 +132,6 @@
             <thead>
             <tr>
                 <th scope="col" style="width: 80%">닉네임</th>
-                <th scope="col" style="width: 20%"></th>
             </tr>
             </thead>
             <tbody id="list">

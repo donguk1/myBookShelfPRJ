@@ -3,6 +3,7 @@ package kopo.poly.service.impl;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import kopo.poly.dto.SubscribeDTO;
 import kopo.poly.repository.SubscribeRepository;
+import kopo.poly.repository.entity.SubscribeEntity;
 import kopo.poly.service.ISubscribeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,5 +44,30 @@ public class SubscribeService implements ISubscribeService {
         log.info("service getSubCheck");
 
         return subscribeRepository.getSubCheck(targetId, regId);
+    }
+
+    @Override
+    public int updateSubscribe(String regId, String targetId) throws Exception {
+
+        log.info("service updateSubscribe");
+
+        int res = subscribeRepository.getSubCheck(targetId, regId);
+
+        if (res == 1) {
+
+            subscribeRepository.delete(SubscribeEntity.builder()
+                    .regId(regId)
+                    .targetId(targetId)
+                    .build());
+
+        } else {
+
+            subscribeRepository.save(SubscribeEntity.builder()
+                    .regId(regId)
+                    .targetId(targetId)
+                    .build());
+        }
+
+        return res;
     }
 }

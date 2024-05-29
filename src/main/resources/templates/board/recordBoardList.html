@@ -45,10 +45,58 @@
             getRecordBoardList()
 
             $("#btnSubscribe").on("click", function () {
-                getSubCheck(window.name)
+                updateSubscribe()
             })
 
         })
+
+        function updateSubscribe() {
+
+            $.ajax({
+                url: "/subscribe/updateSubscribe",
+                type: "POST",
+                dataType: "JSON",
+                data: {targetId: window.name},
+                success: function (json) {
+                    console.log(json);
+
+                    if (json === 0) {
+                        $("#btnSubscribe").html("구독중")
+                    } else {
+                        $("#btnSubscribe").html("구독하기")
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
+            });
+        }
+
+
+
+        function getSubCheck() {
+
+            $.ajax({
+                url: "/subscribe/getSubCheck",
+                type: "POST",
+                dataType: "JSON",
+                data: {targetId: window.name},
+                success: function (json) {
+                    console.log(json);
+
+                    if (json === 1) {
+                        $("#btnSubscribe").html("구독중")
+                    } else {
+                        $("#btnSubscribe").html("구독하기")
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
+            });
+        }
 
         function getRecordBoardList() {
 
@@ -86,6 +134,8 @@
 
                     insertData(json.content)
                     pagination(json.totalPages, currentPage)
+
+                    getSubCheck()
 
                 },
                 error: function(xhr, status, error) {
@@ -161,7 +211,7 @@
 <br>
 
 <!-- 내용 부분 -->
-<button id="btnSubscribe" class="btn btn-secondary my-2 my-sm-0" style="margin-left: 89%">구독하기</button>
+<button id="btnSubscribe" class="btn btn-secondary my-2 my-sm-0" style="margin-left: 89%"></button>
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif; margin-top: 1%">
     <div class="card-body">
         <table class="table table-hover" style="text-align: center">

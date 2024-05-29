@@ -3,7 +3,7 @@ package kopo.poly.repository.impl;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import kopo.poly.repository.SubscribeRepository;
+import kopo.poly.repository.custom.SubscribeRepositoryCustom;
 import kopo.poly.repository.entity.QSubscribeEntity;
 import kopo.poly.repository.entity.QUserInfoEntity;
 import kopo.poly.repository.entity.SubscribeEntity;
@@ -11,15 +11,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
-@Repository
-public class SubscribeRepositoryImpl implements SubscribeRepository {
+public class SubscribeRepositoryImpl implements SubscribeRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 
@@ -102,4 +100,7 @@ public class SubscribeRepositoryImpl implements SubscribeRepository {
 
         return se.isPresent() ? 1 : 0;
     }
+
+
 }
+

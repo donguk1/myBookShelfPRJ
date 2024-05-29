@@ -66,9 +66,23 @@ public class SubscribeController {
 
         log.info("controller getSubCheck");
 
+        String regId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
         String targetId = CmmUtil.nvl(request.getParameter("targetId"));
-        String regId = CmmUtil.nvl(request.getParameter("regId"));
 
         return subscribeService.getSubCheck(targetId, regId);
+    }
+
+    /**
+     * 구독여부 확인하기
+     */
+    @PostMapping(value = "updateSubscribe")
+    public int updateSubscribe(HttpServletRequest request, HttpSession session) throws Exception {
+
+        log.info("controller getSubCheck");
+
+        String regId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+        String targetId = CmmUtil.nvl(request.getParameter("targetId"));
+
+        return subscribeService.updateSubscribe(regId, targetId);
     }
 }
