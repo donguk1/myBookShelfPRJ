@@ -243,7 +243,7 @@ public class BoardController {
         log.info("page : " + page);
         log.info("regId : " + regId);
 
-        return boardService.getMyBookmarkList(PageRequest.of(page-2, 10), regId, keyword, category);
+        return boardService.getMyBoard(PageRequest.of(page-2, 10), regId, keyword, category);
 
     }
 
