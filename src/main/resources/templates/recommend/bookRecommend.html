@@ -81,14 +81,8 @@
         }
 
         function insertData(items){
-
-
             if (items.length !== 0) {
-
                 items.forEach(function (item) {
-
-
-                    console.log("T");
 
                     let div = $("#data")
                     div.empty()
@@ -135,19 +129,8 @@
                 })
 
             } else {
-
-                console.log("F")
-
-                let div = $("#data")
-                div.empty()
-
-                div.append(
-                    $("<span>")
-                        .html("조회된 정보가 없습니다."),
-                    $("<br>")
-            )
-        }
-
+                getRecommendBook()
+            }
         }
 
 

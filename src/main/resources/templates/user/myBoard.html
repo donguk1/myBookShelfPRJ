@@ -86,6 +86,9 @@
                     insertData(json.content)
                     pagination(json.totalPages, currentPage)
 
+                    document.getElementById("category").value = category
+                    document.getElementById("keyword").value = keyword
+
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX 호출 중 에러 발생:", error);

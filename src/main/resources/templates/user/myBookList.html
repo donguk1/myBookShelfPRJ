@@ -99,6 +99,7 @@
 
                     insertData(json.content)
                     pagination(json.totalPages, currentPage)
+                    document.getElementById("keyword").value = title
 
                 },
                 error: function(xhr, status, error) {

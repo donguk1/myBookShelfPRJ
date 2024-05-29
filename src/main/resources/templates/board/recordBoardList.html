@@ -133,6 +133,9 @@
                     insertData(json.content)
                     pagination(json.totalPages, currentPage)
 
+                    document.getElementById("category").value = category
+                    document.getElementById("keyword").value = keyword
+
                     getSubCheck()
 
                 },
