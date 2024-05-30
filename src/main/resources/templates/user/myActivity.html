@@ -71,6 +71,10 @@
             $("#btnMySubscriber").on("click", function () {
                 location.href = "mySubscriber";
             })
+
+            $("#btnRecommendBook").on("click", function () {
+                location.href = "/recommend/personalRecommend";
+            })
         })
     </script>
 </head>
@@ -89,10 +93,6 @@
         <button id="btnMyActivity" class="btn btn-link btn-lg" style="height: 100px" type="button">내 정보 보기</button>
     </div>
 
-    <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnMyBook" class="btn btn-link btn-lg" style="height: 100px" type="button">내 도서 보기</button>
-    </div>
-
     <div style="justify-content: space-between; display: flex">
         <div class="card d-grid gap-2" style="margin: 3% 5%; width: 30%; ">
             <button id="btnMyBoard" class="btn btn-link btn-lg" style=" height: 100px" type="button">내 게시글 보기</button>
@@ -104,6 +104,15 @@
 
         <div class="card d-grid gap-2" style="margin: 3% 5%; width: 30%;">
             <button id="btnBookmark" class="btn btn-link btn-lg" style="height: 100px" type="button">내 북마크 보기</button>
+        </div>
+    </div>
+
+    <div style="justify-content: space-between; display: flex">
+        <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
+            <button id="btnMyBook" class="btn btn-link btn-lg" style="height: 100px" type="button">내 도서 보기</button>
+        </div>
+        <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
+            <button id="btnRecommendBook" class="btn btn-link btn-lg" style="height: 100px" type="button">추천 도서 보기</button>
         </div>
     </div>
 

@@ -1,6 +1,7 @@
 package kopo.poly.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.dto.ShoppingDTO;
 import kopo.poly.service.ILLMService;
@@ -32,6 +33,11 @@ public class recommendController {
         return "recommend/bookRecommend";
     }
 
+    @GetMapping(value = "personalRecommend")
+    public String personalRecommend() {
+        return "recommend/personalRecommend";
+    }
+
     @ResponseBody
     @PostMapping(value = "getRecommendBook")
     public MsgDTO getRecommendBook() throws Exception {
@@ -39,6 +45,21 @@ public class recommendController {
         log.info("controller getRecommendBook");
 
         ResponseEntity<Map> response = llmService.getLLMData();
+
+        return MsgDTO.builder()
+                .msg((String) response.getBody().get("result"))
+                .build();
+    }
+
+    @ResponseBody
+    @PostMapping(value = "getPersonalRecommendBook")
+    public MsgDTO getPersonalRecommendBook(HttpSession session) throws Exception {
+
+        log.info("controller getPersonalRecommendBook");
+
+        String regId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+
+        ResponseEntity<Map> response = llmService.getPersonalLLMData(regId);
 
         return MsgDTO.builder()
                 .msg((String) response.getBody().get("result"))
