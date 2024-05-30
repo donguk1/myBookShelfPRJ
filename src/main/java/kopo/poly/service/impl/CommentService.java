@@ -39,7 +39,8 @@ public class CommentService implements ICommentService {
             List<CommentEntity> children = queryFactory
                     .selectFrom(ce)
                     .join(ce.userInfo, ue).fetchJoin()
-                    .where(ce.targetSeq.eq(parent.getCommentSeq()))
+                    .where(ce.targetSeq.eq(parent.getCommentSeq()),
+                            ce.boardSeq.eq(boardSeq))
                     .fetch();
 
             result.addAll(getChildren(children, boardSeq));

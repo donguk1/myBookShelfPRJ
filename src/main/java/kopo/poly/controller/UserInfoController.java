@@ -470,6 +470,9 @@ public class UserInfoController {
 
         userInfoService.deleteUserInfo(userId);
 
+        session.setAttribute("SS_USER_ID", "");
+        session.removeAttribute("SS_USER_ID");
+
         return MsgDTO.builder()
                 .result(1)
                 .msg("탈퇴 하였습니다..")
