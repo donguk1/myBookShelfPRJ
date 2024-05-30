@@ -490,4 +490,22 @@ public class UserInfoController {
                 .userId(CmmUtil.nvl((String) session.getAttribute("SS_USER_ID")))
                 .build();
     }
+
+    /*
+     * 로그아웃
+     */
+    @ResponseBody
+    @PostMapping(value = "logout")
+    public MsgDTO logout(HttpSession session) {
+
+        log.info("controller 로그아웃 실행");
+
+        session.setAttribute("SS_USER_ID", "");
+        session.removeAttribute("SS_USER_ID");
+
+        return MsgDTO.builder()
+                .result(1)
+                .msg("로그아웃 하였습니다.")
+                .build();
+    }
 }

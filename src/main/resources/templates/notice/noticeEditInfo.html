@@ -44,7 +44,6 @@
 
             $("#header").load("/header.html");
 
-            getSsUserId();
             getNoticeInfo();
 
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
@@ -89,7 +88,15 @@
                 data: $("#f").serialize(),
                 success: function (json) {
 
-                    ssUserId = json.userId
+                    console.log(json);
+
+                    if (document.getElementById("regId").value !== json.userId) {
+                        alert("접근 권한이 없습니다.")
+                        location.href = "/main"
+                    } else{
+                        ssUserId = json.userId
+                    }
+
                 }
 
             });
@@ -158,6 +165,9 @@
                     document.getElementById("regId").value = json.regId;
                     document.getElementById("title").value = json.title;
                     document.getElementById("contents").value  = json.contents;
+
+
+                    getSsUserId();
                 }
 
             });

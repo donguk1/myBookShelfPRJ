@@ -42,7 +42,31 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#header").load("../header.html");
+            getSsUserId()
         })
+        function getSsUserId() {
+
+            $.ajax({
+                url: "/user/getSsUserId",
+                type: "post",
+                dataType: "JSON",
+                data: $("#f").serialize(),
+                success: function (json) {
+
+                    if (json.userId.length > 0) {
+                        alert("로그인 후 이용가능합니다.")
+                        location.href = "/user/login"
+
+                    } else {
+
+
+                    }
+
+                }
+
+            });
+        }
+        getSsUserId()
     </script>
 
 </head>

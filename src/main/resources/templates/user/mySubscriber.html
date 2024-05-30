@@ -41,6 +41,7 @@
 
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
+            getSsUserId()
 
             getMySubscribe()
         })
@@ -81,6 +82,26 @@
                 error: function(xhr, status, error) {
                     console.error("AJAX 호출 중 에러 발생:", error);
                 }
+            });
+        }
+
+        function getSsUserId() {
+
+            $.ajax({
+                url: "/user/getSsUserId",
+                type: "post",
+                dataType: "JSON",
+                data: $("#f").serialize(),
+                success: function (json) {
+
+                    if (json.userId.length > 0) {
+                    } else {
+                        alert("로그인 후 이용가능합니다.")
+                        location.href = "/user/login"
+                    }
+
+                }
+
             });
         }
 

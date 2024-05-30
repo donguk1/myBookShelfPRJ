@@ -39,6 +39,8 @@
 
             $("#header").load("header.html")
 
+            getSsUserId()
+
             // 내 게시물 리스트
             $("#btnMyBoard").on("click", function () {
                 location.href = "myBoard";
@@ -76,6 +78,26 @@
                 location.href = "/recommend/personalRecommend";
             })
         })
+
+        function getSsUserId() {
+
+            $.ajax({
+                url: "/user/getSsUserId",
+                type: "post",
+                dataType: "JSON",
+                data: $("#f").serialize(),
+                success: function (json) {
+
+                    if (json.userId.length > 0) {
+                    } else {
+                        alert("로그인 후 이용가능합니다.")
+                        location.href = "/user/login"
+                    }
+
+                }
+
+            });
+        }
     </script>
 </head>
 <body>

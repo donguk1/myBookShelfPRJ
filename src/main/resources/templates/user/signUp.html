@@ -45,6 +45,8 @@
 
             $("#header").load("/header.html");
 
+            getSsUserId()
+
             let f = document.getElementById("f");
 
             // userId 엔터키
@@ -118,6 +120,28 @@
                 doSubmit(f);
             })
         })
+
+        function getSsUserId() {
+
+            $.ajax({
+                url: "/user/getSsUserId",
+                type: "post",
+                dataType: "JSON",
+                data: $("#f").serialize(),
+                success: function (json) {
+
+                    if (json.userId.length > 0) {
+                        location.href = "/main"
+
+                    } else {
+
+
+                    }
+
+                }
+
+            });
+        }
 
         // 비밀번호 확인
         function pwCheck() {
