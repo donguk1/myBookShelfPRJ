@@ -12131,7 +12131,8 @@ textarea {
 
 b,
 strong {
-  font-family: "Cabin Sketch", cursive;
+  /*font-family: "Cabin Sketch", cursive;*/
+  font-family: 'Do Hyeon', sans-serif;
 }
 
 blockquote {

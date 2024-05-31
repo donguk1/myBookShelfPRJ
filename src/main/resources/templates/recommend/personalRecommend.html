@@ -54,7 +54,9 @@
                 data: $("#f").serialize(),
                 success: function (json) {
 
-                    if (json.userId.length > 0) {
+                    console.log(json);
+
+                    if (json.userId ===  "") {
                         alert("로그인 후 이용가능합니다.")
                         location.href = "/user/login"
 
