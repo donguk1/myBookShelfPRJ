@@ -30,8 +30,7 @@ public class SubscribeRepositoryImpl implements SubscribeRepositoryCustom {
         QueryResults<Tuple> results = queryFactory
                 .select(qse, que.nickname, que.userId, que.userName, que.password, que.email)
                 .from(qse)
-                .join(qse.targetUserInfo, que)
-                .fetchJoin()
+                .join(qse.targetUserInfo, que).fetchJoin()
                 .where(qse.regId.eq(regId))
                 .limit(pageable.getPageSize())
                 .offset(pageable.getOffset())
