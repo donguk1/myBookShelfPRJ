@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Bookshelf</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
@@ -95,10 +96,11 @@
 
                 console.log(data);
 
-                let listOne = $("<tr>")
-                    .addClass("listOne table-light")
+                let listOne = $("<div>")
+                    .addClass("listOne item")
 
-                let targetNickname = $("<th>")
+                let targetNickname = $("<div>")
+                    .css("width", "80%")
                     .text(data.targetNickname)
                     .click(function () {
                         doDetail(data.targetId)
@@ -173,18 +175,15 @@
 
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif; margin-top: 1%">
     <div class="card-body">
-        <table class="table table-hover" style="text-align: center">
+        <div id="boardContainer" style="text-align: center">
             <h4 class="mx-auto" style="text-align: center">내 구독 리스트</h4>
-            <thead>
-            <tr>
-                <th scope="col" style="width: 80%">닉네임</th>
-                <th scope="col" style="width: 20%"></th>
-            </tr>
-            </thead>
-            <tbody id="list">
-
-            </tbody>
-        </table>
+            <div class="header">
+                <div style="width: 80%">닉네임</div>
+                <div style="width: 20%"></div>
+            </div>
+            <div id="list">
+            </div>
+        </div>
     </div>
 
     <!-- 페이지네이션 영역-->

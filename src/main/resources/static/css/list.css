@@ -1,0 +1,25 @@
+.header, .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header > div, .item > div {
+    padding: 10px;
+}
+
+.header {
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+.item {
+    background-color: #f1f1f1;
+    margin-top: 5px;
+}
+
+.item:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+}

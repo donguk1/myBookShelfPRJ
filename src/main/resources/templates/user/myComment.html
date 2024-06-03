@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Bookshelf</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
@@ -133,17 +134,19 @@
 
                 console.log(data);
 
-                let listOne = $("<tr>")
-                    .addClass("listOne table-light")
+                let listOne = $("<div>")
+                    .addClass("listOne item")
                     .click(function () {
                         doDetail(data.boardSeq)
                     })
 
-                let contents = $("<th>")
+                let contents = $("<div>")
+                    .css("width", "80%")
                     .text(data.contents)
                 listOne.append(contents)
 
-                let regDt = $("<th>")
+                let regDt = $("<div>")
+                    .css("width", "20%")
                     .text(data.regDt)
                 listOne.append(regDt)
 
@@ -167,17 +170,14 @@
 <button id="btnBoardReg" class="btn btn-secondary my-2 my-sm-0" style="margin-left: 89%">글 쓰기</button>
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif; margin-top: 1%">
     <div class="card-body">
-        <table class="table table-hover" style="text-align: center">
-            <thead>
-            <tr>
-                <th scope="col" style="width: 80%">내용</th>
-                <th scope="col" style="width: 20%">작성일</th>
-            </tr>
-            </thead>
-            <tbody id="boardList">
-
-            </tbody>
-        </table>
+        <div id="boardContainer" style="text-align: center">
+            <div class="header">
+                <div style="width: 80%">내용</div>
+                <div style="width: 20%">작성일</div>
+            </div>
+            <div id="boardList">
+            </div>
+        </div>
     </div>
 
     <!-- 페이지네이션 영역-->

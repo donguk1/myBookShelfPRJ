@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>BookShelf</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
@@ -151,53 +152,54 @@
 
         // 리스트 보여주기
         function insertData(bList) {
-
-            let list = $("#boardList")
+            let list = $("#boardList");
             list.empty();
 
             bList.forEach(function (data) {
-
-                // console.log(data);
-
-                let listOne = $("<tr>")
-                    .addClass("listOne table-light")
+                let listOne = $("<div>")
+                    .addClass("listOne item")
                     .click(function () {
                         doDetail(data.boardSeq)
-                    })
+                    });
 
-                let category = $("<th>")
-                    .text(data.category)
-                listOne.append(category)
+                let category = $("<div>")
+                    .css("width", "10%")
+                    .text(data.category);
+                listOne.append(category);
 
-                let title = $("<th>")
-                    .text(data.title)
+                let title = $("<div>")
+                    .css("width", "40%")
+                    .text(data.title);
 
                 if (data.fileYn === "Y") {
                     let fileYn = $("<i>")
-                        .addClass("fa-solid fa-image")
-                    title.append(fileYn)
+                        .addClass("fa-solid fa-image");
+                    title.append(fileYn);
                 }
-                listOne.append(title)
+                listOne.append(title);
 
-                let commentCnt = $("<th>")
-                    .text(data.commentCnt)
-                listOne.append(commentCnt)
+                let commentCnt = $("<div>")
+                    .css("width", "10%")
+                    .text(data.commentCnt);
+                listOne.append(commentCnt);
 
-                let nickname = $("<th>")
-                    .text(data.nickname)
-                listOne.append(nickname)
+                let nickname = $("<div>")
+                    .css("width", "10%")
+                    .text(data.nickname);
+                listOne.append(nickname);
 
-                let regDt = $("<th>")
-                    .text(data.regDt)
-                listOne.append(regDt)
+                let regDt = $("<div>")
+                    .css("width", "20%")
+                    .text(data.regDt);
+                listOne.append(regDt);
 
-                let readCnt = $("<th>")
-                    .text(data.readCnt)
-                listOne.append(readCnt)
+                let readCnt = $("<div>")
+                    .css("width", "10%")
+                    .text(data.readCnt);
+                listOne.append(readCnt);
 
-                list.append(listOne)
-            })
-
+                list.append(listOne);
+            });
         }
 
 
@@ -215,20 +217,18 @@
 <button id="btnSubscribe" class="btn btn-secondary my-2 my-sm-0" style="margin-left: 89%"></button>
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif; margin-top: 1%">
     <div class="card-body">
-        <table class="table table-hover" style="text-align: center">
-            <thead>
-            <tr>
-                <th scope="col" style="width: 10%">카테고리</th>
-                <th scope="col" style="width: 40%">제목</th>
-                <th scope="col" style="width: 10%">댓글수</th>
-                <th scope="col" style="width: 10%">작성자</th>
-                <th scope="col" style="width: 20%">작성일</th>
-                <th scope="col" style="width: 10%">조회수</th>
-            </tr>
-            </thead>
-            <tbody id="boardList">
-            </tbody>
-        </table>
+        <div id="boardContainer" style="text-align: center">
+            <div class="header">
+                <div style="width: 10%">카테고리</div>
+                <div style="width: 40%">제목</div>
+                <div style="width: 10%">댓글수</div>
+                <div style="width: 10%">작성자</div>
+                <div style="width: 20%">작성일</div>
+                <div style="width: 10%">조회수</div>
+            </div>
+            <hr/>
+            <div id="boardList"></div>
+        </div>
     </div>
 
     <!-- 페이지네이션 영역-->
