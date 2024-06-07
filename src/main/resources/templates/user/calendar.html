@@ -31,6 +31,62 @@
         .s.horizontal .ss {
             flex: 0 0 24%;
         }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            border-collapse: inherit;
+        }
+        .calendar-header {
+            font-weight: bolder;
+            text-align: center;
+            padding: 5px 0;
+        }
+        .calendar-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            grid-column: span 7;
+            padding: 10px;
+        }
+        .calendar-controls .prev,
+        .calendar-controls .next {
+            cursor: pointer;
+            color: #27ADFB;
+        }
+        .calendar-controls .title {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .calendar-day,
+        .calendar-cell {
+            text-align: center;
+            padding: 10px 0;
+            cursor: pointer;
+            position: relative;
+        }
+        .calendar-day {
+            background-color: #f0f0f0;
+        }
+        .calendar-cell.disabled {
+            color: #A9A9A9;
+        }
+        .calendar-cell.today {
+            font-weight: bold;
+            border-radius: 50%;
+            background-color: #dfe8f1;
+        }
+        .calendar-cell.choiceDay {
+            background-color: #00fff7;
+        }
+        .circleSc {
+            width: 6px;
+            height: 6px;
+            background-color: red;
+            border-radius: 50%;
+            display: block;
+            margin: 5px auto 0; /* 일정이 날짜 바로 아래에 오도록 조정 */
+        }
     </style>
 
     <!-- Template Main JS File -->
@@ -78,30 +134,23 @@
         <button id="registerBookShelf" type="button" class="btn btn-secondary my-2 my-sm-0">도서 추가</button>
     </div>
 
-    <table class="scriptCalendar" style="border-collapse: inherit;">
-        <thead style="font-weight: bolder;">
-        <tr>
-            <td onclick="prevCalendar()" style="cursor:pointer;"><i class="fa-solid fa-chevron-left"
-                                                                    style="color: #27ADFB;"></i></td>
-            <td colspan="5">
-                <span id="calYear">YYYY</span>년
-                <span id="calMonth">MM</span>월
-            </td>
-            <td onclick="nextCalendar()" style="cursor:pointer;"><i class="fa-solid fa-chevron-right"
-                                                                    style="color: #27ADFB;"></i></td>
-        </tr>
-        <tr>
-            <td>일</td>
-            <td>월</td>
-            <td>화</td>
-            <td>수</td>
-            <td>목</td>
-            <td>금</td>
-            <td>토</td>
-        </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="calendar">
+        <div class="calendar-controls">
+            <div class="prev" onclick="prevCalendar()"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="title">
+                <span id="calYear">YYYY</span>년 <span id="calMonth">MM</span>월
+            </div>
+            <div class="next" onclick="nextCalendar()"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+        <div class="calendar-day">일</div>
+        <div class="calendar-day">월</div>
+        <div class="calendar-day">화</div>
+        <div class="calendar-day">수</div>
+        <div class="calendar-day">목</div>
+        <div class="calendar-day">금</div>
+        <div class="calendar-day">토</div>
+    </div>
+    <div id="calendar-body" class="calendar"></div>
     <br>
 
     <!--팝업창들-->
