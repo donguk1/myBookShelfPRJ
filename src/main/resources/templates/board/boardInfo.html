@@ -194,10 +194,31 @@
                 },
                 success: function (json) {
 
-                    insertData(json)
+                    console.log(json);
+
+                    insertData(json.board)
+                    insertImg(json.img)
                     getBookmark()
                     getSubCheck()
                 }
+            });
+        }
+
+        function insertImg(images) {
+
+            let imgList = document.getElementById("img")
+
+            images.forEach(function (image) {
+                // Create a new img element
+                let imgElement = document.createElement("img");
+
+                // Set the width and src attributes
+                imgElement.style.width = "90%";
+                imgElement.style.margin = "3%"
+                imgElement.src = image.saveFileUrl;
+
+                // Append the img element to the imgList element
+                imgList.appendChild(imgElement);
             });
         }
 

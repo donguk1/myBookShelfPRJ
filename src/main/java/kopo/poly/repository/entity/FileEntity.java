@@ -39,11 +39,6 @@ public class FileEntity {
     @Column(name = "ORG_FILE_NAME", nullable = false)
     private String orgFileName;
 
-    @Column(name = "REG_DT", nullable = false)
-    private String regDt;
-
-    @Column(name = "FILE_SIZE", nullable = false)
-    private String fileSize;
 
 
 }

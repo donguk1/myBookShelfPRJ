@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -30,9 +29,9 @@ public class FileService implements IFileService {
 
         fileRepository.save(FileEntity.builder()
                 .boardSeq(pDTO.boardSeq())
+                .noticeSeq(pDTO.noticeSeq())
                 .orgFileName(pDTO.orgFileName())
                 .saveFilePath(pDTO.saveFilePath())
-                .fileSize(pDTO.fileSize())
                 .saveFileName(pDTO.saveFileName())
                 .saveFileUrl(pDTO.saveFileUrl())
                 .build());
@@ -58,7 +57,7 @@ public class FileService implements IFileService {
 
         log.info("service 경로 가져오기");
 
-        Optional<List<FileEntity>> pEntity = fileRepository.findByBoardSeq(boardSeq);
+        List<FileEntity> pEntity = fileRepository.findByBoardSeq(boardSeq);
 
         return new ObjectMapper().convertValue(pEntity,
                 new TypeReference<List<FileDTO>>() {

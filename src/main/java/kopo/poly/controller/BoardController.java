@@ -127,9 +127,9 @@ public class BoardController {
 
                         FileDTO fileDTO = FileDTO.builder()
                                 .boardSeq(boardSeq)
+                                .noticeSeq(0L)
                                 .orgFileName(orgFileName)
                                 .saveFilePath(saveFilePath)
-                                .fileSize(fileSize)
                                 .saveFileName(rDTO.saveFileName())
                                 .saveFileUrl(rDTO.saveFileUrl())
                                 .build();
@@ -153,8 +153,6 @@ public class BoardController {
             msg = "오류로 인해 실패하였습니다. 다시 실행해주세요";
 
         }
-
-        log.info("qwe");
 
         return MsgDTO.builder()
                 .msg(msg)
@@ -252,14 +250,18 @@ public class BoardController {
      */
     @ResponseBody
     @PostMapping(value = "getBoardInfo")
-    public BoardDTO getBoardInfo(HttpServletRequest request) throws Exception {
+    public Map<String, Object> getBoardInfo(HttpServletRequest request) throws Exception {
 
         log.info("controller 게시글 가져오기");
 
         Long bSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("bSeq")));
         Boolean type = Boolean.valueOf(CmmUtil.nvl(request.getParameter("type")));
 
-        return boardService.getBoardInfo(bSeq, type);
+        Map<String, Object> map = new HashMap<>();
+        map.put("board", boardService.getBoardInfo(bSeq, type));
+        map.put("img", fileService.getFilePath(bSeq));
+
+        return map;
     }
 
     /**
@@ -320,7 +322,6 @@ public class BoardController {
                                 .boardSeq(boardSeq)
                                 .orgFileName(orgFileName)
                                 .saveFilePath(saveFilePath)
-                                .fileSize(fileSize)
                                 .saveFileName(rDTO.saveFileName())
                                 .saveFileUrl(rDTO.saveFileUrl())
                                 .build();

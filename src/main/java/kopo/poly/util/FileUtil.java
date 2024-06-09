@@ -61,7 +61,6 @@ public class FileUtil {
         return FileDTO.builder()
                 .orgFileName(multipartFile.getOriginalFilename())
                 .saveFileName(saveName)
-                .fileSize(String.valueOf(multipartFile.getSize()))
                 .build();
     }
 

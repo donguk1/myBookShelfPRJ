@@ -105,7 +105,6 @@ public class NoticeController {
                                 .noticeSeq(noticeSeq)
                                 .orgFileName(orgFileName)
                                 .saveFilePath(saveFilePath)
-                                .fileSize(fileSize)
                                 .saveFileName(rDTO.saveFileName())
                                 .saveFileUrl(rDTO.saveFileUrl())
                                 .build();
@@ -221,7 +220,6 @@ public class NoticeController {
                                 .noticeSeq(nSeq)
                                 .orgFileName(orgFileName)
                                 .saveFilePath(saveFilePath)
-                                .fileSize(fileSize)
                                 .saveFileName(rDTO.saveFileName())
                                 .saveFileUrl(rDTO.saveFileUrl())
                                 .build();

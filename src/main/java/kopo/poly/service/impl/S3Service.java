@@ -32,7 +32,7 @@ public class S3Service implements IS3Service {
     // Object Storage 접근 public IP
     final String endPoint = "https://kr.object.ncloudstorage.com";
 
-    final String bucketName = "bookShelf";
+    final String bucketName = "bookshelf";
 
     private final AmazonS3Client amazonS3Client;
 
