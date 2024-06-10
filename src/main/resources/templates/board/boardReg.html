@@ -157,6 +157,15 @@
 
             console.log(arr); // 파일 목록 확인
 
+            // Create a new DataTransfer object to update the file input
+            let dataTransfer = new DataTransfer();
+            arr.forEach(function(file) {
+                dataTransfer.items.add(file);
+            });
+
+            // Update the file input with the new file list
+            document.getElementById('file').files = dataTransfer.files;
+
             $(button).closest('div').remove(); // 부모 div를 삭제하도록 수정
         }
 
