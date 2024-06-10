@@ -99,7 +99,7 @@
                 }
 
                 // 이메일 정규식
-                let emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+                let emailFormat = /^[a-zA-Z]+[!#$%&'*+-/=?^_`(){|}~]*[a-zA-Z0-9]*@[\w]+\.[a-zA-Z0-9-]+[.]*[a-zA-Z0-9]+$/;
 
                 if (!emailFormat.test($("#email").val())) {
                     alert("올바른 이메일 형식으로 입력하세요.");
