@@ -98,6 +98,15 @@
                     return;
                 }
 
+                // 이메일 정규식
+                let emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+
+                if (!emailFormat.test($("#email").val())) {
+                    alert("올바른 이메일 형식으로 입력하세요.");
+                    f.email.focus();
+                    return;
+                }
+
                 emailExists(f);
 
             });
