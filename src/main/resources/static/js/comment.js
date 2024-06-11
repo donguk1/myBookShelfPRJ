@@ -1,5 +1,18 @@
+let userId = "";
+
+function setUserId(ssUserId) {
+
+    userId = ssUserId;
+}
+
 // 댓글 달기
 function insertComment(dept, targetSeq) {
+
+    if (userId === "") {
+        alert("로그인 후 이용가능합니다");
+        return;
+    }
+
 
     // 댓글용
     if (targetSeq === 0) {

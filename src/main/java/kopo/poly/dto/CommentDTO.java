@@ -27,7 +27,7 @@ public record CommentDTO(
                 .chgDt(entity.getChgDt())
                 .targetSeq(entity.getTargetSeq())
                 .dept(entity.getDept())
-                .nickname(entity.getNickname())
+                .nickname(entity.getUserInfo().getNickname())
                 .build();
     }
 }
