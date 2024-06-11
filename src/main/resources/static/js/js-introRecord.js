@@ -200,6 +200,7 @@ function deleteBookShelf(bookShelf) {
     // 예: Ajax 요청을 보내서 서버에 삭제 요청을 보냅니다.
 
     console.log(bookShelf)
+    console.log(choiceDay);
 
     if (confirm("삭제 하시겠습니까?")) {
         $.ajax({
@@ -393,7 +394,7 @@ function calendarChoiceDay(column) {
     }
 
     column.classList.add("choiceDay");
-    let choiceDay = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + column.innerText.trim();
+    choiceDay = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + column.innerText.trim();
     console.log("Selected date:", choiceDay);
 
     // $("#btnradio4").click(); // 날짜 클릭했을때 일정이 기본으로 뜨게
