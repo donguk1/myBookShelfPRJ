@@ -11,12 +11,6 @@ public class MyBookShelfPrjApplication {
         SpringApplication.run(MyBookShelfPrjApplication.class, args);
     }
 
-//    @Bean
-//    public CommonsMultipartResolver multipartResolver() {
-//        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-//        resolver.setDefaultEncoding("UTF-8");
-//        // 다른 구성 옵션을 설정할 수 있음
-//        return resolver;
-//    }
+
 
 }
