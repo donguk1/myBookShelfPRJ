@@ -73,17 +73,7 @@ public class CommentService implements ICommentService {
 
         hierarchicalResult .forEach(commentEntity -> {
 
-            dtoList.add(CommentDTO.builder()
-                        .boardSeq(commentEntity.getBoardSeq())
-                        .commentSeq(commentEntity.getCommentSeq())
-                        .dept(commentEntity.getDept())
-                        .targetSeq(commentEntity.getTargetSeq())
-                        .regId(commentEntity.getRegId())
-                        .nickname(commentEntity.getUserInfo().getNickname())
-                        .regDt(commentEntity.getRegDt())
-                        .chgDt(commentEntity.getChgDt())
-                        .contents(commentEntity.getContents())
-                        .build());
+            dtoList.add(CommentDTO.from(commentEntity));
         });
 
         return dtoList;
