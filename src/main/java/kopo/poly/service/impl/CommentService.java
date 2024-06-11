@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -33,16 +34,22 @@ public class CommentService implements ICommentService {
         QUserInfoEntity ue = QUserInfoEntity.userInfoEntity;
         QCommentEntity ce = QCommentEntity.commentEntity;
 
+        // 댓글 목록(dept == 0) 반복
         for (CommentEntity parent : parents) {
+
+            // 댓글을 결과에 추가
             result.add(parent);
 
+            // 대댓글 조회
             List<CommentEntity> children = queryFactory
                     .selectFrom(ce)
+                    // 조인 작성자 nickname 가져오기 위한 조인
                     .join(ce.userInfo, ue).fetchJoin()
-                    .where(ce.targetSeq.eq(parent.getCommentSeq()),
-                            ce.boardSeq.eq(boardSeq))
+                    .where(ce.boardSeq.eq(boardSeq),
+                            ce.targetSeq.eq(parent.getCommentSeq()))
                     .fetch();
 
+            // dept가 2이상이 있을경우 사용하는 재귀함수
             result.addAll(getChildren(children, boardSeq));
         }
 
@@ -60,6 +67,7 @@ public class CommentService implements ICommentService {
         QUserInfoEntity ue = QUserInfoEntity.userInfoEntity;
         QCommentEntity ce = QCommentEntity.commentEntity;
 
+        // 최상위 댓글(dept == 0) 목록 조회
         List<CommentEntity> cList = queryFactory
                 .selectFrom(ce)
                 .join(ce.userInfo, ue).fetchJoin()
@@ -67,14 +75,15 @@ public class CommentService implements ICommentService {
                         ce.targetSeq.eq(0L))
                 .fetch();
 
+        // 계층 구조의 댓글 목록 가져옴
         List<CommentEntity> hierarchicalResult  = getChildren(cList, boardSeq);
 
         List<CommentDTO> dtoList = new ArrayList<>();
 
-        hierarchicalResult .forEach(commentEntity -> {
-
-            dtoList.add(CommentDTO.from(commentEntity));
-        });
+        // 엔터티를 DTO로 생성자를 사용한 변환
+        hierarchicalResult .forEach(commentEntity ->
+            dtoList.add(CommentDTO.from(commentEntity))
+        );
 
         return dtoList;
     }
@@ -87,7 +96,9 @@ public class CommentService implements ICommentService {
 
         log.info("service getMyComment");
 
-        return commentRepository.findByRegId(pageable, regId).map(CommentDTO::from);
+        // Pageable을 사용하여 댓글을 페이지 단위로 조회
+        return commentRepository.findByRegId(pageable, regId)
+                .map(CommentDTO::from);
     }
 
     /**
@@ -103,11 +114,10 @@ public class CommentService implements ICommentService {
 
         log.info("service insertComment");
 
-        Long commentSeq = commentRepository.countByBoardSeq(boardSeq);
-
-        if (commentSeq == null) {
-            commentSeq = 0L;
-        }
+        // 현재 게시글의 댓글수 조회(댓글 없을시 0으로 초기화)
+        Long commentSeq = Optional.ofNullable(
+                commentRepository.countByBoardSeq(boardSeq))
+                .orElse(0L);
 
         CommentEntity entity = CommentEntity.builder()
                 .boardSeq(boardSeq)
