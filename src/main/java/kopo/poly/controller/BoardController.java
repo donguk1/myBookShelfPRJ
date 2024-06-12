@@ -297,6 +297,8 @@ public class BoardController {
 
             if (files != null) {
 
+                fileService.deleteFiles(boardSeq);
+
                 String saveFilePath = FileUtil.mkdirForData();      // 웹서버에 저장할 파일 경로 생성
 
                 for (MultipartFile mf : files) {
@@ -320,6 +322,7 @@ public class BoardController {
 
                         FileDTO fileDTO = FileDTO.builder()
                                 .boardSeq(boardSeq)
+                                .noticeSeq(0L)
                                 .orgFileName(orgFileName)
                                 .saveFilePath(saveFilePath)
                                 .saveFileName(rDTO.saveFileName())
@@ -327,8 +330,6 @@ public class BoardController {
                                 .build();
 
                         log.info("sageFileUrl : " + rDTO.saveFileUrl());
-
-                        fileService.deleteFiles(boardSeq);
 
                         fileService.saveFiles(fileDTO);
 

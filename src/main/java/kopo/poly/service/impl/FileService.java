@@ -43,10 +43,7 @@ public class FileService implements IFileService {
      */
     @Override
     public void deleteFiles(Long boardSeq) throws Exception {
-
-        fileRepository.delete(FileEntity.builder()
-                        .boardSeq(boardSeq)
-                        .build());
+        fileRepository.deleteAll(fileRepository.findByBoardSeq(boardSeq));
     }
 
     /**

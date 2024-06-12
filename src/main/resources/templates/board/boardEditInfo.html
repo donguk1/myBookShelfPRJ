@@ -63,7 +63,7 @@
                 location.href = "boardList"; // 메모 리스트 이동
             })
 
-            $("input[type='file']").change(function(e){
+            $("input[type='file']").change(function(e) {
                 //div 내용 비워주기
                 // $('#preview').empty();
 
@@ -71,11 +71,12 @@
                 arr = Array.prototype.slice.call(files);
 
                 //업로드 가능 파일인지 체크
-                for(let i=0;i<files.length;i++){
-                    if(!checkExtension(files[i].name,files[i].size)){
+                for (let i = 0; i < files.length; i++) {
+                    if (!checkExtension(files[i].name, files[i].size)) {
                         return false;
                     }
                 }
+
                 preview(arr);
             });//file change
         })
@@ -145,8 +146,6 @@
                 "type" : false
             }
 
-            console.log(data);
-
             $.ajax({
                 url: "/board/getBoardInfo",
                 type: "post",
@@ -156,10 +155,12 @@
 
                     console.log(json);
                     document.getElementById("bSeq").value = bSeq;
-                    document.getElementById("regId").value = json.regId;
-                    document.getElementById("category").value = json.category;
-                    document.getElementById("title").value = json.title;
-                    document.getElementById("contents").value  = json.contents;
+                    document.getElementById("regId").value = json.board.regId;
+                    document.getElementById("category").value = json.board.category;
+                    document.getElementById("title").value = json.board.title;
+                    document.getElementById("contents").value  = json.board.contents;
+
+                    preview(json.img)
                 }
 
             });
@@ -222,11 +223,20 @@
         function removeImage(button) {
             let fileName = $(button).val();
 
-            arr = arr.filter(function(file) {
+            arr = arr.filter(function (file) {
                 return file.name !== fileName;
             });
 
             console.log(arr); // 파일 목록 확인
+
+            // Create a new DataTransfer object to update the file input
+            let dataTransfer = new DataTransfer();
+            arr.forEach(function(file) {
+                dataTransfer.items.add(file);
+            });
+
+            // Update the file input with the new file list
+            document.getElementById('file').files = dataTransfer.files;
 
             $(button).closest('div').remove(); // 부모 div를 삭제하도록 수정
         }
@@ -358,6 +368,7 @@
                 <!-- 파일 -->
                 <div class="card-body ">
                     <input class="form-control" type="file" id="file" multiple name="file" accept=".jpeg, .jpg, .gif, .png">
+                    <span>*이미지 수정 필요시 이미지를 다시 올려주세요</span>
                     <div id="preview"></div>
                 </div>
             </div>
