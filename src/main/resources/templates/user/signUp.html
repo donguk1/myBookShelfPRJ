@@ -255,21 +255,31 @@
                 return;
             }
 
+            let regExp = /^[a-z]+[a-z0-9]{5,19}$/g;
+
+            if (!(regExp.test(f.userId.value))) {
+                alert("사용할 수 없는 아이디 입니다");
+                f.userId.focus()
+                return;
+            }
+
             if (userIdCheck !== "N") {
                 alert("아이디 중복 체크 및 중복되지 않은 아이디로 가입 바랍니다.");
                 f.userId.focus();
                 return;
             }
 
-            if (f.nickname.value === "") {
-                alert("닉네임을 입력하세요.");
-                f.nickname.focus();
-                return;
-            }
-
             if (f.password.value === "") {
                 alert("비밀번호를 입력하세요.");
                 f.password.focus();
+                return;
+            }
+
+            let passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,16}$/;
+
+            if (!(passwordRegex.test(f.password.value))) {
+                alert("사용할 수 없는 비밀번호 입니다");
+                f.password.focus()
                 return;
             }
 
@@ -294,6 +304,12 @@
             if (authCheck === "Y") {
                 alert("이메일 인증을 완료해주세요.")
                 f.authNumber.focus()
+                return;
+            }
+
+            if (f.nickname.value === "") {
+                alert("닉네임을 입력하세요.");
+                f.nickname.focus();
                 return;
             }
 
@@ -353,13 +369,14 @@
                 <div class="form-group">
                     <label for="password" class="form-label mt-4">비밀번호</label>
                     <input type="password" name="password" class="form-control" id="password" placeholder="PASSWORD" oninput="pwCheck()">
+                    <div style="font-size: 15px">비밀번호: 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요</div>
                 </div>
 
                 <!-- 비밀번호 재확인 영역 -->
                 <div class="form-group">
                     <label for="password2" class="form-label mt-4">비밀번호 확인</label>
                     <input type="password" name="password2" class="form-control" id="password2" placeholder="PASSWORD" oninput="pwCheck()">
-                    <span id="pwConfirm">비밀번호를 입력하세요</span>
+                    <span id="pwConfirm" style="font-size: 15px">비밀번호를 입력하세요</span>
                 </div>
 
                 <!-- 이메일 입력 영역 -->
