@@ -73,6 +73,14 @@
                 }
             });
 
+            $("#userId").change(function () {
+                userIdCheck = "Y";
+            })
+
+            $("#email").change(function () {
+                emailCheck = "Y";
+            })
+
             // userId 중복체크
             $("#btnId").on("click", function () {
 
