@@ -64,13 +64,13 @@ public class BoardController {
      * 상세보기 이동
      */
     @GetMapping(value = "/boardInfo")
-    public String boardInfo() {return "/board/boardInfo";}
+    public String boardInfo() {return "board/boardInfo";}
 
     /**
      * 수정 이동
      */
     @GetMapping(value = "/boardEditInfo")
-    public String boardEditInfo() {return "/board/boardEditInfo";}
+    public String boardEditInfo() {return "board/boardEditInfo";}
 
     /**
      * 게시글 작성하기

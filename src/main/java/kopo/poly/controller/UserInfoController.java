@@ -57,7 +57,7 @@ public class UserInfoController {
      */
     @GetMapping(value = "/myActivity")
     public String myActivity() {
-        return "/user/myActivity";
+        return "user/myActivity";
     }
 
     /**
@@ -65,7 +65,7 @@ public class UserInfoController {
      */
     @GetMapping(value = "/myInfo")
     public String myInfo() {
-        return "/user/myInfo";
+        return "user/myInfo";
     }
     
     /**
@@ -73,7 +73,7 @@ public class UserInfoController {
      */
     @GetMapping(value = "/myPage")
     public String myPage() {
-        return "/user/myPage";
+        return "user/myPage";
     }
 
     /**
@@ -81,7 +81,7 @@ public class UserInfoController {
      */
     @GetMapping(value = "/myBoard")
     public String myBoard() {
-        return "/user/myBoard";
+        return "user/myBoard";
     }
 
     /**
@@ -89,50 +89,50 @@ public class UserInfoController {
      */
     @GetMapping(value = "/signUp")
     public String signUp() {
-        return "/user/signUp";
+        return "user/signUp";
     }
 
     /**
      * 내 북마크 리스트
      */
     @GetMapping(value = "/myBookmark")
-    public String myBookmark() { return "/user/myBookmark"; };
+    public String myBookmark() { return "user/myBookmark"; };
 
     /**
      * 내 댓글 리스트
      */
     @GetMapping(value = "/myComment")
-    public String myComment() { return "/user/myComment"; };
+    public String myComment() { return "user/myComment"; };
 
     /**
      * 내 책장 보기
      */
     @GetMapping(value = "/bookShelf")
-    public String bookShelf() { return "/user/bookShelf"; };
+    public String bookShelf() { return "user/bookShelf"; };
 
     /**
      * 캘린더 보기
      */
     @GetMapping(value = "/calendar")
-    public String calendar() { return "/user/calendar"; };
+    public String calendar() { return "user/calendar"; };
 
     /**
      * 내 도서 보기
      */
     @GetMapping(value = "/myBookList")
-    public String myBookList() { return "/user/myBookList"; };
+    public String myBookList() { return "user/myBookList"; };
 
     /**
      * 내 구독 보기
      */
     @GetMapping(value = "/mySubscriber")
-    public String mySubscriber() { return "/user/mySubscriber"; };
+    public String mySubscriber() { return "user/mySubscriber"; };
 
     /**
      * 내 구독자 보기
      */
     @GetMapping(value = "/mySubscribe")
-    public String mySubscribe() { return "/user/mySubscribe"; };
+    public String mySubscribe() { return "user/mySubscribe"; };
 
 
     /**
