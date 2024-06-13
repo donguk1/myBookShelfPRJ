@@ -102,12 +102,16 @@ function insertCommentList(json) {
             .addClass("comment-row");
 
         let td = $("<div>")
-            .addClass("comment-col");
+            .addClass("comment-col")
+            .css({
+                width: data.dept === 1 ? '95%' : '',
+                float: data.dept === 1 ? 'right' : ''
+            });
 
         if (data.dept === 1) { // 뎁스가 1인 경우 좌측 아이콘 추가
             let div = $("<div>")
                 .css({
-                    "width": "5%",
+                    "width": "2%",
                     "float": "left"
                 });
             let i = $("<i>")
@@ -116,8 +120,6 @@ function insertCommentList(json) {
             div.append(i);
             td.append(div);
         }
-
-
 
         // 사용자 아이디(hidden), 댓글 일련번호(hidden) 추가
         let userId = $("<input>")
@@ -162,7 +164,9 @@ function insertCommentList(json) {
                 .click(function() {
                     showReRegArea(data.commentSeq);
                 });
-            baseComment.append($("<div>").css("float", "left").append(btnShowReRegArea));
+            baseComment.append($("<div>")
+                .css("float", "left")
+                .append(btnShowReRegArea));
         }
 
         // 수정 버튼
@@ -183,14 +187,56 @@ function insertCommentList(json) {
                 doCoDelete(data.commentSeq);
             });
 
-        baseComment.append($("<div>").css("float", "right").append(btnShowEditArea, btnDoCoDelete));
+        baseComment.append($("<div>")
+            .css("float", "right")
+            .append(btnShowEditArea, btnDoCoDelete));
 
         td.append(baseComment);
+
+        // 업데이트 상태
+        let updateComment = $("<div>")
+            .attr("id", "updateComment_" + data.commentSeq)
+
+        // 수정 가능한 댓글 내용
+        let updateTextarea = $("<textarea>")
+            .attr({
+                "name" : "upComment",
+                "id" : "upComment_" + data.commentSeq,
+                "row": "3",
+            })
+            .css("width" , "95%")
+            .text(data.contents)
+
+        updateComment.append(updateTextarea, $("<br>"))
+
+        // 수정
+        let btnDoCoEdit = $("<button>")
+            .addClass("btn btn-light btn-sm")
+            .attr("type", "button")
+            .text("수정")
+            .click(function () {
+                doCoEdit(data.commentSeq)
+            })
+
+        // 취소
+        let btnShowHideArea = $("<button>")
+            .addClass("btn btn-light btn-sm")
+            .attr("type", "button")
+            .text("취소")
+            .click(function () {
+                showHideArea(data.commentSeq)
+            })
+        updateComment.append($("<div>")
+            .css("float", "right")
+            .append(btnDoCoEdit, btnShowHideArea)
+        )
+
+        td.append(updateComment)
 
         // 답글 영역 추가 (댓글 뎁스가 0인 경우에만)
         if (data.dept === 0) {
             let reCommentArea = $("<div>")
-                .addClass("commentArea mx-auto")
+                .addClass("")
                 .css("text-align", "center")
                 .attr("id", "reCommentArea_" + data.commentSeq);
 
@@ -208,7 +254,10 @@ function insertCommentList(json) {
             let btnReComment = $("<button>")
                 .addClass("btn btn-primary")
                 .attr("type", "button")
-                .css("width", "95%")
+                .css({
+                    "width": "95%",
+                    "margin-bottom" : ".5%"
+                })
                 .click(function() {
                     insertComment(1, data.commentSeq);
                 })

@@ -72,7 +72,7 @@
             width: 100%; /* 전체 너비를 사용하도록 설정 */
             float: left; /* 왼쪽 정렬 */
             clear: both; /* float 해제 */
-            border-bottom: 1px solid darkgray;
+            border-top: 1px solid darkgray;
         }
 
         .comment-content {
@@ -412,7 +412,6 @@
                 <ul id="dropdown" class="dropdown-menu" style="margin-left: 1%">
                     <li><span id="btnRecordBoard">작성한 글 보기</span></li>
                     <li><span id="btnSubscribe">설정</span></li>
-<!--                    <li><a href="">로그아웃</a></li>-->
                 </ul>
                 <span  id="regDt"></span >  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <span  id="readCnt"></span >
@@ -447,103 +446,8 @@
             <textarea name="commentContents" id="commentContents" style="width: 95%; height: 80px"></textarea>
             <button class="btn btn-primary" type="button" id="btnComment" style="width: 95%" onclick="insertComment(0, 0)">등록</button>
         </div>
-        <hr/>
-        <div class="container">
+        <div class="" style="width: 100%;">
             <div id="commentList" class="comment-list">
-
-            </div>
-        </div>
-        <div class="container">
-            <div id="commentList" class="comment-list">
-                <!-- 댓글 1 -->
-                <div class="comment-row">
-                    <div class="comment-col">
-                        <input type="hidden" name="commentUser" id="commentUser_1" value="1">
-                        <input type="hidden" name="commentSeq" id="commentSeq_1" value="1">
-                        <p><strong>작성자 : 1번</strong><span class="float-right">작성일 : 2024-06-13 03:05:56</span></p>
-                        <div id="baseComment_1" class="comment-content">
-                            <textarea readonly class="readTextarea">125</textarea>
-                            <div style="margin-top: 10px">
-                                <div style="float: left;"><button class="btn btn-link" type="button">답글 쓰기</button></div>
-                                <div style="float: right;"><button class="btn btn-light btn-sm" type="button">수정</button><button class="btn btn-light btn-sm" type="button">삭제</button></div>
-                            </div>
-                        </div>
-                        <div class="commentArea mx-auto" id="reCommentArea_1" style="text-align: center; display: none;">
-                            <textarea name="commentReContents" id="commentReContents_1" style="width: 95%; height: 80px;"></textarea>
-                            <button class="btn btn-primary" type="button" style="width: 95%;">답글 등록</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 답글 1 -->
-                <div class="comment-row">
-                    <div class="comment-col" style="padding-left: 5%;">
-                        <div style="width: 5%; float: left;"><i class="fa-solid fa-turn-up fa-rotate-90 fa-lg" aria-hidden="true" style="color: rgb(131, 157, 184);"></i></div>
-                        <input type="hidden" name="commentUser" id="commentUser_2" value="1">
-                        <input type="hidden" name="commentSeq" id="commentSeq_2" value="2">
-                        <p><strong>작성자 : 1번</strong><span class="float-right">작성일 : 2024-06-13 07:26:59</span></p>
-                        <div id="baseComment_2" class="comment-content">
-                            <textarea readonly class="readTextarea">답글1</textarea>
-                            <div class="btn-group">
-                                <button class="btn btn-light btn-sm" type="button">수정</button>
-                                <button class="btn btn-light btn-sm" type="button">삭제</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 답글 1 -->
-                <div class="comment-row">
-                    <div class="comment-col" style="padding-left: 5%;">
-                        <div style="width: 5%; float: left;"><i class="fa-solid fa-turn-up fa-rotate-90 fa-lg" aria-hidden="true" style="color: rgb(131, 157, 184);"></i></div>
-                        <input type="hidden" name="commentUser" id="commentUser_2" value="1">
-                        <input type="hidden" name="commentSeq" id="commentSeq_2" value="2">
-                        <p><strong>작성자 : 1번</strong><span class="float-right">작성일 : 2024-06-13 07:26:59</span></p>
-                        <div id="baseComment_2" class="comment-content">
-                            <textarea readonly class="readTextarea">답글w</textarea>
-                            <div class="btn-group">
-                                <button class="btn btn-light btn-sm" type="button">수정</button>
-                                <button class="btn btn-light btn-sm" type="button">삭제</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 댓글 2 -->
-                <div class="comment-row">
-                    <div class="comment-col">
-                        <input type="hidden" name="commentUser" id="commentUser_3" value="1">
-                        <input type="hidden" name="commentSeq" id="commentSeq_3" value="3">
-                        <p><strong>작성자 : 1번</strong><span class="float-right">작성일 : 2024-06-13 07:27:07</span></p>
-                        <div id="baseComment_3" class="comment-content">
-                            <textarea readonly class="readTextarea">다답글2</textarea>
-                            <div style="margin-top: 10px">
-                                <div style="float: left;"><button class="btn btn-link" type="button">답글 쓰기</button></div>
-                                <div style="float: right;"><button class="btn btn-light btn-sm" type="button">수정</button><button class="btn btn-light btn-sm" type="button">삭제</button></div>
-                            </div>
-                        </div>
-                        <div class="commentArea mx-auto" id="reCommentArea_3" style="text-align: center; display: none;">
-                            <textarea name="commentReContents" id="commentReContents_3" style="width: 95%; height: 80px;"></textarea>
-                            <button class="btn btn-primary" type="button" style="width: 95%;">답글 등록</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- 답글 1 -->
-                <div class="comment-row">
-                    <div class="comment-col" style="padding-left: 5%;">
-                        <div style="width: 5%; float: left;"><i class="fa-solid fa-turn-up fa-rotate-90 fa-lg" aria-hidden="true" style="color: rgb(131, 157, 184);"></i></div>
-                        <input type="hidden" name="commentUser" id="commentUser_2" value="1">
-                        <input type="hidden" name="commentSeq" id="commentSeq_2" value="2">
-                        <p><strong>작성자 : 1번</strong><span class="float-right">작성일 : 2024-06-13 07:26:59</span></p>
-                        <div id="baseComment_2" class="comment-content">
-                            <textarea readonly class="readTextarea">답글dd1</textarea>
-                            <div class="btn-group">
-                                <button class="btn btn-light btn-sm" type="button">수정</button>
-                                <button class="btn btn-light btn-sm" type="button">삭제</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
