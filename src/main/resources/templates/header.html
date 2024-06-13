@@ -5,7 +5,8 @@
         <a class="navbar-brand mx-auto" href="../main" style="font-size: 45px;">BookShelf</a>
     </div>
     <div>
-        <span id="logout" style="margin-right: 5%;">logout</span>
+        <span id="logout" style="margin-right: 5%; display: none">logout</span>
+        <span id="login" style="margin-right: 5%; display: none">login</span>
     </div>
 </nav>
 
@@ -15,9 +16,12 @@
 
         getSsUserId1()
 
-        // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
         $("#logout").on("click", function () {
-            logout(); // 메모 수정하기 실행
+            logout();
+        })
+
+        $("#login").on("click", function () {
+            location.href = '/user/login';
         })
 
     })
@@ -32,10 +36,10 @@
             success: function (json) {
 
                 if (json.userId.length > 0) {
-                    console.log(json.userId.length);
+                    document.getElementById("logout").style.removeProperty('display')
 
                 } else {
-                    document.getElementById("logout").style.display = "none";
+                    document.getElementById("login").style.removeProperty('display')
 
                 }
 
