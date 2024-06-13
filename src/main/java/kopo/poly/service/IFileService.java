@@ -16,6 +16,8 @@ public interface IFileService {
      */
     void deleteFiles(Long boardSeq) throws Exception;
 
+    void deleteImage(Long fileSeq) throws Exception;
+
     /**
      * 경로 가져오기
      */

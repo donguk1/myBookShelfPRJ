@@ -13,4 +13,6 @@ public interface FileRepository extends JpaRepository<FileEntity, Long> {
      * 경로 가져오기
      */
     List<FileEntity> findByBoardSeq(Long boardSeq);
+
+    FileEntity findByFileSeq(Long FileSeq);
 }

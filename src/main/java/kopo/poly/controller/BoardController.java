@@ -297,7 +297,7 @@ public class BoardController {
 
             if (files != null) {
 
-                fileService.deleteFiles(boardSeq);
+//                fileService.deleteFiles(boardSeq);
 
                 String saveFilePath = FileUtil.mkdirForData();      // 웹서버에 저장할 파일 경로 생성
 

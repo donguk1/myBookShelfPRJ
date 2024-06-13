@@ -47,6 +47,14 @@ public class FileService implements IFileService {
     }
 
     /**
+     * 이미지 삭제
+     */
+    @Override
+    public void deleteImage(Long fileSeq) throws Exception {
+        fileRepository.delete(fileRepository.findByFileSeq(fileSeq));
+    }
+
+    /**
      * 경로 가져오기
      */
     @Override

@@ -160,7 +160,7 @@
                     document.getElementById("title").value = json.board.title;
                     document.getElementById("contents").value  = json.board.contents;
 
-                    preview(json.img)
+                    previewData(json.img)
                 }
 
             });
@@ -185,16 +185,58 @@
             return true;
         }
 
+        // 존재하던 이미지 미리보기
+        function previewData(arr) {
+            arr.forEach(function (f) {
+                let str = '<div style="display: inline-flex; padding: 10px;"><li>';
+
+                if (arr.indexOf(f) === -1) { // 이미지 배열에 존재하지 않으면 추가
+                    console.log("123");
+                    arr.push(f); // 이미지를 배열에 추가
+                }
+
+                console.log(f);
+
+                let reader = new FileReader();
+
+                str += '<button type="button" class="btn btn-danger btn-sm delBtn" style="margin-bottom: 2px;" onclick="deleteImage('+ f.fileSeq + '); removeImage(this)" value="' + f.name + '">x</button><br>';
+                str += '<img src="' + f.saveFileUrl + '" id="' + f.fileSeq + '" width=100 height=100 />';
+                str += '</li></div>';
+                $(str).appendTo('#preview');
+
+            });
+        }
+
+        function deleteImage(seq) {
+
+            console.log(seq);
+
+            if (confirm("정말 삭제하시겠습니까?")) {
+                $.ajax({
+                    url: "/file/deleteImage",
+                    type: "delete",
+                    dataType: "JSON",
+                    data: {fileSeq: seq},
+                    success: function (json) {
+
+                        console.log(json);
+
+                    }
+
+                });
+            }
+        }
+
         // 미리보기
         function preview(arr) {
             arr.forEach(function (f) {
-                let fileName = f.name;
-                if (fileName.length > 10) {
-                    fileName = fileName.substring(0, 4) + "...";
-                }
+                // let fileName = f.name;
+                // if (fileName.length > 10) {
+                //     fileName = fileName.substring(0, 4) + "...";
+                // }
 
                 let str = '<div style="display: inline-flex; padding: 10px;"><li>';
-                str += '<span>' + fileName + '</span>&nbsp';
+                // str += '<span>' + fileName + '</span>&nbsp';
 
                 if (f.type.match('image.*')) {
                     if (arr.indexOf(f) === -1) { // 이미지 배열에 존재하지 않으면 추가
@@ -368,7 +410,7 @@
                 <!-- 파일 -->
                 <div class="card-body ">
                     <input class="form-control" type="file" id="file" multiple name="file" accept=".jpeg, .jpg, .gif, .png">
-                    <span>*이미지 수정 필요시 이미지를 다시 올려주세요</span>
+                    <span>*기존 이미지 X버튼(삭제) 클릭시 복구할 수 없습니다.</span>
                     <div id="preview"></div>
                 </div>
             </div>
