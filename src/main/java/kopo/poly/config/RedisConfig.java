@@ -1,6 +1,5 @@
 package kopo.poly.config;
 
-
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -19,13 +18,13 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @Configuration
 public class RedisConfig {
 
-    @Value(value = "${spring.data.redis.host}")
+    @Value("${spring.data.redis.host}")
     private String redisHost;
 
-    @Value(value = "${spring.data.redis.port}")
+    @Value("${spring.data.redis.port}")
     private int redisPort;
 
-    @Value(value = "${spring.data.redis.password}")
+    @Value("${spring.data.redis.password}")
     private String redisPassword;
 
     @Bean
