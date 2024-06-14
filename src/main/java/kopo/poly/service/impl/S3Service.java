@@ -23,10 +23,10 @@ import java.io.InputStream;
 @Service
 public class S3Service implements IS3Service {
 
-    @Value("${naver.access.key}")
+    @Value(value = "${naver.access.key}")
     private String accessKey;
 
-    @Value("${naver.secret.key}")
+    @Value(value = "${naver.secret.key}")
     private String secretKey;
 
     // Object Storage 접근 public IP
