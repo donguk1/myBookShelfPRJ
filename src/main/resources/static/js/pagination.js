@@ -1,85 +1,87 @@
 function pagination(totalPages, currentPage) {
-            let list = $("#pagination");
-            list.empty();
+    let list = $("#pagination");
+    list.empty();
 
-            let pagesPerGroup = 5;
-            let startPage = ((currentPage -2) / pagesPerGroup) * pagesPerGroup + 1;
-            let endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
-            let page = currentPage - 1
+    let pagesPerGroup = 5;
+    let startPage = ((currentPage - 2) / pagesPerGroup) * pagesPerGroup + 1;
+    let endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
+    let page = currentPage - 1
 
-            console.log("page : ", page);
-            console.log("totalPages : ", totalPages);
-            console.log("startPage : ", startPage);
-            console.log("endPage : ", endPage);
+    console.log("page : ", page);
+    console.log("totalPages : ", totalPages);
+    console.log("startPage : ", startPage);
+    console.log("endPage : ", endPage);
 
-            if (startPage > 1) {
-                let prevFirstPageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("disabled", page === 1);
 
-                let prevFirstPageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", page === 1 ? "#" : "/board/boardList?page=1")
-                    .html("&laquo;");
+    let prevFirstPageItem = $("<li>")
+        .addClass("page-item")
+        .toggleClass("disabled", page === 1);
 
-                prevFirstPageItem.append(prevFirstPageLink);
-                list.append(prevFirstPageItem);
+    let prevFirstPageLink = $("<a>")
+        .addClass("page-link")
+        .attr("href", page === 1 ? "#" : "/board/boardList?page=1")
+        .html("&laquo;");
 
-                let prevPageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("disabled", page === 1);
+    prevFirstPageItem.append(prevFirstPageLink);
+    list.append(prevFirstPageItem);
 
-                let prevPageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", page === 1 ? "#" : "/board/boardList?page=" + (startPage - 1))
-                    .html("&lt;");
 
-                prevPageItem.append(prevPageLink);
-                list.append(prevPageItem);
-            }
+    let prevPageItem = $("<li>")
+        .addClass("page-item")
+        .toggleClass("disabled", page === 1);
 
-            for (let i = page - 3; i <= page + 3 && i <= endPage; i++) {
+    let prevPageLink = $("<a>")
+        .addClass("page-link")
+        .attr("href", page === 1 ? "#" : "/board/boardList?page=" + (startPage - 1))
+        .html("&lt;");
 
-                if (i < 1) continue
+    prevPageItem.append(prevPageLink);
+    list.append(prevPageItem);
 
-                if (page > endPage) break
 
-                let pageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("active", i === page);
+    for (let i = page - 3; i <= page + 3 && i <= endPage; i++) {
 
-                let pageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", i === page ? "#" : "/board/boardList?page=" + i)
-                    .text(i);
+        if (i < 1) continue
 
-                pageItem.append(pageLink);
-                list.append(pageItem);
-            }
+        if (page > endPage) break
 
-            if (endPage < totalPages) {
-                let nextPageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("disabled", page === totalPages);
+        let pageItem = $("<li>")
+            .addClass("page-item")
+            .toggleClass("active", i === page);
 
-                let nextPageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + (endPage + 1))
-                    .html("&gt;");
+        let pageLink = $("<a>")
+            .addClass("page-link")
+            .attr("href", i === page ? "#" : "/board/boardList?page=" + i)
+            .text(i);
 
-                nextPageItem.append(nextPageLink);
-                list.append(nextPageItem);
+        pageItem.append(pageLink);
+        list.append(pageItem);
+    }
 
-                let nextLastPageItem = $("<li>")
-                    .addClass("page-item")
-                    .toggleClass("disabled", page === totalPages);
 
-                let nextLastPageLink = $("<a>")
-                    .addClass("page-link")
-                    .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + totalPages)
-                    .html("&raquo;");
+    let nextPageItem = $("<li>")
+        .addClass("page-item")
+        .toggleClass("disabled", page === totalPages);
 
-                nextLastPageItem.append(nextLastPageLink);
-                list.append(nextLastPageItem);
-            }
-        }
+    let nextPageLink = $("<a>")
+        .addClass("page-link")
+        .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + (startPage + 1))
+        .html("&gt;");
+
+    nextPageItem.append(nextPageLink);
+    list.append(nextPageItem);
+
+
+    let nextLastPageItem = $("<li>")
+        .addClass("page-item")
+        .toggleClass("disabled", page === totalPages);
+
+    let nextLastPageLink = $("<a>")
+        .addClass("page-link")
+        .attr("href", page === totalPages ? "#" : "/board/boardList?page=" + totalPages)
+        .html("&raquo;");
+
+    nextLastPageItem.append(nextLastPageLink);
+    list.append(nextLastPageItem);
+
+}
