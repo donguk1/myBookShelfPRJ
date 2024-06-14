@@ -43,6 +43,10 @@ dependencies {
     // MongoDB
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
+    // REDIS
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.session:spring-session-data-redis'
+
     // mail
     implementation 'org.springframework.boot:spring-boot-starter-mail'
 
