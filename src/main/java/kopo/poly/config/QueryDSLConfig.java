@@ -10,11 +10,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class QueryDSLConfig {
 
+    // EntityManager 객체를 주입
     private final EntityManager entityManager;
 
     @Bean
     public JPAQueryFactory jpaQueryFactory() {
 
+        // EntityManager를 사용하여 JPAQueryFactory 객체를 생성하여 반환
         return new JPAQueryFactory(entityManager);
     }
 }

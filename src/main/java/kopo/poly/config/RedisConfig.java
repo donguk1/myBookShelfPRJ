@@ -18,21 +18,21 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @Configuration
 public class RedisConfig {
 
-    @Value("${spring.data.redis.host}")
+    @Value(value = "${spring.data.redis.host}")
     private String redisHost;
 
-    @Value("${spring.data.redis.port}")
+    @Value(value = "${spring.data.redis.port}")
     private int redisPort;
 
-    @Value("${spring.data.redis.password}")
+    @Value(value = "${spring.data.redis.password}")
     private String redisPassword;
 
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration =new RedisStandaloneConfiguration();
-        redisStandaloneConfiguration.setHostName(redisHost);
-        redisStandaloneConfiguration.setPort(redisPort);
-        redisStandaloneConfiguration.setPassword(redisPassword);
+        redisStandaloneConfiguration.setHostName(redisHost);        // 호스트 설정
+        redisStandaloneConfiguration.setPort(redisPort);            // 포트 설정
+        redisStandaloneConfiguration.setPassword(redisPassword);    // 패스워드 설정
         return new LettuceConnectionFactory(redisStandaloneConfiguration);
     }
 
@@ -40,10 +40,10 @@ public class RedisConfig {
     public StringRedisTemplate stringRedisTemplate() {
         StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
         stringRedisTemplate.setConnectionFactory(redisConnectionFactory());
-        stringRedisTemplate.setKeySerializer(new StringRedisSerializer());
-        stringRedisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
-        stringRedisTemplate.setDefaultSerializer(new StringRedisSerializer());
-        stringRedisTemplate.afterPropertiesSet();
+        stringRedisTemplate.setKeySerializer(new StringRedisSerializer());                // 키 시리얼라이저 설정
+        stringRedisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer()); // 값 시리얼라이저 설정
+        stringRedisTemplate.setDefaultSerializer(new StringRedisSerializer());            // 기본 시리얼라이저 설정
+        stringRedisTemplate.afterPropertiesSet();                                         // 설정 적용
         return stringRedisTemplate;
     }
 

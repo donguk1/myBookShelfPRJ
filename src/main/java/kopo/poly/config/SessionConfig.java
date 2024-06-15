@@ -9,7 +9,7 @@ public class SessionConfig {
 
     public CookieSerializer cookieSerializer() {
         DefaultCookieSerializer serializer = new DefaultCookieSerializer();
-        serializer.setCookieName("JSESSIONID");
+        serializer.setCookieName("JSESSIONID");     // 쿠키명 설정
         serializer.setCookiePath("/");
         serializer.setDomainNamePattern("^.+?(\\w+\\.[a-z]+)$");
         serializer.setUseBase64Encoding(false);
