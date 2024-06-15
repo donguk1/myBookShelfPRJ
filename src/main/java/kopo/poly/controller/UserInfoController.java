@@ -158,7 +158,7 @@ public class UserInfoController {
             if (res == 1) {
 
                 log.info("123");
-                session.setAttribute("KEY", userId);
+                session.setAttribute("SS_USER_ID", userId);
 //                session.setMaxInactiveInterval(3600);
             }
 
@@ -374,7 +374,7 @@ public class UserInfoController {
 
         log.info("controller 내 정보 가져오기");
 
-        String userId = CmmUtil.nvl((String) session.getAttribute("KEY"));
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
 
         UserInfoDTO uDTO = userInfoService.getUserInfo(userId);
 
@@ -392,7 +392,7 @@ public class UserInfoController {
 
         log.info("controller 내 정보 업데이트");
 
-        String userId = CmmUtil.nvl((String) session.getAttribute("KEY"));
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
         String nickname = CmmUtil.nvl(request.getParameter("nickname"));
 
         log.info("userId : " + userId);
@@ -429,7 +429,7 @@ public class UserInfoController {
 
         log.info("controller 비밀번호 업데이트");
 
-        String userId = CmmUtil.nvl((String) session.getAttribute("KEY"));
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
         String email = CmmUtil.nvl(request.getParameter("email"));
         String userName = CmmUtil.nvl(request.getParameter("userName"));
         String password = CmmUtil.nvl(EncryptUtil.encHashSHA256(request.getParameter("password")));
@@ -469,12 +469,12 @@ public class UserInfoController {
 
         log.info("controller 회원 탈퇴");
 
-        String userId = CmmUtil.nvl((String) session.getAttribute("KEY"));
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
 
         userInfoService.deleteUserInfo(userId);
 
-        session.setAttribute("KEY", "");
-        session.removeAttribute("KEY");
+        session.setAttribute("SS_USER_ID", "");
+        session.removeAttribute("SS_USER_ID");
 
         return MsgDTO.builder()
                 .result(1)
@@ -493,7 +493,7 @@ public class UserInfoController {
         log.info("controller 세션 아이디 가져오기");
 
         return UserInfoDTO.builder()
-                .userId(CmmUtil.nvl((String) session.getAttribute("KEY")))
+                .userId(CmmUtil.nvl((String) session.getAttribute("SS_USER_ID")))
                 .build();
     }
 
@@ -506,8 +506,8 @@ public class UserInfoController {
 
         log.info("controller 로그아웃 실행");
 
-        session.setAttribute("KEY", "");
-        session.removeAttribute("KEY");
+        session.setAttribute("SS_USER_ID", "");
+        session.removeAttribute("SS_USER_ID");
 
         return MsgDTO.builder()
                 .result(1)
