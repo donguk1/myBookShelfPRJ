@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BookmarkController {
 
+    // IBookmarkService 객체를 주입
     private final IBookmarkService bookmarkService;
 
     /**
@@ -29,7 +30,7 @@ public class BookmarkController {
 
         String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
         Long boardSeq = Long.valueOf(CmmUtil.nvl(request.getParameter("boardSeq")));
-        boolean type = Boolean.parseBoolean(CmmUtil.nvl(request.getParameter("type")));
+        boolean type = Boolean.parseBoolean(CmmUtil.nvl(request.getParameter("type"))); // 현재 구독 여부
         int res = 1;
 
         log.info("userId : "+ userId);

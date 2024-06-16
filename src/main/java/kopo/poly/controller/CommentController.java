@@ -24,6 +24,7 @@ import java.util.List;
 @RestController
 public class CommentController {
 
+    // ICommentService 객체를 주입
     private final ICommentService commentService;
 
     /**
@@ -92,8 +93,9 @@ public class CommentController {
         log.info("controller getMyComment");
 
         String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
-        String pageStr = request.getParameter("page");
-        int page = SafeUtil.safeParseInt(pageStr, 0); // 기본값으로 0을 사용
+        int page = SafeUtil.safeParseInt(  // 기본값으로 0을 사용
+                request.getParameter("page"), 0
+        );
 
         log.info("userId : " + userId);
         log.info("page : " + page);

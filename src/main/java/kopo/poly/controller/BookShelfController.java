@@ -24,6 +24,7 @@ import java.util.List;
 @RestController
 public class BookShelfController {
 
+    // IBookShelfService 객체를 주입
     private final IBookShelfService bookShelfService;
 
     @PostMapping(value = "insertBook")

@@ -18,8 +18,6 @@ public class FileController {
 
     private final IFileService fileService;
 
-    private final IS3Service s3Service;
-
     @DeleteMapping(value = "/deleteImage")
     public void deleteImage(HttpServletRequest request) throws Exception {
 
