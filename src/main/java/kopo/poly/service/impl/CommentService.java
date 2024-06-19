@@ -116,8 +116,11 @@ public class CommentService implements ICommentService {
 
         // 현재 게시글의 댓글수 조회(댓글 없을시 0으로 초기화)
         Long commentSeq = Optional.ofNullable(
-                commentRepository.countByBoardSeq(boardSeq))
+                commentRepository.findTopByBoardSeqOrderByCommentSeqDesc(boardSeq))
+                .map(CommentEntity::getCommentSeq)
                 .orElse(0L);
+
+        log.info(String.valueOf(commentSeq));
 
         CommentEntity entity = CommentEntity.builder()
                 .boardSeq(boardSeq)
