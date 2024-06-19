@@ -98,7 +98,7 @@ public class CommentService implements ICommentService {
 
         // Pageable을 사용하여 댓글을 페이지 단위로 조회
         return commentRepository.findByRegId(pageable, regId)
-                .map(CommentDTO::from);
+                .map(CommentDTO::myComment);
     }
 
     /**

@@ -30,4 +30,17 @@ public record CommentDTO(
                 .nickname(entity.getUserInfo().getNickname())
                 .build();
     }
+
+    public static CommentDTO myComment(CommentEntity entity) {
+        return CommentDTO.builder()
+                .commentSeq(entity.getCommentSeq())
+                .boardSeq(entity.getBoardSeq())
+                .regId(entity.getRegId())
+                .contents(entity.getContents())
+                .regDt(entity.getRegDt())
+                .chgDt(entity.getChgDt())
+                .targetSeq(entity.getTargetSeq())
+                .dept(entity.getDept())
+                .build();
+    }
 }
