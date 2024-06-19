@@ -2,7 +2,6 @@ package kopo.poly.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import kopo.poly.service.IFileService;
-import kopo.poly.service.IS3Service;
 import kopo.poly.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
