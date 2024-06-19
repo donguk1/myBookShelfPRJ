@@ -25,4 +25,6 @@ public interface CommentRepository extends JpaRepository<CommentEntity, CommentP
 
     Page<CommentEntity> findByRegId(Pageable pageable, String regId) throws Exception;
 
+    List<CommentEntity> findByBoardSeqAndTargetSeq(Long boardSeq, Long targetSeq) throws Exception;
+
 }

@@ -150,6 +150,8 @@ public class CommentService implements ICommentService {
                         .commentSeq(commentSeq)
                         .regId(userId)
                         .build());
+
+        commentRepository.deleteAll(commentRepository.findByBoardSeqAndTargetSeq(boardSeq, commentSeq));
     }
 
     /**
