@@ -102,6 +102,7 @@ public class NoticeController {
                         FileDTO rDTO = s3Service.uploadFile(mf, ext);
 
                         FileDTO fileDTO = FileDTO.builder()
+                                .boardSeq(0L)
                                 .noticeSeq(noticeSeq)
                                 .orgFileName(orgFileName)
                                 .saveFilePath(saveFilePath)

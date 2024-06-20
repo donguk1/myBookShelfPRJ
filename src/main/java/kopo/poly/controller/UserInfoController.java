@@ -492,8 +492,12 @@ public class UserInfoController {
 
         log.info("controller 세션 아이디 가져오기");
 
+        String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+
+        log.info("userId : " + userId);
+
         return UserInfoDTO.builder()
-                .userId(CmmUtil.nvl((String) session.getAttribute("SS_USER_ID")))
+                .userId(userId)
                 .build();
     }
 
