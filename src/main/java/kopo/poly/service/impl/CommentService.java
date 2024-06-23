@@ -43,10 +43,9 @@ public class CommentService implements ICommentService {
             // 대댓글 조회
             List<CommentEntity> children = queryFactory
                     .selectFrom(ce)
-                    // 조인 작성자 nickname 가져오기 위한 조인
-                    .join(ce.userInfo, ue).fetchJoin()
-                    .where(ce.boardSeq.eq(boardSeq),
-                            ce.targetSeq.eq(parent.getCommentSeq()))
+                    .join(ce.userInfo, ue).fetchJoin()  // 조인 작성자 nickname 가져오기 위한 조인
+                    .where(ce.boardSeq.eq(boardSeq),    // 해당 게시글 번호
+                            ce.targetSeq.eq(parent.getCommentSeq()))    //
                     .fetch();
 
             // dept가 2이상이 있을경우 사용하는 재귀함수

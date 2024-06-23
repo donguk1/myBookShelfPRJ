@@ -18,6 +18,8 @@ public class BoardEntity {
 
     
     @Id
+    // PK 자동생성하기 위한 어노테이션
+    // DB가 MySQL 기반인 MariaDB 이기에 IDENTITY 사용
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BOARD_SEQ")
     private Long boardSeq;
@@ -55,7 +57,7 @@ public class BoardEntity {
     @Column(name = "NICKNAME")
     private String nickname;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "REG_ID", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY) // 다대일 관계, 리연로딩
+    @JoinColumn(name = "REG_ID", insertable = false, updatable = false) // FK열 지정과 삽입 및 수정 시 제외
     private UserInfoEntity userInfo;
 }

@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.List;
 
 @Builder
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true) // Json 파싱 시 없는 필드 무시
 public record ShoppingDTO(
         String lastBuildData,
         String total,

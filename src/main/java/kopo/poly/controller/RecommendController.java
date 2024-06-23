@@ -22,7 +22,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping(value = "recommend")
 @Controller
-public class recommendController {
+public class RecommendController {
 
     private final ILLMService llmService;
     private final INaverService naverService;
