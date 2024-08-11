@@ -46,7 +46,7 @@ public class LLMService implements ILLMService {
 
         // REST API 호출
         ResponseEntity<Map> response = restTemplate.exchange(
-                "http://3.38.1.41:5000/llm",    // 요청 URL
+                "http://3.38.1.41:5000/llm",         // 요청 URL
                 HttpMethod.POST,                        // Http 메서드 타입
                 entity,                                 // 요청 데이터
                 Map.class                               // 응답(Return) 타입

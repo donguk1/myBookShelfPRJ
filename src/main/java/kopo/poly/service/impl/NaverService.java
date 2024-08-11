@@ -2,6 +2,7 @@ package kopo.poly.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kopo.poly.dto.ShoppingDTO;
+import kopo.poly.service.INaverAPIService;
 import kopo.poly.service.INaverService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,32 +32,34 @@ public class NaverService implements INaverService {
     @Value("${naver.client_secret}")
     private String naverClientSecret;
 
+    private final INaverAPIService naverAPIService;
 
     @Override
     public ShoppingDTO getShoppingList(String title) throws Exception {
 
-        log.info("");
+        log.info("service getShoppingList");
 
-        // url 설정
-        String apiUrl = "https://openapi.naver.com/v1/search/book.json?" +
-                "query=" + URLEncoder.encode(title, "UTF-8") +
-                "&display=" + 1 +
-                "&sort=sim";
+//        // Feign 클라이언트를 이용한 API 호출
+//        ShoppingDTO response
+//
+//        // 요청 헤더 설정
+//        Map<String, String> requestHeaders = new HashMap<>();
+//        requestHeaders.put("X-Naver-Client-Id", naverClientId);
+//        requestHeaders.put("X-Naver-Client-Secret", naverClientSecret);
+//
+//        // api 요청 및 응답
+//        String responseBody = get(apiUrl, requestHeaders);
+//
+//        log.info(responseBody);
+//
+//        // 응답 본문을 ShoppingDTO 객체로 변환
+//        ObjectMapper objectMapper = new ObjectMapper();
 
-        // 요청 헤더 설정
-        Map<String, String> requestHeaders = new HashMap<>();
-        requestHeaders.put("X-Naver-Client-Id", naverClientId);
-        requestHeaders.put("X-Naver-Client-Secret", naverClientSecret);
-
-        // api 요청 및 응답
-        String responseBody = get(apiUrl, requestHeaders);
-
-        log.info(responseBody);
-
-        // 응답 본문을 ShoppingDTO 객체로 변환
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        return objectMapper.readValue(responseBody, ShoppingDTO.class);
+        return naverAPIService.getShoppingList(
+                title,
+                1, // display
+                "sim" // sort
+        );
     }
 
     private static String get(String apiUrl, Map<String, String> requestHeaders){
