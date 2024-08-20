@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpSession;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.dto.ShoppingDTO;
 import kopo.poly.service.ILLMService;
-import kopo.poly.service.INaverService;
+import kopo.poly.service.IAPIService;
 import kopo.poly.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +25,7 @@ import java.util.Map;
 public class RecommendController {
 
     private final ILLMService llmService;
-    private final INaverService naverService;
+    private final IAPIService apiService;
 
 
     @GetMapping(value = "bookRecommend")
@@ -74,6 +74,6 @@ public class RecommendController {
 
         String title = CmmUtil.nvl(request.getParameter("bookTitle"));
 
-        return naverService.getShoppingList(title);
+        return apiService.getShoppingList(title);
     }
 }

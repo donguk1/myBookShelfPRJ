@@ -16,7 +16,11 @@ public class OpenFeignConfig {
     @Value("${naver.client_secret}")
     private String clientSecret;
 
-    // API 접속을 위해 접속 방법은 기본 값으로 설정(반드시 설정되어야 함)
+
+    /**
+     * API 접속을 위해 접속 방법은 기본 값으로 설정(반드시 설정되어야 함)
+     * 설정 값에 따라 @FeignClient에서 사용할 하위 어노테이션이 변경 됨
+     */
     @Bean
     public Contract feignContract() {
         return new Contract.Default();

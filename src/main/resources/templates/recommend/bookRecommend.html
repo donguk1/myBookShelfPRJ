@@ -73,6 +73,22 @@
 
                     insertData(json.items)
 
+                    $.ajax({
+                        url: "/library/getLibraryItem",
+                        type: "POST",
+                        dataType: "JSON",
+                        data: {"bookTitle" : bookTitle},
+                        success: function (json) {
+                            console.log("-----------------");
+                            console.log(json);
+
+
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("AJAX 호출 중 에러 발생:", error);
+                        }
+                    });
+
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX 호출 중 에러 발생:", error);
