@@ -8,10 +8,10 @@ import kopo.poly.dto.KakaoDTO;
 import kopo.poly.dto.TokenDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 
-@FeignClient(name = "KakaoAuthClient", configuration = OpenFeignConfig.class)
+@FeignClient(name = "KakaoAuthClient", url = "https://kauth.kakao.com", configuration = OpenFeignConfig.class)
 public interface KakaoAuthFeign {
 
-    @RequestLine("POST https://kauth.kakao.com/oauth/token")
+    @RequestLine("POST /oauth/token")
     @Headers("Content-Type: application/x-www-form-urlencoded;charset=utf-8")
     TokenDTO getAccessToken(
             @Param("grant_type") String grantType,
@@ -21,13 +21,5 @@ public interface KakaoAuthFeign {
     );
 
 
-    @RequestLine("POST https://kapi.kakao.com/v2/user/me")
-    @Headers({
-            "Authorization: Bearer {accessToken}",
-            "Content-Type: application/x-www-form-urlencoded;charset=utf-8"
-    })
-    KakaoDTO getUserInfo(
-            @Param("accessToken") String accessToken
-    );
 }
 

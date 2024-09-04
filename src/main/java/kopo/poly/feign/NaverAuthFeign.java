@@ -8,10 +8,10 @@ import kopo.poly.dto.NaverDTO;
 import kopo.poly.dto.TokenDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 
-@FeignClient(name = "naverAuthClient", configuration = OpenFeignConfig.class)
+@FeignClient(name = "naverAuthClient", url = "https://nid.naver.com", configuration = OpenFeignConfig.class)
 public interface NaverAuthFeign {
 
-    @RequestLine("POST https://nid.naver.com/oauth2.0/token")
+    @RequestLine("POST /oauth2.0/token")
     @Headers("Content-Type: application/x-www-form-urlencoded;charset=utf-8")
     TokenDTO getAccessToken(
             @Param("grant_type") String grantType,
@@ -21,12 +21,5 @@ public interface NaverAuthFeign {
             @Param("code") String code
     );
 
-    @RequestLine("POST https://openapi.naver.com/v1/nid/me")
-    @Headers({
-            "Authorization: Bearer {accessToken}",
-            "Content-Type: application/x-www-form-urlencoded;charset=utf-8"
-    })
-    NaverDTO getUserInfo(
-            @Param("accessToken") String accessToken
-    );
+
 }

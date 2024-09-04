@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import kopo.poly.dto.NaverDTO;
 import kopo.poly.dto.TokenDTO;
 import kopo.poly.feign.NaverAuthFeign;
+import kopo.poly.feign.NaverLoginFeign;
 import kopo.poly.service.INaverService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,7 @@ public class NaverService implements INaverService {
     private String naverRedirectUri;
 
     private final NaverAuthFeign naverAuthFeign;
+    private final NaverLoginFeign naverLoginFeign;
     
     /* 토큰 가져오기 */
     @Override
@@ -54,6 +56,6 @@ public class NaverService implements INaverService {
 
         log.info(".service 네이버에서 유저 정보 가져오기 실행");
 
-        return naverAuthFeign.getUserInfo(pDTO.access_token());
+        return naverLoginFeign.getUserInfo(pDTO.access_token());
     }
 }
