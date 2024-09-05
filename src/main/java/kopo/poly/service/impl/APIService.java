@@ -21,8 +21,8 @@ public class APIService implements IAPIService {
     @Value("${naver.client_secret}")
     private String naverClientSecret;
 
-//    @Value("${openapi.client.key}")
-//    private String openAPIClientKey;
+    @Value("${openapi.client.key}")
+    private String openAPIClientKey;
 
     private final NaverAPIFeign naverAPIFeign;
     private final SeoulAPIFeign seoulAPIFeign;
