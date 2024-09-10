@@ -3,7 +3,11 @@ package kopo.poly.config;
 import feign.Contract;
 import feign.Logger;
 import feign.RequestInterceptor;
+import feign.codec.Encoder;
+import feign.form.FormEncoder;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +19,11 @@ public class OpenFeignConfig {
 
     @Value("${naver.client_secret}")
     private String clientSecret;
+
+    @Bean
+    public Encoder feignFormEncoder() {
+        return new FormEncoder(new SpringEncoder(() -> new HttpMessageConverters()));
+    }
 
 
     /**

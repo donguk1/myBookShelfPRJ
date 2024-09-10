@@ -17,6 +17,7 @@
         $(document).ready(function () {
 
             $("#header").load("/header.html");
+            checkLogin()
 
             // 로그인
             $("#btnSend").on("click", function () {
@@ -25,12 +26,19 @@
 
             // 네이버 로그인
             $("#btnNaverLogin").on("click", function () {
-                location.href = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=Go3RUangwA4y64jc2JQG&state=myBookShelf&redirect_uri=http://localhost:11000/auth/naver/callback"
+                location.href = "https://nid.naver.com/oauth2.0/authorize?" +
+                    "response_type=code&" +
+                    "client_id=Go3RUangwA4y64jc2JQG&" +
+                    "redirect_uri=http://localhost:11000/auth/naver/callback&" +
+                    "state=myBookShelf"
             })
 
             // 카카오 로그인
             $("#btnKakaoLogin").on("click", function () {
-                location.href = "https://kauth.kakao.com/oauth/authorize?client_id=93a5a7d1a089d126ad5870374768507a&redirect_uri=http://localhost:11000/auth/kakao/callback&response_type=code"
+                location.href = "https://kauth.kakao.com/oauth/authorize?" +
+                    "client_id=93a5a7d1a089d126ad5870374768507a&" +
+                    "redirect_uri=http://localhost:11000/auth/kakao/callback&" +
+                    "response_type=code"
             })
 
             $("#password").on("keypress", function (event) {
@@ -41,6 +49,25 @@
             });
 
         })
+
+        function checkLogin() {
+
+            $.ajax({
+                url: "/user/getSsUserId",
+                type: "post",
+                dataType: "JSON",
+                data: $("#f").serialize(),
+                success: function (json) {
+
+                    if (json.userId.length > 0) {
+                        location.href = "/main"
+                    }
+
+
+                }
+
+            });
+        }
 
         function login() {
             let f = document.getElementById("f"); // form 태그
