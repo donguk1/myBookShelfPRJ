@@ -1,13 +1,15 @@
 package kopo.poly.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import kopo.poly.dto.LibraryItemDTO;
+import kopo.poly.dto.DataLibraryDTO;
 import kopo.poly.service.IAPIService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -19,7 +21,7 @@ public class LibraryController {
 
 
     @PostMapping(value = "getLibraryItem")
-    public LibraryItemDTO getLibraryItem(HttpServletRequest request) throws Exception{
+    public List<DataLibraryDTO> getLibraryItem(HttpServletRequest request) throws Exception{
 
         log.info("controller getLibraryItem");
 
@@ -27,6 +29,6 @@ public class LibraryController {
 
         log.info("title: {}", title);
 
-        return apiService.getLibraryItem(title);
+        return apiService.getDataLibraryList(title, "MB");
     }
 }

@@ -1,15 +1,20 @@
 package kopo.poly.config;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import feign.Contract;
 import feign.Logger;
 import feign.RequestInterceptor;
+import feign.codec.Decoder;
 import feign.codec.Encoder;
 import feign.form.FormEncoder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.cloud.openfeign.support.SpringDecoder;
 import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
 
 @Configuration
 public class OpenFeignConfig {
@@ -23,6 +28,15 @@ public class OpenFeignConfig {
     @Bean
     public Encoder feignFormEncoder() {
         return new FormEncoder(new SpringEncoder(() -> new HttpMessageConverters()));
+    }
+
+    @Bean
+    public Decoder feignDecoder() {
+        // MappingJackson2XmlHttpMessageConverter를 사용하여 XML 응답 처리
+        return new SpringDecoder(() ->
+                new HttpMessageConverters(
+                        new MappingJackson2XmlHttpMessageConverter(new XmlMapper()))
+        );
     }
 
 
