@@ -7,7 +7,6 @@ import kopo.poly.service.IGoogleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.discovery.composite.CompositeDiscoveryClient;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Service;
 public class GoogleService implements IGoogleService {
 
     private final GoogleAuthFeign googleAuthFeign;
-    private final CompositeDiscoveryClient compositeDiscoveryClient;
 
     @Value("${spring.security.oauth2.client.registration.google.client-id}")
     private String googleClientKey;

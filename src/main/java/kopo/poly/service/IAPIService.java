@@ -1,10 +1,7 @@
 package kopo.poly.service;
 
-import kopo.poly.dto.DataLibraryDTO;
 import kopo.poly.dto.LibraryItemDTO;
 import kopo.poly.dto.ShoppingDTO;
-
-import java.util.List;
 
 public interface IAPIService {
 
@@ -12,5 +9,7 @@ public interface IAPIService {
 
     LibraryItemDTO getLibraryItem(String title) throws Exception;
 
-    List<DataLibraryDTO> getDataLibraryList(String title, String manageCd) throws Exception;
+    String getDataLibraryList(String title, String manageCd) throws Exception;
+
+    String getNlList(String title)throws Exception;
 }
