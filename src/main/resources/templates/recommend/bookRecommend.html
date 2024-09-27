@@ -41,6 +41,10 @@
 
             $("#header").load("/header.html");
 
+            $("#btnModalShow").on("click", function () {
+                $("#nlList").modal("show");
+            })
+
             getRecommendBook()
 
         })
@@ -73,27 +77,69 @@
 
                     insertData(json.items)
 
-                    $.ajax({
-                        url: "/library/getLibraryItem",
-                        type: "POST",
-                        dataType: "JSON",
-                        data: {"bookTitle" : bookTitle},
-                        success: function (json) {
-                            console.log("-----------------");
-                            console.log(json);
-
-
-                        },
-                        error: function(xhr, status, error) {
-                            console.error("AJAX 호출 중 에러 발생:", error);
-                        }
-                    });
+                    getLibraryItem(bookTitle)
 
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX 호출 중 에러 발생:", error);
                 }
             });
+        }
+
+        function getLibraryItem(bookTitle) {
+            $.ajax({
+                url: "/library/getLibraryItem",
+                type: "POST",
+                dataType: "JSON",
+                data: {"bookTitle" : bookTitle},
+                success: function (json) {
+                    console.log("-----------------");
+                    console.log(json);
+
+                    insertBookItem(json.result);
+
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
+            });
+        }
+
+        function insertBookItem(items) {
+            let list = $("#list");
+            list.empty();
+
+            items.forEach(function (data) {
+                let listOne = $("<div>")
+                    .addClass("listOne item")
+                    // .click(function () {
+                //         doDetail(data.boardSeq)
+                //     });
+
+                let tempDiv = $("<div>").html(data.titleInfo)
+
+                let title = $("<div>")
+                    .css("width", "90%")
+                    .text(tempDiv.find('.searching_txt').text());
+                listOne.append(title);
+
+                let commentCnt = $("<div>")
+                    .css("width", "90%")
+                    .html(
+                        data.manageName + "<br>" +
+                        data.placeInfo + "<br>" +
+                        data.callNo
+                    );
+                listOne.append(commentCnt);
+
+                let readCnt = $("<hr>")
+                listOne.append(readCnt);
+
+                list.append(listOne);
+            });
+
+
         }
 
         function insertData(items){
@@ -162,6 +208,7 @@
 <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
     <div class="card-body mx-auto">
         <h1 style="font-family: 'Do Hyeon', sans-serif;">무작위 도서 추천</h1>
+        <i class="fa-solid fa-circle-exclamation" id="btnModalShow"></i>
     </div>
 
     <form id="f" class="mx-auto" style="width: 80%;">
@@ -174,6 +221,26 @@
         </div>
     </form>
 
+</div>
+
+<div id="nlList" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">국립중앙도서관 소장자료</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="del">
+                <div class="modal-body">
+                    <div class="form-floating mb-3 mx-auto" style="width: 98%" id="list">
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 

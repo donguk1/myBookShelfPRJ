@@ -12,7 +12,9 @@ public interface NaLibraryAPIFeign {
             "pageSize={pageSize}&" +
             "kwd={kwd}&" +
             "apiType=json&" +
-            "systemType=오프라인자료")
+            "systemType=오프라인자료&" +
+            "order=asc&" +
+            "srchTarget=title")
     String getNlList(
             @Param("key") String key,
             @Param("pageNum") int pageNum,
