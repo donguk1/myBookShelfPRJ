@@ -323,22 +323,15 @@
                     dataType: "JSON",
                     data: {"boardSeq" : document.getElementById("boardSeq").value},
                     success: function (json) {
-
                         const element = document.getElementById('bookmarkIcon');
-
                         if (json.result === 1) {
                             element.classList.add('fa-solid');
                             bookmaker = true;
-
                         } else {
                             element.classList.add('fa-regular');
-
                             bookmaker = false;
                         }
-
-
                     }
-
                 });
             } else {
                 document.getElementById('bookmarkIcon').classList.add('fa-regular')

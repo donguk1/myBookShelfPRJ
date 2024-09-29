@@ -49,6 +49,23 @@
 
         })
 
+        function starCheck() {
+            const element = document.getElementById('bookmarkIcon');
+
+            if (element.classList.contains('fa-regular')) {
+                element.classList.remove('fa-regular');
+                element.classList.add('fa-solid');
+
+                bookmaker = true;
+
+            } else {
+                element.classList.remove('fa-solid');
+                element.classList.add('fa-regular');
+
+                bookmaker = false;
+            }
+        }
+
         function getRecommendBook() {
             $.ajax({
                 url: "/recommend/getRecommendBook",
@@ -113,11 +130,9 @@
             items.forEach(function (data) {
                 let listOne = $("<div>")
                     .addClass("listOne item")
-                    // .click(function () {
-                //         doDetail(data.boardSeq)
-                //     });
 
-                let tempDiv = $("<div>").html(data.titleInfo)
+                let tempDiv = $("<div>")
+                    .html(data.titleInfo)
 
                 let title = $("<div>")
                     .css("width", "90%")
@@ -133,13 +148,42 @@
                     );
                 listOne.append(commentCnt);
 
-                let readCnt = $("<hr>")
-                listOne.append(readCnt);
+                let icon = $("<i>")
+                    .addClass("fa-star")
+                    .attr("id", "callNo")
+                listOne.append(icon);
+
+                data.title = title
+
+                getNlBook(data)
 
                 list.append(listOne);
             });
+        }
 
+        function getNlBook(data) {
+            $.ajax({
+                url: "/nlBook/getNlBook",
+                type: "POST",
+                dataType: "JSON",
+                data: data,
+                success: function (json) {
+                    console.log(json);
 
+                    const element = document.getElementById(data.callNo)
+
+                    if (json === 1) {
+                        element.classList.add('fa-solid')
+
+                    } else {
+                        element.classList.add('fa-regular')
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
+            });
         }
 
         function insertData(items){
