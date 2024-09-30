@@ -131,29 +131,45 @@
                 let listOne = $("<div>")
                     .addClass("listOne item")
 
+                let div = $("<div>")
+                    .addClass("d-flex justify-content-between")
+                    .css("width", "100%")
+
+                let div2 = $("<div>")
+                    .css("width", "90%")
+
                 let tempDiv = $("<div>")
                     .html(data.titleInfo)
 
                 let title = $("<div>")
-                    .css("width", "90%")
                     .text(tempDiv.find('.searching_txt').text());
-                listOne.append(title);
+                div2.append(title);
 
                 let commentCnt = $("<div>")
-                    .css("width", "90%")
                     .html(
                         data.manageName + "<br>" +
                         data.placeInfo + "<br>" +
                         data.callNo
                     );
-                listOne.append(commentCnt);
+                div2.append(commentCnt);
+                div.append(div2)
 
                 let icon = $("<i>")
-                    .addClass("fa-star")
-                    .attr("id", "callNo")
-                listOne.append(icon);
+                    .addClass("fa-star align-self-center")
+                    .attr({
+                        "id": data.id,
+                        "aria-hidden": "true"
+                    })
+                div.append(icon);
+                listOne.append(div,
+                    $("<hr>")
+                        .css({
+                            "border": "1px dashed",
 
-                data.title = title
+                        })
+                );
+
+                data.titleText = title.text()
 
                 getNlBook(data)
 
@@ -170,7 +186,7 @@
                 success: function (json) {
                     console.log(json);
 
-                    const element = document.getElementById(data.callNo)
+                    const element = document.getElementById(data.id)
 
                     if (json === 1) {
                         element.classList.add('fa-solid')

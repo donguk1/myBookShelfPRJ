@@ -4,11 +4,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kopo.poly.service.INlBookService;
 import kopo.poly.util.CmmUtil;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -62,8 +64,14 @@ public class NlBookController {
         log.info("controller getNlBook");
 
         String regId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
-        String title = CmmUtil.nvl(request.getParameter("title"));
+        String title = CmmUtil.nvl(request.getParameter("titleText"));
         String callNo = CmmUtil.nvl(request.getParameter("callNo"));
+        String id = CmmUtil.nvl(request.getParameter("id"));
+
+        log.info("regId : {}", regId);
+        log.info("title : {}", title);
+        log.info("callNo : {}", callNo);
+        log.info("id : {}", id);
 
         return nlBookService.getNlBook(callNo, regId, title);
     }

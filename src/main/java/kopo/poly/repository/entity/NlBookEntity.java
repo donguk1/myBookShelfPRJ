@@ -20,17 +20,24 @@ import org.hibernate.annotations.DynamicUpdate;
 @IdClass(NlBookPK.class)
 public class NlBookEntity {
 
-    @Id
+
     @Column(name = "CALL_NO")
     private String callNo;
+
+    @Id
+    @Column(name = "ID")
+    private String id;
 
     @Id
     @Column(name = "REG_ID")
     private String  regId;
 
+    @Column(name = "TITLE")
     private String title;
 
+    @Column(name = "MANAGE_NAME")
     private String manageName;
 
+    @Column(name = "PLACE_INFO")
     private String placeInfo;
 }

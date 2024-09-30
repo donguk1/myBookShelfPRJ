@@ -15,5 +15,5 @@ import java.io.Serializable;
 public class NlBookPK implements Serializable {
 
     private String regId;
-    private String callNo;
+    private String id;
 }
