@@ -113,7 +113,7 @@
                     console.log("-----------------");
                     console.log(json);
 
-                    insertBookItem(json.result);
+                    insertNlBookItem(json.result);
 
 
                 },
@@ -123,7 +123,7 @@
             });
         }
 
-        function insertBookItem(items) {
+        function insertNlBookItem(items) {
             let list = $("#list");
             list.empty();
 
@@ -145,6 +145,8 @@
                     .text(tempDiv.find('.searching_txt').text());
                 div2.append(title);
 
+                data.titleText = title.text()
+
                 let commentCnt = $("<div>")
                     .html(
                         data.manageName + "<br>" +
@@ -160,6 +162,9 @@
                         "id": data.id,
                         "aria-hidden": "true"
                     })
+                    .click(function () {
+                        checkNlBook(data)
+                    })
                 div.append(icon);
                 listOne.append(div,
                     $("<hr>")
@@ -169,11 +174,37 @@
                         })
                 );
 
-                data.titleText = title.text()
+
 
                 getNlBook(data)
 
                 list.append(listOne);
+            });
+        }
+
+        function checkNlBook(data) {
+            $.ajax({
+                url: "/nlBook/checkNlBook",
+                type: "POST",
+                dataType: "JSON",
+                data: data,
+                success: function (json) {
+                    console.log(json);
+
+                    const element = document.getElementById(data.id)
+
+                    if (json === 0) {
+                        element.classList.remove('fa-regular'); // 'fa-regular' 클래스 제거
+                        element.classList.add('fa-solid'); // 'fa-solid' 클래스 추가
+                    } else {
+                        element.classList.remove('fa-solid'); // 'fa-solid' 클래스 제거
+                        element.classList.add('fa-regular'); // 'fa-regular' 클래스 추가
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
             });
         }
 

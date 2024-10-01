@@ -6,12 +6,15 @@ public interface INlBookService {
                       String regId,
                       String title,
                       String manageName,
-                      String placeInfo) throws Exception;
+                      String placeInfo,
+                      String id) throws Exception;
 
     void deleteNlBook(String callNo,
-                      String regId) throws Exception;
+                      String regId,
+                      String id) throws Exception;
 
     int getNlBook(String callNo,
                   String regId,
-                  String title) throws Exception;
+                  String title,
+                  String id) throws Exception;
 }

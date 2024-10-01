@@ -28,34 +28,41 @@ public class NlBookController {
     }
 
     @ResponseBody
-    @PostMapping(value = "insertNlBook")
-    public String insertNlBook(HttpServletRequest request, HttpSession session) throws Exception {
+    @PostMapping(value = "checkNlBook")
+    public int checkNlBook(HttpServletRequest request, HttpSession session) throws Exception {
 
-        log.info("controller insertNlBook");
-
-        String regId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
-        String title = CmmUtil.nvl(request.getParameter("title"));
-        String callNo = CmmUtil.nvl(request.getParameter("callNo"));
-        String manageName = CmmUtil.nvl(request.getParameter("manageName"));
-        String placeInfo = CmmUtil.nvl(request.getParameter("placeInfo"));
-
-        nlBookService.insertNlBook(callNo, regId, title, manageName, placeInfo);
-
-        return "success";
-    }
-
-    @ResponseBody
-    @PostMapping(value = "deleteNlBook")
-    public String deleteNlBook(HttpServletRequest request, HttpSession session) throws Exception {
-
-        log.info("controller deleteNlBook");
+        log.info("controller checkNlBook");
 
         String regId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
         String callNo = CmmUtil.nvl(request.getParameter("callNo"));
+        String title = CmmUtil.nvl(request.getParameter("titleText"));
+        String id = CmmUtil.nvl(request.getParameter("id"));
 
-        nlBookService.deleteNlBook(callNo, regId);
-        return "success";
+        log.info("regId : {}", regId);
+        log.info("title : {}", title);
+        log.info("callNo : {}", callNo);
+        log.info("id : {}", id);
+
+        int res = nlBookService.getNlBook(callNo, regId, title, id);
+
+        log.info("res : {}", res);
+
+        if (res == 0) {
+            String manageName = CmmUtil.nvl(request.getParameter("manageName"));
+            String placeInfo = CmmUtil.nvl(request.getParameter("placeInfo"));
+
+            log.info("manageName : {}", manageName);
+            log.info("placeInfo : {}", placeInfo);
+
+            nlBookService.insertNlBook(
+                    callNo, regId, title, manageName, placeInfo, id
+            );
+        } else {
+            nlBookService.deleteNlBook(callNo, regId, id);
+        }
+        return res;
     }
+
 
     @ResponseBody
     @PostMapping(value = "getNlBook")
@@ -73,6 +80,6 @@ public class NlBookController {
         log.info("callNo : {}", callNo);
         log.info("id : {}", id);
 
-        return nlBookService.getNlBook(callNo, regId, title);
+        return nlBookService.getNlBook(callNo, regId, title, id);
     }
 }

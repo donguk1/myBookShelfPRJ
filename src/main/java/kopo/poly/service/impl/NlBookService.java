@@ -17,7 +17,7 @@ public class NlBookService implements INlBookService {
     private final NlBookRepository nlBookRepository;
 
     @Override
-    public void insertNlBook(String callNo, String regId, String title, String manageName, String placeInfo) throws Exception {
+    public void insertNlBook(String callNo, String regId, String title, String manageName, String placeInfo, String id) throws Exception {
 
         log.info("service insertNlBook");
 
@@ -28,12 +28,13 @@ public class NlBookService implements INlBookService {
                         .title(title)
                         .manageName(manageName)
                         .placeInfo(placeInfo)
+                        .id(id)
                         .build()
         );
     }
 
     @Override
-    public void deleteNlBook(String callNo, String regId) throws Exception {
+    public void deleteNlBook(String callNo, String regId, String id) throws Exception {
 
         log.info("service deleteNlBook");
 
@@ -41,13 +42,14 @@ public class NlBookService implements INlBookService {
                 NlBookEntity.builder()
                         .callNo(callNo)
                         .regId(regId)
+                        .id(id)
                         .build()
         );
 
     }
 
     @Override
-    public int getNlBook(String callNo, String regId, String title) throws Exception {
+    public int getNlBook(String callNo, String regId, String title, String id) throws Exception {
 
         log.info("service getNlBook");
 
