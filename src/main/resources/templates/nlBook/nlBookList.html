@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>BookShelf</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/list.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+    <style>
+        .dropdown-menu {
+            right: 0;
+            top: 60px;
+        }
+        .dropdown-menu a {
+            display: block;
+        }
+        .dropdown-menu a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-menu {display: block;}
+
+        /* 드롭다운 메뉴가 나타날 때 네비게이션 바가 밀리는 현상을 방지 */
+        .navbar-nav {
+            position: relative;
+        }
+
+        .navbar-nav .dropdown-menu {
+            position: absolute;
+            right: 0;
+            z-index: 1000;
+        }
+
+
+
+    </style>
+
+    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/pagination.js"></script>
+    <script type="text/javascript">
+
+        let currentPage
+
+        // HTML로딩이 완료되고, 실행됨
+        $(document).ready(function () {
+
+            getNlStarList()
+
+            $("#btnBoardReg").on("click", function () {
+                location.href = "boardReg";
+            })
+
+        })
+
+        function getNlStarList() {
+
+            const urlParams = new URL(location.href).searchParams;
+            currentPage = urlParams.get('page');
+            let keyword = urlParams.get('keyword');
+
+            // page 값이 null이거나 빈 문자열인 경우 0으로 초기화
+            if (currentPage === null || currentPage.trim() === "") {
+                currentPage = 1;
+            } else {
+                currentPage = parseInt(currentPage, 10);
+
+                // page 값이 NaN이거나 음수인 경우 0으로 초기화
+                if (isNaN(currentPage) || currentPage < 0) {
+                    currentPage = 1;
+                }
+            }
+
+            currentPage++
+
+            $.ajax({
+                url: "/nlBook/getNlBookList",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    page: currentPage,
+                    keyword: keyword
+                },
+                success: function (json) {
+                    console.log(json);
+
+                    insertData(json.content)
+                    pagination(json.totalPages, currentPage)
+
+                    document.getElementById("category").value = category ?? ""
+                    document.getElementById("keyword").value = keyword
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
+            });
+        }
+
+        function checkNlBook(data) {
+            $.ajax({
+                url: "/nlBook/checkNlBook",
+                type: "POST",
+                dataType: "JSON",
+                data: data,
+                success: function (json) {
+                    console.log(json);
+
+                    const element = document.getElementById(data.id)
+
+                    if (json === 0) {
+                        element.classList.remove('fa-regular'); // 'fa-regular' 클래스 제거
+                        element.classList.add('fa-solid'); // 'fa-solid' 클래스 추가
+                    } else {
+                        element.classList.remove('fa-solid'); // 'fa-solid' 클래스 제거
+                        element.classList.add('fa-regular'); // 'fa-regular' 클래스 추가
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX 호출 중 에러 발생:", error);
+                }
+            });
+        }
+
+
+        // 리스트 보여주기
+        function insertData(bList) {
+            let list = $("#boardList");
+            list.empty();
+
+            bList.forEach(function (data) {
+                let listOne = $("<div>")
+                    .addClass("listOne item")
+
+                listOne.append(
+                    // title
+                    $("<div>")
+                        .css("width", "30%")
+                        .text(data.title),
+
+                    // 보유 장소
+                    $("<div>")
+                        .css("width", "40%")
+                        .html(
+                            data.manageName + "(" + data.placeInfo + ")"
+                        ),
+
+                    // callNo
+                    $("<div>")
+                        .css("width", "20%")
+                        .text(data.callNo),
+
+                    // star
+                    $("<i>")
+                        .addClass("fa-star align-self-center")
+                        .attr({
+                            "id": data.id,
+                            "aria-hidden": "true"
+                        })
+                        .click(function () {
+                            checkNlBook(data)
+                        })
+                )
+                list.append(listOne);
+            });
+        }
+
+
+    </script>
+</head>
+<body>
+<!-- 메모 목록 페이지 -->
+
+<!-- 상단바 부분 -->
+<div th:replace="~{header}"></div>
+<br>
+<br>
+
+<!-- 내용 부분 -->
+<button id="btnBoardReg" class="btn btn-secondary my-2 my-sm-0" style="margin-left: 89%">글 쓰기</button>
+<div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif; margin-top: 1%">
+    <div class="card-body">
+        <div id="boardContainer" style="text-align: center">
+            <div class="header">
+                <div style="width: 10%">카테고리</div>
+                <div style="width: 40%">제목</div>
+                <div style="width: 10%">댓글수</div>
+                <div style="width: 10%">작성자</div>
+                <div style="width: 20%">작성일</div>
+                <div style="width: 10%">조회수</div>
+            </div>
+            <hr/>
+            <div id="boardList"></div>
+        </div>
+    </div>
+
+    <!-- 페이지네이션 영역-->
+    <div class="center-pagination mx-auto">
+        <ul class="pagination" id="pagination">
+        </ul>
+    </div>
+
+    <!-- 검색 버튼 영역 -->
+    <form class="form-inline my-2 my-lg-0 mx-auto" id="f">
+        <div class="input-group mb-3">
+            <select name="category" id="category" style="margin-right: 3%">
+                <option selected value="">전체</option>
+                <option value="기타">기타</option>
+                <option value="철학">철학</option>
+                <option value="종교">종교</option>
+                <option value="과학">과학</option>
+                <option value="예술">예술</option>
+                <option value="언어">언어</option>
+                <option value="문학">문학</option>
+                <option value="역사">역사</option>
+            </select>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" id="keyword">
+            <button type="submit" class="btn btn-secondary my-2 my-sm-0" id="btnSend">검색</button>
+        </div>
+    </form>
+    <br>
+</div>
+
+
+</body>
+</html>
