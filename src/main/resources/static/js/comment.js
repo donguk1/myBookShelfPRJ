@@ -112,11 +112,12 @@ function insertCommentList(json) {
             let div = $("<div>")
                 .css({
                     "width": "2%",
-                    "float": "left"
+                    "float": "left",
+                    "margin-right": "5px"
                 });
             let i = $("<i>")
                 .addClass("fa-solid fa-turn-up fa-rotate-90 fa-lg")
-                .css("color", "#839db8");
+                .css("color", "#3A3A3A");
             div.append(i);
             td.append(div);
         }
@@ -158,9 +159,10 @@ function insertCommentList(json) {
         // 답글 쓰기 버튼 추가 (댓글 뎁스가 0인 경우에만)
         if (data.dept === 0) {
             let btnShowReRegArea = $("<button>")
-                .addClass("btn btn-link")
+                .addClass("btn btn-link text-dark btn-box-shadow-none")
                 .attr("type", "button")
                 .text("답글 쓰기")
+                .css("padding-left", "0")
                 .click(function() {
                     showReRegArea(data.commentSeq);
                 });
@@ -171,16 +173,17 @@ function insertCommentList(json) {
 
         // 수정 버튼
         let btnShowEditArea = $("<button>")
-            .addClass("btn btn-light btn-sm")
+            .addClass("btn btn-light btn-sm btn-rounded-none")
             .attr("type", "button")
             .text("수정")
+            .css("margin-right", "5px")
             .click(function() {
                 showEditArea(data.commentSeq);
             });
 
         // 삭제 버튼
         let btnDoCoDelete = $("<button>")
-            .addClass("btn btn-light btn-sm")
+            .addClass("btn btn-light btn-sm btn-rounded-none")
             .attr("type", "button")
             .text("삭제")
             .click(function() {
@@ -196,38 +199,49 @@ function insertCommentList(json) {
         // 업데이트 상태
         let updateComment = $("<div>")
             .attr("id", "updateComment_" + data.commentSeq)
+            .css("text-align", "center")
 
         // 수정 가능한 댓글 내용
         let updateTextarea = $("<textarea>")
+            .addClass("form-control btn-rounded-none")
             .attr({
                 "name" : "upComment",
                 "id" : "upComment_" + data.commentSeq,
                 "row": "3",
             })
-            .css("width" , "95%")
+            .css({
+                "resize": "none",
+                "display": "initial",
+                "width": "95%",
+                "margin-top": "5px"
+            })
             .text(data.contents)
 
         updateComment.append(updateTextarea, $("<br>"))
 
         // 수정
         let btnDoCoEdit = $("<button>")
-            .addClass("btn btn-light btn-sm")
+            .addClass("btn btn-light btn-sm btn-rounded-none")
             .attr("type", "button")
             .text("수정")
+            .css("margin-right", "5px")
             .click(function () {
                 doCoEdit(data.commentSeq)
             })
 
         // 취소
         let btnShowHideArea = $("<button>")
-            .addClass("btn btn-light btn-sm")
+            .addClass("btn btn-light btn-sm btn-rounded-none")
             .attr("type", "button")
             .text("취소")
             .click(function () {
                 showHideArea(data.commentSeq)
             })
         updateComment.append($("<div>")
-            .css("float", "right")
+            .css({
+                "float": "right",
+                "margin-bottom": "5px"
+            })
             .append(btnDoCoEdit, btnShowHideArea)
         )
 
@@ -241,18 +255,21 @@ function insertCommentList(json) {
                 .attr("id", "reCommentArea_" + data.commentSeq);
 
             let reContent = $("<textarea>")
+                .addClass("form-control btn-rounded-none")
                 .attr({
                     "name": "commentReContents",
                     "id": "commentReContents_" + data.commentSeq
                 })
                 .css({
                     "width": "95%",
-                    "height": "80px"
+                    "height": "80px",
+                    "resize": "none",
+                    "display": "initial"
                 });
             reCommentArea.append(reContent);
 
             let btnReComment = $("<button>")
-                .addClass("btn btn-primary")
+                .addClass("btn btn-dark btn-rounded-none")
                 .attr("type", "button")
                 .css({
                     "width": "95%",

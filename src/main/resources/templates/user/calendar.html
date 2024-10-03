@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>BookShelf</title>
-
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/introRecord.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
         .s {
             width: 100%;
             display: flex;
@@ -52,7 +60,7 @@
         .calendar-controls .prev,
         .calendar-controls .next {
             cursor: pointer;
-            color: #27ADFB;
+            color: #4A4A4A;
         }
         .calendar-controls .title {
             text-align: center;
@@ -77,7 +85,7 @@
             background-color: #dfe8f1;
         }
         .calendar-cell.choiceDay {
-            background-color: #00fff7;
+            background-color: #AEAEAE;
         }
         .circleSc {
             width: 6px;
@@ -88,16 +96,20 @@
             margin: 5px auto 0; /* 일정이 날짜 바로 아래에 오도록 조정 */
         }
     </style>
-
-    <!-- Template Main JS File -->
-    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/plugins.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
     <script type="text/javascript" src="/js/js-introRecord.js"></script>
+    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#header").load("../header.html");
+
             getSsUserId()
         })
         function getSsUserId() {
@@ -115,7 +127,6 @@
 
                     } else {
 
-
                     }
 
                 }
@@ -123,51 +134,57 @@
             });
         }
     </script>
-
 </head>
-<body>
-
-
-<main class="container">
+<body data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0" data-current-page="mypage">
+    <!-- 헤더 시작 -->
     <div th:replace="~{header}"></div>
-    <div id="registerBtns" style="margin: 10px 0">
-        <button id="registerBookShelf" type="button" class="btn btn-secondary my-2 my-sm-0">도서 추가</button>
-    </div>
+    <!-- 헤더 끝 -->
 
-    <div class="calendar">
-        <div class="calendar-controls">
-            <div class="prev" onclick="prevCalendar()"><i class="fa-solid fa-chevron-left"></i></div>
-            <div class="title">
-                <span id="calYear">YYYY</span>년 <span id="calMonth">MM</span>월
+    <!-- 본문 시작 -->
+    <section id="instagram" class="padding-large overflow-hidden">
+        <div class="container">
+            <div id="registerBtns" style="margin: 10px 0">
+                <button id="registerBookShelf" type="button" class="btn btn-secondary my-2 my-sm-0 btn-rounded-none">도서 추가</button>
             </div>
-            <div class="next" onclick="nextCalendar()"><i class="fa-solid fa-chevron-right"></i></div>
+
+            <div class="calendar">
+                <div class="calendar-controls">
+                    <div class="prev" onclick="prevCalendar()"><i class="fa-solid fa-chevron-left"></i></div>
+                    <div class="title">
+                        <span id="calYear">YYYY</span>년 <span id="calMonth">MM</span>월
+                    </div>
+                    <div class="next" onclick="nextCalendar()"><i class="fa-solid fa-chevron-right"></i></div>
+                </div>
+                <div class="calendar-day">일</div>
+                <div class="calendar-day">월</div>
+                <div class="calendar-day">화</div>
+                <div class="calendar-day">수</div>
+                <div class="calendar-day">목</div>
+                <div class="calendar-day">금</div>
+                <div class="calendar-day">토</div>
+            </div>
+            <div id="calendar-body" class="calendar"></div>
+
+            <div class="mt-4" id="bookShelfList">
+                <div id="bookShelf"></div>
+            </div>
         </div>
-        <div class="calendar-day">일</div>
-        <div class="calendar-day">월</div>
-        <div class="calendar-day">화</div>
-        <div class="calendar-day">수</div>
-        <div class="calendar-day">목</div>
-        <div class="calendar-day">금</div>
-        <div class="calendar-day">토</div>
-    </div>
-    <div id="calendar-body" class="calendar"></div>
-    <br>
+    </section>
 
     <!--팝업창들-->
-
     <!-- 도서 추가 팝업 -->
     <div id="bookShelfModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">도서 추가</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-box-shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form name="bookShelf" id="fo">
                     <br/><br/>
                     <div class="form-group mx-auto" style="width: 90%;">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="bookShelfTitle" id="bookShelfTitle"
+                            <input type="text" class="form-control btn-rounded-none" name="bookShelfTitle" id="bookShelfTitle"
                                    placeholder="책 제목">
                             <label for="bookShelfTitle">책 제목</label>
                         </div>
@@ -175,8 +192,8 @@
                 </form>
                 <br/><br/>
                 <div class="modal-footer">
-                    <button type="submit" id="modalBtnSc" class="btn btn-primary">저장</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="submit" id="modalBtnSc" class="btn btn-black btn-rounded-none">저장</button>
+                    <button type="button" class="btn btn-light btn-rounded-none btn-box-shadow-none" data-bs-dismiss="modal">닫기</button>
                 </div>
             </div>
         </div>
@@ -188,7 +205,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">도서 수정</h5>
-                    <button type="button" class="btn btn-secondary my-2 my-sm-0" ></button>
+                    <button type="button" class="btn-close btn-box-shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form name="bookShelfEdit" id="bookShelfEditf"> <!-- onsubmit="editbookShelf();" -->
                     <br/><br/>
@@ -196,26 +213,23 @@
                     <div class="form-group mx-auto" style="width: 90%;">
                         <div class="form-floating mb-3">
                             <input type="hidden" id="oldTitle">
-                            <input type="text" class="form-control" name="bookShelf" id="newTitle">
+                            <input type="text" class="form-control btn-rounded-none" name="bookShelf" id="newTitle">
                             <label for="newTitle">제목</label>
                         </div>
                     </div>
                 </form>
                 <br/><br/>
                 <div class="modal-footer">
-                    <button type="submit" id="editBtnSc" class="btn btn-primary">수정</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="submit" id="editBtnSc" class="btn btn-black btn-rounded-none">수정</button>
+                    <button type="button" class="btn btn-light btn-rounded-none" data-bs-dismiss="modal">닫기</button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- 본문 끝 -->
 
-
-    <div id="bookShelfList">
-        <div id="bookShelf"></div>
-    </div>
-
-
-</main>
+    <!-- 푸터 시작 -->
+    <div th:replace="~{footer}"></div>
+    <!-- 푸터 끝 -->
 </body>
 </html>

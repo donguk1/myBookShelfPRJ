@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>BookShelf</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/list.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        .dropdown-menu {
-            right: 0;
-            top: 60px;
-        }
-        .dropdown-menu a {
-            display: block;
-        }
-        .dropdown-menu a:hover {background-color: #ddd;}
-
-        .dropdown:hover .dropdown-menu {display: block;}
-
-        /* 드롭다운 메뉴가 나타날 때 네비게이션 바가 밀리는 현상을 방지 */
-        .navbar-nav {
-            position: relative;
-        }
-
-        .navbar-nav .dropdown-menu {
-            position: absolute;
-            right: 0;
-            z-index: 1000;
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
         }
     </style>
-
-    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/plugins.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
     <script type="text/javascript" src="/js/pagination.js"></script>
     <script type="text/javascript">
 
@@ -135,50 +130,49 @@
             })
 
         }
-
-
     </script>
 </head>
-<body>
-<!-- 메모 목록 페이지 -->
+<body data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0" data-current-page="notice">
+    <!-- 헤더 시작 -->
+    <div th:replace="~{header}"></div>
+    <!-- 헤더 끝 -->
 
-<!-- 상단바 부분 -->
-<div th:replace="~{header}"></div>
-<br>
-<br>
-
-<!-- 내용 부분 -->
-<button id="btnNoticeReg" class="btn btn-secondary my-2 my-sm-0" style="margin-left: 89%">글 쓰기</button>
-<div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif; margin-top: 1%">
-    <div class="card-body">
-        <div id="boardContainer" style="text-align: center">
-            <div class="header">
-                <div style="width: 40%">제목</div>
-                <div style="width: 10%">작성자</div>
-                <div style="width: 20%">작성일</div>
-                <div style="width: 10%">조회수</div>
+    <!-- 본문 시작 -->
+    <section id="instagram" class="padding-large overflow-hidden">
+        <div class="container">
+            <div class="d-flex justify-content-end mb-3">
+                <button id="btnNoticeReg" class="btn btn-secondary my-2 my-sm-0 btn-rounded-none">글 쓰기</button>
             </div>
-            <div id="noticeList">
+
+            <div class="mb-5" id="boardContainer" style="text-align: center">
+                <div class="header" style="border-bottom: 2px solid #3A3A3A">
+                    <div style="width: 40%">제목</div>
+                    <div style="width: 10%">작성자</div>
+                    <div style="width: 20%">작성일</div>
+                    <div style="width: 10%">조회수</div>
+                </div>
+                <div id="noticeList"></div>
             </div>
+
+            <!-- 페이지네이션 영역-->
+            <div class="center-pagination d-flex justify-content-center mb-3">
+                <ul class="pagination" id="pagination">
+                </ul>
+            </div>
+
+            <!-- 검색 버튼 영역 -->
+            <form class="form-inline my-2 my-lg-0 d-flex justify-content-center" id="f">
+                <div class="input-group mb-3">
+                    <input class="form-control btn-rounded-none mr-sm-2" type="search" placeholder="Search" name="keyword" id="keyword">
+                    <button type="submit" class="btn btn-dark my-2 my-sm-0 btn-rounded-none" id="btnSend">검색</button>
+                </div>
+            </form>
         </div>
-    </div>
+    </section>
+    <!-- 본문 끝 -->
 
-    <!-- 페이지네이션 영역-->
-    <div class="center-pagination mx-auto">
-        <ul class="pagination" id="pagination">
-        </ul>
-    </div>
-
-    <!-- 검색 버튼 영역 -->
-    <form class="form-inline my-2 my-lg-0 mx-auto" id="f">
-        <div class="input-group mb-3">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" id="keyword">
-            <button type="submit" class="btn btn-secondary my-2 my-sm-0" id="btnSend">검색</button>
-        </div>
-    </form>
-    <br>
-</div>
-
-
+    <!-- 푸터 시작 -->
+    <div th:replace="~{footer}"></div>
+    <!-- 푸터 끝 -->
 </body>
 </html>

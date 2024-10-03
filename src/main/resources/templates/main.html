@@ -1,92 +1,64 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>BookShelf</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
-    <style th:inline="css">
-        .dropdown-menu {
-            right: 0;
-            top: 60px;
-        }
-        .dropdown-menu a {
-            display: block;
-        }
-        .dropdown-menu a:hover {background-color: #ddd;}
-
-        .dropdown:hover .dropdown-menu {display: block;}
-
-        /* 드롭다운 메뉴가 나타날 때 네비게이션 바가 밀리는 현상을 방지 */
-        .navbar-nav {
-            position: relative;
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
-        .navbar-nav .dropdown-menu {
-            position: absolute;
-            right: 0;
-            z-index: 1000;
+        @media only screen and (max-width: 991px) {
+            #info {
+                background-color: rgba(240, 240, 240, 0.9);
+            }
         }
     </style>
-
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-        // HTML로딩이 완료되고, 실행됨
-        $(document).ready(function () {
-
-
-            // 게시물 리스트
-            $("#btnBoardList").on("click", function () {
-                location.href = "board/boardList";
-            })
-
-            // 내 활동 리스트
-            $("#btnMyActivity").on("click", function () {
-                location.href = "user/myActivity";
-            })
-
-            // 무작위 도서 추천
-            $("#btnRecommend").on("click", function () {
-                location.href = "recommend/bookRecommend";
-            })
-
-            // 공지사항 리스트
-            $("#btnNotice").on("click", function () {
-                location.href = "notice/noticeList";
-            })
-        })
-    </script>
+    <script type="text/javascript" src="/js/plugins.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
 </head>
-<body>
-<!-- 메인 페이지 -->
-<div th:replace="~{header}"></div>
-<!-- 상단바 부분 -->
-<br>
-<br>
+<body data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0" data-current-page="home">
+    <!-- 헤더 시작 -->
+    <div th:replace="~{header}"></div>
+    <!-- 헤더 끝 -->
 
-<!-- 내용 부분 -->
-<div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
+    <!-- 본문 시작 -->
+    <section id="yearly-sale" class="bg-light-blue overflow-hidden mt-5 padding-xlarge mb-4" style="background-image: url('/img/blackBook.jpg');background-position: right; background-repeat: no-repeat;">
+        <div class="row d-flex flex-wrap align-items-center">
+            <div class="col-md-6 col-sm-12" id="info">
+                <div class="text-content offset-4 padding-medium">
+                    <img src="/img/main-logo.png" alt="logo">
+                    <p class="text-uppercase text-dark">Discover your next favorite read with BookShelf! Our platform not only recommends books tailored to your taste but also allows you to share and explore insightful posts about your literary journey. Join our community of book lovers today!</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
 
+            </div>
+        </div>
+    </section>
+    <!-- 본문 끝 -->
 
-    <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnBoardList" class="btn btn-link btn-lg" style=" height: 100px" type="button">게시글 보기</button>
-    </div>
-
-    <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnMyActivity" class="btn btn-link btn-lg" style="height: 100px" type="button">내 활동 보기</button>
-    </div>
-
-    <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnRecommend" class="btn btn-link btn-lg" style="height: 100px" type="button">오늘의 추천 도서</button>
-    </div>
-
-    <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnNotice" class="btn btn-link btn-lg" style="height: 100px" type="button">공지사항</button>
-    </div>
-
-</div>
+    <!-- 푸터 시작 -->
+    <div th:replace="~{footer}"></div>
+    <!-- 푸터 끝 -->
 </body>
 </html>

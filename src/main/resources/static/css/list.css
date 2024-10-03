@@ -11,12 +11,10 @@
 
 .header {
     font-weight: bold;
-    background-color: #f8f9fa;
 }
 
 .item {
-    background-color: #f1f1f1;
-    margin-top: 5px;
+    border-bottom: 1px solid #d0d0d0;
 }
 
 .item:hover {

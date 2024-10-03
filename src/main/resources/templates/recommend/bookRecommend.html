@@ -1,45 +1,47 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>BookShelf</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
-    <style type="text/css">
-        .dropdown-menu {
-            right: 0;
-            top: 60px;
-        }
-        .dropdown-menu a {
-            display: block;
-        }
-        .dropdown-menu a:hover {background-color: #ddd;}
-
-        .dropdown:hover .dropdown-menu {display: block;}
-
-        /* 드롭다운 메뉴가 나타날 때 네비게이션 바가 밀리는 현상을 방지 */
-        .navbar-nav {
-            position: relative;
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
-        .navbar-nav .dropdown-menu {
-            position: absolute;
-            right: 0;
-            z-index: 1000;
+        .readTextarea {
+            width: 100%;
+            resize: none;
+            overflow-y: hidden; /* prevents scroll bar flash */
+            border: none;
+            outline: none;
         }
     </style>
-
-    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/plugins.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
 
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
-
-            $("#header").load("/header.html");
 
             $("#btnModalShow").on("click", function () {
                 $("#nlList").modal("show");
@@ -256,7 +258,10 @@
                                 "href": item.link,
                                 "target": "_blank"
                             })
-                            .css("float", "right"),
+                            .css({
+                                "float": "right",
+                                "text-decoration": "revert"
+                            }),
 
                         $("<br>"),
 
@@ -265,7 +270,7 @@
                             .css({
                                 "width": "40%",
                                 "float": "right",
-                                "margin-right": "2%"
+                                "margin-left": "2%"
                             }),
 
                         $("<span>")
@@ -285,55 +290,56 @@
                 getRecommendBook()
             }
         }
-
-
     </script>
 </head>
-<body>
-<!-- 메모 목록 페이지 -->
+<body data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0" data-current-page="recommendBook">
+    <!-- 헤더 시작 -->
+    <div th:replace="~{header}"></div>
+    <!-- 헤더 끝 -->
 
-<!-- 상단바 부분 -->
-<div th:replace="~{header}"></div>
-<br>
-<br>
-<div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
-    <div class="card-body mx-auto">
-        <h1 style="font-family: 'Do Hyeon', sans-serif;">무작위 도서 추천</h1>
-        <i class="fa-solid fa-circle-exclamation" id="btnModalShow"></i>
-    </div>
-
-    <form id="f" class="mx-auto" style="width: 80%;">
-        <div class="form-group">
-            <label class="form-label mt-4">책 제목</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="bookTitle" name="bookTitle" disabled="">
+    <!-- 본문 시작 -->
+    <section id="instagram" class="padding-large overflow-hidden">
+        <div class="container">
+            <div class="display-header text-uppercase text-dark text-center pb-3 d-flex justify-content-center">
+                <h2 class="display-7">무작위 도서 추천</h2>
+                <i class="fa-solid fa-circle-exclamation fa-xl align-self-center" id="btnModalShow" style="margin-left: 10px"></i>
             </div>
-            <div id="data"></div>
-        </div>
-    </form>
 
-</div>
-
-<div id="nlList" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">국립중앙도서관 소장자료</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="del">
-                <div class="modal-body">
-                    <div class="form-floating mb-3 mx-auto" style="width: 98%" id="list">
+            <form id="f" class="mx-auto" style="width: 80%;">
+                <div class="form-group">
+                    <h5>책 제목</h5>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control btn-rounded-none" id="bookTitle" name="bookTitle" disabled="">
                     </div>
+                    <div id="data"></div>
                 </div>
             </form>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        </div>
+    </section>
+
+    <div id="nlList" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">국립중앙도서관 소장자료</h5>
+                    <button type="button" class="btn-close btn-box-shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="del">
+                    <div class="modal-body">
+                        <div class="form-floating mb-3 mx-auto" style="width: 98%" id="list">
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-rounded-none" data-bs-dismiss="modal">닫기</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- 본문 끝 -->
 
-
+    <!-- 푸터 시작 -->
+    <div th:replace="~{footer}"></div>
+    <!-- 푸터 끝 -->
 </body>
 </html>

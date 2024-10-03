@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>myInfo</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <title>BookShelf</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
-    <style th:inline="css">
-        .dropdown-menu {
-            right: 0;
-            top: 60px;
-        }
-        .dropdown-menu a {
-            display: block;
-        }
-        .dropdown-menu a:hover {background-color: #ddd;}
-
-        .dropdown:hover .dropdown-menu {display: block;}
-
-        /* 드롭다운 메뉴가 나타날 때 네비게이션 바가 밀리는 현상을 방지 */
-        .navbar-nav {
-            position: relative;
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
-        .navbar-nav .dropdown-menu {
-            position: absolute;
-            right: 0;
-            z-index: 1000;
+        .readTextarea {
+            width: 100%;
+            resize: none;
+            overflow-y: hidden; /* prevents scroll bar flash */
+            border: none;
+            outline: none;
         }
     </style>
-
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
-    <script th:inline="javascript">
+    <script type="text/javascript" src="/js/plugins.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript">
         // HTML로딩이 완료되고, 실행됨
         $(document).ready(function () {
-
-            $("#header").load("header.html")
 
             getSsUserId()
 
@@ -100,54 +102,61 @@
         }
     </script>
 </head>
-<body>
-<!-- 메인 페이지 -->
-<!-- 상단바 부분 -->
-<div th:replace="~{header}"></div>
-<br>
-<br>
+<body data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0" data-current-page="mypage">
+    <!-- 헤더 시작 -->
+    <div th:replace="~{header}"></div>
+    <!-- 헤더 끝 -->
 
-<!-- 내용 부분 -->
-<div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
+    <!-- 본문 시작 -->
+    <section id="instagram" class="padding-large overflow-hidden">
+        <div class="container">
+            <div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
 
 
-    <div class="card d-grid gap-2" style="margin: 3% 5%">
-        <button id="btnMyActivity" class="btn btn-link btn-lg" style="height: 100px" type="button">내 정보 보기</button>
-    </div>
+                <div class="card d-grid gap-2" style="margin: 3% 5%">
+                    <button id="btnMyActivity" class="btn btn-link text-secondary btn-lg" style="height: 100px" type="button">내 정보 보기</button>
+                </div>
 
-    <div style="justify-content: space-between; display: flex">
-        <div class="card d-grid gap-2" style="margin: 3% 5%; width: 30%; ">
-            <button id="btnMyBoard" class="btn btn-link btn-lg" style=" height: 100px" type="button">내 게시글 보기</button>
+                <div style="justify-content: space-between; display: flex">
+                    <div class="card d-grid gap-2" style="margin: 3% 5%; width: 30%; ">
+                        <button id="btnMyBoard" class="btn btn-link text-secondary btn-lg" style=" height: 100px" type="button">내 게시글 보기</button>
+                    </div>
+
+                    <div class="card d-grid gap-2" style="margin: 3% 5%; width: 30%; ">
+                        <button id="btnMyComment" class="btn btn-link text-secondary btn-lg" style="height: 100px" type="button">내 댓글 보기</button>
+                    </div>
+
+                    <div class="card d-grid gap-2" style="margin: 3% 5%; width: 30%;">
+                        <button id="btnBookmark" class="btn btn-link text-secondary btn-lg" style="height: 100px" type="button">내 북마크 보기</button>
+                    </div>
+                </div>
+
+                <div style="justify-content: space-between; display: flex">
+                    <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
+                        <button id="btnMyBook" class="btn btn-link text-secondary btn-lg" style="height: 100px" type="button">내 도서 보기</button>
+                    </div>
+                    <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
+                        <button id="btnRecommendBook" class="btn btn-link text-secondary btn-lg" style="height: 100px" type="button">추천 도서 보기</button>
+                    </div>
+                </div>
+
+                <div style="justify-content: space-between; display: flex">
+                    <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
+                        <button id="btnMySubscribe" class="btn btn-link text-secondary btn-lg" style="height: 100px" type="button">내 구독 리스트</button>
+                    </div>
+
+                    <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
+                        <button id="btnMySubscriber" class="btn btn-link text-secondary btn-lg" style="height: 100px" type="button">내 구독자 리스트</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
+    <!-- 본문 끝 -->
 
-        <div class="card d-grid gap-2" style="margin: 3% 5%; width: 30%; ">
-            <button id="btnMyComment" class="btn btn-link btn-lg" style="height: 100px" type="button">내 댓글 보기</button>
-        </div>
-
-        <div class="card d-grid gap-2" style="margin: 3% 5%; width: 30%;">
-            <button id="btnBookmark" class="btn btn-link btn-lg" style="height: 100px" type="button">내 북마크 보기</button>
-        </div>
-    </div>
-
-    <div style="justify-content: space-between; display: flex">
-        <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
-            <button id="btnMyBook" class="btn btn-link btn-lg" style="height: 100px" type="button">내 도서 보기</button>
-        </div>
-        <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
-            <button id="btnRecommendBook" class="btn btn-link btn-lg" style="height: 100px" type="button">추천 도서 보기</button>
-        </div>
-    </div>
-
-    <div style="justify-content: space-between; display: flex">
-        <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
-            <button id="btnMySubscribe" class="btn btn-link btn-lg" style="height: 100px" type="button">내 구독 리스트</button>
-        </div>
-
-        <div class="card d-grid gap-2" style="margin: 3% 5%; width: 40%;">
-            <button id="btnMySubscriber" class="btn btn-link btn-lg" style="height: 100px" type="button">내 구독자 리스트</button>
-        </div>
-    </div>
-
-</div>
+    <!-- 푸터 시작 -->
+    <div th:replace="~{footer}"></div>
+    <!-- 푸터 끝 -->
 </body>
 </html>

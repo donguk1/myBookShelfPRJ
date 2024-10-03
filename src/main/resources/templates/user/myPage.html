@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>BookShelf</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        .nav-item {
-            visibility: hidden;
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
-        hr{
-            /*height:100vh;*/
-            width:.5vw;
-            border-width:0;
-            color:#000;
-            background-color:#000;
+        .checkArea p {
+            color: black;
         }
 
         /* 숨기기 위해 기본 체크박스 스타일 설정 */
@@ -40,25 +43,25 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 0;
+            top: 3.2px;
             width: 25px;
             height: 25px;
             border: 2px solid #ccc;
-            border-radius: 5px;
+            border-radius: 0;
             background: #fff;
         }
 
         /* 체크박스 체크 시 스타일 */
         input[type="checkbox"]:checked + label::before {
-            background: #4caf50;
-            border-color: #4caf50;
+            background: var(--accent-color);
+            border-color: var(--accent-color);
         }
 
         input[type="checkbox"]:checked + label::after {
             content: '';
             position: absolute;
             left: 9px;
-            top: 5px;
+            top: 7px;
             width: 8px;
             height: 14px;
             border: solid white;
@@ -72,9 +75,14 @@
             display: inline-block;
         }
     </style>
-
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/plugins.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
     <script type="text/javascript" src="/js/move.js"></script>
     <script type="text/javascript">
 
@@ -321,144 +329,145 @@
         }
     </script>
 </head>
-<body>
+<body data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0" data-current-page="mypage">
+    <!-- 헤더 시작 -->
+    <div th:replace="~{header}"></div>
+    <!-- 헤더 끝 -->
 
-<!-- 상단바 부분 -->
-<div th:replace="~{header}"></div>
-<br>
-<br>
-<div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
-
-    <div class="card-body mx-auto">
-        <h1 style="font-family: 'Do Hyeon', sans-serif;">내 정보</h1>
-    </div>
-    <br>
-
-    <form id="f" class="mx-auto" style="width: 80%;" >
-        <div style="justify-content: space-between; display: flex">
-            <!-- 왼쪽 개인 정보-->
-            <div style="width: 60%; margin-right: 5%">
-                <div class="form-group">
-                    <label class="form-label mt-4">아이디</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="userId" name="userId" disabled="">
-                    </div>
+    <!-- 본문 시작 -->
+    <section id="instagram" class="padding-large overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="display-header text-uppercase text-dark text-center pb-3">
+                    <h2 class="display-7">내 정보</h2>
                 </div>
+                <form id="f" class="mx-auto" style="width: 80%;" >
+                    <div style="justify-content: space-between; display: flex">
+                        <!-- 왼쪽 개인 정보-->
+                        <div style="width: 60%; margin-right: 5%">
+                            <div class="form-group">
+                                <label class="form-label mt-4">아이디</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control btn-rounded-none" id="userId" name="userId" disabled="">
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    <label class="form-label mt-4">이메일</label>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" id="email" name="email" disabled="">
+                            <div class="form-group">
+                                <label class="form-label mt-4">이메일</label>
+                                <div class="input-group mb-3">
+                                    <input type="email" class="form-control btn-rounded-none" id="email" name="email" disabled="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label mt-4">이름</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control btn-rounded-none" id="userName" name="userName" disabled="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label mt-4">닉네임</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control btn-rounded-none" id="nickname" name="nickname">
+                                </div>
+                            </div>
+
+                            <div class="mx-auto mt-4" style="text-align: center">
+                                <button id="btnSend" type="button" class="btn btn-black btn-rounded-none">내정보 수정</button>
+                                <button id="btnChgPw" type="button" class="btn btn-black btn-rounded-none">비밀번호 수정</button>
+                            </div>
+                        </div>
+
+                        <!-- 오른쪽 선호 종류 -->
+                        <div class="checkArea" style="width: 40%; border-left: 2px solid darkgray; padding-left: 3%">
+                            <br/>
+                            <h5 class="mx-auto" style="text-align: center"> 선호 장르</h5>
+
+                            <p><input type="checkbox" value="철학" name="category" id="철학"><label for="철학">철학</label></p>
+                            <p><input type="checkbox" value="종교" name="category" id="종교"><label for="종교">종교</label></p>
+                            <p><input type="checkbox" value="과학" name="category" id="과학"><label for="과학">과학</label></p>
+                            <p><input type="checkbox" value="예술" name="category" id="예술"><label for="예술">예술</label></p>
+                            <p><input type="checkbox" value="언어" name="category" id="언어"><label for="언어">언어</label></p>
+                            <p><input type="checkbox" value="문학" name="category" id="문학"><label for="문학">문학</label></p>
+                            <p><input type="checkbox" value="역사" name="category" id="역사"><label for="역사">역사</label></p>
+
+                            <div class="mx-auto" style="text-align: center">
+                                <button id="btnPrefer" type="button" class="btn btn-black btn-rounded-none">수정 하기</button>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
+                </form>
 
-                <div class="form-group">
-                    <label class="form-label mt-4">이름</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="userName" name="userName" disabled="">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label mt-4">닉네임</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="nickname" name="nickname">
-                    </div>
-                </div>
-
-                <div class="mx-auto" style="text-align: center">
-                    <button id="btnSend" type="button" class="btn btn-primary">내정보 수정</button>
-                    <button id="btnChgPw" type="button" class="btn btn-primary">비밀번호 수정</button>
-                </div>
-            </div>
-
-            <hr>
-
-            <!-- 오른쪽 선호 종류 -->
-            <div style="width: 40%; margin-left: 5%">
-                <br/>
-                <h1 class="mx-auto" style="text-align: center"> 선호 장르</h1>
-
-                <p><input type="checkbox" value="철학" name="category" id="철학"><label for="철학">철학</label></p>
-                <p><input type="checkbox" value="종교" name="category" id="종교"><label for="종교">종교</label></p>
-                <p><input type="checkbox" value="과학" name="category" id="과학"><label for="과학">과학</label></p>
-                <p><input type="checkbox" value="예술" name="category" id="예술"><label for="예술">예술</label></p>
-                <p><input type="checkbox" value="언어" name="category" id="언어"><label for="언어">언어</label></p>
-                <p><input type="checkbox" value="문학" name="category" id="문학"><label for="문학">문학</label></p>
-                <p><input type="checkbox" value="역사" name="category" id="역사"><label for="역사">역사</label></p>
-
-                <div class="mx-auto" style="text-align: center">
-                    <button id="btnPrefer" type="button" class="btn btn-primary">수정 하기</button>
-                </div>
-            </div>
-
-        </div>
-    </form>
-    <br/>
-
-    <button type="button" id="btnDel" class="btn btn-link" data-bs-toggle="modal" data-bs-target="userDelete">회원 탈퇴</button>
-</div>
-
-<!-- 비밀번호 재설정 팝업 -->
-<div id="chgPw" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">비밀번호 변경</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form name="chgPw"id="fo">
-                <br/>
-                <br/>
-                <div class="form-group mx-auto" style="width: 90%;">
-                    <div class="form-floating mb-3" >
-                        <input type="password" class="form-control" name="password" id="password" placeholder="현재 비밀번호">
-                        <label for="password">현재 비밀번호</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="새 비밀번호" oninput="pwCheck()">
-                        <label for="newPassword">새 비밀번호</label>
-                    </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" name="newPassword1" id="newPassword1" placeholder="새 비밀번호 확인" oninput="pwCheck()">
-                        <label for="newPassword1">새 비밀번호 확인</label>
-                    </div>
-                </div>
-            </form>
-            <br/><br/>
-            <div class="modal-footer">
-                <button type="submit" id="modalBtnChgPw" class="btn btn-primary">수정</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                <button type="button" id="btnDel" class="btn btn-link text-secondary mt-5 btn-box-shadow-none" data-bs-toggle="modal" data-bs-target="userDelete">회원 탈퇴</button>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<!-- 회원 탈퇴 팝업 -->
-<div id="userDelete" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">회원 탈퇴</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="del">
-                <div class="modal-body">
-                    <p>탈퇴를 진행하시려면 비밀번호를 입력해주세요.</p>
-                    <div class="form-floating mb-3 mx-auto" style="width: 98%">
-                        <input type="password" id="userDeletePw" name="userDeletePw" class="form-control" placeholder="비밀번호" required>
-                        <label for="password">비밀번호</label>
-                    </div>
+    <!-- 비밀번호 재설정 팝업 -->
+    <div id="chgPw" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">비밀번호 변경</h5>
+                    <button type="button" class="btn-close btn-box-shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </form>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="modalBtnDel">탈퇴하기</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                <form name="chgPw"id="fo">
+                    <br/>
+                    <br/>
+                    <div class="form-group mx-auto" style="width: 90%;">
+                        <div class="form-floating mb-3" >
+                            <input type="password" class="form-control btn-rounded-none" name="password" id="password" placeholder="현재 비밀번호">
+                            <label for="password">현재 비밀번호</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control btn-rounded-none" name="newPassword" id="newPassword" placeholder="새 비밀번호" oninput="pwCheck()">
+                            <label for="newPassword">새 비밀번호</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control btn-rounded-none" name="newPassword1" id="newPassword1" placeholder="새 비밀번호 확인" oninput="pwCheck()">
+                            <label for="newPassword1">새 비밀번호 확인</label>
+                        </div>
+                    </div>
+                </form>
+                <br/><br/>
+                <div class="modal-footer">
+                    <button type="submit" id="modalBtnChgPw" class="btn btn-black btn-rounded-none">수정</button>
+                    <button type="button" class="btn btn-secondary btn-rounded-none" data-bs-dismiss="modal">닫기</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+    <!-- 회원 탈퇴 팝업 -->
+    <div id="userDelete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">회원 탈퇴</h5>
+                    <button type="button" class="btn-close btn-box-shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="del">
+                    <div class="modal-body">
+                        <p style="color: black">탈퇴를 진행하시려면 비밀번호를 입력해주세요.</p>
+                        <div class="form-floating mb-3 mx-auto" style="width: 98%">
+                            <input type="password" id="userDeletePw" name="userDeletePw" class="form-control btn-rounded-none" placeholder="비밀번호" required>
+                            <label for="password">비밀번호</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-black btn-rounded-none" id="modalBtnDel">탈퇴하기</button>
+                    <button type="button" class="btn btn-secondary btn-rounded-none" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 본문 끝 -->
+
+    <!-- 푸터 시작 -->
+    <div th:replace="~{footer}"></div>
+    <!-- 푸터 끝 -->
 </body>
 </html>
-

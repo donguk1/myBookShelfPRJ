@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>BookShelf</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hahmlet:wght@400;500&family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
-    <style type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
         .dropdown-menu {
 
         }
@@ -29,10 +41,6 @@
             overflow-y: hidden; /* prevents scroll bar flash */
             border: none;
             outline: none;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
         }
 
         #nickname {
@@ -68,11 +76,18 @@
             margin-top: 20px; /* 예시로 적절한 margin 값을 주세요 */
         }
 
+        .comment-list p {
+            color: black;
+            margin-bottom: 0;
+            padding-left: 10px;
+        }
+
         .comment-col {
             width: 100%; /* 전체 너비를 사용하도록 설정 */
             float: left; /* 왼쪽 정렬 */
             clear: both; /* float 해제 */
             border-top: 1px solid darkgray;
+            padding-bottom: 3px;
         }
 
         .comment-content {
@@ -92,22 +107,20 @@
             margin-left: 5px;
         }
 
-
-        .commentArea {
-            margin-top: 10px; /* 적절한 margin 값 설정 */
-            padding: 10px; /* 적절한 padding 값 설정 */
-            border: 1px solid #ccc; /* 테두리 추가 */
-        }
-
         .commentArea textarea {
             width: 100%;
             height: 80px;
             resize: vertical;
         }
     </style>
-
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/plugins.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
     <script type="text/javascript" src="/js/comment.js"></script>
     <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
@@ -144,8 +157,6 @@
 
             })
 
-            $("#header").load("/header.html");
-
             getSsUserId()
             getBoardInfo()
             getCommentList()
@@ -155,15 +166,15 @@
             $("div[id^='recommentArea']").hide();
 
             $("#btnEdit").on("click", function () {
-                doEdit(); // 메모 수정하기 실행
+                doEdit(); // 게시글 수정하기 실행
             })
 
             $("#btnDelete").on("click", function () {
-                doDelete(); // 메모 삭제하기 실행
+                doDelete(); // 게시글 삭제하기 실행
             })
 
             $("#btnList").on("click", function () {
-                location.href = "boardList"; // 메모 리스트 이동
+                location.href = "boardList"; // 게시판 리스트 이동
             })
 
             // 버튼 클릭했을때, 발생되는 이벤트 생성함(onclick 이벤트와 동일함)
@@ -360,91 +371,91 @@
                 }
             });
         }
-
-
     </script>
 </head>
-<body>
-<!-- 메모 상세보기 페이지 -->
-<!-- 상단바 부분 -->
-<div th:replace="~{header}"></div>
-<br/>
-<br/>
+<body data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0" data-current-page="board">
+    <!-- 헤더 시작 -->
+    <div th:replace="~{header}"></div>
+    <!-- 헤더 끝 -->
 
-<!-- 내용 부분 -->
-<div class="card mb-3 mx-auto" style=" width: 95%; font-family: 'Noto Sans KR', sans-serif;">
-    <div class="card-body">
-        <div class="card mb-3">
-            <!-- PK -->
-            <input type="hidden" id="boardSeq">
-            <input type="hidden" id="regId">
+    <!-- 본문 시작 -->
+    <section id="instagram" class="padding-large overflow-hidden">
+        <div class="container">
+            <div class="card mb-3 btn-rounded-none">
+                <!-- PK -->
+                <input type="hidden" id="boardSeq">
+                <input type="hidden" id="regId">
 
-            <!-- 타이틀 출력 -->
-            <div class="card-header">
-                <div style="justify-content: space-between; display: flex;">
-                    <!-- 카테고리 -->
-                    <span class="badge rounded-pill bg-secondary" id="category" style="margin-bottom: 0.5%"></span>
+                <!-- 타이틀 출력 -->
+                <div class="card-header">
+                    <div style="justify-content: space-between; display: flex;">
+                        <!-- 카테고리 -->
+                        <span class="badge rounded-pill bg-secondary" id="category" style="margin-bottom: 0.5%; font-size: 1em"></span>
 
-                    <p></p>
+                        <p></p>
 
-                    <!-- 북마크 -->
-                    <i class="fa-bookmark fa-2xl" id="bookmarkIcon" style="padding-top: 0.8%"></i>
+                        <!-- 북마크 -->
+                        <i class="fa-bookmark fa-2xl" id="bookmarkIcon" style="padding-top: 0.8%"></i>
+                    </div>
+
+                    <!-- 타이틀 -->
+                    <h3>
+                        <span type="text" id="title" disabled=""></span>
+                    </h3>
+
+                    <!-- 작성 정보 -->
+                    <h6>
+                        <span id="nickname"></span>  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        <ul id="dropdown" class="dropdown-menu" style="margin-left: 1%">
+                            <li><span id="btnRecordBoard" style="cursor: pointer">작성한 글 보기</span></li>
+                            <li><span id="btnSubscribe" style="cursor: pointer">설정</span></li>
+                        </ul>
+                        <span  id="regDt"></span >  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        <span  id="readCnt"></span >
+                    </h6>
                 </div>
 
-                <!-- 타이틀 -->
-                <h3 style="font-family: 'Do Hyeon', sans-serif;">
-                    <span type="text" id="title" disabled="">
-                    </span>
-                </h3>
+                <div class="card-body">
+                    <!-- 이미지 출력 -->
+                    <div class="imageArea" style="width: 100%; padding-bottom: 10px;" id="img">
+                        <img src="" width="100%"><br><br>
+                    </div>
+
+                    <!-- 내용 입력 영역 -->
+                    <div>
+                        <textarea class="readTextarea" id="contents" rows="16" readonly name="contents" style=" border: none; padding: 10px"></textarea>
+                    </div>
+                </div>
             </div>
 
-            <br/>
-
-            <h6> &nbsp;&nbsp;
-                <span  id="nickname"></span >  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                <ul id="dropdown" class="dropdown-menu" style="margin-left: 1%">
-                    <li><span id="btnRecordBoard">작성한 글 보기</span></li>
-                    <li><span id="btnSubscribe">설정</span></li>
-                </ul>
-                <span  id="regDt"></span >  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                <span  id="readCnt"></span >
-            </h6>
-
-            <!-- 이미지 출력 -->
-            <div class="imageArea" style="width: 100%; padding-bottom: 10px;" id="img">
-                <img src=""  width="100%"><br><br>
+            <!-- 버튼 영역 -->
+            <div class="d-flex justify-content-end mb-5">
+                <button id="btnEdit" type="button" class="btn btn-outline-dark btn-rounded-none" style="margin-right: 10px">수정</button>
+                <button id="btnList" type="button" class="btn btn-outline-dark btn-rounded-none">목록</button>
             </div>
 
-            <!-- 내용 입력 영역 -->
-            <div>
-                <textarea class="readTextarea" id="contents" rows="16" readonly name="contents" style="width: 98%; border: None; padding: 10px"></textarea>
-                <br>
-            </div>
-        </div>
-    </div>
 
-    <!-- 버튼 영역 -->
-    <div class="ms-auto" style="padding: 0 20px;">
-        <button id="btnEdit" type="button" class="btn btn-outline-dark">수정</button>
-        <button id="btnList" type="button" class="btn btn-outline-dark">목록</button>
-    </div>
-    <br>
-</div>
-
-<!--댓글 영역-->
-<div class="card mx-auto" style="width: 95%; font-family: 'Noto Sans KR', sans-serif">
-    <div class="card-body" >
-        <h5 class="card-title" style="text-align: left"></h5>
-        <div class="commentArea mx-auto" style="text-align: center">
-            <textarea name="commentContents" id="commentContents" style="width: 95%; height: 80px"></textarea>
-            <button class="btn btn-primary" type="button" id="btnComment" style="width: 95%" onclick="insertComment(0, 0)">등록</button>
-        </div>
-        <div class="" style="width: 100%;">
-            <div id="commentList" class="comment-list">
+            <!--댓글 영역-->
+            <div class="card mx-auto btn-rounded-none">
+                <div class="card-body">
+                    <!-- TODO 이 카드 타이틀은 뭐에 쓰는것인교? -->
+                    <h5 class="card-title" style="text-align: left"></h5>
+                    <div class="commentArea" style="text-align: center">
+                        <textarea class="form-control btn-rounded-none" name="commentContents" id="commentContents" style="height: 80px; resize: none; margin-bottom: 10px"></textarea>
+                        <button class="btn btn-dark btn-rounded-none" type="button" id="btnComment" style="width: 100%" onclick="insertComment(0, 0)">등록</button>
+                    </div>
+                    <div class="" style="width: 100%;">
+                        <div id="commentList" class="comment-list">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- 본문 끝 -->
 
+    <!-- 푸터 시작 -->
+    <div th:replace="~{footer}"></div>
+    <!-- 푸터 끝 -->
 </body>
 </html>

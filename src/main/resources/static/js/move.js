@@ -20,5 +20,4 @@ $(document).ready(function () {
         location.href = "../user/findPassword";
     })
 
-
 })
