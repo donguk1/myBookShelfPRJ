@@ -1,5 +1,9 @@
 package kopo.poly.service;
 
+import kopo.poly.dto.NlBookDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 public interface INlBookService {
 
     void insertNlBook(String callNo,
@@ -17,4 +21,8 @@ public interface INlBookService {
                   String regId,
                   String title,
                   String id) throws Exception;
+
+    Page<NlBookDTO> getNlBookList(String regId,
+                                  Pageable pageable,
+                                  String keyword) throws Exception;
 }

@@ -27,6 +27,7 @@
     <script src="/js/modernizr.js"></script>
     <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/5a07bfcb19.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/js/plugins.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
@@ -90,6 +91,7 @@
         }
 
         function checkNlBook(data) {
+            console.log("1");
             $.ajax({
                 url: "/nlBook/checkNlBook",
                 type: "POST",
@@ -121,13 +123,16 @@
             list.empty();
 
             bList.forEach(function (data) {
+
+                data.titleText = data.title
+
                 let listOne = $("<div>")
                     .addClass("listOne item")
 
                 listOne.append(
                     // title
                     $("<div>")
-                        .css("width", "30%")
+                        .css("width", "25%")
                         .text(data.title),
 
                     // 보유 장소
@@ -144,7 +149,8 @@
 
                     // star
                     $("<i>")
-                        .addClass("fa-star align-self-center")
+                        .addClass("fa-star align-self-center fa-solid")
+                        .css("width", "15%")
                         .attr({
                             "id": data.id,
                             "aria-hidden": "true"
@@ -152,6 +158,7 @@
                         .click(function () {
                             checkNlBook(data)
                         })
+
                 )
                 list.append(listOne);
             });
@@ -172,12 +179,10 @@
 
             <div class="mb-5" id="boardContainer" style="text-align: center">
                 <div class="header" style="border-bottom: 2px solid #3A3A3A">
-                    <div style="width: 10%">카테고리</div>
-                    <div style="width: 40%">제목</div>
-                    <div style="width: 10%">댓글수</div>
-                    <div style="width: 10%">작성자</div>
-                    <div style="width: 20%">작성일</div>
-                    <div style="width: 10%">조회수</div>
+                    <div style="width: 25%">제목</div>
+                    <div style="width: 40%">장소</div>
+                    <div style="width: 20%">청구기호</div>
+                    <div style="width: 15%"></div>
                 </div>
                 <div id="boardList"></div>
             </div>
@@ -190,19 +195,6 @@
 
             <!-- 검색 버튼 영역 -->
             <form class="form-inline my-2 my-lg-0 d-flex justify-content-center" id="f">
-                <div class="col-3">
-                    <select class="form-select btn-rounded-none" name="category" id="category" style="margin-right: 3%">
-                        <option selected value="">전체</option>
-                        <option value="기타">기타</option>
-                        <option value="철학">철학</option>
-                        <option value="종교">종교</option>
-                        <option value="과학">과학</option>
-                        <option value="예술">예술</option>
-                        <option value="언어">언어</option>
-                        <option value="문학">문학</option>
-                        <option value="역사">역사</option>
-                    </select>
-                </div>
                 <div class="col-9">
                     <div class="input-group mb-3">
                         <input class="form-control btn-rounded-none mr-sm-2" type="search" placeholder="Search" name="keyword" id="keyword">

@@ -9,6 +9,7 @@ import kopo.poly.util.SafeUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -102,6 +103,9 @@ public class NlBookController {
         log.info("keyword : " + keyword);
         log.info("page : " + page);
 
-        return null;
+        return nlBookService.getNlBookList(
+                regId,
+                PageRequest.of(page-2, 10),
+                keyword);
     }
 }

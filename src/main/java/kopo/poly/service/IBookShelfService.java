@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import java.sql.Date;
 import java.util.List;
 
-public interface IBookShelfService {
+public interface  IBookShelfService {
 
     /**
      * 도서 추가
