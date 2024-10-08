@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Objects;
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller
@@ -38,7 +40,7 @@ public class NaverController {
         log.info("네이버 아이디 : " + naverDTO.response().getId());
 
         // 첫 로그인시 회원가입 로직 실행
-        if (userInfoService.getUserIdExists(userId) == null) {
+        if (Objects.equals(userInfoService.getUserIdExists(userId), "Y")) {
 
             res = userInfoService.insertUserInfo(
                     userId,
@@ -67,7 +69,7 @@ public class NaverController {
 
         log.info(".controller 네이버 회원가입 및 로그인 종료");
 
-        return "/user/login";
+        return "user/login";
     }
 }
 

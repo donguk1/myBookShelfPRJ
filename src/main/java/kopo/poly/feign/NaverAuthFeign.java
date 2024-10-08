@@ -1,10 +1,9 @@
 package kopo.poly.feign;
 
 import feign.Headers;
-import feign.RequestLine;
 import feign.Param;
+import feign.RequestLine;
 import kopo.poly.config.OpenFeignConfig;
-import kopo.poly.dto.NaverDTO;
 import kopo.poly.dto.TokenDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 
@@ -14,6 +13,17 @@ public interface NaverAuthFeign {
     @RequestLine("POST /oauth2.0/token")
     @Headers("Content-Type: application/x-www-form-urlencoded;charset=utf-8")
     TokenDTO getAccessToken(
+            @Param("grant_type") String grantType,
+            @Param("client_id") String clientId,
+            @Param("client_secret") String clientSecret,
+            @Param("redirect_uri") String redirectUri,
+            @Param("code") String code
+    );
+
+
+    @RequestLine("POST /oauth2.0/token")
+    @Headers("Content-Type: application/x-www-form-urlencoded;charset=utf-8")
+    TokenDTO deleteToken(
             @Param("grant_type") String grantType,
             @Param("client_id") String clientId,
             @Param("client_secret") String clientSecret,

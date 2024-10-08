@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Objects;
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller
@@ -38,8 +40,7 @@ public class KakaoController {
         log.info("kakaoDTO : " + kakaoDTO);
         log.info("카카오 아이디 : " + userId);
 
-        if (userInfoService.getUserIdExists(userId) == null) {
-
+        if (Objects.equals(userInfoService.getUserIdExists(userId), "Y")) {
             res = userInfoService.insertUserInfo(
                     userId,
                     EncryptUtil.encHashSHA256(userId),
@@ -67,7 +68,7 @@ public class KakaoController {
 
         log.info(".controller 카카오 회원가입 및 로그인 종료");
 
-        return "/user/login";
+        return "user/login";
 
     }
 }

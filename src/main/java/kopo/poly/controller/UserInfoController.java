@@ -5,7 +5,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kopo.poly.dto.MsgDTO;
 import kopo.poly.dto.UserInfoDTO;
+import kopo.poly.service.IKakaoService;
 import kopo.poly.service.IMailService;
+import kopo.poly.service.INaverService;
 import kopo.poly.service.IUserInfoService;
 import kopo.poly.util.CmmUtil;
 import kopo.poly.util.EncryptUtil;
@@ -27,6 +29,8 @@ public class UserInfoController {
 
     private final IUserInfoService userInfoService;
     private final IMailService mailService;
+    private final IKakaoService kakaoService;
+    private final INaverService naverService;
 
     /**
      * 아이디 찾기 이동
@@ -470,6 +474,14 @@ public class UserInfoController {
         log.info("controller 회원 탈퇴");
 
         String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
+
+        if (userId.matches("kakao_(.*)")) {
+
+
+        } else if (userId.matches("naver_(.*)")) {
+            kakaoService
+
+        }
 
         userInfoService.deleteUserInfo(userId);
 

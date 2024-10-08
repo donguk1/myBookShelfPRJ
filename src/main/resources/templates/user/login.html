@@ -47,6 +47,7 @@
                 location.href = "https://nid.naver.com/oauth2.0/authorize?" +
                     "response_type=code&" +
                     "client_id=Go3RUangwA4y64jc2JQG&" +
+                    // "redirect_uri=https://mybookcase.store/auth/naver/callback&" +
                     "redirect_uri=http://localhost:11000/auth/naver/callback&" +
                     "state=myBookShelf"
             })
@@ -54,7 +55,8 @@
             // 카카오 로그인
             $("#btnKakaoLogin").on("click", function () {
                 location.href = "https://kauth.kakao.com/oauth/authorize?" +
-                    "client_id=843482027539-jh6urhs9m2cme76dpkqghrf0d4cp2s48.apps.googleusercontent.com&" +
+                    "client_id=93a5a7d1a089d126ad5870374768507a&" +
+                    // "redirect_uri=https://mybookcase.store/auth/kakao/callback&" +
                     "redirect_uri=http://localhost:11000/auth/kakao/callback&" +
                     "response_type=code"
             })
@@ -176,7 +178,7 @@
                             <!-- 카카오 로그인 API -->
                             <button type="button" id="btnKakaoLogin" class="btn btn-rounded-none btn-box-shadow-none"><img src="/img/kakaoIcon.png" alt="카카오로그인" style="width: 40px;height: 40px;"></button>
                             <!-- 구글 로그인 API -->
-                            <button type="button" id="btnGoogleLogin" class="btn btn-rounded-none btn-box-shadow-none"><img src="/img/kakaoIcon.png" alt="카카오로그인" style="width: 40px;height: 40px;"></button>
+<!--                            <button type="button" id="btnGoogleLogin" class="btn btn-rounded-none btn-box-shadow-none"><img src="/img/kakaoIcon.png" alt="카카오로그인" style="width: 40px;height: 40px;"></button>-->
                         </div>
                         <br>
 
