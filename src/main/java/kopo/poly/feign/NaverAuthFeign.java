@@ -27,8 +27,8 @@ public interface NaverAuthFeign {
             @Param("grant_type") String grantType,
             @Param("client_id") String clientId,
             @Param("client_secret") String clientSecret,
-            @Param("redirect_uri") String redirectUri,
-            @Param("code") String code
+            @Param("access_token") String accessToken,
+            @Param("service_provider") String serviceProvider
     );
 
 

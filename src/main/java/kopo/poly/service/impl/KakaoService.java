@@ -32,7 +32,7 @@ public class KakaoService implements IKakaoService {
     @Override
     public TokenDTO getAccessToken(String code) throws Exception {
 
-        log.info(".service 카카오 토큰 가져오기 실행");
+        log.info("service getAccessToken");
 
         return kakaoAuthFeign.getAccessToken(
                 "authorization_code",
@@ -46,8 +46,18 @@ public class KakaoService implements IKakaoService {
     @Override
     public KakaoDTO getKakaoUserInfo(TokenDTO pDTO) throws Exception {
 
-        log.info(".service 카카오에서 유저 정보 가져오기 실행");
+        log.info("service getKakaoUserInfo");
 
         return kakaoLoginFeign.getUserInfo(pDTO.access_token());
+    }
+
+    @Override
+    public void deleteToken(String accessToken) throws Exception {
+
+        log.info("service deleteToken");
+
+        kakaoLoginFeign.deleteToken(
+                accessToken
+        );
     }
 }

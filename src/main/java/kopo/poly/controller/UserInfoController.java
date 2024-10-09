@@ -476,10 +476,18 @@ public class UserInfoController {
         String userId = CmmUtil.nvl((String) session.getAttribute("SS_USER_ID"));
 
         if (userId.matches("kakao_(.*)")) {
-
+            kakaoService.deleteToken(
+                    EncryptUtil.decAES128CBC(
+                            userInfoService.getUserInfo(userId).password()
+                    )
+            );
 
         } else if (userId.matches("naver_(.*)")) {
-            kakaoService
+            naverService.deleteToken(
+                    EncryptUtil.decAES128CBC(
+                            userInfoService.getUserInfo(userId).password()
+                    )
+            );
 
         }
 

@@ -39,7 +39,7 @@ public class NaverService implements INaverService {
     @Override
     public TokenDTO getAccessToken(String code) throws Exception {
 
-        log.info(".service 네이버 토큰 가져오기 실행");
+        log.info("service getAccessToken");
 
         return naverAuthFeign.getAccessToken(
                 "authorization_code",
@@ -54,8 +54,22 @@ public class NaverService implements INaverService {
     @Override
     public NaverDTO getNaverUserInfo(TokenDTO pDTO) throws Exception {
 
-        log.info(".service 네이버에서 유저 정보 가져오기 실행");
+        log.info("service getNaverUserInfo");
 
         return naverLoginFeign.getUserInfo(pDTO.access_token());
+    }
+
+    @Override
+    public void deleteToken(String accessToken) throws Exception {
+
+        log.info("service deleteToken");
+
+        naverAuthFeign.deleteToken(
+                "delete",
+                naverClientId,
+                naverClientSecret,
+                accessToken,
+                "NAVER"
+        );
     }
 }

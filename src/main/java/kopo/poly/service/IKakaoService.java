@@ -9,4 +9,7 @@ public interface IKakaoService {
     TokenDTO getAccessToken(String code) throws Exception;
 
     KakaoDTO getKakaoUserInfo(TokenDTO pDTO) throws Exception;
+
+    void deleteToken(String accessToken) throws Exception;
+
 }

@@ -44,7 +44,7 @@ public class NaverController {
 
             res = userInfoService.insertUserInfo(
                     userId,
-                    EncryptUtil.encHashSHA256(userId),
+                    EncryptUtil.encAES128CBC(tokenDTO.access_token()),
                     naverDTO.response().getEmail(),
                     naverDTO.response().getNickname(),
                     naverDTO.response().getName()

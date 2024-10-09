@@ -43,7 +43,7 @@ public class KakaoController {
         if (Objects.equals(userInfoService.getUserIdExists(userId), "Y")) {
             res = userInfoService.insertUserInfo(
                     userId,
-                    EncryptUtil.encHashSHA256(userId),
+                    EncryptUtil.encAES128CBC(tokenDTO.access_token()),
                     kakaoDTO.kakao_account().getEmail(),
                     kakaoDTO.properties().getNickname(),
                     kakaoDTO.kakao_account().getName()
