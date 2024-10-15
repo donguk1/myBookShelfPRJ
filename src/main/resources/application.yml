@@ -8,8 +8,8 @@ server:
 spring:
 
   profiles:
-    default: local
-#    default: prod
+#    default: local
+    default: prod
 
   jpa:
     open-in-view: 'false'
